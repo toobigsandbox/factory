@@ -14,9 +14,9 @@
         
         .subject-card {
             background: white;
-            border-radius: 3rem;
+            border-radius: 2.5rem;
             border: 1px solid #e2e8f0;
-            padding: 2.5rem 2rem;
+            padding: 2rem;
             transition: all 0.3s ease;
             height: 100%;
         }
@@ -26,12 +26,11 @@
         }
 
         .status-dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             border: 2px solid #cbd5e1;
             cursor: pointer;
-            transition: all 0.2s;
             flex-shrink: 0;
         }
         .state-pending .status-dot { background: transparent; }
@@ -41,114 +40,37 @@
         .lesson-link {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 0.5rem 0;
+            gap: 0.75rem;
+            padding: 0.4rem 0;
             font-size: 0.85rem;
             color: #64748b;
             transition: color 0.2s;
         }
-        .lesson-link:hover { color: #1e293b; text-decoration: underline; }
+        .lesson-link:hover { color: #b45309; text-decoration: underline; }
         .state-done .lesson-link { font-weight: 600; color: #1e293b; }
 
         @media print { .no-print { display: none !important; } }
     </style>
 </head>
-<body class="p-8 md:p-16 lg:p-24">
+<body class="p-6 md:p-12">
 
-    <header class="max-w-7xl mx-auto mb-16 flex flex-col md:flex-row justify-between items-start gap-8">
+    <header class="max-w-7xl mx-auto mb-12 flex flex-col md:flex-row justify-between items-start gap-8">
         <div>
-            <h1 class="serif text-7xl font-bold text-slate-900 tracking-tight mb-6">Album Repository</h1>
-            <div class="flex flex-wrap items-center gap-4">
-                <span class="bg-black text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest">Elim Lee // AMI Elementary</span>
-                <span class="text-amber-600 italic font-bold serif text-xl">Deadline Focus: April 1st, 2026</span>
+            <h1 class="serif text-6xl font-bold text-slate-900 tracking-tight mb-4">Album Repository</h1>
+            <div class="flex flex-wrap items-center gap-3">
+                <span class="bg-black text-white px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest">Elim Lee // AMI Elementary</span>
+                <span class="text-amber-600 italic font-bold serif text-xl">Target: April 1st</span>
             </div>
         </div>
-
-        <div class="no-print flex items-center gap-4">
-            <div class="bg-white px-6 py-3 rounded-2xl border border-slate-100 shadow-sm text-center">
-                <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Active Window</p>
-                <p class="font-bold text-slate-700 text-sm">Sept '25 — April '26</p>
-            </div>
+        <div class="no-print">
             <button onclick="window.print()" class="bg-slate-900 text-white p-4 rounded-2xl hover:bg-black transition-all shadow-lg">
                 <i data-lucide="printer" class="w-5 h-5"></i>
             </button>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        
-        <!-- Geography -->
-        <section class="subject-card">
-            <div class="flex items-center gap-4 mb-8">
-                <div class="bg-cyan-500 p-2.5 rounded-xl text-white"><i data-lucide="globe" class="w-6 h-6"></i></div>
-                <h2 class="serif text-3xl font-bold text-slate-800">Geography</h2>
-            </div>
-            <div id="geography-list" class="space-y-1"></div>
-        </section>
-
-        <!-- Geometry -->
-        <section class="subject-card border-amber-200 shadow-xl shadow-amber-50">
-            <div class="flex items-center gap-4 mb-8">
-                <div class="bg-emerald-500 p-2.5 rounded-xl text-white"><i data-lucide="triangle" class="w-6 h-6"></i></div>
-                <h2 class="serif text-3xl font-bold text-slate-800">Geometry</h2>
-            </div>
-            <div id="geometry-list" class="space-y-1"></div>
-        </section>
-
-        <!-- Mathematics -->
-        <section class="subject-card">
-            <div class="flex items-center gap-4 mb-8">
-                <div class="bg-blue-600 p-2.5 rounded-xl text-white"><i data-lucide="calculator" class="w-6 h-6"></i></div>
-                <h2 class="serif text-3xl font-bold text-slate-800">Mathematics</h2>
-            </div>
-            <div id="math-list" class="space-y-1"></div>
-        </section>
-
-        <!-- Biology -->
-        <section class="subject-card">
-            <div class="flex items-center gap-4 mb-8">
-                <div class="bg-green-600 p-2.5 rounded-xl text-white"><i data-lucide="leaf" class="w-6 h-6"></i></div>
-                <h2 class="serif text-3xl font-bold text-slate-800">Biology</h2>
-            </div>
-            <div id="biology-list" class="space-y-1"></div>
-        </section>
-
-        <!-- History -->
-        <section class="subject-card">
-            <div class="flex items-center gap-4 mb-8">
-                <div class="bg-stone-800 p-2.5 rounded-xl text-white"><i data-lucide="history" class="w-6 h-6"></i></div>
-                <h2 class="serif text-3xl font-bold text-slate-800">History</h2>
-            </div>
-            <div id="history-list" class="space-y-1"></div>
-        </section>
-
-        <!-- Language -->
-        <section class="subject-card">
-            <div class="flex items-center gap-4 mb-8">
-                <div class="bg-orange-600 p-2.5 rounded-xl text-white"><i data-lucide="type" class="w-6 h-6"></i></div>
-                <h2 class="serif text-3xl font-bold text-slate-800">Language</h2>
-            </div>
-            <div id="language-list" class="space-y-1"></div>
-        </section>
-
-        <!-- Music -->
-        <section class="subject-card">
-            <div class="flex items-center gap-4 mb-8">
-                <div class="bg-indigo-600 p-2.5 rounded-xl text-white"><i data-lucide="music" class="w-6 h-6"></i></div>
-                <h2 class="serif text-3xl font-bold text-slate-800">Music</h2>
-            </div>
-            <div id="music-list" class="space-y-1"></div>
-        </section>
-
-        <!-- Theory -->
-        <section class="subject-card">
-            <div class="flex items-center gap-4 mb-8">
-                <div class="bg-rose-500 p-2.5 rounded-xl text-white"><i data-lucide="book-open" class="w-6 h-6"></i></div>
-                <h2 class="serif text-3xl font-bold text-slate-800">Theory</h2>
-            </div>
-            <div id="theory-list" class="space-y-1"></div>
-        </section>
-
+    <main id="repo-grid" class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- JS will populate cards here -->
     </main>
 
     <footer class="max-w-7xl mx-auto mt-24 border-t border-slate-200 pt-12 text-center text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400 no-print">
@@ -160,19 +82,19 @@
 
     <script>
         const REPO_DATA = {
-            geography: ["God With No Hands", "Earth as a Sphere", "Sun and Earth", "Protection of Atmosphere", "Temperature Zones", "Work of Air", "Work of Water"],
-            geometry: ["Story of Geometry", "Nomenclature of Polygons", "Euclid's Plate", "Pythagoras I & II", "Area (Yellow Material)"],
-            math: ["Story of Numerals", "Hierarchical Material", "Multiples & Factors", "Decimal Fractions I", "Decimal Fractions II"],
-            biology: ["Coming of Life", "Plants' Story", "Needs of Plant", "Scientific Classification", "The Great River"],
-            history: ["The Black Strip", "Coming of Human Beings", "Hand Timeline", "Clock of Eras", "Fundamental Needs"],
-            language: ["Written Language", "Spoken Language", "Grammar Boxes", "Word Study", "Logical Analysis"],
-            music: ["Singing with Scale", "Rhythm Patterns", "Tone Bars"],
-            theory: ["Four Planes", "Cosmic Education", "Freedom & Responsibility", "Going Out", "Observation"]
+            "Geography": { icon: "globe", color: "bg-cyan-500", lessons: ["God With No Hands", "Earth as a Sphere", "Sun and Earth", "Protection of Atmosphere", "Temperature Zones", "Work of Air", "Work of Water"] },
+            "Geometry": { icon: "triangle", color: "bg-emerald-500", lessons: ["Story of Geometry", "Nomenclature of Polygons", "Euclid's Plate", "Pythagoras I & II", "Area (Yellow Material)"] },
+            "Math": { icon: "calculator", color: "bg-blue-600", lessons: ["Story of Numerals", "Hierarchical Material", "Multiples & Factors", "Decimal Fractions I", "Decimal Fractions II"] },
+            "Biology": { icon: "leaf", color: "bg-green-600", lessons: ["Coming of Life", "Plants' Story", "Needs of Plant", "Scientific Classification", "The Great River"] },
+            "History": { icon: "history", color: "bg-stone-800", lessons: ["The Black Strip", "Coming of Human Beings", "Hand Timeline", "Clock of Eras", "Fundamental Needs"] },
+            "Language": { icon: "type", color: "bg-orange-600", lessons: ["Written Language", "Spoken Language", "Grammar Boxes", "Word Study", "Logical Analysis"] },
+            "Music": { icon: "music", color: "bg-indigo-600", lessons: ["Singing with Scale", "Rhythm Patterns", "Tone Bars"] },
+            "Theory": { icon: "book-open", color: "bg-rose-500", lessons: ["Four Planes", "Cosmic Education", "Freedom & Responsibility", "Going Out", "Observation"] }
         };
 
-        let progress = JSON.parse(localStorage.getItem('master_repo_v2')) || {};
+        let progress = JSON.parse(localStorage.getItem('master_repo_v3')) || {};
 
-        function save() { localStorage.setItem('master_repo_v2', JSON.stringify(progress)); }
+        function save() { localStorage.setItem('master_repo_v3', JSON.stringify(progress)); }
 
         function toggle(id) {
             const states = ['pending', 'progress', 'done'];
@@ -185,15 +107,20 @@
         function resetStorage() { if(confirm("Reset all status marks?")) { progress = {}; save(); render(); } }
 
         function render() {
-            Object.keys(REPO_DATA).forEach(area => {
-                const container = document.getElementById(`${area}-list`);
-                if (!container) return;
-                container.innerHTML = REPO_DATA[area].map(lesson => {
-                    const id = `${area}-${lesson.replace(/\s+/g, '-').toLowerCase()}`;
+            const grid = document.getElementById('repo-grid');
+            grid.innerHTML = '';
+
+            Object.entries(REPO_DATA).forEach(([title, data]) => {
+                const section = document.createElement('section');
+                section.className = 'subject-card';
+                
+                const lessonsHtml = data.lessons.map(lesson => {
+                    const id = `${title.toLowerCase()}-${lesson.replace(/\s+/g, '-').toLowerCase()}`;
+                    const state = progress[id] || 'pending';
                     
-                    // CLEANING THE PATH: Remove apostrophes and replace spaces with dashes
-                    const cleanFileName = lesson.replace(/'/g, '').replace(/\s+/g, '-').toLowerCase();
-                    const path = `lessons/${area}/${cleanFileName}.html`;
+                    // The path fix: Remove apostrophes and handle spaces
+                    const cleanName = lesson.replace(/'/g, '').replace(/\s+/g, '-').toLowerCase();
+                    const path = `lessons/${title.toLowerCase()}/${cleanName}.html`;
                     
                     return `
                         <div class="state-${state} flex items-center gap-3">
@@ -202,11 +129,20 @@
                         </div>
                     `;
                 }).join('');
+
+                section.innerHTML = `
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="${data.color} p-2 rounded-xl text-white"><i data-lucide="${data.icon}" class="w-5 h-5"></i></div>
+                        <h2 class="serif text-2xl font-bold text-slate-800">${title}</h2>
+                    </div>
+                    <div class="space-y-1">${lessonsHtml}</div>
+                `;
+                grid.appendChild(section);
             });
             lucide.createIcons();
         }
 
-        window.onload = render;
+        render();
     </script>
 </body>
 </html>
