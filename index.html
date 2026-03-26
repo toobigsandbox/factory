@@ -190,8 +190,10 @@
                 if (!container) return;
                 container.innerHTML = REPO_DATA[area].map(lesson => {
                     const id = `${area}-${lesson.replace(/\s+/g, '-').toLowerCase()}`;
-                    const state = progress[id] || 'pending';
-                    const path = `lessons/${area}/${lesson.replace(/\s+/g, '-').toLowerCase()}.html`;
+                    
+                    // CLEANING THE PATH: Remove apostrophes and replace spaces with dashes
+                    const cleanFileName = lesson.replace(/'/g, '').replace(/\s+/g, '-').toLowerCase();
+                    const path = `lessons/${area}/${cleanFileName}.html`;
                     
                     return `
                         <div class="state-${state} flex items-center gap-3">
