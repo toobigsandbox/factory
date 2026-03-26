@@ -3,327 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Montessori Curriculum Tracker</title>
+    <title>Album Repository | Elim Lee</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        :root { --gold: #b45309; --paper: #fcfaf7; }
-        body { font-family: 'Inter', sans-serif; background: #fdfbf7; color: #1e293b; margin: 0; height: 100vh; display: flex; flex-direction: column; }
+        :root { --paper: #fdfbf7; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--paper); color: #1e293b; }
         .serif { font-family: 'Crimson Pro', serif; }
         
-        /* Spreadsheet Styling */
-        .spreadsheet-container { background: white; border-radius: 1rem; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        .status-dot { width: 14px; height: 14px; border-radius: 50%; border: 2.5px solid #cbd5e1; cursor: pointer; transition: 0.2s; display: inline-block; }
-        .status-pending { background: transparent; }
-        .status-progress { background: #f59e0b; border-color: #f59e0b; box-shadow: 0 0 8px rgba(245, 158, 11, 0.4); }
-        .status-done { background: #10b981; border-color: #10b981; box-shadow: 0 0 8px rgba(16, 185, 129, 0.4); }
-        
-        /* Sidebar and Layout */
-        .sidebar-item { cursor: pointer; transition: 0.2s; border-radius: 0.75rem; }
-        .sidebar-item:hover { background: #fffbeb; }
-        .sidebar-item.active { background: #b45309; color: white; }
+        .subject-card {
+            background: white;
+            border-radius: 3rem;
+            border: 1px solid #e2e8f0;
+            padding: 2.5rem 2rem;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05);
+        }
 
-        /* Output Formatting */
-        .preview-content h1 { font-family: 'Crimson Pro', serif; font-size: 2.25rem; font-weight: 700; border-bottom: 2px solid #fffbeb; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
-        .preview-content h2 { font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-top: 2rem; margin-bottom: 1rem; }
-        .preview-content .dialogue { margin-left: 2rem; font-style: italic; color: #475569; position: relative; margin-bottom: 0.75rem; border-left: 2px solid #e2e8f0; padding-left: 1rem; }
-        .preview-content .dialogue::before { content: "—"; position: absolute; left: -1.25rem; color: #cbd5e1; font-style: normal; }
-        .preview-content .illustrate { border: 2px dashed #cbd5e1; border-radius: 12px; height: 160px; margin: 1.5rem 0; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; background: #f8fafc; text-align: center; padding: 1rem; }
-        
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid #cbd5e1;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+        .state-pending .status-dot { background: transparent; }
+        .state-progress .status-dot { background: #f59e0b; border-color: #f59e0b; }
+        .state-done .status-dot { background: #10b981; border-color: #10b981; }
+
+        .lesson-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.5rem 0;
+            font-size: 0.85rem;
+            color: #64748b;
+            transition: color 0.2s;
+        }
+        .lesson-link:hover { color: #1e293b; text-decoration: underline; }
+        .state-done .lesson-link { font-weight: 600; color: #1e293b; }
+
         @media print { .no-print { display: none !important; } }
     </style>
 </head>
-<body class="overflow-hidden">
+<body class="p-8 md:p-16 lg:p-24">
 
-    <!-- Top Bar -->
-    <header class="bg-white border-b px-8 py-4 flex justify-between items-center z-30 shrink-0 no-print shadow-sm">
-        <div class="flex items-center gap-4">
-            <div class="bg-amber-600 p-2 rounded-xl text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-            </div>
-            <div>
-                <h1 class="font-bold text-slate-900 leading-none text-lg">Master Curriculum Index</h1>
-                <p class="text-[10px] text-amber-600 uppercase font-bold tracking-widest mt-1">Elim Lee // AMI Elementary 2025-26</p>
+    <header class="max-w-7xl mx-auto mb-16 flex flex-col md:flex-row justify-between items-start gap-8">
+        <div>
+            <h1 class="serif text-7xl font-bold text-slate-900 tracking-tight mb-6">Album Repository</h1>
+            <div class="flex flex-wrap items-center gap-4">
+                <span class="bg-black text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest">Elim Lee // AMI Elementary</span>
+                <span class="text-amber-600 italic font-bold serif text-xl">Deadline Focus: April 1st, 2026</span>
             </div>
         </div>
 
-        <div class="flex items-center gap-6">
-            <div class="flex bg-slate-100 p-1 rounded-xl">
-                <button id="viewSpreadsheet" onclick="setView('spreadsheet')" class="px-6 py-2 rounded-lg text-xs font-bold bg-white shadow-sm text-slate-900">SPREADSHEET</button>
-                <button id="viewFactory" onclick="setView('factory')" class="px-6 py-2 rounded-lg text-xs font-bold text-slate-400 hover:text-slate-600">ALBUM FACTORY</button>
+        <div class="no-print flex items-center gap-4">
+            <div class="bg-white px-6 py-3 rounded-2xl border border-slate-100 shadow-sm text-center">
+                <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Active Window</p>
+                <p class="font-bold text-slate-700 text-sm">Sept '25 — April '26</p>
             </div>
-            <input type="password" id="apiKey" placeholder="Gemini API Key" class="text-[10px] p-2.5 border rounded-xl w-48 outline-none focus:ring-2 focus:ring-amber-500 bg-slate-50">
+            <button onclick="window.print()" class="bg-slate-900 text-white p-4 rounded-2xl hover:bg-black transition-all shadow-lg">
+                <i data-lucide="printer" class="w-5 h-5"></i>
+            </button>
         </div>
     </header>
 
-    <div class="flex-1 flex overflow-hidden">
-        <!-- Sidebar Navigation -->
-        <aside class="w-64 border-r bg-white p-6 overflow-y-auto no-print">
-            <h3 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">Subject Areas</h3>
-            <div id="subjectList" class="space-y-1">
-                <!-- Subjects populated by JS -->
+    <main class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- Geography -->
+        <section class="subject-card">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="bg-cyan-500 p-2.5 rounded-xl text-white"><i data-lucide="globe" class="w-6 h-6"></i></div>
+                <h2 class="serif text-3xl font-bold text-slate-800">Geography</h2>
             </div>
-            
-            <div class="mt-8 pt-8 border-t border-slate-100">
-                <button onclick="exportDatabase()" class="flex items-center gap-3 text-slate-400 hover:text-amber-600 text-xs font-bold uppercase tracking-widest transition-colors w-full">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    Download Backup
-                </button>
-            </div>
-        </aside>
+            <div id="geography-list" class="space-y-1"></div>
+        </section>
 
-        <!-- Main Content View -->
-        <main id="mainView" class="flex-1 overflow-hidden flex flex-col">
-            
-            <!-- SPREADSHEET TAB -->
-            <div id="spreadsheetTab" class="flex-1 overflow-y-auto p-10">
-                <div class="max-w-5xl mx-auto">
-                    <div class="flex justify-between items-end mb-8">
-                        <div>
-                            <h2 id="currentSubjectTitle" class="serif text-4xl font-bold italic text-slate-800">Geography</h2>
-                            <p class="text-xs text-slate-400 mt-1 uppercase font-bold tracking-widest">Master Spreadsheet Tracker</p>
-                        </div>
-                    </div>
-                    
-                    <div class="spreadsheet-container">
-                        <table class="w-full text-left">
-                            <thead class="bg-slate-50 border-b text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                                <tr>
-                                    <th class="px-6 py-4 w-16 text-center">Status</th>
-                                    <th class="px-6 py-4">Lesson Title</th>
-                                    <th class="px-6 py-4 w-32 text-center">Factory</th>
-                                </tr>
-                            </thead>
-                            <tbody id="lessonRows">
-                                <!-- Lessons populated by JS -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+        <!-- Geometry -->
+        <section class="subject-card border-amber-200 shadow-xl shadow-amber-50">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="bg-emerald-500 p-2.5 rounded-xl text-white"><i data-lucide="triangle" class="w-6 h-6"></i></div>
+                <h2 class="serif text-3xl font-bold text-slate-800">Geometry</h2>
             </div>
+            <div id="geometry-list" class="space-y-1"></div>
+        </section>
 
-            <!-- FACTORY TAB -->
-            <div id="factoryTab" class="flex-1 hidden flex overflow-hidden no-print">
-                <!-- Left: Input -->
-                <div class="w-1/2 p-10 border-r flex flex-col gap-6 bg-white overflow-y-auto">
-                    <div>
-                        <h2 id="factoryLessonTitle" class="serif text-3xl font-bold italic">Select a Lesson</h2>
-                        <p id="factoryLessonArea" class="text-[10px] text-amber-600 font-bold uppercase tracking-widest">to begin processing</p>
-                    </div>
-                    
-                    <textarea id="rawInput" class="flex-1 w-full p-8 bg-slate-50 border border-slate-200 rounded-[2rem] text-sm leading-relaxed outline-none focus:ring-4 focus:ring-amber-500/10 shadow-inner resize-none" placeholder="Paste NoteGPT transcript or raw audio text here..."></textarea>
-                    
-                    <button id="generateBtn" onclick="processAI()" class="w-full bg-slate-900 text-white p-5 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-black transition-all shadow-xl shadow-slate-200">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
-                        <span id="btnText">Format into Album Page</span>
-                    </button>
-                </div>
-
-                <!-- Right: Output Preview -->
-                <div class="w-1/2 p-10 bg-slate-50 overflow-y-auto">
-                    <div id="outputContainer" class="bg-white p-12 rounded-[2.5rem] shadow-xl shadow-slate-200/50 serif preview-content relative hidden">
-                        <button onclick="copyGeneratedHtml()" class="absolute top-8 right-8 p-2 text-slate-300 hover:text-amber-600 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-                        </button>
-                        <div id="outputHtml"></div>
-                    </div>
-                    <div id="outputEmpty" class="h-full border-4 border-dashed border-white rounded-[3rem] flex flex-col items-center justify-center text-slate-300 italic">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mb-4 opacity-10"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
-                        <p>Waiting for generation...</p>
-                    </div>
-                </div>
+        <!-- Mathematics -->
+        <section class="subject-card">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="bg-blue-600 p-2.5 rounded-xl text-white"><i data-lucide="calculator" class="w-6 h-6"></i></div>
+                <h2 class="serif text-3xl font-bold text-slate-800">Mathematics</h2>
             </div>
-        </main>
-    </div>
+            <div id="math-list" class="space-y-1"></div>
+        </section>
+
+        <!-- Biology -->
+        <section class="subject-card">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="bg-green-600 p-2.5 rounded-xl text-white"><i data-lucide="leaf" class="w-6 h-6"></i></div>
+                <h2 class="serif text-3xl font-bold text-slate-800">Biology</h2>
+            </div>
+            <div id="biology-list" class="space-y-1"></div>
+        </section>
+
+        <!-- History -->
+        <section class="subject-card">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="bg-stone-800 p-2.5 rounded-xl text-white"><i data-lucide="history" class="w-6 h-6"></i></div>
+                <h2 class="serif text-3xl font-bold text-slate-800">History</h2>
+            </div>
+            <div id="history-list" class="space-y-1"></div>
+        </section>
+
+        <!-- Language -->
+        <section class="subject-card">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="bg-orange-600 p-2.5 rounded-xl text-white"><i data-lucide="type" class="w-6 h-6"></i></div>
+                <h2 class="serif text-3xl font-bold text-slate-800">Language</h2>
+            </div>
+            <div id="language-list" class="space-y-1"></div>
+        </section>
+
+        <!-- Music -->
+        <section class="subject-card">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="bg-indigo-600 p-2.5 rounded-xl text-white"><i data-lucide="music" class="w-6 h-6"></i></div>
+                <h2 class="serif text-3xl font-bold text-slate-800">Music</h2>
+            </div>
+            <div id="music-list" class="space-y-1"></div>
+        </section>
+
+        <!-- Theory -->
+        <section class="subject-card">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="bg-rose-500 p-2.5 rounded-xl text-white"><i data-lucide="book-open" class="w-6 h-6"></i></div>
+                <h2 class="serif text-3xl font-bold text-slate-800">Theory</h2>
+            </div>
+            <div id="theory-list" class="space-y-1"></div>
+        </section>
+
+    </main>
+
+    <footer class="max-w-7xl mx-auto mt-24 border-t border-slate-200 pt-12 text-center text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400 no-print">
+        <div class="flex justify-between items-center">
+            <p>AMI Elementary 6-12 Curriculum Archive</p>
+            <button onclick="resetStorage()" class="hover:text-red-500">Reset Tracker</button>
+        </div>
+    </footer>
 
     <script>
-        const MASTER_INDEX = {
-            GEOGRAPHY: ["God With No Hands", "Composition of the Earth", "Formation of Mountains", "Three States of Matter", "Attraction and Gravity", "Rotation of the Earth", "Sun and Earth", "Time Zone Chart", "Earth as a Sphere", "Protection of the Atmosphere", "Temperature Zones", "Work of Air (Winds)", "Work of Water", "Economic Geography"],
-            GEOMETRY: ["Story of Geometry", "Nomenclature of Polygons", "Euclid's Plate", "Pythagoras Plates I & II", "Area (Yellow Material)", "Solid Geometry", "Geometric Constructions"],
-            MATH: ["Hierarchical Material", "Multiples & Factors", "Decimal Fractions I", "Decimal Fractions II", "Dividing Decimals on Paper", "Algebra Intro", "Squares and Cubes"],
-            BIOLOGY: ["Coming of Life", "The Plants' Story", "Needs of the Plant", "Ecology Series", "The Great River", "Scientific Classification"],
-            HISTORY: ["The Black Strip", "Clock of Eras", "Fundamental Human Needs", "Ancient River Civilizations", "Migration Charts"],
-            LANGUAGE: ["History of Written Language", "Grammar Boxes Intro", "Logical Analysis", "Verb Tenses", "Written Expression"],
-            MUSIC: ["Singing with the Scale", "Rhythm Patterns", "Tone Bars"],
-            THEORY: ["Construction of the Human Being", "Four Planes of Development", "Cosmic Education", "Imagination", "Great Stories & Key Lessons", "Going Out", "Observation", "Freedom and Responsibility", "Record Keeping", "Parent Communication"]
+        const REPO_DATA = {
+            geography: ["God With No Hands", "Earth as a Sphere", "Sun and Earth", "Protection of Atmosphere", "Temperature Zones", "Work of Air", "Work of Water"],
+            geometry: ["Story of Geometry", "Nomenclature of Polygons", "Euclid's Plate", "Pythagoras I & II", "Area (Yellow Material)"],
+            math: ["Story of Numerals", "Hierarchical Material", "Multiples & Factors", "Decimal Fractions I", "Decimal Fractions II"],
+            biology: ["Coming of Life", "Plants' Story", "Needs of Plant", "Scientific Classification", "The Great River"],
+            history: ["The Black Strip", "Coming of Human Beings", "Hand Timeline", "Clock of Eras", "Fundamental Needs"],
+            language: ["Written Language", "Spoken Language", "Grammar Boxes", "Word Study", "Logical Analysis"],
+            music: ["Singing with Scale", "Rhythm Patterns", "Tone Bars"],
+            theory: ["Four Planes", "Cosmic Education", "Freedom & Responsibility", "Going Out", "Observation"]
         };
 
-        let database = JSON.parse(localStorage.getItem('montessori_db_v6')) || {};
-        let currentSubject = "GEOGRAPHY";
-        let activeLessonTitle = null;
+        let progress = JSON.parse(localStorage.getItem('master_repo_v2')) || {};
 
-        function init() {
-            if (Object.keys(database).length === 0) {
-                Object.entries(MASTER_INDEX).forEach(([subject, list]) => {
-                    list.forEach(title => {
-                        database[title] = { title, subject, status: 'pending', content: '', notes: '' };
-                    });
-                });
-                save();
-            }
-            document.getElementById('apiKey').value = localStorage.getItem('gemini_api_key') || '';
-            renderSidebar();
-            renderSpreadsheet();
-        }
+        function save() { localStorage.setItem('master_repo_v2', JSON.stringify(progress)); }
 
-        function save() {
-            localStorage.setItem('montessori_db_v6', JSON.stringify(database));
-        }
-
-        function setView(view) {
-            const spreadsheetTab = document.getElementById('spreadsheetTab');
-            const factoryTab = document.getElementById('factoryTab');
-            const btnS = document.getElementById('viewSpreadsheet');
-            const btnF = document.getElementById('viewFactory');
-            
-            if (view === 'spreadsheet') {
-                spreadsheetTab.classList.remove('hidden');
-                factoryTab.classList.add('hidden');
-                btnS.className = "px-6 py-2 rounded-lg text-xs font-bold bg-white shadow-sm text-slate-900";
-                btnF.className = "px-6 py-2 rounded-lg text-xs font-bold text-slate-400 hover:text-slate-600";
-            } else {
-                spreadsheetTab.classList.add('hidden');
-                factoryTab.classList.remove('hidden');
-                btnF.className = "px-6 py-2 rounded-lg text-xs font-bold bg-white shadow-sm text-slate-900";
-                btnS.className = "px-6 py-2 rounded-lg text-xs font-bold text-slate-400 hover:text-slate-600";
-            }
-        }
-
-        function renderSidebar() {
-            const list = document.getElementById('subjectList');
-            list.innerHTML = '';
-            Object.keys(MASTER_INDEX).forEach(sub => {
-                const div = document.createElement('div');
-                div.className = `sidebar-item p-3 text-xs font-bold transition-all ${sub === currentSubject ? 'active' : 'text-slate-500'}`;
-                div.innerText = sub;
-                div.onclick = () => {
-                    currentSubject = sub;
-                    renderSidebar();
-                    renderSpreadsheet();
-                };
-                list.appendChild(div);
-            });
-        }
-
-        function renderSpreadsheet() {
-            document.getElementById('currentSubjectTitle').innerText = currentSubject;
-            const body = document.getElementById('lessonRows');
-            body.innerHTML = '';
-            
-            const filtered = Object.values(database).filter(l => l.subject === currentSubject);
-            
-            filtered.forEach(lesson => {
-                const tr = document.createElement('tr');
-                tr.className = "row-hover group transition-colors";
-                tr.innerHTML = `
-                    <td class="px-6 py-4 text-center">
-                        <div onclick="cycleStatus('${lesson.title}')" class="status-dot status-${lesson.status}"></div>
-                    </td>
-                    <td class="px-6 py-4 font-bold text-slate-700 text-sm">${lesson.title}</td>
-                    <td class="px-6 py-4 text-center">
-                        <button onclick="openInFactory('${lesson.title}')" class="p-2 text-slate-300 hover:text-amber-600 opacity-0 group-hover:opacity-100 transition-all">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
-                        </button>
-                    </td>
-                `;
-                body.appendChild(tr);
-            });
-        }
-
-        function cycleStatus(title) {
-            const order = ['pending', 'progress', 'done'];
-            const current = database[title].status;
-            database[title].status = order[(order.indexOf(current) + 1) % 3];
+        function toggle(id) {
+            const states = ['pending', 'progress', 'done'];
+            const current = progress[id] || 'pending';
+            progress[id] = states[(states.indexOf(current) + 1) % 3];
             save();
-            renderSpreadsheet();
+            render();
         }
 
-        function openInFactory(title) {
-            activeLessonTitle = title;
-            const lesson = database[title];
-            document.getElementById('factoryLessonTitle').innerText = lesson.title;
-            document.getElementById('factoryLessonArea').innerText = lesson.subject;
-            document.getElementById('rawInput').value = lesson.notes || '';
-            
-            if (lesson.content) {
-                document.getElementById('outputHtml').innerHTML = lesson.content;
-                document.getElementById('outputContainer').classList.remove('hidden');
-                document.getElementById('outputEmpty').classList.add('hidden');
-            } else {
-                document.getElementById('outputContainer').classList.add('hidden');
-                document.getElementById('outputEmpty').classList.remove('hidden');
-            }
-            
-            setView('factory');
+        function resetStorage() { if(confirm("Reset all status marks?")) { progress = {}; save(); render(); } }
+
+        function render() {
+            Object.keys(REPO_DATA).forEach(area => {
+                const container = document.getElementById(`${area}-list`);
+                if (!container) return;
+                container.innerHTML = REPO_DATA[area].map(lesson => {
+                    const id = `${area}-${lesson.replace(/\s+/g, '-').toLowerCase()}`;
+                    const state = progress[id] || 'pending';
+                    const path = `lessons/${area}/${lesson.replace(/\s+/g, '-').toLowerCase()}.html`;
+                    
+                    return `
+                        <div class="state-${state} flex items-center gap-3">
+                            <div class="status-dot" onclick="toggle('${id}')"></div>
+                            <a href="${path}" class="lesson-link">${lesson}</a>
+                        </div>
+                    `;
+                }).join('');
+            });
+            lucide.createIcons();
         }
 
-        async function processAI() {
-            const key = document.getElementById('apiKey').value;
-            const input = document.getElementById('rawInput').value;
-            if (!key) return alert("Please enter your Gemini API Key first!");
-            if (!activeLessonTitle) return alert("Select a lesson from the spreadsheet first!");
-            
-            localStorage.setItem('gemini_api_key', key);
-            document.getElementById('btnText').innerText = "Processing Data...";
-            document.getElementById('generateBtn').disabled = true;
-
-            const prompt = `Act as an AMI Montessori Trainer. 
-            Format: # Main Title, ## Subheadings. 
-            Actions: **Bold**. 
-            Dialogue: Indented with "-" and italicized.
-            Lesson: ${activeLessonTitle}. 
-            Transcript/Notes: ${input}`;
-
-            try {
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${key}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
-                });
-                const data = await response.json();
-                const result = data.candidates[0].content.parts[0].text;
-                
-                // Simple Parser
-                const html = result
-                    .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-                    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-                    .replace(/^- (.*$)/gim, '<div class="dialogue">$1</div>')
-                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                    .replace(/\[IMAGE: (.*?)\]/g, '<div class="illustrate">Illustration: $1</div>')
-                    .split('\n').join('<br>');
-
-                database[activeLessonTitle].content = html;
-                database[activeLessonTitle].notes = input;
-                database[activeLessonTitle].status = 'progress';
-                
-                document.getElementById('outputHtml').innerHTML = html;
-                document.getElementById('outputContainer').classList.remove('hidden');
-                document.getElementById('outputEmpty').classList.add('hidden');
-                save();
-                renderSpreadsheet();
-            } catch (e) {
-                alert("Error connecting to AI. Please verify your API Key.");
-            }
-            
-            document.getElementById('btnText').innerText = "Format into Album Page";
-            document.getElementById('generateBtn').disabled = false;
-        }
-
-        function copyGeneratedHtml() {
-            const html = document.getElementById('outputHtml').innerHTML;
-            navigator.clipboard.writeText(html);
-            alert("Professional Formatting Copied!");
-        }
-
-        function exportDatabase() {
-            const blob = new Blob([JSON.stringify(database)], {type: 'application/json'});
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = "curriculum_tracker_v6.json";
-            a.click();
-        }
-
-        window.onload = init;
+        window.onload = render;
     </script>
 </body>
 </html>
