@@ -12,8 +12,9 @@
         .action { font-family: 'Inter', sans-serif; font-weight: 700; margin-top: 24px; color: #1e293b; font-size: 0.95rem; }
         .dialogue { margin-left: 40px; font-style: italic; color: #475569; position: relative; margin-bottom: 12px; }
         .dialogue::before { content: "—"; position: absolute; left: -20px; color: #cbd5e1; font-style: normal; }
-        .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; }
+        .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; position: relative; }
         .illustrate-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: #94a3b8; margin-top: 15px; }
+        .hand-pointer { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.1)); }
         @media print { body { background: white; margin: 0; } .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; } .no-print { display: none; } }
     </style>
 </head>
@@ -31,108 +32,90 @@
         <header class="mb-12 border-b-2 border-amber-50 pb-8">
             <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Geometry // Further Explorations with Equivalence</p>
             <h1 class="text-6xl font-bold text-slate-900 leading-tight">Euclid's Plate</h1>
-            <p class="mt-4 text-slate-400 italic">Guide: Elim Lee // AMI Elementary Submission</p>
+            <p class="mt-4 text-slate-400 italic">Guide: Elim Lee // April Submission Sprint</p>
         </header>
 
         <section class="mb-12 text-lg grid grid-cols-1 md:grid-cols-2 gap-8 bg-slate-50 p-6 rounded-2xl border border-slate-100">
             <div>
                 <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Direct Aim</h3>
-                <p class="text-sm font-medium">To explore Euclidean geometry sensorially and begin to reason through geometric proofs of the Pythagorean theorem.</p>
+                <p class="text-sm font-medium">To explore Euclidean geometry sensorially and begin to reason through geometric proofs.</p>
             </div>
             <div>
                 <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Materials</h3>
-                <p class="text-sm font-medium italic text-slate-600">Euclid’s Plate frame, red squares/rectangles, blue/yellow parallelograms, white triangle.</p>
+                <p class="text-sm font-medium italic text-slate-600 uppercase tracking-wider font-bold">Euclid Plate, metal squares, red rectangles, yellow parallelograms.</p>
             </div>
         </section>
 
         <section>
             <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation I: The Initial Setup</h2>
 
-            <div class="action">Invite the child and introduce Euclid as the author of "The Elements."</div>
-            <div class="dialogue">"Euclid lived around 300 BCE and wrote axioms—things everyone accepts as true. Let’s see if we can prove Pythagoras’ theorem using this plate."</div>
+            <div class="action">Set the plate on the table. Point to the different components.</div>
+            <div class="dialogue">"Euclid was a thinker who lived long ago. He wanted to show that the squares on the sides of a right triangle are equal to the square on the hypotenuse."</div>
 
             <div class="illustrate">
                 <svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Frame -->
-                    <rect x="10" y="10" width="280" height="280" rx="4" fill="#E2E8F0" stroke="#94A3B8" stroke-width="4"/>
-                    <!-- White Triangle -->
-                    <path d="M110 110 L200 110 L110 180 Z" fill="white" stroke="#94A3B8" stroke-width="2"/>
-                    <!-- Small Blue Square -->
-                    <rect x="40" y="110" width="70" height="70" fill="#3B82F6" stroke="#1D4ED8" stroke-width="2"/>
-                    <!-- Small Yellow Square -->
-                    <rect x="110" y="20" width="90" height="90" fill="#F59E0B" stroke="#B45309" stroke-width="2"/>
-                    <!-- Large Red Square -->
-                    <rect x="110" y="180" width="115" height="115" fill="#EF4444" stroke="#B91C1C" stroke-width="2" opacity="0.3" stroke-dasharray="4 4"/>
-                    <text x="140" y="245" font-family="Inter" font-size="10" fill="#EF4444" font-weight="bold">HYPOTENUSE SPACE</text>
+                    <!-- Sketched Hand Pointer -->
+                    <g class="hand-pointer" transform="translate(20, 20) rotate(-10)">
+                        <path d="M10 30 L10 10 Q10 5 15 5 Q20 5 20 10 L20 25 L30 25 Q35 25 35 30 L35 45 Q35 50 30 50 L10 50 Z" stroke="#94A3B8" stroke-width="1.5" fill="white"/>
+                        <path d="M15 5 L15 25" stroke="#94A3B8" stroke-width="1"/>
+                    </g>
+                    <!-- Plate Frame with "squiggly" lines -->
+                    <rect x="40" y="40" width="220" height="220" rx="8" stroke="#94A3B8" stroke-width="3" fill="#F8FAFC" style="stroke-dasharray: 2 1;"/>
+                    <!-- Central Triangle -->
+                    <path d="M110 110 L180 110 L110 160 Z" fill="white" stroke="#64748B" stroke-width="2"/>
+                    <!-- Square A -->
+                    <rect x="110" y="50" width="70" height="60" fill="#EF4444" stroke="#B91C1C" stroke-width="1.5" opacity="0.6"/>
+                    <!-- Square B -->
+                    <rect x="50" y="110" width="60" height="50" fill="#3B82F6" stroke="#1D4ED8" stroke-width="1.5" opacity="0.6"/>
                 </svg>
-                <div class="illustrate-label">Fig 1.1: Initial Layout showing squares on legs and hypotenuse</div>
+                <div class="illustrate-label">Fig 1.1: Hand pointing to the initial placement</div>
             </div>
 
-            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mt-16 mb-8 border-b pb-2 italic">Presentation II: Sensorial Proof</h2>
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mt-16 mb-8 border-b pb-2 italic">Presentation II: Sensorial Proof (Sliding)</h2>
 
-            <div class="action">Remove the red rectangles from the frame. Slide the white triangle to the bottom corner.</div>
-            <div class="dialogue">"I’ll move the blue and yellow parallelograms into this empty space. Notice that they fill it perfectly."</div>
-
-            <div class="illustrate">
-                <svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="10" y="10" width="280" height="280" rx="4" fill="#E2E8F0" stroke="#94A3B8" stroke-width="4"/>
-                    <!-- Moved Triangle -->
-                    <path d="M110 220 L200 220 L110 290 Z" fill="white" stroke="#94A3B8" stroke-width="2"/>
-                    <!-- Blue Parallelogram -->
-                    <path d="M110 110 L180 110 L110 180 L40 180 Z" fill="#3B82F6" stroke="#1D4ED8" stroke-width="2" opacity="0.8"/>
-                    <!-- Yellow Parallelogram -->
-                    <path d="M110 110 L200 20 L290 20 L200 110 Z" fill="#F59E0B" stroke="#B45309" stroke-width="2" opacity="0.8"/>
-                </svg>
-                <div class="illustrate-label">Fig 2.1: Parallelograms demonstrating equivalence to the squares</div>
-            </div>
-
-            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mt-16 mb-8 border-b pb-2 italic">The Reasoning Level (Syllogism)</h2>
-
-            <div class="action">Compare the base and height of the yellow square to the yellow parallelogram.</div>
-            <div class="dialogue">"If two figures have the same base and the same height, they are equivalent. Let's measure them."</div>
+            <div class="action">Slowly slide the parallelograms to show their equivalence to the squares.</div>
+            <div class="dialogue">"Watch as this square changes its shape, but keeps the same base and the same height. It transforms into a parallelogram."</div>
 
             <div class="illustrate">
-                <svg width="400" height="150" viewBox="0 0 400 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Square -->
-                    <rect x="50" y="30" width="80" height="80" fill="#F59E0B" stroke="#B45309" stroke-width="2" opacity="0.4"/>
-                    <path d="M50 120 L130 120" stroke="#B45309" stroke-width="3"/>
-                    <text x="80" y="135" font-family="Inter" font-size="10" fill="#B45309" font-weight="bold">BASE</text>
+                <svg width="300" height="250" viewBox="0 0 300 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Squiggly Motion Arrow -->
+                    <path d="M100 50 Q120 40 140 50" stroke="#F59E0B" stroke-width="2" stroke-dasharray="3 3" fill="none"/>
+                    <path d="M135 45 L142 50 L135 55" stroke="#F59E0B" stroke-width="2" fill="none"/>
                     
-                    <!-- Arrow for Height -->
-                    <path d="M30 30 L30 110" stroke="#94A3B8" stroke-width="1" marker-start="url(#dot)" marker-end="url(#dot)"/>
-                    <text x="10" y="75" font-family="Inter" font-size="10" fill="#94A3B8" transform="rotate(-90 10 75)">HEIGHT</text>
-
-                    <!-- Parallelogram -->
-                    <path d="M250 30 L330 30 L280 110 L200 110 Z" fill="#F59E0B" stroke="#B45309" stroke-width="2"/>
-                    <path d="M200 120 L280 120" stroke="#B45309" stroke-width="3"/>
-                    <text x="230" y="135" font-family="Inter" font-size="10" fill="#B45309" font-weight="bold">BASE</text>
-
-                    <defs>
-                        <marker id="dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="3" markerHeight="3"><circle cx="5" cy="5" r="5" fill="#94A3B8"/></marker>
-                    </defs>
+                    <!-- Transformation Sketch -->
+                    <rect x="50" y="80" width="80" height="80" fill="#F59E0B" stroke="#B45309" stroke-width="1.5" opacity="0.2"/>
+                    <path d="M200 80 L280 80 L230 160 L150 160 Z" fill="#F59E0B" stroke="#B45309" stroke-width="2"/>
+                    
+                    <!-- Stick Figure Interaction -->
+                    <g transform="translate(140, 180)">
+                        <circle cx="10" cy="10" r="8" stroke="#94A3B8" stroke-width="1.5" fill="white"/>
+                        <path d="M10 18 L10 40 M10 25 L0 35 M10 25 L20 35 M10 40 L0 55 M10 40 L20 55" stroke="#94A3B8" stroke-width="1.5" fill="none"/>
+                        <text x="30" y="30" font-family="Inter" font-size="8" fill="#94A3B8" font-weight="bold">"THEY ARE EQUIVALENT"</text>
+                    </g>
                 </svg>
-                <div class="illustrate-label">Fig 3.1: Proving equivalence through base and height</div>
+                <div class="illustrate-label">Fig 2.1: The sliding motion and the "reasoning child"</div>
             </div>
 
-            <div class="action">Summarize using Euclid’s theorem of projections.</div>
-            <div class="dialogue">"Since A is equivalent to B, and B is equivalent to C, then A must be equivalent to C. The square on the leg is equivalent to the rectangle on the hypotenuse."</div>
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mt-16 mb-8 border-b pb-2 italic">The Conclusion</h2>
+
+            <div class="action">Sum up the findings. The red squares on the side equal the space of the hypotenuse.</div>
+            <div class="dialogue">"Because they have the same base and same height, they are equivalent. We have proven it just as Euclid did!"</div>
 
             <div class="illustrate">
-                <svg width="300" height="200" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Triangle -->
-                    <path d="M100 50 L250 50 L100 150 Z" fill="white" stroke="#94A3B8" stroke-width="2"/>
-                    <!-- Projection Line -->
-                    <path d="M100 50 L145 80" stroke="#EF4444" stroke-width="2" stroke-dasharray="4 4"/>
-                    <!-- Rectangle on Hypotenuse -->
-                    <rect x="100" y="150" width="150" height="40" fill="#EF4444" stroke="#B91C1C" stroke-width="2" opacity="0.3"/>
-                    <text x="135" y="175" font-family="Inter" font-size="9" fill="#B91C1C" font-weight="bold">PROJECTION RECTANGLE</text>
+                <svg width="300" height="150" viewBox="0 0 300 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <!-- Squiggly borders for the summary -->
+                   <path d="M50 30 C70 20 120 20 140 30 L140 100 C120 110 70 110 50 100 Z" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+                   <text x="65" y="65" font-family="Inter" font-size="12" fill="#64748B" font-weight="bold">A + B</text>
+                   <text x="170" y="65" font-family="Inter" font-size="20" fill="#F59E0B">=</text>
+                   <rect x="210" y="30" width="60" height="70" rx="4" fill="#EF4444" stroke="#B91C1C" stroke-width="2" opacity="0.6"/>
+                   <text x="230" y="115" font-family="Inter" font-size="10" fill="#B91C1C" font-weight="bold">C</text>
                 </svg>
-                <div class="illustrate-label">Fig 4.1: The Theorem of Projections</div>
+                <div class="illustrate-label">Fig 3.1: Final arithmetic proof</div>
             </div>
         </section>
 
         <footer class="mt-20 pt-8 border-t text-[10px] font-sans text-slate-300 uppercase tracking-widest text-center">
-            Elim Lee // AMI Elementary 6-12 // Project Sprint 2026
+            Elim Lee // April Submission Sprint // AMI Elementary
         </footer>
     </article>
     <script>lucide.createIcons();</script>
