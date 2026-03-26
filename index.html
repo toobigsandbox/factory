@@ -10,7 +10,7 @@
         :root { --paper: #fdfbf7; }
         body { font-family: 'Inter', sans-serif; background-color: var(--paper); color: #1e293b; }
         .serif { font-family: 'Crimson Pro', serif; }
-        .subject-card { background: white; border-radius: 2.5rem; border: 1px solid #e2e8f0; padding: 2rem; transition: all 0.3s ease; height: 100%; }
+        .subject-card { background: white; border-radius: 2.5rem; border: 1px solid #e2e8f0; padding: 2rem; transition: all 0.3s ease; height: 100%; display: flex; flex-direction: column; }
         .subject-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05); }
         .status-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid #cbd5e1; cursor: pointer; flex-shrink: 0; display: inline-block; }
         .state-pending .status-dot { background: transparent; }
@@ -28,7 +28,7 @@
             <h1 class="serif text-6xl font-bold text-slate-900 tracking-tight mb-4">Album Repository</h1>
             <div class="flex flex-wrap items-center gap-3">
                 <span class="bg-black text-white px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest">Elim Lee // AMI Elementary</span>
-                <span class="text-amber-600 italic font-bold serif text-xl">Target: April 1st</span>
+                <span class="text-amber-600 italic font-bold serif text-xl">Target: April 1st Milestone</span>
             </div>
         </div>
     </header>
@@ -38,66 +38,84 @@
     </main>
 
     <footer class="max-w-7xl mx-auto mt-24 border-t border-slate-200 pt-12 text-center text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400">
-        <p>AMI Elementary 6-12 Curriculum Archive // <span onclick="localStorage.clear(); location.reload();" class="cursor-pointer hover:text-red-500">Reset Status</span></p>
+        <p>AMI Elementary 6-12 Curriculum Archive // <span onclick="localStorage.clear(); location.reload();" class="cursor-pointer hover:text-red-500">Reset Status Marks</span></p>
     </footer>
 
     <script>
         const REPO_DATA = {
             "Geography": { 
                 color: "bg-cyan-500", 
-                svg: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+                svg: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
                 lessons: [
                     { name: "God With No Hands", path: "god-with-no-hands.html" },
                     { name: "Earth as Sphere", path: "earth-as-sphere.html" },
                     { name: "Sun and Earth", path: "sun-and-earth.html" },
-                    { name: "Protection Atmosphere", path: "protection-atmosphere.html" },
-                    { name: "Temperature Zones", path: "temperature-zones.html" },
-                    { name: "Work of Air", path: "work-of-air.html" },
-                    { name: "Work of Water", path: "work-of-water.html" }
+                    { name: "Protection Atmosphere", path: "protection-atmosphere.html" }
                 ] 
             },
             "Geometry": { 
                 color: "bg-emerald-500", 
-                svg: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/></svg>',
+                svg: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/></svg>',
                 lessons: [
                     { name: "Story of Geometry", path: "story-of-geometry.html" },
                     { name: "Nomenclature of Polygons", path: "nomenclature-of-polygons.html" },
-                    { name: "Euclid's Plate", path: "euclids-plate.html" },
-                    { name: "Pythagoras I & II", path: "pythagoras-i-ii.html" },
-                    { name: "Area (Yellow Material)", path: "area-yellow-material.html" }
+                    { name: "Euclid's Plate", path: "euclids-plate.html" }
                 ] 
             },
             "Math": { 
                 color: "bg-blue-600", 
-                svg: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>',
+                svg: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>',
                 lessons: [
-                    { name: "Story of Numerals", path: "story-of-numerals.html" },
-                    { name: "Hierarchical Material", path: "hierarchical-material.html" },
                     { name: "Number Bases Conversion", path: "number-bases-conversion.html" },
-                    { name: "Decimal Fractions I", path: "decimal-fractions-i.html" },
-                    { name: "Decimal Fractions II", path: "decimal-fractions-ii.html" }
+                    { name: "Other Number Bases", path: "other-number-bases.html" },
+                    { name: "Conversion One Base to Another", path: "conversion-one-base-to-another.html" }
                 ] 
             },
             "Biology": { 
                 color: "bg-green-600", 
-                svg: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C10 14.5 10.5 15 13 14c-2 3-1 6-4 8"/></svg>',
+                svg: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C10 14.5 10.5 15 13 14c-2 3-1 6-4 8"/></svg>',
                 lessons: [
                     { name: "Coming of Life", path: "coming-of-life.html" },
-                    { name: "Plants' Story", path: "plants-story.html" },
-                    { name: "Needs of Plant", path: "needs-of-plant.html" },
-                    { name: "Scientific Classification", path: "scientific-classification.html" },
-                    { name: "The Great River", path: "the-great-river.html" }
+                    { name: "Needs of Plant", path: "needs-of-plant.html" }
                 ] 
             },
-            "History": { color: "bg-stone-800", svg: '', lessons: [] },
-            "Language": { color: "bg-orange-600", svg: '', lessons: [] },
-            "Music": { color: "bg-indigo-600", svg: '', lessons: [] },
-            "Theory": { color: "bg-rose-500", svg: '', lessons: [] }
+            "History": { 
+                color: "bg-stone-800", 
+                svg: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+                lessons: [
+                    { name: "The Black Strip", path: "black-strip.html" },
+                    { name: "Clock of Eras", path: "clock-of-eras.html" }
+                ] 
+            },
+            "Language": { 
+                color: "bg-orange-600", 
+                svg: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>',
+                lessons: [
+                    { name: "Written Language", path: "written-language.html" },
+                    { name: "Grammar Boxes", path: "grammar-boxes.html" }
+                ] 
+            },
+            "Music": { 
+                color: "bg-indigo-600", 
+                svg: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>',
+                lessons: [
+                    { name: "Singing with Scale", path: "singing-scale.html" },
+                    { name: "Tone Bars", path: "tone-bars.html" }
+                ] 
+            },
+            "Theory": { 
+                color: "bg-rose-500", 
+                svg: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+                lessons: [
+                    { name: "Four Planes", path: "four-planes.html" },
+                    { name: "Cosmic Education", path: "cosmic-education.html" }
+                ] 
+            }
         };
 
-        let progress = JSON.parse(localStorage.getItem('album_tracker_v5')) || {};
+        let progress = JSON.parse(localStorage.getItem('album_tracker_final_v1')) || {};
 
-        function save() { localStorage.setItem('album_tracker_v5', JSON.stringify(progress)); }
+        function save() { localStorage.setItem('album_tracker_final_v1', JSON.stringify(progress)); }
 
         function toggle(id) {
             const states = ['pending', 'progress', 'done'];
