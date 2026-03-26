@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson: Rhombic Prisms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Crimson Pro', serif; background: #fdfbf7; line-height: 1.7; }
+        .page { background: white; max-width: 850px; margin: 40px auto; padding: 80px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 32px; border: 1px solid #f1f5f9; }
+        .action { font-family: 'Inter', sans-serif; font-weight: 700; margin-top: 24px; color: #1e293b; font-size: 0.95rem; }
+        .dialogue { margin-left: 40px; font-style: italic; color: #475569; position: relative; margin-bottom: 12px; }
+        .dialogue::before { content: "—"; position: absolute; left: -20px; color: #cbd5e1; font-style: normal; }
+        .material-box { background: #f8fafc; border-radius: 20px; border: 1px solid #e2e8f0; padding: 30px; margin-bottom: 40px; }
+        .aside-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 25px; margin: 40px 0; border-radius: 0 15px 15px 0; position: relative; }
+        .aside-box::after { content: "Instructor's Aside"; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+        .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; }
+        .formula-card { background: #F1F5F9; border-radius: 12px; padding: 20px; text-align: center; margin: 20px 0; font-family: 'Inter', sans-serif; font-weight: 800; }
+    </style>
+</head>
+<body>
+    <article class="page">
+        <header class="mb-12 border-b-2 border-amber-50 pb-8">
+            <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Geometry // Volume Narrative Step 6</p>
+            <h1 class="text-5xl font-bold text-slate-900 leading-tight">Rhombic Prisms</h1>
+            <p class="mt-4 text-slate-400 italic">Equivalence through Diagonal Transformation</p>
+        </header>
+
+        <section class="material-box">
+            <h3 class="font-sans font-bold text-[10px] uppercase text-slate-400 mb-4">Material Analysis</h3>
+            <p class="text-sm text-slate-700 italic">Solid rhombic prism, divided rhombic prism (split into two triangular prisms along the major diagonal), major and minor diagonal tickets, ruler.</p>
+        </section>
+
+        <section>
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation: The Transformation</h2>
+
+            <div class="action">Hold the solid rhombic prism and the divided one side-by-side. Slide the two triangular pieces to form a rectangle.</div>
+            <div class="dialogue">"Look at our rhombus. If we cut it along this long line—the major diagonal—we get two triangles. If I slide them, what shape do we have now? A rectangle! We haven't changed the volume, only the appearance."</div>
+
+            <div class="illustrate">
+                <svg width="400" height="200" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Rhombus Outline -->
+                    <path d="M40 100 L100 40 L160 100 L100 160 Z" stroke="#94A3B8" stroke-width="2" stroke-dasharray="4 2"/>
+                    <!-- Motion Arrow -->
+                    <path d="M180 100 Q220 80 240 100" stroke="#F59E0B" stroke-width="2" marker-end="url(#arrow)"/>
+                    <!-- Transformed Rectangle -->
+                    <rect x="260" y="40" width="60" height="120" stroke="#3B82F6" stroke-width="2" fill="#DBEAFE"/>
+                    <line x1="290" y1="40" x2="290" y2="160" stroke="#3B82F6" stroke-width="1"/>
+                    <!-- Labels -->
+                    <text x="325" y="100" font-family="Inter" font-size="8" fill="#64748B">MAJOR D / 2</text>
+                    <text x="270" y="175" font-family="Inter" font-size="8" fill="#64748B">MINOR d</text>
+                    <defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#F59E0B" /></marker></defs>
+                </svg>
+                <div class="text-[10px] text-slate-400 mt-2 font-bold uppercase tracking-widest">FIG 6.1: SLIDING TRIANGLES TO FORM RECTANGLE</div>
+            </div>
+
+            <div class="dialogue">"In our new rectangle, the base is the minor diagonal ($d$) and the height is half of the major diagonal ($\frac{D}{2}$). To find the volume, we multiply this area by the prism's height ($h$)."</div>
+
+            <div class="formula-card">
+                Volume = $(d \times \frac{D}{2}) \times h$
+            </div>
+
+            <div class="aside-box text-sm italic text-amber-900 leading-relaxed">
+                "Place the material on the floor for this one. Having the children look down on the transformation makes the relationship between the diagonals and the rectangular sides much clearer."
+            </div>
+        </section>
+
+        <footer class="mt-20 pt-8 border-t text-[10px] font-sans text-slate-300 uppercase tracking-widest text-center">
+            Elim Lee // Semester 4 Sprint // AMI Elementary
+        </footer>
+    </article>
+</body>
+</html>
