@@ -14,28 +14,48 @@
         @media print {
             .no-print { display: none !important; }
             #main-content { padding: 0 !important; background: white !important; }
-            .lesson-card { box-shadow: none !important; border: none !important; padding: 0 !important; }
+            #lessonDisplay { 
+                box-shadow: none !important; 
+                border: none !important; 
+                padding: 0 !important; 
+                margin: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
             body { background: white; }
+            .print-break { page-break-after: always; }
         }
 
-        /* Montessori Indentation Rule: Dialogue indented, Actions Left */
+        /* AMI Indentation Rule: Dialogue indented, Actions Left */
         .dialogue {
-            margin-left: 2.5rem;
+            margin-left: 3rem;
             font-style: italic;
-            color: #4b5563;
+            color: #374151;
             position: relative;
+            margin-bottom: 0.75rem;
         }
         .dialogue::before {
-            content: "•";
+            content: "—";
             position: absolute;
-            left: -1.25rem;
-            color: #d1d5db;
+            left: -1.5rem;
+            color: #9ca3af;
+            font-style: normal;
         }
         .action {
             font-weight: 600;
-            color: #1f2937;
-            margin-top: 1rem;
-            margin-bottom: 0.25rem;
+            color: #111827;
+            margin-top: 1.25rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+        .placeholder-box {
+            border: 2px dashed #e2e8f0;
+            background: #f8fafc;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            color: #94a3b8;
         }
     </style>
 </head>
@@ -49,11 +69,11 @@
             </div>
             <div>
                 <h1 class="text-lg font-bold text-slate-900 leading-none">Album Factory</h1>
-                <p class="text-[10px] text-amber-600 uppercase tracking-widest font-bold mt-1">April 1st Deadline Edition</p>
+                <p class="text-[10px] text-amber-600 uppercase tracking-widest font-bold mt-1 italic">Building for April 1st</p>
             </div>
         </div>
         <div class="flex gap-2">
-            <button onclick="exportData()" class="p-2 text-slate-400 hover:text-amber-600 transition-colors" title="Backup All Lessons">
+            <button onclick="exportData()" class="p-2 text-slate-400 hover:text-amber-600 transition-colors" title="Download Backup">
                 <i data-lucide="download"></i>
             </button>
             <button onclick="window.print()" class="bg-slate-900 text-white px-5 py-2 rounded-xl text-sm font-bold flex items-center gap-2 hover:bg-black transition-all shadow-lg">
@@ -67,23 +87,25 @@
         <!-- Sidebar -->
         <aside class="w-80 border-r border-slate-200 bg-white flex flex-col no-print shrink-0">
             <div class="p-4 space-y-3">
-                <button onclick="openModal()" class="w-full bg-amber-50 text-amber-700 border border-amber-200 p-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-amber-100 transition-all">
-                    <i data-lucide="plus" class="w-5 h-5"></i> Add New Lesson
+                <button onclick="openModal()" class="w-full bg-amber-600 text-white p-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-amber-700 transition-all shadow-lg shadow-amber-100">
+                    <i data-lucide="plus" class="w-5 h-5"></i> New Album Entry
                 </button>
                 <div class="relative">
                     <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4"></i>
-                    <input type="text" id="searchInput" oninput="renderSidebar()" placeholder="Search 100+ lessons..." class="w-full bg-slate-50 border-none rounded-xl pl-10 pr-4 py-2 text-sm outline-none ring-1 ring-slate-200 focus:ring-2 focus:ring-amber-500 transition-all">
+                    <input type="text" id="searchInput" oninput="renderSidebar()" placeholder="Search your lessons..." class="w-full bg-slate-50 border-none rounded-xl pl-10 pr-4 py-2 text-sm outline-none ring-1 ring-slate-200 focus:ring-2 focus:ring-amber-500 transition-all">
                 </div>
             </div>
+            
             <div id="lessonList" class="flex-1 overflow-y-auto px-2 pb-4 space-y-1">
                 <!-- Lessons populated by JS -->
             </div>
             
-            <!-- API Key Warning/Setup -->
-            <div id="apiKeySection" class="p-4 bg-slate-50 border-t border-slate-200">
-                <p class="text-[10px] font-bold text-slate-400 uppercase mb-2">Gemini API Key</p>
-                <input type="password" id="apiKeyInput" placeholder="Paste Key Here" class="w-full text-xs p-2 rounded border border-slate-200 outline-none focus:border-amber-500">
-                <p class="text-[9px] text-slate-400 mt-1 italic">Saved to your browser only.</p>
+            <div class="p-4 bg-slate-50 border-t border-slate-200">
+                <p class="text-[10px] font-bold text-slate-400 uppercase mb-2">Settings</p>
+                <input type="password" id="apiKeyInput" placeholder="Gemini API Key" class="w-full text-xs p-2 rounded border border-slate-200 outline-none focus:border-amber-500 mb-2">
+                <button onclick="importData()" class="w-full text-[10px] font-bold text-slate-500 hover:text-amber-600 flex items-center justify-center gap-1 py-1 border border-dashed border-slate-300 rounded hover:border-amber-300 transition-all">
+                    <i data-lucide="upload" class="w-3 h-3"></i> Restore Backup
+                </button>
             </div>
         </aside>
 
@@ -91,10 +113,10 @@
         <main id="main-content" class="flex-1 overflow-y-auto p-8 md:p-12 scroll-smooth">
             <div id="lessonDisplay" class="max-w-3xl mx-auto bg-white p-10 md:p-20 rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-slate-100 min-h-full">
                 <!-- Welcome State -->
-                <div id="welcomeState" class="h-full flex flex-col items-center justify-center text-slate-300 py-20">
-                    <i data-lucide="sparkles" class="w-16 h-16 mb-6 opacity-20"></i>
+                <div id="welcomeState" class="h-full flex flex-col items-center justify-center text-slate-300 py-32">
+                    <i data-lucide="sparkles" class="w-16 h-16 mb-6 opacity-20 text-amber-600"></i>
                     <p class="serif italic text-2xl text-slate-400">Ready to build your album</p>
-                    <p class="text-sm mt-2 max-w-xs text-center">Add a lesson or select one from the sidebar to format and print.</p>
+                    <p class="text-sm mt-2 max-w-xs text-center">Add a new lesson or select one from the sidebar to begin.</p>
                 </div>
                 
                 <div id="lessonContent" class="hidden serif">
@@ -106,41 +128,51 @@
 
     <!-- Add Lesson Modal -->
     <div id="addModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden no-print p-4">
-        <div class="bg-white w-full max-w-2xl rounded-[2rem] shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-            <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
-                <h2 class="text-xl font-bold serif italic">New Album Entry</h2>
-                <button onclick="closeModal()" class="p-2 hover:bg-slate-200 rounded-full transition-colors">
+        <div class="bg-white w-full max-w-3xl rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col max-h-[95vh]">
+            <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-white">
+                <div>
+                    <h2 class="text-xl font-bold serif italic">Add New Lesson</h2>
+                    <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Blueprint Generator</p>
+                </div>
+                <button onclick="closeModal()" class="p-2 hover:bg-slate-100 rounded-full transition-colors">
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
-            <div class="p-6 overflow-y-auto space-y-4">
-                <div class="grid grid-cols-2 gap-4">
+            
+            <div class="p-8 overflow-y-auto space-y-6">
+                <div class="grid grid-cols-2 gap-6">
                     <div>
-                        <label class="text-[10px] font-bold text-slate-400 uppercase ml-1">Title</label>
-                        <input type="text" id="newTitle" placeholder="The Pink Tower" class="w-full p-3 bg-slate-50 rounded-xl border border-slate-100 outline-none focus:ring-2 focus:ring-amber-500 font-bold">
+                        <label class="text-[10px] font-bold text-slate-400 uppercase ml-1 block mb-1">Lesson Title</label>
+                        <input type="text" id="newTitle" placeholder="e.g., The Pink Tower" class="w-full p-3 bg-slate-50 rounded-xl border border-slate-100 outline-none focus:ring-2 focus:ring-amber-500 font-bold">
                     </div>
                     <div>
-                        <label class="text-[10px] font-bold text-slate-400 uppercase ml-1">Area</label>
-                        <input type="text" id="newArea" placeholder="Sensorial" class="w-full p-3 bg-slate-50 rounded-xl border border-slate-100 outline-none focus:ring-2 focus:ring-amber-500">
+                        <label class="text-[10px] font-bold text-slate-400 uppercase ml-1 block mb-1">Area</label>
+                        <input type="text" id="newArea" placeholder="e.g., Geometry" class="w-full p-3 bg-slate-50 rounded-xl border border-slate-100 outline-none focus:ring-2 focus:ring-amber-500">
                     </div>
                 </div>
                 <div>
-                    <label class="text-[10px] font-bold text-slate-400 uppercase ml-1">Raw Notes / Transcript</label>
-                    <textarea id="newRawText" placeholder="Paste your messy notes or transcript here..." class="w-full p-4 bg-slate-50 rounded-xl border border-slate-100 outline-none focus:ring-2 focus:ring-amber-500 min-h-[300px] text-sm leading-relaxed"></textarea>
+                    <label class="text-[10px] font-bold text-slate-400 uppercase ml-1 block mb-1">Raw Content / Notes</label>
+                    <textarea id="newRawText" placeholder="Paste your transcript or messy notes here..." class="w-full p-4 bg-slate-50 rounded-xl border border-slate-100 outline-none focus:ring-2 focus:ring-amber-500 min-h-[350px] text-sm leading-relaxed"></textarea>
+                </div>
+                <div class="flex items-center gap-2 p-3 bg-blue-50 text-blue-700 rounded-xl text-xs">
+                    <i data-lucide="info" class="w-4 h-4 shrink-0"></i>
+                    <p>Tip: If AI fails, you can still save manually. The AI just helps with the formatting!</p>
                 </div>
             </div>
-            <div class="p-6 bg-slate-50 border-t border-slate-100 flex gap-3">
-                <button onclick="closeModal()" class="flex-1 py-3 font-bold text-slate-500 hover:bg-slate-200 rounded-xl transition-all">Cancel</button>
+
+            <div class="p-6 bg-slate-50 border-t border-slate-100 flex gap-4">
+                <button onclick="saveManual()" class="flex-1 py-3 font-bold text-slate-500 hover:bg-slate-200 rounded-xl transition-all">Save Without AI</button>
                 <button id="generateBtn" onclick="processLesson()" class="flex-[2] bg-amber-600 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-amber-700 transition-all shadow-lg shadow-amber-200">
                     <i data-lucide="wand-2" class="w-5 h-5"></i>
-                    <span id="btnText">Format & Save</span>
+                    <span id="btnText">Format & Save with AI</span>
                 </button>
             </div>
         </div>
     </div>
 
     <script>
-        // --- Initialization ---
+        // Use environment key if provided
+        const envApiKey = ""; 
         let lessons = JSON.parse(localStorage.getItem('montessori_factory_lessons') || '{}');
         let selectedId = null;
 
@@ -151,7 +183,6 @@
             renderSidebar();
         };
 
-        // --- Core Functions ---
         function renderSidebar() {
             const list = document.getElementById('lessonList');
             const search = document.getElementById('searchInput').value.toLowerCase();
@@ -162,22 +193,24 @@
                 lessons[k].area.toLowerCase().includes(search)
             ).sort((a, b) => lessons[b].timestamp - lessons[a].timestamp);
 
+            if (keys.length === 0) {
+                list.innerHTML = '<div class="p-8 text-center text-slate-300 text-xs italic">No lessons found</div>';
+            }
+
             keys.forEach(id => {
                 const lesson = lessons[id];
                 const btn = document.createElement('button');
-                btn.className = `w-full text-left p-3 rounded-xl mb-1 flex justify-between items-center group transition-all border ${selectedId === id ? 'bg-amber-600 border-amber-500 text-white shadow-md' : 'hover:bg-slate-50 border-transparent'}`;
+                btn.className = `w-full text-left p-4 rounded-2xl mb-2 flex justify-between items-center group transition-all border ${selectedId === id ? 'bg-amber-600 border-amber-500 text-white shadow-lg' : 'hover:bg-slate-50 border-transparent bg-white shadow-sm'}`;
                 btn.onclick = () => selectLesson(id);
                 
                 btn.innerHTML = `
-                    <div class="truncate">
+                    <div class="truncate mr-2">
                         <p class="text-sm font-bold truncate">${lesson.title}</p>
-                        <p class="text-[9px] uppercase font-bold tracking-wider ${selectedId === id ? 'text-amber-100' : 'text-slate-400'}">${lesson.area}</p>
+                        <p class="text-[9px] uppercase font-bold tracking-widest ${selectedId === id ? 'text-amber-100' : 'text-slate-400'}">${lesson.area}</p>
                     </div>
-                    <div class="flex gap-1 opacity-0 group-hover:opacity-100 transition-all">
-                        <span onclick="event.stopPropagation(); deleteLesson('${id}')" class="p-1 hover:bg-red-500 rounded text-slate-300 hover:text-white transition-colors">
-                            <i data-lucide="trash-2" class="w-3 h-3"></i>
-                        </span>
-                    </div>
+                    <span onclick="event.stopPropagation(); deleteLesson('${id}')" class="p-1.5 hover:bg-red-500 rounded-lg text-slate-300 hover:text-white transition-all opacity-0 group-hover:opacity-100">
+                        <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                    </span>
                 `;
                 list.appendChild(btn);
             });
@@ -188,9 +221,9 @@
             selectedId = id;
             const lesson = lessons[id];
             document.getElementById('welcomeState').classList.add('hidden');
-            const content = document.getElementById('lessonContent');
-            content.classList.remove('hidden');
-            content.innerHTML = renderMarkdown(lesson.content);
+            const contentDisplay = document.getElementById('lessonContent');
+            contentDisplay.classList.remove('hidden');
+            contentDisplay.innerHTML = renderMarkdown(lesson.content);
             renderSidebar();
             lucide.createIcons();
         }
@@ -199,32 +232,30 @@
             const title = document.getElementById('newTitle').value;
             const area = document.getElementById('newArea').value;
             const rawText = document.getElementById('newRawText').value;
-            const apiKey = document.getElementById('apiKeyInput').value;
+            let apiKey = document.getElementById('apiKeyInput').value || envApiKey;
 
-            if (!title || !rawText) return alert("Please add a title and notes!");
-            if (!apiKey) return alert("Please enter your Gemini API key in the sidebar first!");
+            if (!title || !rawText) return alert("Please fill in the title and content!");
+            if (!apiKey) return alert("Please enter your Gemini API Key first.");
 
             localStorage.setItem('gemini_api_key', apiKey);
             
             const btn = document.getElementById('generateBtn');
             const btnText = document.getElementById('btnText');
             btn.disabled = true;
-            btn.classList.add('opacity-50');
             btnText.innerText = "Processing...";
 
             const prompt = `
-                Act as an AMI Montessori Trainer. Transform these raw notes into a shorthand "Blueprint" album page.
+                Act as an AMI Montessori Trainer. Create a shorthand "Blueprint" album writeup.
                 
-                FORMAT RULES:
-                1. Use Markdown headers (# for Title, ## for Sections).
-                2. ACTIONS: Write as plain text (left-justified).
-                3. DIALOGUE: Start each dialogue line with a dash "- " to ensure it is indented.
-                4. PLACEHOLDERS: Use [IMAGE: Description] for sketches.
-                5. Keep it concise for a "survival" blueprint.
+                RULES:
+                1. Title uses # header. Sections use ## headers.
+                2. Presentation Steps: Keep descriptions brief.
+                3. DIALOGUE: Every line of "what you say" must start with "- " to indent it.
+                4. ILLUSTRATIONS: Add [IMAGE: Description] where a sketch is needed.
                 
                 TITLE: ${title}
                 AREA: ${area}
-                CONTENT: ${rawText}
+                NOTES: ${rawText}
             `;
 
             try {
@@ -234,58 +265,74 @@
                     body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
                 });
 
+                if (!response.ok) throw new Error("API call failed");
+
                 const data = await response.json();
                 const formatted = data.candidates[0].content.parts[0].text;
 
-                const id = 'l_' + Date.now();
-                lessons[id] = { title, area, content: formatted, timestamp: Date.now() };
-                saveLessons();
-                closeModal();
-                selectLesson(id);
+                saveToDb(title, area, formatted);
             } catch (err) {
                 console.error(err);
-                alert("Error connecting to AI. Check your API key and internet connection.");
+                alert("Error connecting to AI. Saving your raw notes manually instead so you don't lose them.");
+                saveManual();
             } finally {
                 btn.disabled = false;
-                btn.classList.remove('opacity-50');
-                btnText.innerText = "Format & Save";
+                btnText.innerText = "Format & Save with AI";
             }
+        }
+
+        function saveManual() {
+            const title = document.getElementById('newTitle').value;
+            const area = document.getElementById('newArea').value;
+            const rawText = document.getElementById('newRawText').value;
+            if (!title) return alert("Title is required!");
+            
+            // Simple auto-formatting for manual saves
+            const content = `# ${title}\n## Area: ${area}\n\n${rawText}`;
+            saveToDb(title, area, content);
+        }
+
+        function saveToDb(title, area, content) {
+            const id = 'l_' + Date.now();
+            lessons[id] = { title, area, content, timestamp: Date.now() };
+            localStorage.setItem('montessori_factory_lessons', JSON.stringify(lessons));
+            closeModal();
+            selectLesson(id);
         }
 
         function renderMarkdown(text) {
             return text.split('\n').map(line => {
                 const clean = line.trim();
-                if (clean.startsWith('# ')) return `<h1 class="text-4xl font-bold mb-8 border-b-2 border-amber-100 pb-4 text-slate-900 uppercase tracking-tight">${clean.slice(2)}</h1>`;
-                if (clean.startsWith('## ')) return `<h2 class="text-xl font-bold mt-10 mb-4 border-l-4 border-amber-500 pl-4 text-slate-800">${clean.slice(3)}</h2>`;
-                if (clean.startsWith('- ')) return `<p class="dialogue mb-3">${clean.slice(2)}</p>`;
+                if (!clean) return '<div class="h-4"></div>';
+                
+                if (clean.startsWith('# ')) return `<h1 class="text-4xl font-bold mb-8 border-b-2 border-amber-100 pb-6 text-slate-900 uppercase tracking-tight">${clean.slice(2)}</h1>`;
+                if (clean.startsWith('## ')) return `<h2 class="text-xl font-bold mt-12 mb-4 border-l-8 border-amber-500 pl-4 text-slate-800">${clean.slice(3)}</h2>`;
+                if (clean.startsWith('- ')) return `<p class="dialogue font-medium italic">"${clean.slice(2)}"</p>`;
                 if (clean.startsWith('[IMAGE:')) return `
-                    <div class="my-8 p-10 border-2 border-dashed border-slate-200 rounded-[2rem] bg-slate-50 flex flex-col items-center justify-center text-slate-400 no-print">
-                        <i data-lucide="image" class="w-8 h-8 mb-2 opacity-30"></i>
-                        <p class="text-[10px] font-bold uppercase tracking-widest mb-1">Illustration Box</p>
-                        <p class="text-xs italic">${clean.slice(1, -1)}</p>
+                    <div class="placeholder-box no-print">
+                        <i data-lucide="image" class="w-8 h-8 mx-auto mb-2 opacity-30"></i>
+                        <p class="text-[10px] font-bold uppercase tracking-widest">Sketch Placeholder</p>
+                        <p class="text-xs">${clean.slice(1, -1)}</p>
                     </div>
-                    <div class="hidden print:block my-12 border-2 border-slate-200 rounded-xl h-48 w-full"></div>
+                    <div class="hidden print:block my-12 border-2 border-slate-200 rounded-2xl h-64 w-full"></div>
                 `;
-                if (clean === '') return `<div class="h-2"></div>`;
-                return `<p class="action mb-2">${clean}</p>`;
+                
+                // Bold text handling
+                const bolded = clean.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                return `<p class="action">${bolded}</p>`;
             }).join('');
         }
 
-        // --- UI Utils ---
-        function saveLessons() {
-            localStorage.setItem('montessori_factory_lessons', JSON.stringify(lessons));
-            renderSidebar();
-        }
-
         function deleteLesson(id) {
-            if (confirm("Delete this lesson from your database?")) {
+            if (confirm("Permanently delete this lesson?")) {
                 delete lessons[id];
                 if (selectedId === id) {
                     selectedId = null;
                     document.getElementById('welcomeState').classList.remove('hidden');
                     document.getElementById('lessonContent').classList.add('hidden');
                 }
-                saveLessons();
+                localStorage.setItem('montessori_factory_lessons', JSON.stringify(lessons));
+                renderSidebar();
             }
         }
 
@@ -294,22 +341,38 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `montessori_album_backup_${new Date().toISOString().split('T')[0]}.json`;
+            a.download = `montessori_albums_${new Date().toISOString().split('T')[0]}.json`;
             a.click();
+        }
+
+        function importData() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.onchange = e => {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                reader.onload = event => {
+                    const imported = JSON.parse(event.target.result);
+                    lessons = { ...lessons, ...imported };
+                    localStorage.setItem('montessori_factory_lessons', JSON.stringify(lessons));
+                    renderSidebar();
+                    alert("Backup restored successfully!");
+                };
+                reader.readAsText(file);
+            };
+            input.click();
         }
 
         function openModal() {
             document.getElementById('addModal').classList.remove('hidden');
-            document.getElementById('newTitle').value = "";
-            document.getElementById('newArea').value = "";
-            document.getElementById('newRawText').value = "";
+            document.getElementById('newTitle').focus();
         }
 
         function closeModal() {
             document.getElementById('addModal').classList.add('hidden');
         }
 
-        // Close modal on escape
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeModal();
         });
