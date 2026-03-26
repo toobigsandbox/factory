@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curriculum Factory Tool</title>
+    <title>Montessori Album Factory & Master Tracker</title>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -14,19 +14,15 @@
         :root { --gold: #b45309; --paper: #fcfaf7; }
         body { font-family: 'Inter', sans-serif; background-color: var(--paper); color: #1e293b; }
         .serif { font-family: 'Crimson Pro', serif; }
-        
-        /* Table / Spreadsheet Styles */
         .spreadsheet-container { background: white; border-radius: 1.5rem; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
         .row-hover:hover { background-color: #fffbeb; }
-        
-        .status-dot { width: 12px; height: 12px; border-radius: 50%; border: 2.5px solid #e2e8f0; cursor: pointer; transition: all 0.2s; }
+        .status-dot { width: 14px; height: 14px; border-radius: 50%; border: 2.5px solid #e2e8f0; cursor: pointer; transition: all 0.2s; }
         .state-pending .status-dot { background: transparent; }
         .state-progress .status-dot { background: #fbbf24; border-color: #fbbf24; box-shadow: 0 0 8px #fbbf24; }
         .state-done .status-dot { background: #10b981; border-color: #10b981; box-shadow: 0 0 8px #10b981; }
-        
         .preview-container .dialogue { margin-left: 2rem; font-style: italic; color: #475569; position: relative; margin-bottom: 0.5rem; }
         .preview-container .dialogue::before { content: "—"; position: absolute; left: -1.25rem; color: #cbd5e1; font-style: normal; }
-        .preview-container .illustrate { border: 2px dashed #e2e8f0; border-radius: 1rem; height: 200px; margin: 2rem 0; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; background: #fafafa; }
+        .preview-container .illustrate { border: 2px dashed #e2e8f0; border-radius: 1rem; height: 180px; margin: 1.5rem 0; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; background: #fafafa; }
     </style>
 </head>
 <body>
@@ -34,15 +30,19 @@
     <script type="text/babel">
         const { useState, useEffect, useMemo } = React;
         const { 
-            CheckCircle2, Clock, Copy, Database, FileText, Layers, Layout, Loader2, Printer, Search, Wand2, ChevronRight, X, Trash2, Globe, Triangle, Calculator, Leaf, Download, Upload, AlertCircle
+            CheckCircle2, Clock, Copy, Database, FileText, Layers, Layout, Loader2, Printer, Search, Wand2, ChevronRight, X, Trash2, Globe, Triangle, Calculator, Leaf, Download, History, Type, Music, BookOpen
         } = lucide;
 
-        // Lessons pre-loaded from your ToCs
-        const INITIAL_SUBJECTS = {
-            GEOGRAPHY: ["God With No Hands", "Earth as a Sphere", "Sun and Earth", "Protection of the Atmosphere", "Temperature Zones", "Work of Air", "Work of Water"],
-            GEOMETRY: ["Story of Geometry", "Nomenclature of Polygons", "Euclid's Plate", "Pythagoras Plates", "Area (Yellow Material)", "Solid Geometry"],
-            MATH: ["Common Multiples", "Decimal Fractions I", "Dividing Decimals on Paper", "Algebra Intro", "Cubing", "Square Root"],
-            BIOLOGY: ["Coming of Life", "The Plants' Story", "Ecology Series", "The Great River", "Scientific Classification"]
+        // --- THE FULL UPDATED INDEX FROM YOUR UPLOADS ---
+        const MASTER_INDEX = {
+            GEOGRAPHY: ["God With No Hands", "Composition of the Earth", "Three States of Matter", "Attraction and Gravity", "Rotation of the Earth", "Sun and Earth", "Time Zone Chart", "Earth as a Sphere", "Protection of the Atmosphere", "Temperature Zones", "Work of Air (Winds)", "Work of Water (River/Rain)", "Economic Geography"],
+            GEOMETRY: ["Story of Geometry", "Nomenclature of Polygons", "Triangles (Sides/Angles)", "Story of Pythagoras", "Quadrilaterals", "Angles (Measurement/Transversal)", "Lines (Positions/Intersection)", "Pythagoras Plates I & II", "Euclid's Plate", "Area (Yellow Material)", "The Circle", "Solid Geometry", "Geometric Constructions"],
+            MATH: ["Story of Numerals", "Hierarchical Material", "Bead Frame", "Multiples & Factors", "Divisibility Rules", "Long Multiplication", "Long Division", "Squares and Cubes", "Fractions (Concepts/Operations)", "Decimal Fractions (I & II)", "Percents", "Metric System", "Algebra Intro", "Powers of Numbers"],
+            BIOLOGY: ["Story of Coming of Life", "The Plants' Story", "Needs of the Plant", "Leaf (Functions/Parts)", "Root (Functions/Types)", "Stem (Functions/Kinds)", "Flower (Parts/Pollination)", "Fruit & Seed", "Zoology Introduction", "Scientific Classification", "Ecology (Interdependence)", "The Great River"],
+            HISTORY: ["The Black Strip", "Coming of Human Beings", "Hand Timeline", "Clock of Eras", "Fundamental Human Needs", "Migration Charts", "Ancient River Civilizations", "Early Americas", "History Timelines", "Measurement of Time"],
+            LANGUAGE: ["Story of Communication in Signs", "History of Written Language", "History of Spoken Language", "Grammar Boxes (Noun-Interjection)", "Word Study (Suffix/Prefix)", "Logical Analysis", "Written Expression", "Literature & Style"],
+            MUSIC: ["Singing with the Scale", "Introduction to Listening", "Movement (Tempo/Dynamics)", "Rhythm (Measure Patterns)", "Tone Bars: Major Scales", "Tone Bars: Minor Scales"],
+            THEORY: ["Construction of the Human Being", "Four Planes of Development", "Cosmic Education", "Imagination", "Great Stories & Key Lessons", "Going Out", "Observation", "Freedom and Responsibility", "Parent Communication"]
         };
 
         const App = () => {
@@ -56,12 +56,12 @@
             const [filter, setFilter] = useState('ALL');
 
             useEffect(() => {
-                const saved = localStorage.getItem('montessori_factory_db');
+                const saved = localStorage.getItem('montessori_factory_db_v3');
                 if (saved) {
                     setLessons(JSON.parse(saved));
                 } else {
                     const initial = {};
-                    Object.entries(INITIAL_SUBJECTS).forEach(([subject, list]) => {
+                    Object.entries(MASTER_INDEX).forEach(([subject, list]) => {
                         list.forEach(title => {
                             initial[title] = { title, subject, status: 'PENDING', content: '', notes: '' };
                         });
@@ -71,7 +71,7 @@
             }, []);
 
             useEffect(() => {
-                if (Object.keys(lessons).length > 0) localStorage.setItem('montessori_factory_db', JSON.stringify(lessons));
+                if (Object.keys(lessons).length > 0) localStorage.setItem('montessori_factory_db_v3', JSON.stringify(lessons));
             }, [lessons]);
 
             const cycleStatus = (title) => {
@@ -83,17 +83,16 @@
             };
 
             const processAI = async () => {
-                if (!rawInput || !apiKey) return alert("Please set your API Key in the top-right field first!");
+                if (!rawInput || !apiKey) return alert("Set API Key in top-right field first!");
                 setIsProcessing(true);
                 localStorage.setItem('gemini_api_key', apiKey);
 
-                const prompt = `You are an AMI Montessori Trainer. Formally structure this lesson writeup.
-                Actions: Bold, left-aligned.
-                Dialogue: Indented with "—" and italic.
-                Headers: Use <h1> for Title, <h2> for sections.
-                Use <div class="illustrate">Description</div> for sketches.
-                Lesson: ${activeLesson.title}.
-                Notes: ${rawInput}`;
+                const prompt = `AMI Montessori Album formatting. 
+                Structure for: ${activeLesson.title} (${activeLesson.subject}).
+                Rules: Bold Actions (left-aligned), Indented Dialogue (starts with "—", italic). 
+                Include <div class="illustrate">Description</div> for sketches.
+                Remove colloquial asides.
+                Source: ${rawInput}`;
 
                 try {
                     const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
@@ -110,17 +109,8 @@
                             [activeLesson.title]: { ...prev[activeLesson.title], content: result, notes: rawInput, status: 'PROGRESS' } 
                         }));
                     }
-                } catch (e) { alert("AI Error. Check your key."); }
+                } catch (e) { alert("AI Error. Check connection/key."); }
                 setIsProcessing(false);
-            };
-
-            const exportData = () => {
-                const blob = new Blob([JSON.stringify(lessons)], {type: 'application/json'});
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `montessori_factory_backup.json`;
-                a.click();
             };
 
             const sortedLessons = useMemo(() => {
@@ -133,8 +123,8 @@
                         <div className="flex items-center gap-4">
                             <div className="bg-amber-600 p-2.5 rounded-2xl text-white shadow-lg"><Layers size={24} /></div>
                             <div>
-                                <h1 className="font-bold text-slate-900 leading-none text-xl">Album Factory</h1>
-                                <p className="text-[10px] text-amber-600 uppercase font-bold tracking-widest mt-1">Elim Lee // April 1st Milestone</p>
+                                <h1 className="font-bold text-slate-900 leading-none text-xl">Master Album Factory</h1>
+                                <p className="text-[10px] text-amber-600 uppercase font-bold tracking-widest mt-1">Elim Lee // April 1st Focus</p>
                             </div>
                         </div>
 
@@ -143,34 +133,28 @@
                             <button onClick={() => setView('PROCESSOR')} className={`px-6 py-2 rounded-lg text-xs font-bold transition-all ${view === 'PROCESSOR' ? 'bg-white shadow-sm' : 'text-slate-500'}`}>PROCESSOR</button>
                         </nav>
 
-                        <div className="flex items-center gap-3">
-                            <button onClick={exportData} className="p-2 text-slate-400 hover:text-amber-600 transition-colors"><Download size={20} /></button>
-                            <input 
-                                type="password" 
-                                placeholder="Paste API Key Here" 
-                                value={apiKey} 
-                                onChange={e => setApiKey(e.target.value)} 
-                                className="text-[10px] p-2.5 border rounded-xl w-48 outline-none focus:ring-2 focus:ring-amber-500 transition-all bg-slate-50" 
-                            />
-                        </div>
+                        <input 
+                            type="password" 
+                            placeholder="Gemini API Key" 
+                            value={apiKey} 
+                            onChange={e => setApiKey(e.target.value)} 
+                            className="text-[10px] p-2.5 border rounded-xl w-48 outline-none focus:ring-2 focus:ring-amber-500 bg-slate-50" 
+                        />
                     </header>
 
                     {view === 'DASHBOARD' ? (
-                        <main className="flex-1 p-10 overflow-y-auto">
+                        <main className="flex-1 p-8 overflow-y-auto">
                             <div className="max-w-6xl mx-auto">
-                                <div className="flex justify-between items-center mb-6">
-                                    <h2 className="serif text-3xl font-bold italic">Curriculum Tracker</h2>
-                                    <div className="flex gap-2">
-                                        {['ALL', 'GEOGRAPHY', 'GEOMETRY', 'MATH', 'BIOLOGY'].map(sub => (
-                                            <button 
-                                                key={sub}
-                                                onClick={() => setFilter(sub)}
-                                                className={`px-3 py-1 rounded-full text-[10px] font-bold tracking-widest transition-all ${filter === sub ? 'bg-amber-600 text-white' : 'bg-white text-slate-400 border border-slate-200'}`}
-                                            >
-                                                {sub}
-                                            </button>
-                                        ))}
-                                    </div>
+                                <div className="flex flex-wrap gap-2 mb-6">
+                                    {['ALL', ...Object.keys(MASTER_INDEX)].map(sub => (
+                                        <button 
+                                            key={sub}
+                                            onClick={() => setFilter(sub)}
+                                            className={`px-3 py-1.5 rounded-full text-[10px] font-bold tracking-widest transition-all ${filter === sub ? 'bg-amber-600 text-white shadow-md' : 'bg-white text-slate-400 border'}`}
+                                        >
+                                            {sub}
+                                        </button>
+                                    ))}
                                 </div>
 
                                 <div className="spreadsheet-container">
@@ -179,30 +163,28 @@
                                             <tr>
                                                 <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-400 w-16 text-center">Status</th>
                                                 <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-400">Lesson Title</th>
-                                                <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-400 w-32">Area</th>
-                                                <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-400">Notes Snippet</th>
-                                                <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-400 text-right">Factory</th>
+                                                <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-400 w-32">Subject</th>
+                                                <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-400 text-right">Process</th>
                                             </tr>
                                         </thead>
                                         <tbody className="divide-y divide-slate-100">
                                             {sortedLessons.map(l => (
-                                                <tr key={l.title} className={`row-hover state-${l.status}`}>
+                                                <tr key={l.title} className="row-hover group">
                                                     <td className="px-6 py-4 text-center">
-                                                        <div onClick={() => cycleStatus(l.title)} className="status-dot mx-auto"></div>
+                                                        <div onClick={() => cycleStatus(l.title)} className={`status-dot mx-auto state-${l.status}`}>
+                                                            <div className={`status-dot state-${l.status}`}></div>
+                                                        </div>
                                                     </td>
                                                     <td className="px-6 py-4">
                                                         <span className={`text-sm font-bold ${l.status === 'DONE' ? 'text-emerald-700' : 'text-slate-700'}`}>{l.title}</span>
                                                     </td>
                                                     <td className="px-6 py-4">
-                                                        <span className="text-[9px] font-bold px-2 py-1 bg-slate-100 rounded-lg text-slate-500 tracking-wider">{l.subject}</span>
-                                                    </td>
-                                                    <td className="px-6 py-4">
-                                                        <span className="text-xs text-slate-400 truncate block max-w-xs">{l.notes ? l.notes.substring(0, 50) + '...' : 'Empty'}</span>
+                                                        <span className="text-[9px] font-bold px-2 py-1 bg-slate-100 rounded text-slate-400 tracking-wider uppercase">{l.subject}</span>
                                                     </td>
                                                     <td className="px-6 py-4 text-right">
                                                         <button 
                                                             onClick={() => { setActiveLesson(l); setView('PROCESSOR'); setGeneratedHtml(l.content); setRawInput(l.notes); }} 
-                                                            className="p-2 text-slate-400 hover:text-amber-600 transition-colors"
+                                                            className="p-2 text-slate-300 hover:text-amber-600 transition-colors"
                                                         >
                                                             <Wand2 size={16} />
                                                         </button>
@@ -217,34 +199,27 @@
                     ) : (
                         <main className="flex-1 flex overflow-hidden">
                             <div className="w-1/2 p-10 border-r overflow-y-auto flex flex-col space-y-4">
-                                <div className="flex justify-between items-center mb-4">
-                                    <h2 className="serif text-3xl font-bold italic">{activeLesson?.title || "Select from Spreadsheet"}</h2>
-                                    {activeLesson && <span className="text-[10px] font-bold text-amber-600 tracking-widest uppercase">{activeLesson.subject}</span>}
-                                </div>
+                                <h2 className="serif text-3xl font-bold italic">{activeLesson?.title || "Select from Spreadsheet"}</h2>
                                 <textarea 
-                                    className="flex-1 w-full p-6 bg-white border-2 border-slate-100 rounded-[2rem] text-sm leading-relaxed outline-none focus:ring-4 focus:ring-amber-500/10 transition-all resize-none shadow-inner" 
-                                    placeholder="Paste NoteGPT link text or raw notes here..." 
+                                    className="flex-1 w-full p-6 bg-white border border-slate-200 rounded-[2rem] text-sm leading-relaxed outline-none focus:ring-4 focus:ring-amber-500/10 shadow-inner" 
+                                    placeholder="Paste NoteGPT transcript here..." 
                                     value={rawInput} 
                                     onChange={e => setRawInput(e.target.value)} 
                                 />
-                                <button 
-                                    onClick={processAI} 
-                                    disabled={isProcessing || !activeLesson} 
-                                    className="bg-slate-900 text-white p-5 rounded-2xl font-bold flex items-center justify-center gap-3 shadow-xl hover:bg-black transition-all disabled:opacity-50"
-                                >
-                                    {isProcessing ? <><Loader2 className="animate-spin" /> Processing Data...</> : <><Wand2 /> Generate Formatted Module</>}
+                                <button onClick={processAI} disabled={isProcessing || !activeLesson} className="bg-slate-900 text-white p-5 rounded-2xl font-bold flex items-center justify-center gap-3 shadow-xl hover:bg-black transition-all">
+                                    {isProcessing ? <Loader2 className="animate-spin" /> : <Wand2 />} Generate Album Writeup
                                 </button>
                             </div>
-                            <div className="w-1/2 p-10 bg-slate-50 overflow-y-auto flex flex-col">
+                            <div className="w-1/2 p-10 bg-slate-50 overflow-y-auto">
                                 {generatedHtml ? (
                                     <div className="bg-white p-12 rounded-[2.5rem] shadow-xl shadow-slate-200/50 serif preview-container relative">
-                                        <button onClick={() => navigator.clipboard.writeText(generatedHtml)} className="absolute top-6 right-6 p-2 text-slate-400 hover:text-amber-600"><Copy size={16}/></button>
+                                        <button onClick={() => navigator.clipboard.writeText(generatedHtml)} className="absolute top-8 right-8 p-2 text-slate-400 hover:text-amber-600"><Copy size={16}/></button>
                                         <div dangerouslySetInnerHTML={{ __html: generatedHtml }} />
                                     </div>
                                 ) : (
                                     <div className="h-full flex flex-col items-center justify-center text-slate-300 italic border-4 border-dashed border-white rounded-[3rem]">
                                         <FileText size={64} className="mb-4 opacity-10" />
-                                        <p className="text-xl">Preview results will appear here</p>
+                                        <p>Output Preview</p>
                                     </div>
                                 )}
                             </div>
