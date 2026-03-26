@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson: Foundations of Volume Formula</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Crimson Pro', serif; background: #fdfbf7; line-height: 1.7; }
+        .page { background: white; max-width: 850px; margin: 40px auto; padding: 80px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 32px; border: 1px solid #f1f5f9; }
+        .action { font-family: 'Inter', sans-serif; font-weight: 700; margin-top: 24px; color: #1e293b; font-size: 0.95rem; }
+        .dialogue { margin-left: 40px; font-style: italic; color: #475569; position: relative; margin-bottom: 12px; }
+        .dialogue::before { content: "—"; position: absolute; left: -20px; color: #cbd5e1; font-style: normal; }
+        .material-box { background: #f8fafc; border-radius: 20px; border: 1px solid #e2e8f0; padding: 30px; margin-bottom: 40px; }
+        .aside-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 25px; margin: 40px 0; border-radius: 0 15px 15px 0; position: relative; }
+        .aside-box::after { content: "Instructor's Aside"; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+        .formula-card { background: #F1F5F9; border-radius: 12px; padding: 25px; text-align: center; margin: 30px 0; font-family: 'Inter', sans-serif; font-weight: 800; color: #1e293b; }
+    </style>
+</head>
+<body>
+    <article class="page">
+        <header class="mb-12 border-b-2 border-amber-50 pb-8">
+            <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Geometry // Volume Narrative Step 4</p>
+            <h1 class="text-5xl font-bold text-slate-900 leading-tight">Foundations of Volume Formula</h1>
+            <p class="mt-4 text-slate-400 italic">Transitioning from Concrete to Abstract Calculation</p>
+        </header>
+
+        <section class="material-box">
+            <h3 class="font-sans font-bold text-[10px] uppercase text-slate-400 mb-4">Material Analysis</h3>
+            <p class="text-sm text-slate-700 italic">Rulers or Montessori measuring tapes, variety of rectangular prisms, paper and colored pencils.</p>
+        </section>
+
+        <section>
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+
+            <div class="action">Write "Base" on a piece of paper and label it with a small "a" for area.</div>
+            <div class="dialogue">"Remember how we found the area of the base? We multiplied the length by the width. Today, we are going to unify our formulas. When we multiply that base area by the height, we get the volume."</div>
+
+            <div class="formula-card">
+                <div class="text-[10px] text-slate-400 uppercase tracking-widest mb-2">The General Formula</div>
+                <div class="text-3xl font-serif">Volume = l × w × h</div>
+            </div>
+
+            <div class="action">Show the alternative naming: Base Area × Height ($B \times h$).</div>
+            <div class="dialogue">"In some books, you might see it written as $B \times h$. The $B$ just stands for the length times the width. It's the same idea, just different words."</div>
+
+            <div class="action">Demonstrate measuring a prism in centimeters and calculating the volume.</div>
+            <div class="dialogue">"I want you to go back to the prisms you built with cubes. Measure them with your ruler and see if this formula gives you the same answer we got by counting."</div>
+
+            <div class="aside-box text-sm italic text-amber-900 leading-relaxed">
+                "Centimeters are the ideal unit here because they map perfectly to our 2cm unit materials. Encourage the children to write their final answer with 'cubic centimeters' or 'unit cubes' to reinforce the 3D concept."
+            </div>
+        </section>
+
+        <footer class="mt-20 pt-8 border-t text-[10px] font-sans text-slate-300 uppercase tracking-widest text-center">
+            Elim Lee // Semester 4 Sprint // AMI Elementary
+        </footer>
+    </article>
+</body>
+</html>
