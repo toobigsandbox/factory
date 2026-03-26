@@ -12,7 +12,8 @@
         .action { font-family: 'Inter', sans-serif; font-weight: 700; margin-top: 24px; color: #1e293b; font-size: 0.95rem; }
         .dialogue { margin-left: 40px; font-style: italic; color: #475569; position: relative; margin-bottom: 12px; }
         .dialogue::before { content: "—"; position: absolute; left: -20px; color: #cbd5e1; font-style: normal; }
-        .illustrate { border: 2px dashed #e2e8f0; border-radius: 12px; height: 320px; margin: 30px 0; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; background: #fcfcfc; text-align: center; padding: 20px; }
+        .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; }
+        .illustrate-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: #94a3b8; margin-top: 15px; }
         @media print { body { background: white; margin: 0; } .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; } .no-print { display: none; } }
     </style>
 </head>
@@ -40,7 +41,7 @@
             </div>
             <div>
                 <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Materials</h3>
-                <p class="text-[11px] leading-relaxed text-slate-600 font-sans uppercase font-bold tracking-wider">Multi-base material, graph paper, colored pencils, specialized bead frames for non-decimal bases.</p>
+                <p class="text-[11px] leading-relaxed text-slate-600 font-sans uppercase font-bold tracking-wider">Multi-base material (wooden base blocks), graph paper, colored pencils.</p>
             </div>
         </section>
 
@@ -50,7 +51,25 @@
             <div class="action">Invite the child and set out the units and bars for Base 2.</div>
             <div class="dialogue">"In our decimal system, we stop at nine and then we have to move to the next wire. In Base 2, we can only use two digits: zero and one."</div>
 
-            <div class="illustrate">Illustration: Showing a single unit, then a bar of 2 units, then a square of 4 units.</div>
+            <div class="illustrate">
+                <svg width="400" height="120" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Unit -->
+                    <rect x="20" y="50" width="20" height="20" rx="2" fill="#F59E0B" stroke="#B45309" stroke-width="2"/>
+                    <text x="22" y="90" font-family="Inter" font-size="10" fill="#94A3B8" font-weight="bold">UNIT</text>
+                    
+                    <!-- Bar of 2 -->
+                    <rect x="120" y="50" width="40" height="20" rx="2" fill="#F59E0B" stroke="#B45309" stroke-width="2"/>
+                    <line x1="140" y1="50" x2="140" y2="70" stroke="#B45309" stroke-width="2"/>
+                    <text x="125" y="90" font-family="Inter" font-size="10" fill="#94A3B8" font-weight="bold">BAR (2)</text>
+                    
+                    <!-- Square of 4 -->
+                    <rect x="240" y="30" width="40" height="40" rx="2" fill="#F59E0B" stroke="#B45309" stroke-width="2"/>
+                    <line x1="260" y1="30" x2="260" y2="70" stroke="#B45309" stroke-width="2"/>
+                    <line x1="240" y1="50" x2="280" y2="50" stroke="#B45309" stroke-width="2"/>
+                    <text x="242" y="90" font-family="Inter" font-size="10" fill="#94A3B8" font-weight="bold">SQUARE (4)</text>
+                </svg>
+                <div class="illustrate-label">Fig 1.1: Base 2 (Binary) Material Progression</div>
+            </div>
 
             <div class="action">Show the value of 5 in Base 10. Ask how to represent it in Base 2.</div>
             <div class="dialogue">"We have one four, zero twos, and one unit. So five in our system looks like 101 in binary."</div>
@@ -61,19 +80,56 @@
             <div class="dialogue">"To find out how many groups of three we have, we will divide by our target base."</div>
 
             <div class="action">Perform repeated division by 3, recording the remainders.</div>
-            <div class="dialogue">"Thirteen divided by three is four, with a remainder of one. Four divided by three is one, with a remainder of one. One divided by three is zero, with a remainder of one."</div>
 
-            <div class="illustrate">Illustration: Layout of the division algorithm with remainders highlighted as the digits for the new base (111).</div>
+            <div class="illustrate">
+                <svg width="300" height="180" viewBox="0 0 300 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <text x="20" y="30" font-family="Crimson Pro" font-size="20" fill="#1E293B">13 ÷ 3 = 4</text>
+                    <text x="180" y="30" font-family="Inter" font-size="14" fill="#10B981" font-weight="bold">R: 1</text>
+                    
+                    <text x="20" y="70" font-family="Crimson Pro" font-size="20" fill="#1E293B"> 4 ÷ 3 = 1</text>
+                    <text x="180" y="70" font-family="Inter" font-size="14" fill="#10B981" font-weight="bold">R: 1</text>
+                    
+                    <text x="20" y="110" font-family="Crimson Pro" font-size="20" fill="#1E293B"> 1 ÷ 3 = 0</text>
+                    <text x="180" y="110" font-family="Inter" font-size="14" fill="#10B981" font-weight="bold">R: 1</text>
+                    
+                    <path d="M220 110 L220 30" stroke="#F59E0B" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#arrow)"/>
+                    <defs>
+                        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                          <path d="M 0 0 L 10 5 L 0 10 z" fill="#F59E0B" />
+                        </marker>
+                    </defs>
+                    <text x="20" y="155" font-family="Inter" font-size="12" fill="#B45309" font-weight="bold">RESULT: 111 (Base 3)</text>
+                </svg>
+                <div class="illustrate-label">Fig 2.1: Repeated Division Algorithm (The Remainder Method)</div>
+            </div>
+
+            <div class="dialogue">"Thirteen divided by three is four, with a remainder of one. Four divided by three is one, with a remainder of one. One divided by three is zero, with a remainder of one."</div>
 
             <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mt-16 mb-8 border-b pb-2 italic">Presentation III: Conversion to Base 10</h2>
 
             <div class="action">Write a number in a non-decimal base, such as 122 in Base 3.</div>
             <div class="dialogue">"To bring this back to our familiar decimal language, we have to look at the value of each position."</div>
 
+            <div class="illustrate">
+                <table class="w-full text-center font-sans text-xs border-collapse">
+                    <tr class="text-slate-400">
+                        <td class="p-2 border-b">Value</td>
+                        <td class="p-2 border-b border-l">3² (9)</td>
+                        <td class="p-2 border-b border-l">3¹ (3)</td>
+                        <td class="p-2 border-b border-l">3⁰ (1)</td>
+                    </tr>
+                    <tr class="text-xl font-serif text-slate-800">
+                        <td class="p-4 text-xs font-bold text-slate-400 uppercase">Digit</td>
+                        <td class="p-4 border-l font-bold">1</td>
+                        <td class="p-4 border-l font-bold">2</td>
+                        <td class="p-4 border-l font-bold">2</td>
+                    </tr>
+                </table>
+                <div class="illustrate-label">Fig 3.1: Place Value Table for Base 3 Conversion</div>
+            </div>
+
             <div class="action">Label the positions: units ($3^0$), threes ($3^1$), and nines ($3^2$).</div>
             <div class="dialogue">"We have one nine ($1 \times 9$), two threes ($2 \times 3$), and two units ($2 \times 1$). Nine plus six plus two equals seventeen."</div>
-
-            <div class="illustrate">Illustration: Powers of the base written above the digits in a place-value table.</div>
         </section>
 
         <footer class="mt-20 pt-8 border-t text-[10px] font-sans text-slate-300 uppercase tracking-widest text-center">
