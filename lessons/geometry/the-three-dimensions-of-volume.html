@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson: The Three Dimensions of Volume</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Crimson Pro', serif; background: #fdfbf7; line-height: 1.7; }
+        .page { background: white; max-width: 850px; margin: 40px auto; padding: 80px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 32px; border: 1px solid #f1f5f9; }
+        .action { font-family: 'Inter', sans-serif; font-weight: 700; margin-top: 24px; color: #1e293b; font-size: 0.95rem; }
+        .dialogue { margin-left: 40px; font-style: italic; color: #475569; position: relative; margin-bottom: 12px; }
+        .dialogue::before { content: "—"; position: absolute; left: -20px; color: #cbd5e1; font-style: normal; }
+        .material-box { background: #f8fafc; border-radius: 20px; border: 1px solid #e2e8f0; padding: 30px; margin-bottom: 40px; }
+        .aside-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 25px; margin: 40px 0; border-radius: 0 15px 15px 0; position: relative; }
+        .aside-box::after { content: "Instructor's Aside"; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+        .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; }
+    </style>
+</head>
+<body>
+    <article class="page">
+        <header class="mb-12 border-b-2 border-amber-50 pb-8">
+            <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Geometry // Volume Narrative Step 3</p>
+            <h1 class="text-5xl font-bold text-slate-900 leading-tight">The Three Dimensions of Volume</h1>
+            <p class="mt-4 text-slate-400 italic">Building the "Skeleton" of a Solid</p>
+        </header>
+
+        <section class="material-box">
+            <h3 class="font-sans font-bold text-[10px] uppercase text-slate-400 mb-4">Material Analysis</h3>
+            <p class="text-sm text-slate-700 italic">2-centimeter unit cubes, a solid rectangular prism, pencil, tickets for labeling.</p>
+        </section>
+
+        <section>
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+
+            <div class="action">Pick up the cubes and begin building along the edges of the solid prism.</div>
+            <div class="dialogue">"Suppose we didn't have our yellow measuring material. We could still find the volume by building a little skeleton with these cubes. Let's count how many cubes fit along each edge."</div>
+
+            <div class="illustrate">
+                <svg width="400" height="200" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Prism Skeleton -->
+                    <rect x="150" y="140" width="100" height="20" stroke="#94A3B8" stroke-width="1" fill="#F8FAFC"/>
+                    <!-- Height line -->
+                    <rect x="150" y="60" width="20" height="80" stroke="#94A3B8" stroke-width="1" fill="#DBEAFE"/>
+                    <!-- Labels -->
+                    <text x="180" y="155" font-family="Inter" font-size="8" fill="#64748B" font-weight="bold">LENGTH (5)</text>
+                    <text x="130" y="100" font-family="Inter" font-size="8" fill="#64748B" font-weight="bold" transform="rotate(-90 130 100)">HEIGHT (10)</text>
+                    <!-- Stick figure -->
+                    <g transform="translate(300, 80)">
+                        <circle cx="10" cy="10" r="8" stroke="#CBD5E1" stroke-width="1.5" fill="none"/>
+                        <path d="M10 18 L10 40 M10 25 L-20 60" stroke="#CBD5E1" stroke-width="1.5"/>
+                    </g>
+                </svg>
+                <div class="text-[10px] text-slate-400 mt-2 font-bold uppercase tracking-widest">FIG 3.1: BUILDING THE SKELETON WITH CUBES</div>
+            </div>
+
+            <div class="dialogue">"We have five units here for length, five units for width, and ten units for height. When we multiply these three dimensions together—$5 \times 5 \times 10$—we get 250 unit cubes."</div>
+
+            <div class="aside-box text-sm italic text-amber-900 leading-relaxed">
+                "Make sure the children stack the cubes visibly. They shouldn't build 'blindly' behind the prism; the whole point is for them to see the three directions the space expands."
+            </div>
+        </section>
+
+        <footer class="mt-20 pt-8 border-t text-[10px] font-sans text-slate-300 uppercase tracking-widest text-center">
+            Elim Lee // Semester 4 Sprint // AMI Elementary
+        </footer>
+    </article>
+</body>
+</html>
