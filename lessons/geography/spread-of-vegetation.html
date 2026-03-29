@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson: Spread of Vegetation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Crimson Pro', serif; background: #fdfbf7; line-height: 1.7; }
+        .page { background: white; max-width: 850px; margin: 40px auto; padding: 80px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 32px; border: 1px solid #f1f5f9; }
+        .action { font-family: 'Inter', sans-serif; font-weight: 700; margin-top: 24px; color: #1e293b; font-size: 0.95rem; }
+        .dialogue { margin-left: 40px; font-style: italic; color: #475569; position: relative; margin-bottom: 12px; }
+        .dialogue::before { content: "—"; position: absolute; left: -20px; color: #cbd5e1; font-style: normal; }
+        .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; }
+        .illustrate-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: #94a3b8; margin-top: 15px; }
+        .material-box { background: #f8fafc; border-radius: 20px; border: 1px solid #e2e8f0; padding: 30px; margin-bottom: 40px; }
+        .aside-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 25px; margin: 40px 0; border-radius: 0 15px 15px 0; position: relative; }
+        .aside-box::after { content: "Instructor's Aside"; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.1em; }
+        @media print { 
+            body { background: white; margin: 0; } 
+            .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; } 
+            .no-print { display: none !important; } 
+        }
+    </style>
+</head>
+<body>
+    <nav class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <div>
+            <a href="../../index.html" class="text-slate-400 hover:text-amber-600 transition-colors font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
+                <i data-lucide="arrow-left" size="14"></i> Back to Dashboard
+            </a>
+        </div>
+        <button onclick="window.print()" class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:bg-amber-700 transition-all flex items-center gap-2">
+            <i data-lucide="printer" size="16"></i> Print to PDF
+        </button>
+    </nav>
+    
+    <article class="page">
+        <header class="mb-12 border-b-2 border-amber-50 pb-8">
+            <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Geography // Work of Water</p>
+            <h1 class="text-5xl font-bold text-slate-900 leading-tight">The Spread of Vegetation & Population</h1>
+            <p class="mt-4 text-slate-400 italic">Guide: Elim Lee // AMI Elementary Submission</p>
+        </header>
+
+        <section class="material-box">
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Purpose</h3>
+            <p class="text-sm font-medium italic text-slate-600">To synthesize knowledge of climate, water, and vegetation to understand the logic behind human settlement patterns on Earth.</p>
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mt-4 mb-2">Materials</h3>
+            <ul class="text-sm font-medium italic text-slate-600 list-disc ml-5">
+                <li><strong>AMI Chart 27:</strong> The Vegetation Chart (Copyright Protected).</li>
+                <li><strong>Population Density Overlay:</strong> Transparent sheet with red dots.</li>
+                <li><strong>Plant Specimens/Photos:</strong> Showing specific leaf adaptations.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+
+            <div class="action">Gather children and review the climate zones. Point to the Equatorial (Torrid) band.</div>
+            <div class="dialogue">"In the wet rainforests, plants grow massive leaves to breathe out extra water. In the hot deserts, they grow needles or thick skin to keep water in."</div>
+
+            <div class="illustrate">
+                <svg width="400" height="150" viewBox="0 0 400 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Broad leaf -->
+                    <path d="M50 120 Q100 20 150 120" stroke="#16A34A" stroke-width="2"/>
+                    <text x="60" y="140" font-family="Inter" font-size="8" fill="#16A34A">RAINFOREST (Wet)</text>
+                    <!-- Cactus -->
+                    <rect x="250" y="50" width="30" height="70" fill="#F7FEE7" stroke="#4D7C0F"/>
+                    <line x1="255" y1="70" x2="265" y2="70" stroke="#4D7C0F" stroke-width="1"/>
+                    <text x="250" y="140" font-family="Inter" font-size="8" fill="#4D7C0F">DESERT (Dry)</text>
+                </svg>
+                <div class="illustrate-label">Fig 10.1: Biological adaptations to water levels</div>
+            </div>
+
+            <div class="action">Place the transparent Red Dot Overlay on top of the Vegetation Chart.</div>
+            <div class="dialogue">"Look at these red dots. They show us where large groups of people live. Do you notice how they follow the green bands and the rivers?"</div>
+
+            <div class="illustrate">
+                <svg width="400" height="150" viewBox="0 0 400 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Zone bands -->
+                    <rect x="50" y="50" width="300" height="60" fill="#F0FDF4" stroke="#BBF7D0"/>
+                    <!-- Population clusters -->
+                    <g fill="#EF4444">
+                        <circle cx="100" cy="80" r="3"/> <circle cx="110" cy="75" r="3"/> <circle cx="105" cy="85" r="3"/>
+                        <circle cx="280" cy="80" r="3"/> <circle cx="290" cy="85" r="3"/>
+                    </g>
+                    <text x="100" y="130" font-family="Inter" font-size="9" fill="#1E293B" font-weight="bold">HUMANS FOLLOW THE WATER</text>
+                </svg>
+                <div class="illustrate-label">Fig 10.2: Correlation between resources and settlement</div>
+            </div>
+
+            <div class="dialogue">"Most people settle where it is 'hospitable'—not too hot, not too cold, and always where there is enough water to support life."</div>
+
+            <div class="aside-box text-sm italic text-amber-900 leading-relaxed">
+                "Guide Tip: This is the moment of synthesis. The children realize that human history is not accidental; it is built on the laws of geography and biology."
+            </div>
+        </section>
+
+        <footer class="mt-20 pt-8 border-t text-[10px] font-sans text-slate-300 uppercase tracking-widest text-center">
+            Elim Lee // Semester 4 Sprint // AMI Elementary
+        </footer>
+    </article>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
