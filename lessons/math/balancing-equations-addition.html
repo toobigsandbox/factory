@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson: Balancing Equations (Addition)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Crimson Pro', serif; background: #fdfbf7; line-height: 1.7; }
+        .page { background: white; max-width: 850px; margin: 40px auto; padding: 80px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 32px; border: 1px solid #f1f5f9; }
+        .action { font-family: 'Inter', sans-serif; font-weight: 700; margin-top: 24px; color: #1e293b; font-size: 0.95rem; }
+        .dialogue { margin-left: 40px; font-style: italic; color: #475569; position: relative; margin-bottom: 12px; }
+        .dialogue::before { content: "—"; position: absolute; left: -20px; color: #cbd5e1; font-style: normal; }
+        .material-box { background: #f8fafc; border-radius: 20px; border: 1px solid #e2e8f0; padding: 30px; margin-bottom: 40px; }
+        .aside-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 25px; margin: 40px 0; border-radius: 0 15px 15px 0; position: relative; }
+        .aside-box::after { content: "Instructor's Aside"; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+        .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; }
+        @media print { body { background: white; margin: 0; } .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; } .no-print { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <a href="../../index.html" class="text-slate-400 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
+            <i data-lucide="arrow-left" size="14"></i> Back to Dashboard
+        </a>
+        <button onclick="window.print()" class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:bg-amber-700 transition-all flex items-center gap-2">
+            <i data-lucide="printer" size="16"></i> Print PDF
+        </button>
+    </div>
+    
+    <article class="page">
+        <header class="mb-12 border-b-2 border-amber-50 pb-8">
+            <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Math // Introduction to Algebra</p>
+            <h1 class="text-5xl font-bold text-slate-900 leading-tight">Balancing Equations: Addition</h1>
+            <p class="mt-4 text-slate-400 italic">The Equation as a Logical Puzzle</p>
+        </header>
+
+        <section class="material-box">
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Purpose</h3>
+            <p class="text-sm font-medium mb-4">To introduce the logic of balancing equations through concrete manipulation of bead bars, demonstrating that an equation must have equal value on both sides.</p>
+            
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Materials</h3>
+            <p class="text-[11px] leading-relaxed text-slate-600 font-sans uppercase font-bold tracking-wider">Felt mat, number cards, arithmetic signs (+, =), basket of bead bars (1-9).</p>
+        </section>
+
+        <section>
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+
+            <div class="action">Assemble a small group. Lay out a pink 3-bar and a light blue 5-bar with a plus sign, an equal sign, and a brown 8-bar.</div>
+            <div class="dialogue">"I am going to read you some math. Three plus five equals eight. We can say this is an equation because the value on this side is exactly the same as the value on that side."</div>
+
+            <div class="illustrate">
+                <svg width="400" height="120" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Left Side: 3-bar + 5-bar -->
+                    <rect x="40" y="45" width="30" height="10" rx="2" fill="#F472B6" stroke="#BE185D" stroke-width="1.5"/>
+                    <text x="80" y="55" font-family="Inter" font-size="14" fill="#94A3B8" font-weight="bold">+</text>
+                    <rect x="105" y="45" width="50" height="10" rx="2" fill="#60A5FA" stroke="#1D4ED8" stroke-width="1.5"/>
+                    
+                    <!-- Equals Sign -->
+                    <text x="185" y="55" font-family="Inter" font-size="14" fill="#94A3B8" font-weight="bold">=</text>
+                    
+                    <!-- Right Side: 8-bar -->
+                    <rect x="230" y="45" width="80" height="10" rx="2" fill="#92400E" stroke="#78350F" stroke-width="1.5"/>
+                    
+                    <text x="140" y="100" font-family="Inter" font-size="8" fill="#94A3B8" font-weight="bold" letter-spacing="0.1em">FIG 1.1: A BALANCED EQUATION</text>
+                </svg>
+            </div>
+
+            <div class="action">Invite a child to "unbalance" the equation by adding a green 6-bar to the left side.</div>
+            <div class="dialogue">"Now we have nine plus six plus three equals nine... wait, that isn't right! Is our equation balanced? No. How can we fix it?"</div>
+
+            <div class="action">Allow the children to suggest solutions. Guide them to add a 6-bar to the right side to restore balance.</div>
+            <div class="dialogue">"Now we know how to unbalance and then rebalance an equation using addition. One of you can write the equation, one can unbalance it, and the other can try to fix it!"</div>
+
+            <div class="aside-box text-sm italic text-amber-900 leading-relaxed">
+                "Algebra is presented here as a game or a mystery to be solved. Empower children by using the formal term 'Algebra'—they feel a great sense of achievement tackling a subject usually reserved for older students."
+            </div>
+        </section>
+
+        <footer class="mt-20 pt-8 border-t text-[10px] font-sans text-slate-300 uppercase tracking-widest text-center">
+            Elim Lee // Algebra Module // AMI Elementary
+        </footer>
+    </article>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
