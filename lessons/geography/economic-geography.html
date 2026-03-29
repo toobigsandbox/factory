@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson: Economic Geography</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Crimson Pro', serif; background: #fdfbf7; line-height: 1.7; }
+        .page { background: white; max-width: 850px; margin: 40px auto; padding: 80px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 32px; border: 1px solid #f1f5f9; }
+        .action { font-family: 'Inter', sans-serif; font-weight: 700; margin-top: 24px; color: #1e293b; font-size: 0.95rem; }
+        .dialogue { margin-left: 40px; font-style: italic; color: #475569; position: relative; margin-bottom: 12px; }
+        .dialogue::before { content: "—"; position: absolute; left: -20px; color: #cbd5e1; font-style: normal; }
+        .material-box { background: #f8fafc; border-radius: 20px; border: 1px solid #e2e8f0; padding: 30px; margin-bottom: 40px; }
+        .aside-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 25px; margin: 40px 0; border-radius: 0 15px 15px 0; position: relative; }
+        .aside-box::after { content: "Instructor's Aside"; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+        .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; }
+        @media print { body { background: white; margin: 0; } .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; } .no-print { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <a href="../../index.html" class="text-slate-400 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
+            <i data-lucide="arrow-left" size="14"></i> Back to Dashboard
+        </a>
+        <button onclick="window.print()" class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:bg-amber-700 transition-all flex items-center gap-2">
+            <i data-lucide="printer" size="16"></i> Print PDF
+        </button>
+    </div>
+    
+    <article class="page">
+        <header class="mb-12 border-b-2 border-amber-50 pb-8">
+            <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Geography // Interdependencies</p>
+            <h1 class="text-5xl font-bold text-slate-900 leading-tight">Economic Geography</h1>
+            <p class="mt-4 text-slate-400 italic">Human Dependence on Natural Resources</p>
+        </header>
+
+        <section class="material-box">
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Purpose</h3>
+            <p class="text-sm font-medium mb-4">To present the concept of economic geography and illustrate how humans depend on, transform, and distribute natural resources across different regions.</p>
+            
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Materials</h3>
+            <p class="text-[11px] leading-relaxed text-slate-600 font-sans uppercase font-bold tracking-wider">World map, prepared state/country outline maps, resource/product cards, rubber stamps or hand-drawn symbols, ink pads, and reference atlases/almanacs.</p>
+        </section>
+
+        <section>
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation I: The Local Industry</h2>
+
+            <div class="action">Gather a small group. Start a conversation based on recent research or a local feature (e.g., Ranches in Arizona).</div>
+            <div class="dialogue">"You found all the different ranches in our state during your research. I wonder what that would look like on a map? Would they all be in one place, or spread out along the river?"</div>
+
+            <div class="action">Place an outline map of the state. Show the children how to use a symbol (or stamp) to represent one unit of production.</div>
+            <div class="dialogue">"We'll put a stamp wherever we found a ranch. One stamp will represent one ranch where cows are raised. Let’s see—your data said there was one right in this area."</div>
+
+            <div class="illustrate">
+                <svg width="400" height="200" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Outline of Arizona-ish shape -->
+                    <path d="M150 20 L250 20 L260 150 L140 150 L140 100 L150 90 Z" stroke="#CBD5E1" stroke-width="2" fill="#F8FAFC"/>
+                    
+                    <!-- Symbols -->
+                    <circle cx="200" cy="60" r="8" fill="#B45309" opacity="0.6"/> <!-- Beef symbol -->
+                    <circle cx="180" cy="110" r="8" fill="#F59E0B" opacity="0.6"/> <!-- Citrus symbol -->
+                    
+                    <!-- Legend Box -->
+                    <rect x="280" y="80" width="100" height="80" rx="4" stroke="#94A3B8" fill="white"/>
+                    <text x="290" y="100" font-family="Inter" font-size="8" fill="#1e293b" font-weight="bold">LEGEND</text>
+                    <circle cx="295" cy="120" r="4" fill="#B45309"/>
+                    <text x="305" y="123" font-family="Inter" font-size="7" fill="#64748B">= 1 Ranch</text>
+                    <circle cx="295" cy="140" r="4" fill="#F59E0B"/>
+                    <text x="305" y="143" font-family="Inter" font-size="7" fill="#64748B">= 1 Citrus Farm</text>
+                    
+                    <text x="130" y="180" font-family="Inter" font-size="8" fill="#94A3B8" font-weight="bold" letter-spacing="0.1em">FIG 9.1: MAPPING LOCAL PRODUCTION</text>
+                </svg>
+            </div>
+
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mt-16 mb-8 border-b pb-2 italic">Presentation II: Quantity vs. Perspective</h2>
+
+            <div class="action">Compare the state map to a national map showing beef production.</div>
+            <div class="dialogue">"In our first map, one stamp meant one ranch. But look at this national map. Here, one stamp equals 300,000 cows! Why does Arizona only have half a cow here? Ah, it's because this map shows the percentage of the whole country's production."</div>
+
+            <div class="action">Discuss the importance of the Legend (Key) for interpreting data.</div>
+            <div class="dialogue">"The key is our code. It tells the reader exactly what the symbols mean so they can understand the story the map is telling."</div>
+
+            <div class="aside-box text-sm italic text-amber-900 leading-relaxed">
+                "Broaden the child's definition of 'produce.' In economic geography, this isn't just the grocery store section—we 'produce' copper, timber, and textiles. Encourage them to see the centralization of industries near resources like rivers."
+            </div>
+        </section>
+
+        <footer class="mt-20 pt-8 border-t text-[10px] font-sans text-slate-300 uppercase tracking-widest text-center">
+            Elim Lee // Row 9 Submission // AMI Elementary
+        </footer>
+    </article>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
