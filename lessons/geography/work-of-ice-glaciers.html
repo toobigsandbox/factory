@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson: Work of Ice (Part 2): Glaciers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Crimson Pro', serif; background: #fdfbf7; line-height: 1.7; }
+        .page { background: white; max-width: 850px; margin: 40px auto; padding: 80px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 32px; border: 1px solid #f1f5f9; }
+        .action { font-family: 'Inter', sans-serif; font-weight: 700; margin-top: 24px; color: #1e293b; font-size: 0.95rem; }
+        .dialogue { margin-left: 40px; font-style: italic; color: #475569; position: relative; margin-bottom: 12px; }
+        .dialogue::before { content: "—"; position: absolute; left: -20px; color: #cbd5e1; font-style: normal; }
+        .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; }
+        .illustrate-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: #94a3b8; margin-top: 15px; }
+        .material-box { background: #f8fafc; border-radius: 20px; border: 1px solid #e2e8f0; padding: 30px; margin-bottom: 40px; }
+        .aside-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 25px; margin: 40px 0; border-radius: 0 15px 15px 0; position: relative; }
+        .aside-box::after { content: "Instructor's Aside"; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.1em; }
+        @media print { 
+            body { background: white; margin: 0; } 
+            .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; } 
+            .no-print { display: none !important; } 
+        }
+    </style>
+</head>
+<body>
+    <!-- Utility Bar -->
+    <nav class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <div>
+            <a href="../../index.html" class="text-slate-400 hover:text-amber-600 transition-colors font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
+                <i data-lucide="arrow-left" size="14"></i> Back to Dashboard
+            </a>
+        </div>
+        <button onclick="window.print()" class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:bg-amber-700 transition-all flex items-center gap-2">
+            <i data-lucide="printer" size="16"></i> Print to PDF
+        </button>
+    </nav>
+    
+    <article class="page">
+        <header class="mb-12 border-b-2 border-amber-50 pb-8">
+            <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Geography // Work of Water</p>
+            <h1 class="text-5xl font-bold text-slate-900 leading-tight">Work of Ice: Glaciers</h1>
+            <p class="mt-4 text-slate-400 italic">Guide: Elim Lee // AMI Elementary Submission</p>
+        </header>
+
+        <section class="material-box">
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Purpose</h3>
+            <p class="text-sm font-medium italic text-slate-600">To observe how a massive, moving body of ice (a glacier) carves and transforms the landscape into a distinct U-shaped valley.</p>
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mt-4 mb-2">Materials</h3>
+            <ul class="text-sm font-medium italic text-slate-600 list-disc ml-5">
+                <li><strong>Clay:</strong> Soft and pliable, formed into a small "V-shaped" valley.</li>
+                <li><strong>Ice Block:</strong> A large, rectangular block (frozen in a small plastic container).</li>
+                <li><strong>Heavy Weight:</strong> A brick or a heavy stone to place on top of the ice.</li>
+                <li><strong>Photos:</strong> Glacial Valleys (e.g., Yosemite) vs. River Valleys.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+
+            <div class="aside-box text-sm italic text-amber-900 leading-relaxed mb-8">
+                <strong>Inventory Note:</strong> AMI Geography Charts depicting the "River of Ice" and Moraines are copyright protected. Use the physical charts as the control of error for the child's follow-up work.
+            </div>
+
+            <div class="action">Gather the children and show the clay valley. Trace the "V" shape with your finger.</div>
+            <div class="dialogue">"We have seen how a river carves a sharp path through the mountains. But sometimes, when it is very cold, the water doesn't move as a liquid. It moves as a massive solid: a glacier."</div>
+
+            <div class="action">Place the ice block at the top of the clay valley. Place the heavy weight on top of the ice.</div>
+            <div class="dialogue">"A glacier is very heavy. Because of its weight and the pull of gravity, it begins to slide down the mountain. It moves so slowly we can hardly see it, but it is very strong."</div>
+
+            <div class="illustrate">
+                <svg width="400" height="180" viewBox="0 0 400 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Clay Valley Cross Section -->
+                    <path d="M50 40 L150 140 L250 40" stroke="#94A3B8" stroke-width="3" style="stroke-dasharray: 4 2;"/>
+                    <!-- Ice Block -->
+                    <rect x="110" y="80" width="80" height="50" fill="#DBEAFE" stroke="#3B82F6" stroke-width="1"/>
+                    <!-- Weight -->
+                    <rect x="120" y="60" width="60" height="20" fill="#64748B"/>
+                    <text x="135" y="75" font-family="Inter" font-size="8" fill="#FFF">WEIGHT</text>
+                    <text x="130" y="110" font-family="Inter" font-size="10" fill="#1D4ED8" font-weight="bold">GLACIER</text>
+                </svg>
+                <div class="illustrate-label">Fig 9.1: Modeling the pressure and mass of a glacier</div>
+            </div>
+
+            <div class="action">Push the ice block slowly through the clay valley, allowing it to scrape the sides and bottom.</div>
+            <div class="dialogue">"Look at what the ice is doing to our sharp 'V' valley. It is scraping away the earth. It is carrying everything in its path—rocks, dirt, even pieces of the mountain."</div>
+
+            <div class="action">Remove the ice and weight. Observe the new "U" shape of the valley.</div>
+            <div class="dialogue">"The glacier has changed the shape of the mountain forever. It is no longer a sharp 'V'; it is a wide, deep 'U'. This is how we know where a 'River of Ice' once lived."</div>
+
+            <div class="illustrate">
+                <svg width="500" height="150" viewBox="0 0 500 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- V-Valley -->
+                    <path d="M50 20 L100 120 L150 20" stroke="#94A3B8" stroke-width="2"/>
+                    <text x="75" y="140" font-family="Inter" font-size="9" fill="#64748B" font-weight="bold">RIVER (V-SHAPE)</text>
+                    
+                    <!-- U-Valley -->
+                    <path d="M300 20 L320 100 Q350 120 380 100 L400 20" stroke="#3B82F6" stroke-width="3"/>
+                    <text x="315" y="140" font-family="Inter" font-size="9" fill="#1D4ED8" font-weight="bold">GLACIER (U-SHAPE)</text>
+                </svg>
+                <div class="illustrate-label">Fig 9.2: Comparative valley morphology</div>
+            </div>
+
+            <div class="aside-box text-sm italic text-amber-900 leading-relaxed">
+                "Guide Tip: Highlight the 'Moraine'—the pile of dirt left at the end of the ice's journey. This helps the children understand that the glacier doesn't just carve; it carries and deposits just like a river, only with much more force."
+            </div>
+        </section>
+
+        <footer class="mt-20 pt-8 border-t text-[10px] font-sans text-slate-300 uppercase tracking-widest text-center">
+            Elim Lee // Semester 4 Sprint // AMI Elementary
+        </footer>
+    </article>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
