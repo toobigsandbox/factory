@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson: Formation of Mountains</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Crimson Pro', serif; background: #fdfbf7; line-height: 1.7; }
+        .page { background: white; max-width: 850px; margin: 40px auto; padding: 80px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 32px; border: 1px solid #f1f5f9; }
+        .action { font-family: 'Inter', sans-serif; font-weight: 700; margin-top: 24px; color: #1e293b; font-size: 0.95rem; }
+        .dialogue { margin-left: 40px; font-style: italic; color: #475569; position: relative; margin-bottom: 12px; }
+        .dialogue::before { content: "—"; position: absolute; left: -20px; color: #cbd5e1; font-style: normal; }
+        .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; }
+        .illustrate-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: #94a3b8; margin-top: 15px; }
+        .material-box { background: #f8fafc; border-radius: 20px; border: 1px solid #e2e8f0; padding: 30px; margin-bottom: 40px; }
+        .aside-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 25px; margin: 40px 0; border-radius: 0 15px 15px 0; position: relative; }
+        .aside-box::after { content: "Instructor's Aside"; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.1em; }
+        @media print { body { background: white; margin: 0; } .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; } .no-print { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <a href="../../index.html" class="text-slate-400 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
+            <i data-lucide="arrow-left" size="14"></i> Back to Dashboard
+        </a>
+    </div>
+    
+    <article class="page">
+        <header class="mb-12 border-b-2 border-amber-50 pb-8">
+            <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Geography // Geology</p>
+            <h1 class="text-5xl font-bold text-slate-900 leading-tight">Formation of Mountains</h1>
+            <p class="mt-4 text-slate-400 italic">Guide: Elim Lee // AMI Elementary Submission</p>
+        </header>
+
+        <section class="material-box">
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Purpose</h3>
+            <p class="text-sm font-medium italic text-slate-600">To explore the different ways mountains and valleys are formed by the movements of the Earth's crust.</p>
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mt-4 mb-2">Materials</h3>
+            <p class="text-sm font-medium italic text-slate-600">Stack of felt sheets, solid geometry material (that divides), two rectangular prisms, yellow volume material pieces, charts/pictures of mountain types.</p>
+        </section>
+
+        <section>
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+
+            <div class="action">Show pictures of old volcanic mountains.</div>
+            <div class="dialogue">"Some mountains are dead volcanoes. The old lava remains as a raised piece of land, usually in a cone shape that rises suddenly from flat land."</div>
+
+            <div class="illustrate">
+                <svg width="400" height="150" viewBox="0 0 400 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Volcanic Cone -->
+                    <path d="M100 120 L150 40 L200 120 Z" stroke="#94A3B8" stroke-width="2" fill="#F8FAFC" style="stroke-dasharray: 2 1;"/>
+                    <text x="125" y="140" font-family="Inter" font-size="10" fill="#94A3B8" font-weight="bold">VOLCANIC</text>
+                    <!-- Fold Mountains -->
+                    <path d="M250 120 C270 60 290 120 310 60 C330 120 350 60 370 120" stroke="#F59E0B" stroke-width="2" fill="none"/>
+                    <text x="285" y="140" font-family="Inter" font-size="10" fill="#B45309" font-weight="bold">FOLDED</text>
+                </svg>
+                <div class="illustrate-label">Fig 1.1: Volcanic cones vs. Folded strata</div>
+            </div>
+
+            <div class="action">Place felt sheets flat in layers. Gently push from both ends.</div>
+            <div class="dialogue">"Most mountains are formed by pressure. As the land gets pushed together, it folds like these felt layers. These are called fold mountains."</div>
+
+            <div class="action">Use two prisms with matching patterns. Slide one slightly up or slanted.</div>
+            <div class="dialogue">"When the patterns don't line up anymore because of pressure, we call these cracks 'faults'. They can be vertical or slanted (oblique)."</div>
+
+            <div class="illustrate">
+                <svg width="300" height="180" viewBox="0 0 300 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Faulted Blocks -->
+                    <rect x="50" y="40" width="80" height="60" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+                    <rect x="150" y="70" width="80" height="60" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+                    <path d="M130 40 L150 130" stroke="#EF4444" stroke-width="2" stroke-dasharray="4 4"/>
+                    <text x="70" y="150" font-family="Inter" font-size="10" fill="#64748B" font-weight="bold">VERTICAL/OBLIQUE FAULTS</text>
+                </svg>
+                <div class="illustrate-label">Fig 2.1: Displaced rock layers at a fault line</div>
+            </div>
+
+            <div class="action">Arrange three blocks. Lower the middle section for a Rift Valley; raise the middle for a Block Mountain (Horst).</div>
+            <div class="dialogue">"A rift valley forms when land sinks between faults. A block mountain, or horst, forms when the land between cracks rises up."</div>
+
+            <div class="illustrate">
+                <svg width="400" height="150" viewBox="0 0 400 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Rift Valley -->
+                    <rect x="30" y="50" width="40" height="40" fill="#F1F5F9" stroke="#94A3B8"/>
+                    <rect x="70" y="80" width="40" height="40" fill="#DBEAFE" stroke="#3B82F6"/>
+                    <rect x="110" y="50" width="40" height="40" fill="#F1F5F9" stroke="#94A3B8"/>
+                    <text x="55" y="140" font-family="Inter" font-size="8" fill="#94A3B8">RIFT VALLEY</text>
+                    
+                    <!-- Horst -->
+                    <rect x="230" y="80" width="40" height="40" fill="#F1F5F9" stroke="#94A3B8"/>
+                    <rect x="270" y="40" width="40" height="40" fill="#FDE68A" stroke="#B45309"/>
+                    <rect x="310" y="80" width="40" height="40" fill="#F1F5F9" stroke="#94A3B8"/>
+                    <text x="265" y="140" font-family="Inter" font-size="8" fill="#94A3B8">BLOCK MOUNTAIN (HORST)</text>
+                    
+                    <!-- Coloring Stick Figure -->
+                    <g transform="translate(360, 20)">
+                        <circle cx="10" cy="10" r="6" stroke="#CBD5E1" stroke-width="1"/>
+                        <path d="M10 16 L10 25 M10 20 L5 20 M10 20 L15 20" stroke="#CBD5E1" stroke-width="1"/>
+                        <text x="-15" y="40" font-family="Inter" font-size="6" fill="#CBD5E1">COLOR THE HORST</text>
+                    </g>
+                </svg>
+                <div class="illustrate-label">Fig 3.1: Comparative crustal movement</div>
+            </div>
+
+            <div class="aside-box text-sm italic text-amber-900 leading-relaxed">
+                "If a child asks how to distinguish them, remind them to look for the relationship: if the land between the faults is lower, it is a valley; if it is higher, it is a horst."
+            </div>
+        </section>
+
+        <footer class="mt-20 pt-8 border-t text-[10px] font-sans text-slate-300 uppercase tracking-widest text-center">
+            Elim Lee // Semester 4 Sprint // AMI Elementary
+        </footer>
+    </article>
+</body>
+</html>
