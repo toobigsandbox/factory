@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson: The Rains</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Crimson Pro', serif; background: #fdfbf7; line-height: 1.7; }
+        .page { background: white; max-width: 850px; margin: 40px auto; padding: 80px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 32px; border: 1px solid #f1f5f9; }
+        .action { font-family: 'Inter', sans-serif; font-weight: 700; margin-top: 24px; color: #1e293b; font-size: 0.95rem; }
+        .dialogue { margin-left: 40px; font-style: italic; color: #475569; position: relative; margin-bottom: 12px; }
+        .dialogue::before { content: "—"; position: absolute; left: -20px; color: #cbd5e1; font-style: normal; }
+        .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; }
+        .illustrate-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: #94a3b8; margin-top: 15px; }
+        .material-box { background: #f8fafc; border-radius: 20px; border: 1px solid #e2e8f0; padding: 30px; margin-bottom: 40px; }
+        .aside-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 25px; margin: 40px 0; border-radius: 0 15px 15px 0; position: relative; }
+        .aside-box::after { content: "Instructor's Aside"; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.1em; }
+        @media print { 
+            body { background: white; margin: 0; } 
+            .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; } 
+            .no-print { display: none !important; } 
+        }
+    </style>
+</head>
+<body>
+    <!-- Utility Bar -->
+    <nav class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <div>
+            <a href="../../index.html" class="text-slate-400 hover:text-amber-600 transition-colors font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
+                <i data-lucide="arrow-left" size="14"></i> Back to Dashboard
+            </a>
+        </div>
+        <button onclick="window.print()" class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:bg-amber-700 transition-all flex items-center gap-2">
+            <i data-lucide="printer" size="16"></i> Print to PDF
+        </button>
+    </nav>
+    
+    <article class="page">
+        <header class="mb-12 border-b-2 border-amber-50 pb-8">
+            <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Geography // Work of Water</p>
+            <h1 class="text-5xl font-bold text-slate-900 leading-tight">Rainwater Erosion & The Protection of Soil</h1>
+            <p class="mt-4 text-slate-400 italic">Guide: Elim Lee // AMI Elementary Submission</p>
+        </header>
+
+        <section class="material-box">
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Purpose</h3>
+            <p class="text-sm font-medium italic text-slate-600">To demonstrate how falling water shapes the land and how the biological world (roots) provides a vital defense against soil loss.</p>
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mt-4 mb-2">Materials</h3>
+            <ul class="text-sm font-medium italic text-slate-600 list-disc ml-5">
+                <li><strong>Two Trays:</strong> One with bare sand, one with a "rooted" mound (moss or turf).</li>
+                <li><strong>Water Dropper & Watering Can:</strong> To simulate light and heavy rain.</li>
+                <li><strong>Cap Stone:</strong> A small pebble.</li>
+                <li><strong>Catch Buckets:</strong> To observe runoff clarity.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Part I: Splash Erosion & Earth Pillars</h2>
+
+            <div class="action">Fill the dropper and let single drops fall from a height onto the bare sand.</div>
+            <div class="dialogue">"Even a single drop of rain has energy. Look at the crater it makes. This is splash erosion—the water is already moving the earth."</div>
+
+            <div class="illustrate">
+                <svg width="400" height="120" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 100 Q200 20 350 100" stroke="#94A3B8" stroke-width="2" style="stroke-dasharray: 4 2;"/>
+                    <circle cx="200" cy="40" r="3" fill="#3B82F6"/>
+                    <path d="M190 85 Q200 95 210 85" stroke="#3B82F6" stroke-width="1"/>
+                    <text x="165" y="115" font-family="Inter" font-size="8" fill="#64748B">SPLASH EROSION</text>
+                </svg>
+            </div>
+
+            <div class="action">Place a pebble on the sand. Drip water around it.</div>
+            <div class="dialogue">"But look here. The sand under the stone is protected. While the rain washes away everything else, it leaves a pillar of earth standing tall. In nature, we call these Earth Pillars or Hoodoos."</div>
+
+            <div class="illustrate">
+                <svg width="400" height="120" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="185" y="60" width="30" height="40" fill="#F1F5F9" stroke="#94A3B8"/>
+                    <path d="M180 50 Q200 40 220 50 L220 60 L180 60 Z" fill="#64748B"/>
+                    <path d="M50 100 L185 100 M215 100 L350 100" stroke="#94A3B8" stroke-width="1"/>
+                    <text x="175" y="115" font-family="Inter" font-size="8" fill="#64748B">THE EARTH PILLAR</text>
+                </svg>
+            </div>
+
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mt-16 mb-8 border-b pb-2 italic">Part II: The Defense of the Roots</h2>
+
+            <div class="action">Use the watering can to "rain" on the bare mound, then the rooted mound.</div>
+            <div class="dialogue">"On the bare hill, the water takes the earth away instantly. It is a flood of mud. But on the hill with roots? The water comes out clear. The roots are like millions of tiny hands holding the earth in place."</div>
+
+            <div class="illustrate">
+                <svg width="600" height="180" viewBox="0 0 600 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Bare side -->
+                    <path d="M50 130 Q125 40 200 130" stroke="#94A3B8" stroke-width="2" style="stroke-dasharray: 4 2;"/>
+                    <rect x="110" y="140" width="30" height="20" fill="#78350F" opacity="0.4"/>
+                    <text x="80" y="170" font-family="Inter" font-size="8" fill="#78350F">MUDDY RUNOFF</text>
+                    
+                    <!-- Rooted side -->
+                    <path d="M350 130 Q425 40 500 130" fill="#F0FDF4" stroke="#16A34A" stroke-width="2"/>
+                    <path d="M380 90 Q400 110 390 130 M420 70 Q430 100 425 130" stroke="#16A34A" stroke-width="1" opacity="0.3"/>
+                    <rect x="410" y="140" width="30" height="20" fill="#DBEAFE" stroke="#3B82F6"/>
+                    <text x="385" y="170" font-family="Inter" font-size="8" fill="#3B82F6">CLEAR RUNOFF</text>
+                </svg>
+                <div class="illustrate-label">Fig 7.1: Comparison of runoff and soil stability</div>
+            </div>
+
+            <div class="aside-box text-sm italic text-amber-900 leading-relaxed">
+                "Guide Tip: This lesson provides the 'Moral' of the Work of Water. Water is a cosmic agent of change, but life (the plants) acts as a cosmic agent of balance. Without roots, the mountains would be leveled much faster."
+            </div>
+        </section>
+
+        <footer class="mt-20 pt-8 border-t text-[10px] font-sans text-slate-300 uppercase tracking-widest text-center">
+            Elim Lee // Semester 4 Sprint // AMI Elementary
+        </footer>
+    </article>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
