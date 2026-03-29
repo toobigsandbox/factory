@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lesson: Work of Water</title>
+    <title>Lesson: River Work: Carving, Carrying, Depositing</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -18,15 +18,23 @@
         .material-box { background: #f8fafc; border-radius: 20px; border: 1px solid #e2e8f0; padding: 30px; margin-bottom: 40px; }
         .aside-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 25px; margin: 40px 0; border-radius: 0 15px 15px 0; position: relative; }
         .aside-box::after { content: "Instructor's Aside"; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.1em; }
-        @media print { body { background: white; margin: 0; } .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; } .no-print { display: none; } }
+        @media print { 
+            body { background: white; margin: 0; } 
+            .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; } 
+            .no-print { display: none !important; } 
+        }
     </style>
 </head>
 <body>
-    <div class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
-        <a href="../../index.html" class="text-slate-400 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
+    <!-- Utility Bar: Back and Print (Vanishes on PDF) -->
+    <nav class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <a href="../../index.html" class="text-slate-400 hover:text-amber-600 transition-colors font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
             <i data-lucide="arrow-left" size="14"></i> Back to Dashboard
         </a>
-    </div>
+        <button onclick="window.print()" class="text-slate-400 hover:text-amber-600 transition-colors font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
+            <i data-lucide="printer" size="14"></i> Print to PDF
+        </button>
+    </nav>
     
     <article class="page">
         <header class="mb-12 border-b-2 border-amber-50 pb-8">
@@ -37,59 +45,71 @@
 
         <section class="material-box">
             <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Purpose</h3>
-            <p class="text-sm font-medium italic text-slate-600">To demonstrate the three main functions of a river: erosion (carving), transportation (carrying), and sedimentation (depositing).</p>
+            <p class="text-sm font-medium italic text-slate-600">To demonstrate the three main functions of a river and explore how layers of sediment create a record of geological time.</p>
             <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mt-4 mb-2">Materials</h3>
             <ul class="text-sm font-medium italic text-slate-600 list-disc ml-5">
                 <li><strong>Sand Tray:</strong> A large tray with a mound of sand sloped at one end.</li>
                 <li><strong>Water Pitcher:</strong> Small, with a steady-pouring spout.</li>
-                <li><strong>Blue Food Coloring:</strong> (Optional) to make the water more visible.</li>
-                <li><strong>Bucket:</strong> To catch overflow.</li>
+                <li><strong>Colored Sand:</strong> Three distinct colors (e.g., Red, Yellow, Grey) to represent different eras.</li>
+                <li><strong>Labels:</strong> Source, Course, Banks, Delta.</li>
             </ul>
         </section>
 
         <section>
-            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation Part I: The Mechanics</h2>
 
-            <div class="action">Gather children around the sand tray. Smooth the sand to represent a mountain slope.</div>
-            <div class="dialogue">"We know the water falls on the mountains. Now we will see what the water does as it travels down."</div>
+            <div class="action">Gather children around the sand tray. Pour water steadily at the top of the slope.</div>
+            <div class="dialogue">"Watch the sand. See how the water is digging a path? It is cutting into the earth. We call this 'Carving'. Now look at the water—it is murky. The river is acting like a truck, 'Carrying' the sand."</div>
 
-            <div class="action">Pour water slowly but steadily at the top of the slope.</div>
-            <div class="dialogue">"Watch the sand. See how the water is digging a path? It is cutting into the earth. We call this 'Carving'."</div>
-
-            <div class="illustrate">
-                <svg width="400" height="200" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Sloped Sand -->
-                    <path d="M50 50 L150 150 L350 150" stroke="#94A3B8" stroke-width="2" style="stroke-dasharray: 4 2;"/>
-                    <!-- Pitcher Skeleton -->
-                    <path d="M40 20 L70 20 L60 50 L30 50 Z" stroke="#64748B" fill="#F1F5F9"/>
-                    <!-- Water Stream -->
-                    <path d="M65 35 Q80 80 120 120" stroke="#3B82F6" stroke-width="3"/>
-                    <!-- The "V" Carve -->
-                    <path d="M100 100 L115 125 L130 100" stroke="#1E293B" stroke-width="1"/>
-                    <text x="140" y="110" font-family="Inter" font-size="10" fill="#1E293B" font-weight="bold">CARVING (Erosion)</text>
-                </svg>
-                <div class="illustrate-label">Fig 4.1: Water carving a V-shaped valley in the sand</div>
-            </div>
-
-            <div class="action">Point to the water in the channel. It should be murky with sand.</div>
-            <div class="dialogue">"The water is not clear anymore. It is full of little pieces of earth. The river is acting like a truck, taking the sand from the mountain and 'Carrying' it along."</div>
-
-            <div class="action">Observe the water as it reaches the flat bottom of the tray and slows down.</div>
+            <div class="action">Observe the water as it reaches the flat bottom and drops the sand.</div>
             <div class="dialogue">"As the land gets flat, the water moves slower. It can't hold the heavy sand anymore. Watch it drop the sand right here. This is called 'Depositing'."</div>
 
             <div class="illustrate">
                 <svg width="400" height="150" viewBox="0 0 400 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- River mouth -->
                     <path d="M50 75 L150 75 Q200 75 250 120 M150 75 Q200 75 250 30" stroke="#3B82F6" stroke-width="4"/>
-                    <!-- Fan/Delta deposit -->
                     <path d="M180 75 L280 40 Q320 75 280 110 Z" fill="#E2E8F0" stroke="#94A3B8" stroke-dasharray="2 2"/>
                     <text x="280" y="130" font-family="Inter" font-size="10" fill="#64748B" font-weight="bold">DEPOSITING (Delta)</text>
                 </svg>
-                <div class="illustrate-label">Fig 4.2: The formation of a Delta or Alluvial Fan</div>
+                <div class="illustrate-label">Fig 4.1: The physical work of the river</div>
             </div>
 
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mt-16 mb-8 border-b pb-2 italic">Presentation Part II: Layers of Time</h2>
+
+            <div class="aside-box text-sm italic text-amber-900 leading-relaxed mb-8">
+                <strong>Pedagogical Note:</strong> This is Day 2 of the River Model. The goal is to connect the "Work of Water" to the Timeline of Life.
+            </div>
+
+            <div class="action">Spread a layer of red sand over the mountain slope. Pour water.</div>
+            <div class="dialogue">"Imagine this red sand is the soil from a time long ago. We see the river carry it and deposit it at the bottom."</div>
+
+            <div class="action">Spread a layer of yellow sand on top of the red sand. Pour water.</div>
+            <div class="dialogue">"Now time has passed. New plants have grown and died, making a new kind of soil. The river carries this yellow soil and drops it on top of the red."</div>
+
+            <div class="illustrate">
+                <svg width="400" height="180" viewBox="0 0 400 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Cross section of the basin -->
+                    <rect x="100" y="120" width="200" height="20" fill="#FCA5A5" opacity="0.8"/> <!-- Era 1 Red -->
+                    <rect x="100" y="100" width="200" height="20" fill="#FDE68A" opacity="0.8"/> <!-- Era 2 Yellow -->
+                    <rect x="100" y="80" width="200" height="20" fill="#CBD5E1" opacity="0.8"/> <!-- Era 3 Grey -->
+                    <path d="M100 80 L100 140 M300 80 L300 140" stroke="#94A3B8" stroke-width="2"/>
+                    
+                    <text x="310" y="135" font-family="Inter" font-size="8" fill="#B91C1C">OLDEST ERA</text>
+                    <text x="310" y="95" font-family="Inter" font-size="8" fill="#475569">NEWEST ERA</text>
+                    <path d="M80 140 L80 80" stroke="#1E293B" stroke-width="1" marker-end="url(#arrowhead)"/>
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#1E293B" />
+                        </marker>
+                    </defs>
+                    <text x="20" y="110" font-family="Inter" font-size="10" fill="#1E293B" transform="rotate(-90 20 110)">TIME</text>
+                </svg>
+                <div class="illustrate-label">Fig 4.2: Sedimentary layers forming a chronological record</div>
+            </div>
+
+            <div class="dialogue">"Scientists can look at these layers—red, then yellow, then grey—and they can tell us exactly what was happening on the Earth millions of years before we were here. The river is like a librarian, filing away the history of the world in these layers."</div>
+
             <div class="aside-box text-sm italic text-amber-900 leading-relaxed">
-                "Guide Tip: This lesson provides the 'Why' behind the shape of our 3D model. The mountains are carved away (eroded) while the plains are built up (deposited). This is the great cosmic cycle of the Work of Water."
+                "Guide Tip: This lesson provides a marvelous entrance into Geology and Paleontology. I wonder what kind of scientists study these layers? (Geologists!)"
             </div>
         </section>
 
