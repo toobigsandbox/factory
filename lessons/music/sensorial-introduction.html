@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson: Tone Bars: Sensorial Introduction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Crimson Pro', serif; background: #fdfbf7; line-height: 1.7; }
+        .page { background: white; max-width: 850px; margin: 40px auto; padding: 80px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 32px; border: 1px solid #f1f5f9; }
+        .action { font-family: 'Inter', sans-serif; font-weight: 700; margin-top: 24px; color: #1e293b; font-size: 0.95rem; }
+        .dialogue { margin-left: 40px; font-style: italic; color: #475569; position: relative; margin-bottom: 12px; }
+        .dialogue::before { content: "—"; position: absolute; left: -20px; color: #cbd5e1; font-style: normal; }
+        .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; }
+        .illustrate-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: #94a3b8; margin-top: 15px; }
+        .material-box { background: #f8fafc; border-radius: 20px; border: 1px solid #e2e8f0; padding: 30px; margin-bottom: 40px; }
+        .aside-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 25px; margin: 40px 0; border-radius: 0 15px 15px 0; position: relative; }
+        .aside-box::after { content: "Instructor's Aside"; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.1em; }
+        @media print { 
+            body { background: white; margin: 0; } 
+            .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; } 
+            .no-print { display: none !important; } 
+        }
+    </style>
+</head>
+<body>
+    <nav class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <div>
+            <a href="../../index.html" class="text-slate-400 hover:text-amber-600 transition-colors font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
+                <i data-lucide="arrow-left" size="14"></i> Back to Dashboard
+            </a>
+        </div>
+        <button onclick="window.print()" class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:bg-amber-700 transition-all flex items-center gap-2">
+            <i data-lucide="printer" size="16"></i> Print to PDF
+        </button>
+    </nav>
+    
+    <article class="page">
+        <header class="mb-12 border-b-2 border-amber-50 pb-8">
+            <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Music // Sensorial Foundation</p>
+            <h1 class="text-5xl font-bold text-slate-900 leading-tight">Sensorial Introduction to Tone Bars</h1>
+            <p class="mt-4 text-slate-400 italic">Guide: Elim Lee // April 1st Sprint // AMI Elementary</p>
+        </header>
+
+        <section class="material-box">
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Material Overview</h3>
+            <div class="text-sm text-slate-700 space-y-3">
+                <p><strong>Construction:</strong> The tone bars are evenly wide blocks, painted black and white to mimic the keyboard notes on a piano. However, they are completely flush; the black keys are not indented.</p>
+                <p><strong>Playing Mechanism:</strong> To play, the child physically pulls out the keys they intend to use by tugging on the plastic base with two fingers. Once pulled forward, the child taps the silver metal center of the bar with the mallet. The guiding principle is <em>"never louder than lovely."</em></p>
+                <p><strong>The Transposer Strip:</strong> A slip of poster paper gridded into 13 squares. It has Sharpie-written numbers (1-8) and deliberately blank squares to visually emphasize the skipped <strong>whole steps</strong>. This strip slides below the pulled-out tone bars.</p>
+            </div>
+        </section>
+
+        <section class="material-box">
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Purpose</h3>
+            <ul class="text-sm font-medium italic text-slate-600 list-disc ml-5 mb-4 space-y-1">
+                <li>To introduce the tone bars and support sensorial exploration of pitch.</li>
+                <li>To help the child understand that a major scale may begin on any pitch, as long as the pattern of whole steps and half steps is preserved.</li>
+                <li>To provide a bridge between the sensorial experience of sound and abstract musical notation.</li>
+                <li>To reinforce awareness of patterns in nature and mathematics through sound.</li>
+            </ul>
+
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Prerequisites</h3>
+            <ul class="text-sm font-medium italic text-slate-600 list-disc ml-5 mb-4 space-y-1">
+                <li>Ability to match and grade the Montessori bells (diatonic major scale).</li>
+                <li>Knowledge of: Tetrachord, Diatonic major scale pattern (W-W-H-W-W-W-H), Chromatic scale, Pentatonic scale, and Whole tone scale.</li>
+                <li>Familiarity with the staff, especially the treble (G) clef.</li>
+            </ul>
+
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Materials List</h3>
+            <ul class="text-sm font-medium italic text-slate-600 list-disc ml-5 space-y-1">
+                <li>Tone bars, arranged chromatically on their board.</li>
+                <li>Rubber mallet (soft head to preserve timbre).</li>
+                <li>Major scale pattern strip (movable guide showing whole-step/half-step sequence).</li>
+                <li>Staff notation card.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation I: Review – Tone Bars & Scale Pattern</h2>
+
+            <div class="action">Lay out tone bars in sequence. Pause.</div>
+            <div class="dialogue">"Let’s listen again to our tone bars… do you remember how they rise and fall?"</div>
+
+            <div class="action">Strike two bars, low then high. Strike only the silver metal center.</div>
+            <div class="dialogue">"Low voice, high voice… same pattern as our bells."</div>
+
+            <div class="illustrate">
+                <svg width="450" height="180" viewBox="0 0 450 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Plastic Bases (Uniform width and height) -->
+                    <rect x="50" y="50" width="35" height="100" fill="#FFF" stroke="#94A3B8" rx="2"/>
+                    <rect x="95" y="50" width="35" height="100" fill="#FFF" stroke="#94A3B8" rx="2"/>
+                    <rect x="140" y="50" width="35" height="100" fill="#FFF" stroke="#94A3B8" rx="2"/>
+                    <rect x="185" y="50" width="35" height="100" fill="#FFF" stroke="#94A3B8" rx="2"/>
+
+                    <!-- Silver Metal Bars (All identical in size to isolate the auditory sense) -->
+                    <rect x="57.5" y="60" width="20" height="80" fill="#CBD5E1" stroke="#64748B"/>
+                    <circle cx="67.5" cy="70" r="2" fill="#475569"/> <circle cx="67.5" cy="130" r="2" fill="#475569"/> <!-- pegs -->
+                    
+                    <rect x="102.5" y="60" width="20" height="80" fill="#CBD5E1" stroke="#64748B"/>
+                    <circle cx="112.5" cy="70" r="2" fill="#475569"/> <circle cx="112.5" cy="130" r="2" fill="#475569"/>
+                    
+                    <rect x="147.5" y="60" width="20" height="80" fill="#CBD5E1" stroke="#64748B"/>
+                    <circle cx="157.5" cy="70" r="2" fill="#475569"/> <circle cx="157.5" cy="130" r="2" fill="#475569"/>
+                    
+                    <rect x="192.5" y="60" width="20" height="80" fill="#CBD5E1" stroke="#64748B"/>
+                    <circle cx="202.5" cy="70" r="2" fill="#475569"/> <circle cx="202.5" cy="130" r="2" fill="#475569"/>
+
+                    <!-- Mallet striking silver center -->
+                    <circle cx="112.5" cy="100" r="10" fill="#1E293B"/>
+                    <path d="M120 92 L180 40" stroke="#1E293B" stroke-width="4" stroke-linecap="round"/>
+                    
+                    <text x="210" y="60" font-family="Inter" font-style="italic" font-size="10" fill="#64748B">"Never louder than lovely"</text>
+                    <path d="M50 165 L220 165" stroke="#1E293B" marker-end="url(#arrowhead)"/>
+                    <defs><marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#1E293B" /></marker></defs>
+                    <text x="60" y="180" font-family="Inter" font-size="9" fill="#64748B">GRADING (Identical appearance isolates the auditory sense)</text>
+                </svg>
+                <div class="illustrate-label">Fig 1.1: Tone bars are visually identical; grading is done entirely by ear.</div>
+            </div>
+
+            <div class="action">Place major scale pattern strip beside/below the bars.</div>
+            <div class="dialogue">"Here’s the secret pattern—whole, whole, half…" (tap the strip as you say it)</div>
+
+            <div class="action">Slide the strip to start at different bars.</div>
+            <div class="dialogue">"Look—no matter where we begin, the steps stay the same… this is how music builds a major scale."</div>
+
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mt-16 mb-8 border-b pb-2 italic">Presentation II: Constructing a New Scale</h2>
+
+            <div class="action">Align the strip so '1' starts on C. Use two fingers to tug the corresponding plastic bases forward.</div>
+            <div class="dialogue">"Watch as I pull out the bars the pattern has chosen for us. Now we play only these."</div>
+
+            <div class="illustrate">
+                <svg width="450" height="220" viewBox="0 0 450 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Base Board -->
+                    <rect x="40" y="10" width="350" height="150" fill="#F8FAFC" stroke="#E2E8F0"/>
+                    
+                    <!-- 13 Tone bars (C to C). Width = 25px each, totally flush. -->
+                    <g stroke="#94A3B8" stroke-width="1">
+                        <!-- Unpulled bars (Y=20) -->
+                        <rect x="50" y="20" width="25" height="90" fill="#FFF"/> <!-- C -->
+                        <rect x="75" y="20" width="25" height="90" fill="#1E293B"/> <!-- C# -->
+                        <rect x="100" y="20" width="25" height="90" fill="#FFF"/> <!-- D -->
+                        <rect x="125" y="20" width="25" height="90" fill="#1E293B"/> <!-- D# -->
+                        <rect x="150" y="20" width="25" height="90" fill="#FFF"/> <!-- E -->
+                        <rect x="175" y="20" width="25" height="90" fill="#FFF"/> <!-- F -->
+                        <rect x="200" y="20" width="25" height="90" fill="#1E293B"/> <!-- F# -->
+                        <rect x="225" y="20" width="25" height="90" fill="#FFF"/> <!-- G -->
+                        <rect x="250" y="20" width="25" height="90" fill="#1E293B"/> <!-- G# -->
+                        <rect x="275" y="20" width="25" height="90" fill="#FFF"/> <!-- A -->
+                        <rect x="300" y="20" width="25" height="90" fill="#1E293B"/> <!-- A# -->
+                        <rect x="325" y="20" width="25" height="90" fill="#FFF"/> <!-- B -->
+                        <rect x="350" y="20" width="25" height="90" fill="#FFF"/> <!-- C -->
+                        
+                        <!-- PULLED OUT BARS for C Major (Y=50) -->
+                        <!-- 1: C --> <rect x="50" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="55" y="60" width="15" height="70" fill="#CBD5E1" stroke="none"/>
+                        <!-- 2: D --> <rect x="100" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="105" y="60" width="15" height="70" fill="#CBD5E1" stroke="none"/>
+                        <!-- 3: E --> <rect x="150" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="155" y="60" width="15" height="70" fill="#CBD5E1" stroke="none"/>
+                        <!-- 4: F --> <rect x="175" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="180" y="60" width="15" height="70" fill="#CBD5E1" stroke="none"/>
+                        <!-- 5: G --> <rect x="225" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="230" y="60" width="15" height="70" fill="#CBD5E1" stroke="none"/>
+                        <!-- 6: A --> <rect x="275" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="280" y="60" width="15" height="70" fill="#CBD5E1" stroke="none"/>
+                        <!-- 7: B --> <rect x="325" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="330" y="60" width="15" height="70" fill="#CBD5E1" stroke="none"/>
+                        <!-- 8: C --> <rect x="350" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="355" y="60" width="15" height="70" fill="#CBD5E1" stroke="none"/>
+                    </g>
+                    
+                    <!-- The Transposer Strip (Placed below the pulled out bars) -->
+                    <rect x="50" y="160" width="325" height="30" fill="#FEF08A" stroke="#CA8A04"/>
+                    
+                    <!-- Grid Lines on Strip perfectly matching the 25px bar width -->
+                    <g stroke="#CA8A04" stroke-width="1">
+                        <line x1="75" y1="160" x2="75" y2="190"/>
+                        <line x1="100" y1="160" x2="100" y2="190"/>
+                        <line x1="125" y1="160" x2="125" y2="190"/>
+                        <line x1="150" y1="160" x2="150" y2="190"/>
+                        <line x1="175" y1="160" x2="175" y2="190"/>
+                        <line x1="200" y1="160" x2="200" y2="190"/>
+                        <line x1="225" y1="160" x2="225" y2="190"/>
+                        <line x1="250" y1="160" x2="250" y2="190"/>
+                        <line x1="275" y1="160" x2="275" y2="190"/>
+                        <line x1="300" y1="160" x2="300" y2="190"/>
+                        <line x1="325" y1="160" x2="325" y2="190"/>
+                        <line x1="350" y1="160" x2="350" y2="190"/>
+                    </g>
+
+                    <!-- Numbers & Blanks (13 half-steps mapped) -->
+                    <!-- 1 --> <text x="58" y="180" font-family="Inter" font-size="14" font-weight="bold" fill="#854D0E">1</text>
+                    <!-- Blank (C#) --> <rect x="75" y="160" width="25" height="30" fill="#FDE047"/>
+                    <!-- 2 --> <text x="108" y="180" font-family="Inter" font-size="14" font-weight="bold" fill="#854D0E">2</text>
+                    <!-- Blank (D#) --> <rect x="125" y="160" width="25" height="30" fill="#FDE047"/>
+                    <!-- 3 --> <text x="158" y="180" font-family="Inter" font-size="14" font-weight="bold" fill="#854D0E">3</text>
+                    <!-- 4 (Touches 3, no blank) --> <text x="183" y="180" font-family="Inter" font-size="14" font-weight="bold" fill="#854D0E">4</text>
+                    <!-- Blank (F#) --> <rect x="200" y="160" width="25" height="30" fill="#FDE047"/>
+                    <!-- 5 --> <text x="233" y="180" font-family="Inter" font-size="14" font-weight="bold" fill="#854D0E">5</text>
+                    <!-- Blank (G#) --> <rect x="250" y="160" width="25" height="30" fill="#FDE047"/>
+                    <!-- 6 --> <text x="283" y="180" font-family="Inter" font-size="14" font-weight="bold" fill="#854D0E">6</text>
+                    <!-- Blank (A#) --> <rect x="300" y="160" width="25" height="30" fill="#FDE047"/>
+                    <!-- 7 --> <text x="333" y="180" font-family="Inter" font-size="14" font-weight="bold" fill="#854D0E">7</text>
+                    <!-- 8 (Touches 7, no blank) --> <text x="358" y="180" font-family="Inter" font-size="14" font-weight="bold" fill="#854D0E">8</text>
+
+                </svg>
+                <div class="illustrate-label">Fig 1.2: The Transposer Strip. Pulled bars align perfectly with the numbered cells. Un-pulled bars map to the blank cells (whole steps).</div>
+            </div>
+
+            <div class="action">Play full sequence slowly, tapping the silver center, pause at end.</div>
+            <div class="dialogue">"Major scale—new home note. Listen to the feeling."</div>
+
+            <div class="action">Invite child to experiment: shift strip, pull out new keys, and play.</div>
+            <div class="dialogue">"Where else could we start? Try it!"</div>
+
+            <div class="action">Place two different scales side by side. Gesture linking ear to staff card.</div>
+            <div class="dialogue">"Same pattern, different home—this is why there are many scales. Your ear knows it before your eye—do you hear the family resemblance?"</div>
+
+            <div class="aside-box text-sm italic text-amber-900 leading-relaxed mt-8">
+                <strong>Guide Notes:</strong> Move slowly, give time for the child to absorb the sound differences. Use minimal words—allow the sensorial experience of pitch to dominate. Children may spontaneously sing along; welcome this but keep it exploratory, not performative. Encourage repetition until the child shows satisfaction or curiosity leads elsewhere.
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-slate-400 mb-6 border-b pb-2">Side Notes & Extensions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                    <h4 class="font-bold text-sm text-slate-800 mb-2">Points of Interest</h4>
+                    <ul class="text-xs text-slate-600 space-y-2 list-disc ml-4">
+                        <li>Discovering that every culture organizes sound into scales.</li>
+                        <li>Feeling the difference between starting a scale on C vs. G vs. F.</li>
+                        <li>Comparing the sound of pentatonic vs. diatonic vs. whole-tone.</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                    <h4 class="font-bold text-sm text-slate-800 mb-2">Key Vocabulary</h4>
+                    <ul class="text-xs text-slate-600 space-y-2 list-disc ml-4">
+                        <li><strong>Scale:</strong> an ordered set of notes, arranged by pitch.</li>
+                        <li><strong>Whole step:</strong> the distance of two half steps (the blank squares on our strip).</li>
+                        <li><strong>Half step:</strong> the smallest step in Western music (where numbers touch).</li>
+                        <li><strong>Tonic:</strong> the note a scale begins and ends on (home).</li>
+                        <li><strong>Tetrachord:</strong> a group of four notes spanning a perfect fourth.</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                    <h4 class="font-bold text-sm text-slate-800 mb-2">Fun Facts</h4>
+                    <ul class="text-xs text-slate-600 space-y-2 list-disc ml-4">
+                        <li>Ancient Greek philosopher Pythagoras studied vibrating strings to discover mathematical ratios behind scales.</li>
+                        <li>The major scale pattern (W-W-H-W-W-W-H) appears in countless folk songs worldwide.</li>
+                        <li>Birdsongs often follow pentatonic or diatonic fragments!</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                    <h4 class="font-bold text-sm text-slate-800 mb-2">Control of Error & Accommodations</h4>
+                    <ul class="text-xs text-slate-600 space-y-2 list-disc ml-4">
+                        <li>If a child misplaces the strip, the sound will not resolve to a proper scale (auditory error).</li>
+                        <li>Staff card can be used for self-check: if steps do not match, scale is incomplete.</li>
+                        <li>Sensitive ears: allow softer mallet use.</li>
+                        <li>Safety: remind not to bang bars too hard to avoid damage.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-12 text-xs text-slate-400">
+            <h4 class="font-bold uppercase tracking-wider mb-2">References</h4>
+            <ul class="space-y-1">
+                <li>Montessori, M. (1912). <em>The Montessori Method.</em> (on sensorial education).</li>
+                <li>Standing, E.M. (1957). <em>Maria Montessori: Her Life and Work.</em></li>
+                <li>Levitin, D. (2006). <em>This Is Your Brain on Music.</em></li>
+                <li>Sachs, C. (1943). <em>The Rise of Music in the Ancient World.</em></li>
+            </ul>
+        </section>
+
+        <footer class="mt-20 pt-8 border-t text-[10px] font-sans text-slate-300 uppercase tracking-widest text-center">
+            Elim Lee // Semester 4 Sprint // AMI Elementary
+        </footer>
+    </article>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
