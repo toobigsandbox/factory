@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson: Introduction to Singing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Crimson Pro', serif; background: #fdfbf7; line-height: 1.7; }
+        .page { background: white; max-width: 850px; margin: 40px auto; padding: 80px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 32px; border: 1px solid #f1f5f9; }
+        .action { font-family: 'Inter', sans-serif; font-weight: 700; margin-top: 24px; color: #1e293b; font-size: 0.95rem; }
+        .dialogue { margin-left: 40px; font-style: italic; color: #475569; position: relative; margin-bottom: 12px; }
+        .dialogue::before { content: "—"; position: absolute; left: -20px; color: #cbd5e1; font-style: normal; }
+        .material-box { background: #f8fafc; border-radius: 20px; border: 1px solid #e2e8f0; padding: 30px; margin-bottom: 40px; }
+        .aside-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 25px; margin: 40px 0; border-radius: 0 15px 15px 0; position: relative; }
+        .aside-box::after { content: "Instructor's Aside"; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+        .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; }
+        .illustrate-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 800; text-transform: uppercase; color: #94a3b8; margin-top: 15px; }
+        @media print { body { background: white; margin: 0; } .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; } .no-print { display: none; } }
+    </style>
+</head>
+<body>
+    <nav class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <a href="../../index.html" class="text-slate-400 hover:text-amber-600 transition-colors font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
+            <i data-lucide="arrow-left" size="14"></i> Back to Dashboard
+        </a>
+        <button onclick="window.print()" class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:bg-amber-700 transition-all flex items-center gap-2">
+            <i data-lucide="printer" size="14"></i> Print to PDF
+        </button>
+    </nav>
+    
+    <article class="page">
+        <header class="mb-12 border-b-2 border-amber-50 pb-8">
+            <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Music // Vocal Expression</p>
+            <h1 class="text-5xl font-bold text-slate-900 leading-tight">Introduction to Singing</h1>
+            <p class="mt-4 text-slate-400 italic">Guide: Elim Lee // AMI Elementary Submission</p>
+        </header>
+
+        <section class="material-box">
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Purpose</h3>
+            <p class="text-sm font-medium italic text-slate-600">To introduce the importance of singing as an integral part of classroom life and community, emphasizing that music is a second language hardwired into the human experience.</p>
+        </section>
+
+        <section>
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+
+            <div class="action">Gather the children and draw a parallel to reading aloud.</div>
+            <div class="dialogue">"We all agree on the importance of reading aloud. We listen to the patterns and rhythms of language. Music is simply another language, and our classroom is not complete without singing."</div>
+
+            <div class="illustrate">
+                <svg width="400" height="150" viewBox="0 0 400 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 75 L150 75 M100 25 L100 125" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="4 4"/>
+                    <text x="60" y="50" font-family="Inter" font-size="10" fill="#94A3B8" font-weight="bold">LANGUAGE</text>
+                    <text x="260" y="50" font-family="Inter" font-size="10" fill="#F59E0B" font-weight="bold">MUSIC</text>
+                    <rect x="250" y="60" width="100" height="60" rx="8" stroke="#F59E0B" stroke-width="2" fill="none"/>
+                    <path d="M270 90 Q280 70 290 90" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="290" cy="90" r="3" fill="#F59E0B"/>
+                </svg>
+                <div class="illustrate-label">Fig 1.1: Music as a parallel language of rhythm and pattern</div>
+            </div>
+
+            <div class="action">Discuss why singing matters for community.</div>
+            <div class="dialogue">"Singing allows us to bring our voices together, create community, and express joy. Even if you don't think you have the 'best' voice, we still sing. Research from UW–Madison shows singing captivates children more than speaking because it combines facial expression and vocal tone."</div>
+
+            <div class="action">Connect music to culture and history.</div>
+            <div class="dialogue">"Music connects us to the human story. We might sing a song from a culture we are studying or an oral tradition from another part of the world. It is a way of saying: 'Here is how these people felt.'"</div>
+
+            <div class="aside-box text-sm italic text-amber-900 leading-relaxed">
+                "Building confidence is part of the Guide's work. If you are hesitant, sing along with a recording or have an assistant help lead. Remember: children aren't looking for a 'performer'; they are looking for a community member sharing a joy. Silly songs and movement help bridge the gap for older children (9-12)."
+            </div>
+        </section>
+
+        <footer class="mt-20 pt-8 border-t text-[10px] font-sans text-slate-300 uppercase tracking-widest text-center">
+            Elim Lee // Singing Module // AMI Elementary
+        </footer>
+    </article>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
