@@ -47,8 +47,8 @@
         <section class="material-box">
             <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Material Overview</h3>
             <div class="text-sm text-slate-700 space-y-3">
-                <p><strong>Construction:</strong> The tone bars are evenly wide blocks, painted black and white to mimic the keyboard notes on a piano. However, they are completely flush; the black keys are not indented.</p>
-                <p><strong>Playing Mechanism:</strong> To play, the child physically pulls out the keys they intend to use by tugging on the plastic base with two fingers. Once pulled forward, the child taps the silver metal center of the bar with the mallet. The guiding principle is <em>"never louder than lovely."</em></p>
+                <p><strong>Construction:</strong> The tone bars are evenly wide blocks, painted black and white to mimic the keyboard notes on a piano. However, they are completely flush; the black keys are not indented. Every single bar (both white and black) features a square silver target vertically centered on the plastic base. This is the metal part that rings out.</p>
+                <p><strong>Playing Mechanism:</strong> To play, the child physically pulls out the keys they intend to use by tugging on the plastic base with two fingers. Once pulled forward, the child taps the square silver center of the bar with the mallet. The guiding principle is <em>"never louder than lovely."</em></p>
                 <p><strong>The Transposer Strip:</strong> A slip of poster paper gridded into 13 squares. It has Sharpie-written numbers (1-8) and deliberately blank squares to visually emphasize the skipped <strong>whole steps</strong>. This strip slides below the pulled-out tone bars.</p>
             </div>
         </section>
@@ -95,25 +95,18 @@
                     <rect x="140" y="50" width="35" height="100" fill="#FFF" stroke="#94A3B8" rx="2"/>
                     <rect x="185" y="50" width="35" height="100" fill="#FFF" stroke="#94A3B8" rx="2"/>
 
-                    <!-- Silver Metal Bars (All identical in size to isolate the auditory sense) -->
-                    <rect x="57.5" y="60" width="20" height="80" fill="#CBD5E1" stroke="#64748B"/>
-                    <circle cx="67.5" cy="70" r="2" fill="#475569"/> <circle cx="67.5" cy="130" r="2" fill="#475569"/> <!-- pegs -->
-                    
-                    <rect x="102.5" y="60" width="20" height="80" fill="#CBD5E1" stroke="#64748B"/>
-                    <circle cx="112.5" cy="70" r="2" fill="#475569"/> <circle cx="112.5" cy="130" r="2" fill="#475569"/>
-                    
-                    <rect x="147.5" y="60" width="20" height="80" fill="#CBD5E1" stroke="#64748B"/>
-                    <circle cx="157.5" cy="70" r="2" fill="#475569"/> <circle cx="157.5" cy="130" r="2" fill="#475569"/>
-                    
-                    <rect x="192.5" y="60" width="20" height="80" fill="#CBD5E1" stroke="#64748B"/>
-                    <circle cx="202.5" cy="70" r="2" fill="#475569"/> <circle cx="202.5" cy="130" r="2" fill="#475569"/>
+                    <!-- Square Silver Metal Targets (Identical square in vertical center of each bar) -->
+                    <rect x="57.5" y="90" width="20" height="20" fill="#CBD5E1" stroke="#64748B"/>
+                    <rect x="102.5" y="90" width="20" height="20" fill="#CBD5E1" stroke="#64748B"/>
+                    <rect x="147.5" y="90" width="20" height="20" fill="#CBD5E1" stroke="#64748B"/>
+                    <rect x="192.5" y="90" width="20" height="20" fill="#CBD5E1" stroke="#64748B"/>
 
                     <!-- Mallet striking silver center -->
                     <circle cx="112.5" cy="100" r="10" fill="#1E293B"/>
                     <path d="M120 92 L180 40" stroke="#1E293B" stroke-width="4" stroke-linecap="round"/>
                     
                     <text x="210" y="60" font-family="Inter" font-style="italic" font-size="10" fill="#64748B">"Never louder than lovely"</text>
-                    <path d="M50 165 L220 165" stroke="#1E293B" marker-end="url(#arrowhead)"/>
+                    <path d="M50" y="165" d="M50 165 L220 165" stroke="#1E293B" marker-end="url(#arrowhead)"/>
                     <defs><marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#1E293B" /></marker></defs>
                     <text x="60" y="180" font-family="Inter" font-size="9" fill="#64748B">GRADING (Identical appearance isolates the auditory sense)</text>
                 </svg>
@@ -138,30 +131,22 @@
                     
                     <!-- 13 Tone bars (C to C). Width = 25px each, totally flush. -->
                     <g stroke="#94A3B8" stroke-width="1">
-                        <!-- Unpulled bars (Y=20) -->
-                        <rect x="50" y="20" width="25" height="90" fill="#FFF"/> <!-- C -->
-                        <rect x="75" y="20" width="25" height="90" fill="#1E293B"/> <!-- C# -->
-                        <rect x="100" y="20" width="25" height="90" fill="#FFF"/> <!-- D -->
-                        <rect x="125" y="20" width="25" height="90" fill="#1E293B"/> <!-- D# -->
-                        <rect x="150" y="20" width="25" height="90" fill="#FFF"/> <!-- E -->
-                        <rect x="175" y="20" width="25" height="90" fill="#FFF"/> <!-- F -->
-                        <rect x="200" y="20" width="25" height="90" fill="#1E293B"/> <!-- F# -->
-                        <rect x="225" y="20" width="25" height="90" fill="#FFF"/> <!-- G -->
-                        <rect x="250" y="20" width="25" height="90" fill="#1E293B"/> <!-- G# -->
-                        <rect x="275" y="20" width="25" height="90" fill="#FFF"/> <!-- A -->
-                        <rect x="300" y="20" width="25" height="90" fill="#1E293B"/> <!-- A# -->
-                        <rect x="325" y="20" width="25" height="90" fill="#FFF"/> <!-- B -->
-                        <rect x="350" y="20" width="25" height="90" fill="#FFF"/> <!-- C -->
-                        
-                        <!-- PULLED OUT BARS for C Major (Y=50) -->
-                        <!-- 1: C --> <rect x="50" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="55" y="60" width="15" height="70" fill="#CBD5E1" stroke="none"/>
-                        <!-- 2: D --> <rect x="100" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="105" y="60" width="15" height="70" fill="#CBD5E1" stroke="none"/>
-                        <!-- 3: E --> <rect x="150" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="155" y="60" width="15" height="70" fill="#CBD5E1" stroke="none"/>
-                        <!-- 4: F --> <rect x="175" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="180" y="60" width="15" height="70" fill="#CBD5E1" stroke="none"/>
-                        <!-- 5: G --> <rect x="225" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="230" y="60" width="15" height="70" fill="#CBD5E1" stroke="none"/>
-                        <!-- 6: A --> <rect x="275" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="280" y="60" width="15" height="70" fill="#CBD5E1" stroke="none"/>
-                        <!-- 7: B --> <rect x="325" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="330" y="60" width="15" height="70" fill="#CBD5E1" stroke="none"/>
-                        <!-- 8: C --> <rect x="350" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="355" y="60" width="15" height="70" fill="#CBD5E1" stroke="none"/>
+                        <!-- Unpulled BLACK bars (Y=20) -->
+                        <rect x="75" y="20" width="25" height="90" fill="#1E293B"/> <rect x="80" y="57.5" width="15" height="15" fill="#CBD5E1" stroke="none"/> <!-- C# -->
+                        <rect x="125" y="20" width="25" height="90" fill="#1E293B"/> <rect x="130" y="57.5" width="15" height="15" fill="#CBD5E1" stroke="none"/> <!-- D# -->
+                        <rect x="200" y="20" width="25" height="90" fill="#1E293B"/> <rect x="205" y="57.5" width="15" height="15" fill="#CBD5E1" stroke="none"/> <!-- F# -->
+                        <rect x="250" y="20" width="25" height="90" fill="#1E293B"/> <rect x="255" y="57.5" width="15" height="15" fill="#CBD5E1" stroke="none"/> <!-- G# -->
+                        <rect x="300" y="20" width="25" height="90" fill="#1E293B"/> <rect x="305" y="57.5" width="15" height="15" fill="#CBD5E1" stroke="none"/> <!-- A# -->
+
+                        <!-- PULLED OUT WHITE BARS for C Major (Y=50) -->
+                        <rect x="50" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="55" y="87.5" width="15" height="15" fill="#CBD5E1" stroke="none"/> <!-- 1: C -->
+                        <rect x="100" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="105" y="87.5" width="15" height="15" fill="#CBD5E1" stroke="none"/> <!-- 2: D -->
+                        <rect x="150" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="155" y="87.5" width="15" height="15" fill="#CBD5E1" stroke="none"/> <!-- 3: E -->
+                        <rect x="175" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="180" y="87.5" width="15" height="15" fill="#CBD5E1" stroke="none"/> <!-- 4: F -->
+                        <rect x="225" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="230" y="87.5" width="15" height="15" fill="#CBD5E1" stroke="none"/> <!-- 5: G -->
+                        <rect x="275" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="280" y="87.5" width="15" height="15" fill="#CBD5E1" stroke="none"/> <!-- 6: A -->
+                        <rect x="325" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="330" y="87.5" width="15" height="15" fill="#CBD5E1" stroke="none"/> <!-- 7: B -->
+                        <rect x="350" y="50" width="25" height="90" fill="#FFF" stroke="#3B82F6" stroke-width="2"/> <rect x="355" y="87.5" width="15" height="15" fill="#CBD5E1" stroke="none"/> <!-- 8: C -->
                     </g>
                     
                     <!-- The Transposer Strip (Placed below the pulled out bars) -->
