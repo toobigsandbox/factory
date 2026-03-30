@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lesson: Details of Writing Music</title>
+    <title>Lesson: Details of Music Writing</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -13,72 +13,182 @@
         .action { font-family: 'Inter', sans-serif; font-weight: 700; margin-top: 24px; color: #1e293b; font-size: 0.95rem; }
         .dialogue { margin-left: 40px; font-style: italic; color: #475569; position: relative; margin-bottom: 12px; }
         .dialogue::before { content: "—"; position: absolute; left: -20px; color: #cbd5e1; font-style: normal; }
+        .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; }
+        .illustrate-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: #94a3b8; margin-top: 15px; }
         .material-box { background: #f8fafc; border-radius: 20px; border: 1px solid #e2e8f0; padding: 30px; margin-bottom: 40px; }
         .aside-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 25px; margin: 40px 0; border-radius: 0 15px 15px 0; position: relative; }
         .aside-box::after { content: "Instructor's Aside"; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.1em; }
-        .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; }
-        .metadata-tag { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.15em; }
-        @media print { body { background: white; margin: 0; } .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; } .no-print { display: none; } }
+        @media print { 
+            body { background: white; margin: 0; } 
+            .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; } 
+            .no-print { display: none !important; } 
+        }
     </style>
 </head>
 <body>
-    <div class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
-        <a href="../../index.html" class="text-slate-400 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
-            <i data-lucide="arrow-left" size="14"></i> Back to Dashboard
-        </a>
-    </div>
+    <nav class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <div>
+            <a href="../../index.html" class="text-slate-400 hover:text-amber-600 transition-colors font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
+                <i data-lucide="arrow-left" size="14"></i> Back to Dashboard
+            </a>
+        </div>
+        <button onclick="window.print()" class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:bg-amber-700 transition-all flex items-center gap-2">
+            <i data-lucide="printer" size="16"></i> Print to PDF
+        </button>
+    </nav>
     
     <article class="page">
         <header class="mb-12 border-b-2 border-amber-50 pb-8">
-            <div class="flex justify-between items-start">
-                <div>
-                    <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Music // Notation & Interpretation</p>
-                    <h1 class="text-5xl font-bold text-slate-900 leading-tight">Details of Writing Music</h1>
-                    <p class="mt-4 text-slate-400 italic">Guide: Elim Lee // AMI Elementary Submission</p>
-                </div>
-                <div class="text-right">
-                    <p class="metadata-tag">LessonID: MOV-07</p>
-                    <p class="metadata-tag)Anchor: TRANSCRIPT_MOV-07</p>
-                </div>
-            </div>
+            <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Music // Musical Expression</p>
+            <h1 class="text-5xl font-bold text-slate-900 leading-tight">Details of Music Writing</h1>
+            <p class="mt-4 text-slate-400 italic">Guide: Elim Lee // April 1st Sprint // AMI Elementary</p>
         </header>
 
         <section class="material-box">
-            <div class="mb-6">
-                <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Purpose</h3>
-                <p class="text-sm text-slate-700 italic">To introduce other signs and terms used in the writing of music.</p>
-            </div>
-            <div>
-                <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Materials</h3>
-                <p class="text-sm text-slate-700 italic">Tone bars, Cards showing markings used for writing different musical features.</p>
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Purpose</h3>
+            <p class="text-sm font-medium italic text-slate-600 mb-4">To introduce musical expression symbols, giving children the language and control to interpret music expressively. Once introduced, children can apply these details to known songs and use them in their own composition work.</p>
+
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Materials List</h3>
+            <ul class="text-sm font-medium italic text-slate-600 list-disc ml-5 space-y-2">
+                <li><strong>Three Concept Cards:</strong> Simple, clean, mounted, and laminated cards depicting Legato, Staccato, and Fermata.</li>
+            </ul>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-slate-400 mb-6 border-b pb-2">The Concept Cards Overview</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Legato -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                    <h4 class="font-bold text-sm text-slate-800 mb-2 border-b border-slate-200 pb-2">Legato</h4>
+                    <ul class="text-xs text-slate-600 space-y-2">
+                        <li><strong>Definition:</strong> Smoothly connected notes without interruption.</li>
+                        <li><strong>Symbol:</strong> Curved line (like a slur).</li>
+                        <li><strong>Effect:</strong> One note flows directly into the next.</li>
+                    </ul>
+                </div>
+                <!-- Staccato -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                    <h4 class="font-bold text-sm text-slate-800 mb-2 border-b border-slate-200 pb-2">Staccato</h4>
+                    <ul class="text-xs text-slate-600 space-y-2">
+                        <li><strong>Definition:</strong> Short notes that are interrupted or detached.</li>
+                        <li><strong>Symbol:</strong> Dot above or below a note.</li>
+                        <li><strong>Effect:</strong> Each note is separated with space or a stop.</li>
+                    </ul>
+                </div>
+                <!-- Fermata -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                    <h4 class="font-bold text-sm text-slate-800 mb-2 border-b border-slate-200 pb-2">Fermata</h4>
+                    <ul class="text-xs text-slate-600 space-y-2">
+                        <li><strong>Definition:</strong> To pause or hold the note longer than usual.</li>
+                        <li><strong>Symbol:</strong> Arc with a dot underneath (like an eye).</li>
+                        <li><strong>Effect:</strong> You hold the note… and then come in together again.</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
         <section>
-            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation I: Introducing the Concepts</h2>
 
-            <div class="action">Introduce special musical details (Slur, Tie, etc.).</div>
-            <div class="dialogue">"When we see this curved line over two different notes, it means we play them smoothly without stopping. This is a slur."</div>
-
-            <div class="action">Contrast with a Tie.</div>
-            <div class="dialogue">"If the curved line connects two notes of the same pitch, we hold the sound for the total time of both notes. This is a tie."</div>
-
-            <div class="illustrate">
-                <svg width="400" height="150" viewBox="0 0 400 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="100" cy="80" r="5" fill="#1E293B"/>
-                    <circle cx="140" cy="60" r="5" fill="#1E293B"/>
-                    <path d="M100 50 Q120 30 140 50" stroke="#F59E0B" stroke-width="2" fill="none"/>
-                    <text x="110" y="100" font-family="Inter" font-size="8" fill="#94A3B8">SLUR</text>
-                </svg>
+            <div class="aside-box text-sm italic text-amber-900 leading-relaxed mb-8">
+                <strong>Guide Tip:</strong> Introduce all three symbols at the same time. They contrast nicely, and it gives the children an instant sense of how music can change in feeling just by how it’s played or sung. You don’t have to introduce the nomenclature first—let them experience the expression through movement and voice, then connect the experience to the name and symbol.
             </div>
 
-            <div class="aside-box text-sm italic text-amber-900 leading-relaxed">
-                "Writing music is a form of communication. These details ensure that the player understands the composer's intent. Encourage children to find these marks in published sheet music."
+            <div class="action">Show the three prepared cards to the children.</div>
+            <div class="dialogue">"We have learned how to write the names of the notes. Today, we are going to learn how to write the *feeling* of the notes."</div>
+
+            <div class="illustrate">
+                <svg width="500" height="180" viewBox="0 0 500 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Legato Card -->
+                    <rect x="50" y="30" width="100" height="120" fill="#FFF" stroke="#94A3B8" stroke-width="2" rx="4"/>
+                    <circle cx="80" cy="90" r="8" fill="#1E293B"/>
+                    <line x1="88" y1="90" x2="88" y2="50" stroke="#1E293B" stroke-width="2"/>
+                    <circle cx="120" cy="70" r="8" fill="#1E293B"/>
+                    <line x1="128" y1="70" x2="128" y2="30" stroke="#1E293B" stroke-width="2"/>
+                    <path d="M80 105 Q100 120 120 85" stroke="#3B82F6" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <text x="65" y="140" font-family="Inter" font-size="10" fill="#64748B" font-weight="bold">LEGATO</text>
+
+                    <!-- Staccato Card -->
+                    <rect x="200" y="30" width="100" height="120" fill="#FFF" stroke="#94A3B8" stroke-width="2" rx="4"/>
+                    <circle cx="230" cy="80" r="8" fill="#1E293B"/>
+                    <line x1="238" y1="80" x2="238" y2="40" stroke="#1E293B" stroke-width="2"/>
+                    <circle cx="270" cy="80" r="8" fill="#1E293B"/>
+                    <line x1="278" y1="80" x2="278" y2="40" stroke="#1E293B" stroke-width="2"/>
+                    <circle cx="230" cy="95" r="3" fill="#EF4444"/>
+                    <circle cx="270" cy="95" r="3" fill="#EF4444"/>
+                    <text x="210" y="140" font-family="Inter" font-size="10" fill="#64748B" font-weight="bold">STACCATO</text>
+
+                    <!-- Fermata Card -->
+                    <rect x="350" y="30" width="100" height="120" fill="#FFF" stroke="#94A3B8" stroke-width="2" rx="4"/>
+                    <circle cx="400" cy="90" r="8" fill="#1E293B"/>
+                    <line x1="408" y1="90" x2="408" y2="50" stroke="#1E293B" stroke-width="2"/>
+                    <path d="M385 60 Q400 40 415 60" stroke="#F59E0B" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <circle cx="400" cy="60" r="3" fill="#F59E0B"/>
+                    <text x="365" y="140" font-family="Inter" font-size="10" fill="#64748B" font-weight="bold">FERMATA</text>
+                </svg>
+                <div class="illustrate-label">Fig 1.1: The three expression symbols prepared on simple, laminated cards.</div>
+            </div>
+
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mt-16 mb-8 border-b pb-2 italic">Presentation II: Demonstration (Hot Cross Buns)</h2>
+
+            <div class="action">Introduce the Legato concept using a familiar song.</div>
+            <div class="dialogue">"When you see this symbol (legato), it means the notes are connected together. Almost slurred—like you don’t hear any spaces in between. One note flows right into the next."</div>
+
+            <div class="action">Sing "Hot Cross Buns" with legato phrasing, letting the notes blend smoothly.</div>
+            <div class="dialogue">"🎵 One a penny, two a penny, hot cross buns... 🎵"</div>
+
+            <div class="action">Introduce the Fermata concept.</div>
+            <div class="dialogue">"When we see a fermata, we pause and hold that note. I’ll put my hand out like this [extends hand in front] when it’s the one with the fermata."</div>
+
+            <div class="illustrate">
+                <svg width="500" height="160" viewBox="0 0 500 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Staff -->
+                    <line x1="50" y1="40" x2="450" y2="40" stroke="#CBD5E1" stroke-width="1"/>
+                    <line x1="50" y1="60" x2="450" y2="60" stroke="#CBD5E1" stroke-width="1"/>
+                    <line x1="50" y1="80" x2="450" y2="80" stroke="#CBD5E1" stroke-width="1"/>
+                    <line x1="50" y1="100" x2="450" y2="100" stroke="#CBD5E1" stroke-width="1"/>
+                    <line x1="50" y1="120" x2="450" y2="120" stroke="#CBD5E1" stroke-width="1"/>
+
+                    <!-- Notes -->
+                    <!-- Hot -->
+                    <circle cx="120" cy="70" r="8" fill="#1E293B"/> <line x1="112" y1="70" x2="112" y2="110" stroke="#1E293B" stroke-width="2"/>
+                    <text x="110" y="145" font-family="Inter" font-size="12" font-weight="bold" fill="#475569">Hot</text>
+                    <!-- Cross -->
+                    <circle cx="220" cy="90" r="8" fill="#1E293B"/> <line x1="228" y1="90" x2="228" y2="50" stroke="#1E293B" stroke-width="2"/>
+                    <text x="205" y="145" font-family="Inter" font-size="12" font-weight="bold" fill="#475569">cross</text>
+                    <!-- Buns (with Fermata) -->
+                    <circle cx="350" cy="110" r="8" fill="#1E293B"/> <line x1="358" y1="110" x2="358" y2="60" stroke="#1E293B" stroke-width="2"/>
+                    <text x="335" y="145" font-family="Inter" font-size="12" font-weight="bold" fill="#1E293B">buns...</text>
+                    
+                    <!-- Fermata Symbol over "Buns" -->
+                    <path d="M335 45 Q350 25 365 45" stroke="#F59E0B" stroke-width="4" fill="none" stroke-linecap="round"/>
+                    <circle cx="350" cy="45" r="4" fill="#F59E0B"/>
+
+                    <!-- Hand Cue Hint -->
+                    <g transform="translate(420, 80)">
+                        <path d="M0 0 L15 -10 L25 -5 L10 5 Z" fill="#FDE68A" stroke="#D97706"/>
+                        <path d="M15 -10 L30 -15 L35 -5 L20 0 Z" fill="#FDE68A" stroke="#D97706"/>
+                        <text x="-25" y="30" font-family="Inter" font-size="8" fill="#D97706" font-style="italic">[Extend Hand]</text>
+                    </g>
+                </svg>
+                <div class="illustrate-label">Fig 2.1: Applying the Fermata hold to a familiar lyric.</div>
+            </div>
+
+            <div class="action">Sing "Hot Cross Buns" with an exaggerated hold on the final note. Extend your hand as the visual cue.</div>
+            <div class="dialogue">"🎵 Hot cross [hold] buns... 🎵<br>🎵 One a penny, two a penny, hot cross [hold] buns... 🎵"</div>
+
+            <div class="aside-box text-sm italic text-amber-900 leading-relaxed mt-8">
+                <strong>Implementation Note:</strong> It’s tricky when it’s just one person demonstrating, but imagine this with the whole group holding together, and then all coming in at once. The children love singing familiar songs with these new styles—especially with long holds where everyone has to listen and come in together!
+            </div>
+            
+            <div class="aside-box text-sm italic text-amber-900 leading-relaxed mt-4" style="border-left-color: #3b82f6;">
+                <span style="background-color: #3b82f6; color: white; position: absolute; top: -10px; left: 20px; font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.1em;">Pro Tip</span>
+                Even if it seems repetitive to us, repetition is how children integrate expression. They will want to do it again and again—so let them. Yes, you can use <em>Hot Cross Buns</em> for all of this. It’s short, familiar, and easy to modify.
             </div>
         </section>
 
         <footer class="mt-20 pt-8 border-t text-[10px] font-sans text-slate-300 uppercase tracking-widest text-center">
-            Elim Lee // April 1st Sprint // AMI Elementary
+            Elim Lee // Semester 4 Sprint // AMI Elementary
         </footer>
     </article>
     <script>lucide.createIcons();</script>
