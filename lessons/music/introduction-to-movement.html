@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson: Introduction to Movement</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Crimson Pro', serif; background: #fdfbf7; line-height: 1.7; }
+        .page { background: white; max-width: 850px; margin: 40px auto; padding: 80px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 32px; border: 1px solid #f1f5f9; }
+        .action { font-family: 'Inter', sans-serif; font-weight: 700; margin-top: 24px; color: #1e293b; font-size: 0.95rem; }
+        .dialogue { margin-left: 40px; font-style: italic; color: #475569; position: relative; margin-bottom: 12px; }
+        .dialogue::before { content: "—"; position: absolute; left: -20px; color: #cbd5e1; font-style: normal; }
+        .material-box { background: #f8fafc; border-radius: 20px; border: 1px solid #e2e8f0; padding: 30px; margin-bottom: 40px; }
+        .aside-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 25px; margin: 40px 0; border-radius: 0 15px 15px 0; position: relative; }
+        .aside-box::after { content: "Instructor's Aside"; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.1em; }
+        .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; }
+        .metadata-tag { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.15em; }
+        @media print { body { background: white; margin: 0; } .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; } .no-print { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <a href="../../index.html" class="text-slate-400 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
+            <i data-lucide="arrow-left" size="14"></i> Back to Dashboard
+        </a>
+    </div>
+    
+    <article class="page">
+        <header class="mb-12 border-b-2 border-amber-50 pb-8">
+            <div class="flex justify-between items-start">
+                <div>
+                    <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Music // Movement Foundations</p>
+                    <h1 class="text-5xl font-bold text-slate-900 leading-tight">Introduction to Movement</h1>
+                    <p class="mt-4 text-slate-400 italic">Guide: Elim Lee // AMI Elementary Submission</p>
+                </div>
+                <div class="text-right">
+                    <p class="metadata-tag">LessonID: MOV-01</p>
+                    <p class="metadata-tag">Anchor: TRANSCRIPT_MOV-01</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="material-box">
+            <div class="mb-6">
+                <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Purpose</h3>
+                <p class="text-sm text-slate-700 italic">Introduces the foundational Montessori concept that the child must gain control of equilibrium through effort. Frames movement as essential to development, not something adults should interrupt or replace.</p>
+            </div>
+            <div>
+                <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Materials</h3>
+                <p class="text-sm text-slate-700 italic">None explicitly listed.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+
+            <div class="action">Gather the children in an open space and discuss the biological need for movement.</div>
+            <div class="dialogue">"Have you ever noticed how your body wants to move even when you are sitting still? In Montessori, we know that movement is how we build our minds and our coordination."</div>
+
+            <div class="action">Explain the concept of Equilibrium through Effort.</div>
+            <div class="dialogue">"When we walk or run, we are constantly working to keep our balance. This effort is what helps us grow strong and precise in our music and our work."</div>
+
+            <div class="illustrate">
+                <svg width="400" height="150" viewBox="0 0 400 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 120 Q200 120 350 120" stroke="#CBD5E1" stroke-width="2"/>
+                    <circle cx="200" cy="110" r="10" stroke="#94A3B8" stroke-width="1.5"/>
+                    <path d="M200 100 L200 70 M200 80 L180 60 M200 80 L220 60" stroke="#94A3B8" stroke-width="1.5"/>
+                    <path d="M190 120 L210 120" stroke="#F59E0B" stroke-width="3"/>
+                    <text x="175" y="45" font-family="Inter" font-size="8" fill="#F59E0B" font-weight="bold">EQUILIBRIUM THROUGH EFFORT</text>
+                </svg>
+            </div>
+
+            <h3 class="font-bold text-lg mt-8 mb-4">Reflections for the Album</h3>
+            <ul class="list-disc ml-8 text-sm text-slate-600 space-y-2">
+                <li>How does the child’s movement change from the first to the second plane?</li>
+                <li>Why is it important for the adult not to interrupt the child’s physical explorations?</li>
+                <li>Observe a child "walking on the line" vs. moving in the Elementary community—what differences do you see in their intention?</li>
+            </ul>
+
+            <div class="aside-box text-sm italic text-amber-900 leading-relaxed">
+                "Movement is a tool for the intellect. Without it, the mind remains isolated. In the Elementary years, this movement must be social and artistic, moving beyond the simple 'analysis of movement' seen in the Casa."
+            </div>
+        </section>
+
+        <footer class="mt-20 pt-8 border-t text-[10px] font-sans text-slate-300 uppercase tracking-widest text-center">
+            Elim Lee // April 1st Sprint // AMI Elementary
+        </footer>
+    </article>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
