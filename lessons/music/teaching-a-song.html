@@ -17,10 +17,12 @@
         .aside-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 25px; margin: 40px 0; border-radius: 0 15px 15px 0; position: relative; }
         .aside-box::after { content: "Instructor's Aside"; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
         .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; }
+        .illustrate-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 800; text-transform: uppercase; color: #94a3b8; margin-top: 15px; }
         @media print { body { background: white; margin: 0; } .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; } .no-print { display: none; } }
     </style>
 </head>
 <body>
+    <!-- Utility Bar: Back and Print (Vanishes on PDF) -->
     <nav class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
         <a href="../../index.html" class="text-slate-400 hover:text-amber-600 transition-colors font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
             <i data-lucide="arrow-left" size="14"></i> Back to Dashboard
@@ -39,40 +41,49 @@
 
         <section class="material-box">
             <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Purpose</h3>
-            <p class="text-sm font-medium italic text-slate-600">To provide a structural framework for introducing new music, ensuring that memory, enunciation, and community engagement are supported through a flexible instructional protocol.</p>
+            <p class="text-sm font-medium italic text-slate-600">To provide a scaffolded framework for introducing music that supports memory, rhythm, and enunciation through intentional steps of listening and imitation.</p>
         </section>
 
         <section>
-            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation Protocol</h2>
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
 
-            <div class="action">Step 1: Name the Song & Play Starting Pitch.</div>
-            <div class="dialogue">"This song is called 'Black Socks'. Let's hear the starting pitch on the tone bars so we begin together."</div>
+            <div class="action">Step 1: Name the Song & Step 2: Play the Starting Pitch.</div>
+            <div class="dialogue">"This song is called 'Black Socks'. Let's listen to the starting pitch on the tone bars. Even if I don't match the pitch perfectly, playing it helps some of you find it, and then I can match your voices."</div>
 
-            <div class="action">Steps 2-4: Introduce Melody, Vocabulary, and Rhythm.</div>
-            <div class="dialogue">"First, listen to the whole melody. Are there words you don't know? 'Murmurs' means to speak softly—that tells us how to sing it. Now, let's say the words together in rhythm without the music."</div>
+            <div class="action">Step 3: Introduce the Melody & Step 4: Discuss Vocabulary.</div>
+            <div class="dialogue">"First, just listen to the melody. Now, let's look at the words. Does everyone know what 'murmurs' means? It means to speak very softly—this tells us how we should sing that part of the song."</div>
 
-            <div class="action">Steps 5-7: Call-and-Response and Shared Singing.</div>
-            <div class="dialogue">"I will say a line, and you repeat it back. Now, let's sing the whole thing together. I will guide you with my voice."</div>
-
-            <div class="action">Steps 8-10: Silent Mouth and Guided Listening.</div>
-            <div class="dialogue">"Now we say the song silently—only mouth the words. This helps us enunciate. Now, listen while I sing and you only mouth the words."</div>
-
-            <div class="action">Steps 11-12: Full Performance and Re-Naming.</div>
-            <div class="dialogue">"Let's sing it all together with our full voices! That was 'Black Socks'. Let's add it to our 'Songs We Know' list."</div>
+            <div class="action">Step 5: Say the Song in Rhythm & Step 6: Call-and-Response.</div>
+            <div class="dialogue">"I am going to recite the words in rhythm without singing. Now, I’ll say a line and you repeat it back to me. This helps us practice our listening and pacing."</div>
 
             <div class="illustrate">
-                <svg width="400" height="150" viewBox="0 0 400 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="200" cy="75" r="50" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="8 4"/>
-                    <text x="180" y="80" font-family="Inter" font-size="12" fill="#64748B" font-weight="bold">12 STEPS</text>
-                    <path d="M200 25 V45 M200 105 V125 M150 75 H170 M230 75 H250" stroke="#CBD5E1" stroke-width="2"/>
-                    <text x="185" y="20" font-family="Inter" font-size="8" fill="#94A3B8" font-weight="bold">NAME</text>
-                    <text x="185" y="140" font-family="Inter" font-size="8" fill="#94A3B8" font-weight="bold">RE-NAME</text>
+                <svg width="400" height="180" viewBox="0 0 400 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Recursive Arrow/Circle for Call and Response -->
+                    <path d="M150 90 A50 50 0 1 1 250 90" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4 4"/>
+                    <path d="M250 90 A50 50 0 1 1 150 90" stroke="#F59E0B" stroke-width="2"/>
+                    <text x="135" y="40" font-family="Inter" font-size="8" fill="#94A3B8" font-weight="bold">GUIDE SAYS</text>
+                    <text x="215" y="150" font-family="Inter" font-size="8" fill="#F59E0B" font-weight="bold">CHILD REPEATS</text>
+                    <!-- Speech bubbles -->
+                    <rect x="175" y="75" width="50" height="30" rx="5" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+                    <path d="M190 85 L210 85 M190 95 L205 95" stroke="#CBD5E1" stroke-width="1.5"/>
                 </svg>
-                <div class="text-[10px] uppercase font-bold text-slate-400 tracking-widest mt-2">The Cycle of Song Acquisition</div>
+                <div class="illustrate-label">Fig 2.1: The Call-and-Response Loop (Step 6)</div>
             </div>
 
+            <div class="action">Step 7: Sing With the Children & Step 8: Say the Whole Song Together.</div>
+            <div class="dialogue">"Now we sing it together, and I will guide you with my voice. Next, let's say the whole song in rhythm again, everyone at once."</div>
+
+            <div class="action">Step 9: Say the Song Silently & Step 10: Adult Sings, Children Mouth Words.</div>
+            <div class="dialogue">"This time, mouth the words silently with me. Watch my mouth carefully—this helps us with enunciation. Now, keep mouthing the words while you listen to me sing the melody alone."</div>
+
+            <div class="action">Step 11: Sing All Together & Step 12: Repeat as Needed.</div>
+            <div class="dialogue">"Let’s sing the whole song together now! We can repeat it until it feels like a musical friend we know well."</div>
+
+            <div class="action">Step 13: Name the Song Again.</div>
+            <div class="dialogue">"That was 'Black Socks'. Let's write that name on our 'Songs We Know' list so we can invite it back to our circle another time."</div>
+
             <div class="aside-box text-sm italic text-amber-900 leading-relaxed">
-                "The goal is one new song per week. Repetitive songs are best for younger children as they provide 'on-ramps' if they get lost. Keep a visible list of known songs to rotate them and prevent boredom."
+                "Note: This is a flexible framework. You don’t need every step every time—adjust for context. Aim to teach 1-2 songs per week. Repetitive lyrics are vital; they allow students who 'fall off' to jump back in easily. Keep the 'Songs We Know' list visible to ensure a rotating repertoire."
             </div>
         </section>
 
