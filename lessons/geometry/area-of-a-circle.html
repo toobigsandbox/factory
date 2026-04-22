@@ -51,8 +51,9 @@
         <section class="material-box">
             <h3 class="font-sans font-bold text-[10px] uppercase text-slate-400 mb-4">Material Analysis</h3>
             <ul class="text-xs space-y-2 text-slate-600 font-medium">
-                <li>• Large envelope with tickets, fraction bar, rectangles, and whole circles.</li>
-                <li>• Small envelope with divided circles (one blue, one yellow).</li>
+                <li>• Large envelope with tickets, fraction bar, and circles.</li>
+                <li>• Metal inset frames with divided circles (specifically 10-sector divisions).</li>
+                <li>• Blue and Yellow divided circles (each with 10 wedges).</li>
                 <li>• Writing material (paper/pencil).</li>
             </ul>
         </section>
@@ -60,44 +61,39 @@
         <section>
             <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
 
-            <div class="action">Open the large envelope. Lay out the materials and introduce the topic.</div>
-            <div class="dialogue">- "Today, we're going to learn about the area of a circle. I have several pieces here to help us explore."</div>
+            <div class="action">Lay out the materials. Show the two divided circles—one yellow and one blue—each in its frame.</div>
+            <div class="dialogue">- "Today, we're going to explore the area of a circle. We have these two circles to help us, each divided into ten equal pieces."</div>
 
-            <div class="action">Invite two children to build the blue and yellow divided circles.</div>
-            <div class="dialogue">- "Who would like to build our blue divided circle? And the yellow? Now that we have built them, what do we know? Are they equivalent? Yes, they are!"</div>
+            <div class="action">Invite the children to build the circles from the wedges. Confirm their equivalence.</div>
+            <div class="dialogue">- "Who would like to build the yellow circle? And the blue? What do we know about these? Are they the same size? Yes, they are equivalent."</div>
 
-            <div class="action">Reference the transformation of polygons (hexagon, triangle, trapezoid) into rectangles.</div>
-            <div class="dialogue">- "We transform shapes into rectangles because rectangles are easier to work with. I wonder if we can do the same with a circle."</div>
-
-            <div class="action">Take the pieces apart and arrange them in an interlocking line, alternating the points.</div>
-            <div class="dialogue">- "Watch as I line these up. It doesn't look much like a rectangle yet, does it? But look—if we flip these smaller segments at the end, we get a nice straight line."</div>
+            <div class="action">Remove the wedges and arrange them in an interlocking row on the mat.</div>
+            <div class="dialogue">- "I'm going to take these pieces and put them in a line. Look at how they fit together... one pointing up, one pointing down."</div>
 
             <div class="illustrate">
-                <svg width="600" height="200" viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Interlocking Blue and Yellow Wedges -->
-                    <g transform="translate(100, 40)">
-                        <!-- Yellow Wedges (Pointing Down) -->
-                        <path d="M0 80 L20 0 L40 80 L60 0 L80 80 L100 0 L120 80 L140 0 L160 80" stroke="#B45309" stroke-width="1" fill="#FEF3C7" />
-                        <!-- Blue Wedges (Pointing Up) -->
-                        <path d="M0 80 L20 160 L40 80 L60 160 L80 80 L100 160 L120 80 L140 160 L160 80" stroke="#1D4ED8" stroke-width="1" fill="#DBEAFE" />
+                <svg width="600" height="220" viewBox="0 0 600 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- 10 Blue and 10 Yellow Wedges Interlocking -->
+                    <g transform="translate(80, 50)">
+                        <!-- Yellow Wedges -->
+                        <path d="M0 80 L20 0 L40 80 L60 0 L80 80 L100 0 L120 80 L140 0 L160 80 L180 0 L200 80" stroke="#B45309" stroke-width="1.5" fill="#FEF3C7" />
+                        <!-- Blue Wedges -->
+                        <path d="M0 80 L20 160 L40 80 L60 160 L80 80 L100 160 L120 80 L140 160 L160 80 L180 160 L200 80" stroke="#1D4ED8" stroke-width="1.5" fill="#DBEAFE" />
                         
-                        <!-- End pieces flipped -->
-                        <rect x="-15" y="80" width="15" height="80" fill="#DBEAFE" stroke="#1D4ED8" />
-                        <rect x="160" y="0" width="15" height="80" fill="#FEF3C7" stroke="#B45309" />
-
-                        <!-- Dimensions -->
-                        <path d="M-25 0 V160" stroke="#94A3B8" stroke-width="1" stroke-dasharray="4 2"/>
-                        <text x="-45" y="85" font-family="Inter" font-size="10" fill="#64748B" font-weight="bold" transform="rotate(-90, -45, 85)">HEIGHT = r</text>
+                        <!-- Measurement Labels -->
+                        <path d="M-10 0 V160" stroke="#94A3B8" stroke-width="1" stroke-dasharray="3 3"/>
+                        <text x="-40" y="80" font-family="Inter" font-size="10" fill="#64748B" font-weight="bold" transform="rotate(-90, -40, 80)">HEIGHT = r</text>
                         
-                        <path d="M-15 175 H175" stroke="#94A3B8" stroke-width="1" stroke-dasharray="4 2"/>
-                        <text x="50" y="195" font-family="Inter" font-size="10" fill="#64748B" font-weight="bold">BASE = CIRCUMFERENCE (C)</text>
+                        <path d="M0 175 H200" stroke="#94A3B8" stroke-width="1" stroke-dasharray="3 3"/>
+                        <text x="60" y="195" font-family="Inter" font-size="10" fill="#64748B" font-weight="bold">BASE = ½ C + ½ C (Whole C)</text>
                     </g>
                 </svg>
+                <p class="text-[10px] text-slate-400 mt-2 font-bold uppercase tracking-widest text-center">Interlocking wedges from the blue and yellow 10-sector circles</p>
             </div>
 
-            <div class="dialogue">- "It's a wavy rectangle! If these segments got smaller and smaller, we would get closer to a perfect rectangle. What part of the circle gave us the base? The circumference! And the height? That's the radius!"</div>
+            <div class="dialogue">- "It looks like a wavy rectangle, doesn't it? If we had many, many more pieces—if our segments were as thin as hairs—this line would be perfectly straight. We can use what we know about rectangles to find the area of our circle."</div>
 
-            <div class="dialogue">- "Because we used pieces from TWO circles to build this rectangle, we have to divide our answer by two."</div>
+            <div class="action">Point to the base and the height. Explain that the rectangle uses pieces from both circles.</div>
+            <div class="dialogue">- "The base of this rectangle is the circumference of one whole circle. The height is the radius. Since we used pieces from two circles, we must divide our total area by two to find the area of just one circle."</div>
 
             <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mt-16 mb-8 border-b pb-2 italic">Derivation Summary</h2>
 
@@ -111,35 +107,35 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Starting Point</td>
+                        <td>Approximation</td>
                         <td>$\text{Area} \approx \text{Base} \times \text{Height}$</td>
-                        <td>Approximating circle segments as a rectangle.</td>
+                        <td>Transforming sectors into a rectangular form.</td>
                     </tr>
                     <tr>
-                        <td>Dimensions</td>
+                        <td>Identification</td>
                         <td>$\text{Base} = C, \text{Height} = r$</td>
-                        <td>Base is the total circumference of the circle.</td>
+                        <td>The base equals the total circumference.</td>
                     </tr>
                     <tr>
-                        <td>Two-Circle Correction</td>
+                        <td>Two-Circle Adjustment</td>
                         <td>$\frac{C \times r}{2}$</td>
-                        <td>Divided by 2 because the rectangle represents two circles.</td>
+                        <td>The rectangle represents two circles (Blue + Yellow).</td>
                     </tr>
                     <tr>
-                        <td>Substitution</td>
+                        <td>Algebraic Substitution</td>
                         <td>$\frac{2\pi r \times r}{2}$</td>
-                        <td>Since $C = 2\pi r$, we substitute it into the formula.</td>
+                        <td>Substitute $C = 2\pi r$.</td>
                     </tr>
                     <tr>
                         <td>Final Formula</td>
                         <td>$\pi r^2$</td>
-                        <td>The 2s cancel out, leaving the standard formula.</td>
+                        <td>Cancel the 2s to find the area of a single circle.</td>
                     </tr>
                 </tbody>
             </table>
 
             <div class="aside-box">
-                "While the concept $A = \frac{C \times r}{2}$ is our sensorial starting point, the traditional formula $A = \pi r^2$ is preferred for its mathematical simplicity and universality. Both are correct, but the latter is what the child will use most often in future work."
+                "The 10-sector metal inset is the perfect starting point for the reasoning mind. It is large enough to handle and small enough to see the 'wavy' reality before the abstraction of calculus (infinite segments) takes over. Always link the base back to the rolling circumference work they have previously completed."
             </div>
         </section>
 
