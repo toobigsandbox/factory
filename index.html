@@ -45,59 +45,37 @@
         const REPO_DATA = {
             "Geography": { 
                 color: "bg-cyan-500", 
-                lessons: ["God With No Hands", "Earth as Sphere", "Sun and Earth", "Protection Atmosphere", "Temperature Zones", "Work of Air", "Work of Water"] 
+                lessons: ["God With No Hands", "Earth as Sphere", "Sun and Earth", "Protection Atmosphere", "Temperature Zones", "Work of Air", "Work of Water", "Rotation and Consequences", "Time Zone Chart", "Economic Geography", "Attraction and Gravity"] 
             },
             "Geometry": { 
                 color: "bg-emerald-500", 
                 lessons: [
-                    "Nomenclature of Solids", 
-                    "Building Volume Cubes", 
-                    "Visualizing Marked Prisms", 
-                    "Three Dimensions Volume",
-                    "Volume Rectangular Prism",
-                    "Triangular Prisms",
-                    "Rhombic Prisms",
-                    "Hexagonal Prisms",
-                    "Solids of Rotation",
-                    "Volume Cylinder Cone",
-                    "Volume of Pyramids",
-                    "Archimedes Method",
-                    "Surface Area of Solids",
-                    "Polyhedrons",
-                    "Area of a Circle"
+                    "Nomenclature of Solids", "Building Volume Cubes", "Visualizing Marked Prisms", "Three Dimensions Volume", "Volume Rectangular Prism", "Triangular Prisms", "Rhombic Prisms", "Hexagonal Prisms", "Solids of Rotation", "Volume Cylinder Cone", "Volume of Pyramids", "Archimedes Method", "Surface Area of Solids", "Polyhedrons", "Concept of Area", "Deriving Area Formulas", "Pythagoras Plates", "Concept of Lines", "Position of Two Lines", "Intersection of Two Lines", "Angles Intro", "Relationships of Angles", "Polygons Intro", "Parts of Polygon", "Regular Polygons", "Circle Intro", "Parts of Circle", "Relative Position Two Circles", "Circumference and Pi"
                 ] 
             },
             "Math": { 
                 color: "bg-blue-600", 
-                lessons: [
-                    "Number Bases Conversion", 
-                    "Other Number Bases", 
-                    "Conversion One Base to Another", 
-                    "Number Base Resources", 
-                    "Decimal Fractions I", 
-                    "Concept and Notation of Square Root",
-                    "Extracting a Square Root with the Square Root Board (≤ 225)"
-                ] 
+                lessons: ["Number Bases Conversion", "Other Number Bases", "Conversion One Base to Another", "Number Base Resources", "Decimal Fractions Intro", "Symbol Linked to Quantity", "Formation and Reading Quantities", "Decimal Board Operations", "Decimal Checkerboard", "Division Unit Divisor", "Multiplication by Decimal", "Passing One Square to Another", "Algebra Intro", "Balancing Equations", "Solving for an Unknown", "Word Problems", "Conversion", "Percentage", "Centesimal Frame", "Rounding Decimals"] 
             },
             "Biology": { 
                 color: "bg-green-600", 
-                lessons: ["Coming of Life", "Plants Story", "Needs of Plant", "Scientific Classification", "The Great River"] 
+                lessons: ["Coming of Life", "Plants Story", "Needs of Plant", "Scientific Classification", "The Great River", "Leaf Function", "Stomata", "Oxygen", "Leaf Parts", "Varieties of Leaves", "Root Function", "Root Parts", "Root Varieties", "Stem Function", "Stem Parts", "Flower Parts", "Pollination", "Seed Dispersal"] 
             },
             "History": { 
                 color: "bg-stone-800", 
-                lessons: ["The Black Strip", "Coming of Human Beings", "Hand Timeline", "Clock of Eras", "Fundamental Needs"] 
+                lessons: ["The Black Strip", "Coming of Human Beings", "Hand Timeline", "Clock of Eras", "Fundamental Needs", "History Timelines", "River Civilizations", "Early Americas"] 
             },
             "Language": { 
                 color: "bg-orange-600", 
-                lessons: ["Written Language", "Grammar Boxes", "Logical Analysis", "Word Study"] 
+                lessons: ["Written Language", "Grammar Boxes", "Logical Analysis Simple", "Logical Analysis Compound", "Logical Analysis Complex", "Degrees of Dependence", "Word Study", "Style", "Spelling Rules"] 
             },
             "Music": { 
                 color: "bg-indigo-600", 
-                lessons: ["Singing with Scale", "Rhythm Patterns", "Tone Bars"] 
+                lessons: ["Intro to Music", "Intro to Singing", "Steps Teaching Song", "Singing with Scale", "Creativity with Lyrics", "Singing in Elementary", "Intro to Listening", "Listening Games", "Group Activity Rules", "Movement for Control", "Free Movement", "Accents", "Dynamics", "Tempo", "Tone Bars Intro", "Naming and Notation", "Degrees of Scale", "Intervals", "Key Signatures", "Transposition"] 
             },
             "Theory": { 
                 color: "bg-rose-500", 
-                lessons: ["Four Planes", "Cosmic Education", "Going Out", "Observation", "Freedom & Responsibility"] 
+                lessons: ["Four Planes", "Cosmic Education", "Imagination", "Great Stories", "Going Out", "Observation", "Freedom and Responsibility", "Prepared Environment", "Record Keeping", "Parent Communication"] 
             }
         };
 
@@ -124,8 +102,6 @@
                 const lessonsHtml = data.lessons.map(lesson => {
                     const id = `${title.toLowerCase()}-${lesson.replace(/\s+/g, '-').toLowerCase()}`;
                     const state = progress[id] || 'pending';
-                    
-                    // Specific path normalization
                     const cleanName = lesson.replace(/'/g, '').replace(/\s+/g, '-').toLowerCase();
                     const path = `./lessons/${title.toLowerCase()}/${cleanName}.html`;
                     
