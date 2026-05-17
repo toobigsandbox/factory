@@ -64,7 +64,8 @@
                     "Archimedes Method",
                     "Surface Area of Solids",
                     "Polyhedrons",
-                    "Area with Iron Material"
+                    "Area with Iron Material",
+                    "Euclids Plate Sensorial"
                 ] 
             },
             "Math": { 
@@ -117,7 +118,7 @@
                     const id = `${title.toLowerCase()}-${lesson.replace(/\s+/g, '-').toLowerCase()}`;
                     const state = progress[id] || 'pending';
                     
-                    // Specific path normalization
+                    // Specific path normalization to match direct lessons folder setup
                     const cleanName = lesson.replace(/'/g, '').replace(/\s+/g, '-').toLowerCase();
                     const path = `./lessons/${title.toLowerCase()}/${cleanName}.html`;
                     
