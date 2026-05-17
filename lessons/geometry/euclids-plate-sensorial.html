@@ -44,7 +44,7 @@
 
         <section class="material-box">
             <h3 class="font-sans font-bold text-[10px] uppercase text-slate-400 mb-4">Material Analysis</h3>
-            <p class="text-sm text-slate-700 italic">Euclid's Plate: A structural frame featuring a central inset space for a white right triangle, flanked by a large red square on the hypotenuse, two adjacent red rectangles, a blue square on the vertical leg, a yellow square on the horizontal leg, and custom matching blue and yellow equivalent parallelograms.</p>
+            <p class="text-sm text-slate-700 italic">Euclid's Plate: A structural frame featuring a central inset space for a white right triangle, flanked by a large red square on the hypotenuse (divided into two rectangles), a blue square on the vertical leg, a yellow square on the horizontal leg, and custom matching blue and yellow equivalent parallelograms stored in slide tracks on the left side of the board.</p>
         </section>
 
         <section class="mb-12 text-lg grid grid-cols-1 gap-8 bg-slate-50 p-6 rounded-2xl border border-slate-100">
@@ -114,46 +114,80 @@
             <div class="dialogue">- "You might like to try it."</div>
 
             <div class="illustrate">
-                <svg width="450" height="300" viewBox="0 0 450 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Central Right-Angled Triangle -->
-                    <polygon points="170,120 230,120 170,170" fill="#FFFFFF" stroke="#64748B" stroke-width="2"/>
-                    <text x="180" y="135" font-family="Inter" font-size="8" fill="#475569">White Triangle</text>
+                <svg width="550" height="350" viewBox="0 0 550 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Forest Green Plate Frame Background -->
+                    <rect x="10" y="10" width="530" height="330" rx="16" fill="#15803D" stroke="#166534" stroke-width="4"/>
+                    
+                    <!-- Slide tracks on the left -->
+                    <rect x="25" y="30" width="40" height="290" rx="6" fill="#166534" stroke="#14532D" stroke-width="2"/>
+                    <rect x="75" y="30" width="40" height="290" rx="6" fill="#166534" stroke="#14532D" stroke-width="2"/>
+                    
+                    <!-- Blue Parallelogram in left track (Bottom) -->
+                    <polygon points="30,280 60,280 50,230 20,230" fill="#2563EB" stroke="#1D4ED8" stroke-width="1.5"/>
+                    <text x="25" y="220" font-family="Inter" font-size="7" fill="#93C5FD" font-weight="bold">BLUE PAR</text>
+
+                    <!-- Yellow Parallelogram in left track (Middle) -->
+                    <polygon points="80,180 110,180 95,130 65,130" fill="#FBBF24" stroke="#D97706" stroke-width="1.5"/>
+                    <text x="73" y="120" font-family="Inter" font-size="7" fill="#FDE68A" font-weight="bold">YEL PAR</text>
+
+                    <!-- White Right-Angled Triangle in Central-Right -->
+                    <!-- C = (280, 150) [Right Angle at top-left of red area] -->
+                    <!-- CA (Vertical Leg) = 60px down to (280, 210) -->
+                    <!-- CB (Horizontal Leg) = 80px right to (360, 150) -->
+                    <!-- Hypotenuse AB is from (280, 210) to (360, 150) -->
+                    <polygon points="280,150 360,150 280,210" fill="#FFFFFF" stroke="#475569" stroke-width="2"/>
+                    <text x="290" y="170" font-family="Inter" font-size="8" fill="#475569">White Triangle</text>
 
                     <!-- Blue Square on Vertical Leg (AC) -->
-                    <rect x="120" y="120" width="50" height="50" fill="#DBEAFE" stroke="#3B82F6" stroke-width="2" stroke-dasharray="2 2"/>
-                    <text x="125" y="150" font-family="Inter" font-size="8" fill="#1E3A8A" font-weight="bold">BLUE SQ</text>
+                    <!-- Left of vertical leg (280, 150) to (280, 210) -->
+                    <rect x="220" y="150" width="60" height="60" fill="#2563EB" stroke="#1D4ED8" stroke-width="2"/>
+                    <text x="225" y="185" font-family="Inter" font-size="8" fill="#FFFFFF" font-weight="bold">BLUE SQ</text>
 
-                    <!-- Yellow Square on Horizontal Leg (AB) -->
-                    <rect x="170" y="60" width="60" height="60" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2" stroke-dasharray="2 2"/>
-                    <text x="180" y="95" font-family="Inter" font-size="8" fill="#78350F" font-weight="bold">YELLOW SQ</text>
+                    <!-- Yellow Square on Horizontal Leg (CB) -->
+                    <!-- Above horizontal leg (280, 150) to (360, 150) -->
+                    <rect x="280" y="70" width="80" height="80" fill="#FBBF24" stroke="#D97706" stroke-width="2"/>
+                    <text x="295" y="115" font-family="Inter" font-size="8" fill="#78350F" font-weight="bold">YELLOW SQ</text>
 
-                    <!-- Red Square on Hypotenuse (BC) -->
-                    <polygon points="230,120 170,170 219,229 279,179" fill="#FEE2E2" stroke="#EF4444" stroke-width="2"/>
-                    <text x="205" y="180" font-family="Inter" font-size="9" fill="#991B1B" font-weight="bold" transform="rotate(40 205 180)">RED SQ (Hypotenuse)</text>
+                    <!-- Red Square on Hypotenuse (AB) -->
+                    <!-- Slanted out from (280, 210) and (360, 150) -->
+                    <!-- Formed by vectors (80, -60) and perpendicular (60, 80) -->
+                    <!-- Vertices: A(280,210), B(360,150), B'(420,230), A'(340,290) -->
+                    <!-- Divided into two red rectangles by altitude line from (308.8, 188.4) to (368.8, 268.4) -->
+                    
+                    <!-- Left Red Rectangle (congruent to projection of blue square) -->
+                    <polygon points="280,210 308.8,188.4 368.8,268.4 340,290" fill="#EF4444" stroke="#B91C1C" stroke-width="2"/>
+                    
+                    <!-- Right Red Rectangle (congruent to projection of yellow square) -->
+                    <polygon points="308.8,188.4 360,150 420,230 368.8,268.4" fill="#F97316" stroke="#C2410C" stroke-width="2"/>
+                    
+                    <text x="325" y="245" font-family="Inter" font-size="8" fill="#FFFFFF" font-weight="bold" transform="rotate(37 325 245)">RED RECT (L)</text>
+                    <text x="365" y="215" font-family="Inter" font-size="8" fill="#FFFFFF" font-weight="bold" transform="rotate(37 365 215)">RED RECT (R)</text>
 
                     <!-- Translational Arrows showing Equivalences -->
-                    <!-- Blue Sq to Blue Parallelogram -->
-                    <path d="M100,145 Q150,220 200,205" stroke="#3B82F6" stroke-width="1.5" stroke-dasharray="4 2" marker-end="url(#blue-arrow)"/>
-                    <!-- Yellow Sq to Yellow Parallelogram -->
-                    <path d="M240,80 Q270,140 240,185" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="4 2" marker-end="url(#yellow-arrow)"/>
+                    <!-- Blue Sq to Left Red Rectangle -->
+                    <path d="M220,210 Q220,260 290,265" stroke="#60A5FA" stroke-width="2" stroke-dasharray="4 2" marker-end="url(#blue-arrow)"/>
+                    
+                    <!-- Yellow Sq to Right Red Rectangle -->
+                    <path d="M360,90 Q440,110 395,200" stroke="#FBBF24" stroke-width="2" stroke-dasharray="4 2" marker-end="url(#yellow-arrow)"/>
 
                     <defs>
                         <marker id="blue-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
-                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#3B82F6" />
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#60A5FA" />
                         </marker>
                         <marker id="yellow-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
-                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#F59E0B" />
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#FBBF24" />
                         </marker>
                     </defs>
 
-                    <!-- Hand-drawn style stick figure -->
-                    <g transform="translate(360, 180)">
-                        <circle cx="15" cy="15" r="10" stroke="#94A3B8" stroke-width="1.5" fill="none"/>
-                        <path d="M11 17 Q15 21 19 17" stroke="#94A3B8" stroke-width="1.5" fill="none"/>
-                        <path d="M15 25 L15 55 M15 35 L5 25 M15 35 L25 25 M15 55 L5 75 M15 55 L25 75" stroke="#94A3B8" stroke-width="1.5" fill="none"/>
+                    <!-- Interactive Guide/Child element sketch -->
+                    <g transform="translate(470, 40)">
+                        <circle cx="15" cy="15" r="10" stroke="#E2E8F0" stroke-width="1.5" fill="none"/>
+                        <path d="M11 17 Q15 21 19 17" stroke="#E2E8F0" stroke-width="1.5" fill="none"/>
+                        <path d="M15 25 L15 55 M15 35 L5 25 M15 35 L25 25 M15 55 L5 75 M15 55 L25 75" stroke="#E2E8F0" stroke-width="1.5" fill="none"/>
+                        <text x="-15" y="85" font-family="Inter" font-size="7" fill="#94A3B8" font-weight="bold">Color Me!</text>
                     </g>
                 </svg>
-                <div class="text-[10px] text-slate-400 mt-2 font-bold uppercase tracking-widest text-center">Fig 1.2: Sensorial equivalence flow showing individual translation properties</div>
+                <div class="text-[10px] text-slate-400 mt-2 font-bold uppercase tracking-widest text-center">Fig 1.2: Euclid's Plate with precise layout, sliding tracks, and color coding</div>
             </div>
 
             <div class="aside-box text-sm italic text-amber-900 leading-relaxed">
