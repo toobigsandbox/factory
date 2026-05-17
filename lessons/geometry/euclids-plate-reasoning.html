@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson: Euclid's Plate Reasoning Level</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Crimson Pro', serif; background: #fdfbf7; line-height: 1.7; }
+        .page { background: white; max-width: 850px; margin: 40px auto; padding: 80px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 32px; border: 1px solid #f1f5f9; }
+        .action { font-family: 'Inter', sans-serif; font-weight: 700; margin-top: 24px; color: #1e293b; font-size: 0.95rem; }
+        .dialogue { margin-left: 40px; font-style: italic; color: #475569; position: relative; margin-bottom: 12px; }
+        .dialogue::before { content: "-"; position: absolute; left: -20px; color: #cbd5e1; font-style: normal; }
+        .material-box { background: #f8fafc; border-radius: 20px; border: 1px solid #e2e8f0; padding: 30px; margin-bottom: 40px; }
+        .aside-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 25px; margin: 40px 0; border-radius: 0 15px 15px 0; position: relative; }
+        .aside-box::after { content: "Instructor's Aside"; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+        .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; }
+        @media print {
+            body { background: white; margin: 0; }
+            .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; }
+            .no-print { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Utility Bar: Back and Print (Vanishes on PDF) -->
+    <nav class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <a href="../../index.html" class="text-slate-400 hover:text-amber-600 transition-colors font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
+            <i data-lucide="arrow-left" size="14"></i> Back to Dashboard
+        </a>
+        <button onclick="window.print()" class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:bg-amber-700 transition-all flex items-center gap-2">
+            <i data-lucide="printer" size="14"></i> Print to PDF
+        </button>
+    </nav>
+
+    <article class="page">
+        <header class="mb-12 border-b-2 border-amber-50 pb-8">
+            <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Geometry // Further Explorations with Equivalence</p>
+            <h1 class="text-5xl font-bold text-slate-900 leading-tight">Euclid's Plate: Reasoning Level</h1>
+            <p class="mt-4 text-slate-400 italic font-sans text-sm uppercase tracking-widest font-bold">Guide: Elim Lee // AMI Elementary Submission</p>
+        </header>
+
+        <section class="material-box">
+            <h3 class="font-sans font-bold text-[10px] uppercase text-slate-400 mb-4">Material Analysis</h3>
+            <p class="text-sm text-slate-700 italic">Euclid's Plate (Reasoning Board): A forest-green wooden frame with a central right-angled triangle slot. It features sliding tracks at the top and bottom containing yellow and blue equivalent parallelograms, an empty slot for the blue square on the short leg, a yellow square inset on the long leg, and a red square built on the hypotenuse that is divided into two distinct red rectangles by extending the triangle's height line.</p>
+        </section>
+
+        <section class="mb-12 text-lg grid grid-cols-1 gap-8 bg-slate-50 p-6 rounded-2xl border border-slate-100">
+            <div>
+                <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Purpose</h3>
+                <p class="text-sm font-medium">To guide the child’s reasoning mind through Euclid’s theorem (the projection of the leg onto the hypotenuse) by proving that each leg's square is equivalent to the corresponding rectangle built from the hypotenuse and the projection of that leg.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation I: Height Extension and Projection</h2>
+            
+            <div class="action">Gather the children around Euclid's Plate. Trace the white central right-angled triangle.</div>
+            <div class="dialogue">- "We have looked at this plate before, and we have talked about it in reference to Pythagoras. We also talked a little bit about the story of Euclid and his important contributions to geometry."</div>
+            
+            <div class="action">Trace a line with your finger starting from the right-angle vertex down perpendicular to the hypotenuse, cutting straight through the red square below.</div>
+            <div class="dialogue">- "Euclid said that if you take the height of a right angle triangle and extend it down, you will cut through the square built on the hypotenuse."</div>
+            <div class="dialogue">- "This is our height here. If we imagine dropping a line all the way down from this vertex to the base of the square, we can see our height. If we take the height from this vertex and extend it to the base of the triangle, that is our height, and if we continue extending it down, we divide the square into two rectangles."</div>
+            <div class="dialogue">- "Euclid went on to say that this rectangle would be equivalent to the square on the shorter leg of the right angle triangle, and this rectangle would be equivalent to the square on the longer leg of the right angle triangle."</div>
+            <div class="dialogue">- "We are going to use our parallelograms to see if we can understand what he was describing. To do this, we need to remember something about parallelograms and rectangles. A rectangle and a parallelogram are equivalent if they have the same base and the same height. A square is simply a very special rectangle."</div>
+
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mt-16 mb-8 border-b pb-2 italic">Presentation II: Equivalence of Yellow Square and Yellow Parallelogram</h2>
+            
+            <div class="action">Slide the yellow parallelogram out of its top track. Place it side-by-side with the yellow square built on the triangle's long leg.</div>
+            <div class="dialogue">- "Let’s start with our yellow square and our yellow parallelogram. The first thing we want to check is whether the bases are the same length. They are. Here is my base, and here is my base. They are the same length. We can see that by aligning the pieces."</div>
+            
+            <div class="action">Orient the board sideways to trace the height. Slide the yellow square into the adjacent empty testing channel, followed by the yellow parallelogram.</div>
+            <div class="dialogue">- "Now let’s compare the heights. I will turn the frame and slide these over. We know the bases are equivalent, and now we are going to check whether the heights are equivalent."</div>
+            <div class="dialogue">- "I place the square here. The square fits exactly into this rectangle and has the same height. Now I place the parallelogram. It also fits exactly and has the same height. We know that this yellow square and this yellow parallelogram have the same base and the same height. They are equivalent."</div>
+
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mt-16 mb-8 border-b pb-2 italic">Presentation III: Connecting to the Red Rectangle (Hypotenuse Projection)</h2>
+            
+            <div class="action">Reset the yellow square back into the leg slot. Compare the yellow parallelogram with the corresponding red rectangle inside the hypotenuse square.</div>
+            <div class="dialogue">- "Now we are going to look at the red rectangle and the yellow parallelogram. I will put the square back and turn the frame so we still have a good workspace. We will look at the base of the parallelogram and the base of the rectangle. We check to see whether the bases are the same. They are. This base is equal to this base, so the bases are equivalent."</div>
+            
+            <div class="action">Slide the red rectangle into the testing channel, then slide the yellow parallelogram in next to it. Observe their height alignment.</div>
+            <div class="dialogue">- "Now we check the height. I place the red rectangle first. Its height matches this rectangle. Then I place the parallelogram. The parallelogram, oriented this way, has exactly the same height."</div>
+            <div class="dialogue">- "Therefore, the red rectangle is equivalent to the yellow parallelogram. Since we already proved that the yellow parallelogram is equivalent to the yellow square, we can say that the red rectangle is equivalent to the yellow square. All three pieces are equivalent to one another."</div>
+
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mt-16 mb-8 border-b pb-2 italic">Presentation IV: Equivalence of the Blue Square</h2>
+
+            <div class="action">Retrieve the blue square (from its side storage) and the blue parallelogram from the bottom sliding track. Align their bases.</div>
+            <div class="dialogue">- "Now let’s return these to the plate and look at the blue square and the blue parallelogram. First, we check whether the bases are the same. They are. It may not have appeared that way at first, but once we align them, we can see that the bases are equal."</div>
+
+            <div class="action">Slide the blue square and the blue parallelogram into the testing slot to verify their identical heights.</div>
+            <div class="dialogue">- "Next, we check the height. I turn the frame and place the blue square. It has the same height as this rectangle. Then I place the parallelogram. It also has the same height. The height of the square and the height of the parallelogram are exactly the same."</div>
+
+            <div class="action">Compare the blue parallelogram to the other red rectangle division of the hypotenuse square.</div>
+            <div class="dialogue">- "Now we will compare the blue parallelogram with the red rectangle. First, we check the base. The base of the red rectangle and the base of the blue parallelogram are equal. Now we check the height. I slide these over and use the rectangle to check the height."</div>
+            <div class="dialogue">- "I place the red rectangle first. Its height matches this rectangle. Then I place the parallelogram. Its height, when oriented this way, is the same as the red rectangle."</div>
+            <div class="dialogue">- "If two figures have the same base and the same height, they are equivalent. Therefore, the red rectangle is equivalent to the blue parallelogram. We also know that the blue square is equivalent to the blue parallelogram. So the red rectangle is equivalent to the blue parallelogram, which is equivalent to the blue square. We can say that the red rectangle is equivalent to the blue square."</div>
+
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mt-16 mb-8 border-b pb-2 italic">Presentation V: Geometrical Synthesis & Projections</h2>
+
+            <div class="action">Point to the red square as a whole, highlighting the dividing height projection line.</div>
+            <div class="dialogue">- "When we look at the inset in the middle, our red square is made up of the two rectangles we have been discussing."</div>
+            <div class="dialogue">- "The length of the longest side of our smaller red rectangle is the same as the length of the hypotenuse, because this is a square. Our hypotenuse forms one side, and all the sides of a square are equal. So the long side of our smaller red rectangle is equal to the length of the hypotenuse."</div>
+            
+            <div class="action">Perform a sliding gesture from the short leg of the triangle down onto the hypotenuse plane.</div>
+            <div class="dialogue">- "In geometry, there is a way of thinking about the length of the smaller side, the small leg. To think in that way, we use our imagination."</div>
+            <div class="dialogue">- "If we look at this leg of the right angle triangle and imagine sliding it down, what we would create is equivalent to the short side of the smaller red rectangle. That is called the projection of the leg. If we slid this leg down, we would create this short side."</div>
+            <div class="dialogue">- "The same is true for the other leg. If we slid that leg down, we would create the short side of the larger red rectangle."</div>
+            <div class="dialogue">- "We know that one side of the larger red rectangle is equal to the hypotenuse, and the short side is the projection of that leg onto the hypotenuse."</div>
+            <div class="dialogue">- "This demonstrates what Euclid said: in a right angled triangle, the square on one leg is equivalent to the rectangle built from the hypotenuse and the projection of that leg onto the hypotenuse."</div>
+
+            <div class="illustrate">
+                <svg width="450" height="550" viewBox="0 0 400 550" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Forest Green Plate Frame Background -->
+                    <rect x="10" y="10" width="380" height="530" rx="16" fill="#15803D" stroke="#166534" stroke-width="4"/>
+                    
+                    <!-- Top Track: Yellow Parallelogram Slot -->
+                    <rect x="40" y="30" width="320" height="50" rx="4" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="2"/>
+                    <polygon points="120,70 220,70 250,40 150,40" fill="#FBBF24" stroke="#D97706" stroke-width="1.5"/>
+                    <text x="160" y="60" font-family="Inter" font-size="8" fill="#78350F" font-weight="bold">YEL PARALLELOGRAM</text>
+
+                    <!-- Central Right Triangle (Right angle at C (260, 190), Hypotenuse vertical on left) -->
+                    <!-- A = (200, 130), B = (200, 250), C = (260, 190) -->
+                    <polygon points="200,130 260,190 200,250" fill="#FFFFFF" stroke="#475569" stroke-width="2"/>
+                    <text x="210" y="195" font-family="Inter" font-size="8" fill="#475569">White Triangle</text>
+
+                    <!-- Red Square built on vertical Hypotenuse (AB) split horizontally at y=190 -->
+                    <!-- Top Red Rectangle -->
+                    <rect x="80" y="130" width="120" height="60" fill="#EF4444" stroke="#B91C1C" stroke-width="2"/>
+                    <!-- Bottom Red Rectangle -->
+                    <rect x="80" y="190" width="120" height="60" fill="#EF4444" stroke="#B91C1C" stroke-width="2"/>
+                    <text x="110" y="165" font-family="Inter" font-size="8" fill="#FFFFFF" font-weight="bold">RED RECT 1</text>
+                    <text x="110" y="225" font-family="Inter" font-size="8" fill="#FFFFFF" font-weight="bold">RED RECT 2</text>
+
+                    <!-- Square on Leg AC (White Empty Recessed Slot) -->
+                    <polygon points="200,130 260,70 320,130 260,190" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1.5"/>
+                    <text x="240" y="130" font-family="Inter" font-size="7" fill="#64748B">Empty Blue Slot</text>
+
+                    <!-- Square on Leg BC (Yellow Square) -->
+                    <polygon points="260,190 320,250 260,310 200,250" fill="#FBBF24" stroke="#D97706" stroke-width="2"/>
+                    <text x="240" y="255" font-family="Inter" font-size="8" fill="#78350F" font-weight="bold">YELLOW SQ</text>
+
+                    <!-- Middle-Lower: Empty White Slot -->
+                    <rect x="40" y="360" width="320" height="40" rx="4" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="2"/>
+                    <text x="150" y="385" font-family="Inter" font-size="8" fill="#64748B">Height Testing Slot</text>
+
+                    <!-- Bottom Track: Blue Parallelogram Slot -->
+                    <rect x="40" y="420" width="320" height="50" rx="4" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="2"/>
+                    <polygon points="100,460 200,460 230,430 130,430" fill="#2563EB" stroke="#1D4ED8" stroke-width="1.5"/>
+                    <text x="140" y="450" font-family="Inter" font-size="8" fill="#FFFFFF" font-weight="bold">BLUE PARALLELOGRAM</text>
+
+                    <!-- Analytical Height Projection Dash Line -->
+                    <line x1="260" y1="190" x2="80" y2="190" stroke="#EF4444" stroke-width="2" stroke-dasharray="4 2"/>
+
+                    <!-- Child Sketch Guide -->
+                    <g transform="translate(340, 480)">
+                        <circle cx="10" cy="10" r="8" stroke="#E2E8F0" stroke-width="1.5" fill="none"/>
+                        <path d="M10 18 L10 35 M10 23 L25 28 M10 35 L0 50 M10 35 L20 50" stroke="#E2E8F0" stroke-width="1.5" fill="none"/>
+                    </g>
+                </svg>
+                <div class="text-[10px] text-slate-400 mt-2 font-bold uppercase tracking-widest text-center">Fig 1.3: Euclid's Plate (Reasoning Level) showing height projection line dividing the hypotenuse square</div>
+            </div>
+
+            <div class="aside-box text-sm italic text-amber-900 leading-relaxed">
+                "Euclid’s plate is an extension of what we know about Pythagoras. Euclid had a number of theorems. In the presentations we just did, we are not proving the theorems formally. What we are doing is a sensorial exploration. To prove a theorem requires precise mathematical calculation."
+                <br><br>
+                "All of this work is based in logic. It is food for the reasoning mind. The work we did with Euclid’s theorem and the Euclid plate is a syllogism. A syllogism means that if $A = B$ and $B = C$, then $A = C$."
+            </div>
+
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-slate-400 mt-16 mb-4 border-b pb-2">Adult Theoretical Guide (For Teacher Understanding Only)</h2>
+            <p class="text-sm text-slate-600 leading-relaxed italic mb-6">
+                If we label one leg of the right triangle as $A$, the other leg as $B$, and the hypotenuse as $C$. Then, let $P$ represent the projection segment of leg $A$ onto the hypotenuse, and let $Q$ represent the projection segment of leg $B$ onto the hypotenuse. We have mathematically divided the hypotenuse into two segments such that $C = P + Q$.
+                <br><br>
+                Euclid’s projection theorem proves that:
+                $$A^2 = P \times C$$
+                $$B^2 = Q \times C$$
+                This supports the logical reasoning that the square built on a leg ($A^2$ or $B^2$) is equivalent to the area of the rectangle formed by the hypotenuse ($C$) and the leg's projection segment ($P$ or $Q$).
+            </p>
+        </section>
+        
+        <footer class="mt-20 pt-8 border-t text-[10px] font-sans text-slate-300 uppercase tracking-widest text-center">
+            Elim Lee // Block 1: The Shape Shifters // AMI Elementary
+        </footer>
+
+    </article>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
