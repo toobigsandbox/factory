@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson: Euclid's Plate Sensorial Introduction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Crimson Pro', serif; background: #fdfbf7; line-height: 1.7; }
+        .page { background: white; max-width: 850px; margin: 40px auto; padding: 80px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 32px; border: 1px solid #f1f5f9; }
+        .action { font-family: 'Inter', sans-serif; font-weight: 700; margin-top: 24px; color: #1e293b; font-size: 0.95rem; }
+        .dialogue { margin-left: 40px; font-style: italic; color: #475569; position: relative; margin-bottom: 12px; }
+        .dialogue::before { content: "-"; position: absolute; left: -20px; color: #cbd5e1; font-style: normal; }
+        .material-box { background: #f8fafc; border-radius: 20px; border: 1px solid #e2e8f0; padding: 30px; margin-bottom: 40px; }
+        .aside-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 25px; margin: 40px 0; border-radius: 0 15px 15px 0; position: relative; }
+        .aside-box::after { content: "Instructor's Aside"; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+        .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; }
+        @media print {
+            body { background: white; margin: 0; }
+            .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; }
+            .no-print { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Utility Bar: Back and Print (Vanishes on PDF) -->
+    <nav class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <a href="../../index.html" class="text-slate-400 hover:text-amber-600 transition-colors font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
+            <i data-lucide="arrow-left" size="14"></i> Back to Dashboard
+        </a>
+        <button onclick="window.print()" class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:bg-amber-700 transition-all flex items-center gap-2">
+            <i data-lucide="printer" size="14"></i> Print to PDF
+        </button>
+    </nav>
+
+    <article class="page">
+        <header class="mb-12 border-b-2 border-amber-50 pb-8">
+            <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Geometry // Further Explorations with Equivalence</p>
+            <h1 class="text-5xl font-bold text-slate-900 leading-tight">Euclid's Plate: Sensorial Introduction</h1>
+            <p class="mt-4 text-slate-400 italic font-sans text-sm uppercase tracking-widest font-bold">Guide: Elim Lee // AMI Elementary Submission</p>
+        </header>
+
+        <section class="material-box">
+            <h3 class="font-sans font-bold text-[10px] uppercase text-slate-400 mb-4">Material Analysis</h3>
+            <p class="text-sm text-slate-700 italic">Euclid's Plate: A structural frame featuring a central inset space for a white right triangle, flanked by a large red square on the hypotenuse, two adjacent red rectangles, a blue square on the vertical leg, a yellow square on the horizontal leg, and custom matching blue and yellow equivalent parallelograms.</p>
+        </section>
+
+        <section class="mb-12 text-lg grid grid-cols-1 gap-8 bg-slate-50 p-6 rounded-2xl border border-slate-100">
+            <div>
+                <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Purpose</h3>
+                <p class="text-sm font-medium">To sensorially demonstrate equivalence of squares and parallelograms on Euclid's Plate, proving Pythagoras' Theorem through direct visual and physical manipulation.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation I: Historical Narrative</h2>
+            
+            <div class="action">Gather the children on the rug. Begin telling the story of Euclid's mathematical influence in a calm, narrative tone.</div>
+            <div class="dialogue">- "You might remember that we talked about Euclid when we heard the story of geometry, and you may remember that I mentioned that our former president, Abraham Lincoln, read Euclid’s book to train his own mind."</div>
+            <div class="dialogue">- "Hardly anything is really known about Euclid. We know that he lived around 300 BCE, but we do not know exactly when he was born or when he died, or much else about his life, other than that he wrote extensively about mathematics. He wrote about arithmetic, but he is most famous for writing about another branch of mathematics: geometry."</div>
+            <div class="dialogue">- "One of the things he is well known for is his book The Elements. You can still find that book in bookstores today. He wrote ten axioms in mathematics. An axiom is something that everyone simply accepts as being true. It is something that makes people ponder."</div>
+            <div class="dialogue">- "For example, Euclid said that if you have two points, there is only one straight line between them. You might like to think about that for a moment. Does it seem true?"</div>
+            <div class="dialogue">- "Euclid’s book was so influential that it was used as a geometry textbook until the 1600s CE. That is a very long time ago. Even today, people still study the book. The type of geometry we study is called Euclidean geometry. There are other types of geometry as well, but those are stories for another day."</div>
+
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mt-16 mb-8 border-b pb-2 italic">Presentation II: Introducing the Plate & First Equivalence Verification</h2>
+            
+            <div class="action">Place Euclid's Plate carefully onto the mat. Trace the square spaces surrounding the triangle.</div>
+            <div class="dialogue">- "Now let’s look at this plate. It looks a little familiar, especially here. It looks very much like our plate of Pythagoras. Let’s see if we can prove Pythagoras’ theorem here."</div>
+            <div class="dialogue">- "What does Pythagoras state? That the square built on one leg of a right triangle, added to the square built on the other leg, equals the square built on the hypotenuse."</div>
+            <div class="dialogue">- "Let’s see if we can show that using the parallelograms."</div>
+
+            <div class="action">Gently lift the two red rectangles surrounding the red hypotenuse square and set them aside. Slide the white triangle all the way down to the bottom of its niche.</div>
+            <div class="dialogue">- "The first thing I am going to do is remove the red rectangles. Then I will slide the white triangle down to the bottom, and I will move the parallelograms into this space."</div>
+
+            <div class="action">Pick up the blue and yellow parallelograms and arrange them in the space originally occupied by the red hypotenuse square.</div>
+            <div class="dialogue">- "I will move one here and the yellow one here."</div>
+            <div class="dialogue">- "What do you notice?"</div>
+            <div class="dialogue">- "You may notice that the red square is equal to the blue parallelogram plus the yellow parallelogram. They are equivalent. The blue parallelogram plus the yellow parallelogram equals the red square."</div>
+            <div class="dialogue">- "But that is not quite what we are asking, is it?"</div>
+
+            <div class="action">Carefully return the blue and yellow parallelograms to their side slots. Slide the white triangle back up to its native position, and place the red rectangles back in the bottom of the frame.</div>
+            <div class="dialogue">- "So I will remove the parallelograms and put them back. I will slide the white triangle back up and replace the red rectangles."</div>
+
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mt-16 mb-8 border-b pb-2 italic">Presentation III: Proving Individual Equivalent Relationships</h2>
+
+            <div class="action">Isolate the yellow square and the corresponding yellow parallelogram.</div>
+            <div class="dialogue">- "Now let’s focus on the yellow square and the yellow parallelogram. I will remove the yellow square. The yellow square took up this space right here."</div>
+
+            <div class="action">Remove the yellow square and lay it on the mat. Slide the white right triangle upwards into the empty space.</div>
+            <div class="dialogue">- "I am going to slide the white triangle up into that space. It is the same amount of space. I have not removed anything else."</div>
+
+            <div class="action">Take the yellow parallelogram and slide it into the empty space left behind by the shifted pieces.</div>
+            <div class="dialogue">- "Let’s see what happens. The yellow parallelogram fits right here. It takes up the same amount of space as the yellow square."</div>
+            <div class="dialogue">- "What can we say about the yellow square and the yellow parallelogram? They take up the same amount of space. Using a mathematical term, we say they are equivalent."</div>
+
+            <div class="action">Reset the yellow square, yellow parallelogram, and slide the white triangle back to its baseline position. Focus on the blue elements.</div>
+            <div class="dialogue">- "Now let’s look at the blue square and the blue parallelogram. Do they take up the same amount of space? It may not look like it at first, but let’s see what happens."</div>
+
+            <div class="action">Remove the blue square and place it on the mat. Slide the white triangle sideways into the blue square's native space.</div>
+            <div class="dialogue">- "I will remove the blue square and slide the triangle. I have not added anything. Now watch."</div>
+
+            <div class="action">Slide the equivalent blue parallelogram into the remaining open slot on the plate.</div>
+            <div class="dialogue">- "The blue parallelogram takes up the same amount of space as the blue square. What can we say about these two figures, the blue square and the blue parallelogram? We can say that they are equivalent."</div>
+
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mt-16 mb-8 border-b pb-2 italic">Presentation IV: Synthesis</h2>
+
+            <div class="action">Point sequentially to each segment of the plate to gather the final proofs together.</div>
+            <div class="dialogue">- "What we have seen is this: the red square is equivalent to the blue parallelogram plus the yellow parallelogram."</div>
+            <div class="dialogue">- "We have shown that the yellow square is equivalent to the yellow parallelogram, and that the blue square is equivalent to the blue parallelogram."</div>
+            <div class="dialogue">- "That means that the two parallelograms added together equal the red square, and that the two squares added together equal the red square. It is exactly what Pythagoras stated."</div>
+            <div class="dialogue">- "Here is the remarkable part: it does not matter how small or how large our right triangle is. You can still construct squares and parallelograms that are equivalent."</div>
+            <div class="dialogue">- "You might like to try it."</div>
+
+            <div class="illustrate">
+                <svg width="450" height="300" viewBox="0 0 450 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Central Right-Angled Triangle -->
+                    <polygon points="170,120 230,120 170,170" fill="#FFFFFF" stroke="#64748B" stroke-width="2"/>
+                    <text x="180" y="135" font-family="Inter" font-size="8" fill="#475569">White Triangle</text>
+
+                    <!-- Blue Square on Vertical Leg (AC) -->
+                    <rect x="120" y="120" width="50" height="50" fill="#DBEAFE" stroke="#3B82F6" stroke-width="2" stroke-dasharray="2 2"/>
+                    <text x="125" y="150" font-family="Inter" font-size="8" fill="#1E3A8A" font-weight="bold">BLUE SQ</text>
+
+                    <!-- Yellow Square on Horizontal Leg (AB) -->
+                    <rect x="170" y="60" width="60" height="60" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2" stroke-dasharray="2 2"/>
+                    <text x="180" y="95" font-family="Inter" font-size="8" fill="#78350F" font-weight="bold">YELLOW SQ</text>
+
+                    <!-- Red Square on Hypotenuse (BC) -->
+                    <polygon points="230,120 170,170 219,229 279,179" fill="#FEE2E2" stroke="#EF4444" stroke-width="2"/>
+                    <text x="205" y="180" font-family="Inter" font-size="9" fill="#991B1B" font-weight="bold" transform="rotate(40 205 180)">RED SQ (Hypotenuse)</text>
+
+                    <!-- Translational Arrows showing Equivalences -->
+                    <!-- Blue Sq to Blue Parallelogram -->
+                    <path d="M100,145 Q150,220 200,205" stroke="#3B82F6" stroke-width="1.5" stroke-dasharray="4 2" marker-end="url(#blue-arrow)"/>
+                    <!-- Yellow Sq to Yellow Parallelogram -->
+                    <path d="M240,80 Q270,140 240,185" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="4 2" marker-end="url(#yellow-arrow)"/>
+
+                    <defs>
+                        <marker id="blue-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#3B82F6" />
+                        </marker>
+                        <marker id="yellow-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#F59E0B" />
+                        </marker>
+                    </defs>
+
+                    <!-- Hand-drawn style stick figure -->
+                    <g transform="translate(360, 180)">
+                        <circle cx="15" cy="15" r="10" stroke="#94A3B8" stroke-width="1.5" fill="none"/>
+                        <path d="M11 17 Q15 21 19 17" stroke="#94A3B8" stroke-width="1.5" fill="none"/>
+                        <path d="M15 25 L15 55 M15 35 L5 25 M15 35 L25 25 M15 55 L5 75 M15 55 L25 75" stroke="#94A3B8" stroke-width="1.5" fill="none"/>
+                    </g>
+                </svg>
+                <div class="text-[10px] text-slate-400 mt-2 font-bold uppercase tracking-widest text-center">Fig 1.2: Sensorial equivalence flow showing individual translation properties</div>
+            </div>
+
+            <div class="aside-box text-sm italic text-amber-900 leading-relaxed">
+                "Ensure that children physically hold and slide the pieces for themselves. The transition of the white right-angled triangle is the magical physical moment that visually bridges the squares' areas to the parallelograms'. Keep the focus on direct, tactile experience."
+            </div>
+        </section>
+        
+        <footer class="mt-20 pt-8 border-t text-[10px] font-sans text-slate-300 uppercase tracking-widest text-center">
+            Elim Lee // Block 1: The Shape Shifters // AMI Elementary
+        </footer>
+
+    </article>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
