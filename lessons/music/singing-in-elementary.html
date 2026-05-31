@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lesson: Creativity with Lyrics</title>
+    <title>Lesson: Singing in the Elementary</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -17,53 +17,68 @@
         .aside-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 25px; margin: 40px 0; border-radius: 0 15px 15px 0; position: relative; }
         .aside-box::after { content: "Instructor's Aside"; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
         .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; }
+        .lyrics-box { font-family: 'Inter', sans-serif; background: #f1f5f9; padding: 20px; border-radius: 12px; font-size: 0.85rem; color: #334155; margin: 20px 0; border: 1px solid #cbd5e1; }
         @media print { body { background: white; margin: 0; } .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; } .no-print { display: none; } }
     </style>
 </head>
 <body>
-    <nav class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
-        <a href="../../index.html" class="text-slate-400 hover:text-amber-600 transition-colors font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
+
+    <div class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <a href="../../index.html" class="text-slate-400 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
             <i data-lucide="arrow-left" size="14"></i> Back to Dashboard
         </a>
         <button onclick="window.print()" class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:bg-amber-700 transition-all flex items-center gap-2">
-            <i data-lucide="printer" size="14"></i> Print to PDF
+            <i data-lucide="printer" size="16"></i> Print PDF
         </button>
-    </nav>
+    </div>
     
     <article class="page">
         <header class="mb-12 border-b-2 border-amber-50 pb-8">
-            <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Music // Creative Expression</p>
-            <h1 class="text-5xl font-bold text-slate-900 leading-tight">Creativity with Lyrics</h1>
+            <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Music // Repertoire</p>
+            <h1 class="text-5xl font-bold text-slate-900 leading-tight">Singing in the Elementary</h1>
             <p class="mt-4 text-slate-400 italic">Guide: Elim Lee // AMI Elementary Submission</p>
         </header>
 
         <section class="material-box">
             <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Purpose</h3>
-            <p class="text-sm font-medium italic text-slate-600">To encourage children to know that they can make up their own songs and that music is for exploration and play, not just perfection.</p>
+            <p class="text-sm font-medium italic text-slate-600">To broaden the musical repertoire and connect singing to the cultural, social, and emotional life of the community.</p>
         </section>
 
         <section>
             <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
 
-            <div class="action">Model the transformation of a known melody.</div>
-            <div class="dialogue">"We know the melody to 'Hot Cross Buns'. What if we changed the words to 'Cold Wet Dogs'? The melody stays, but the story changes."</div>
+            <div class="action">Discuss the breadth of genres available.</div>
+            <div class="dialogue">"We sing classical songs, rounds, folk songs from our area, and even silly songs. Music represents the cultures in our classroom and the world."</div>
 
-            <div class="action">Offer the 5 Paths of Lyrical Creativity.</div>
-            <div class="dialogue">"We can change words of familiar songs, play freely on tone bars to spark ideas, invite the whole group to rewrite a line, or even write lyrics to a melody with no words yet."</div>
+            <div class="action">Introduce a favorite "silly song" to break the tension of perfection.</div>
+            <div class="dialogue">"Elementary children often love humor. Let's sing 'Nobody Likes Me'—it's a beloved classic for this age group."</div>
+
+            <div class="lyrics-box">
+                <strong>Nobody Likes Me, Everybody Hates Me</strong><br><br>
+                Nobody likes me, everybody hates me,<br>
+                I guess I’ll go eat worms.<br>
+                Long thin slimy ones, short fat juicy ones,<br>
+                Itsy bitsy fuzzy wuzzy worms.<br>
+                Down goes the first one, down goes the second one,<br>
+                Oh how they wiggle and squirm!<br>
+                (Repeat with playful variations)
+            </div>
+
+            <div class="action">Connect songs to current events and lived experiences.</div>
+            <div class="dialogue">"If we are excited about a nature walk, we sing 'Down by the Creek' before we go. This deepens the connection between life and song."</div>
 
             <div class="illustrate">
                 <svg width="400" height="150" viewBox="0 0 400 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="200" cy="75" r="40" stroke="#F59E0B" stroke-width="2" stroke-dasharray="4 4"/>
-                    <text x="175" y="80" font-family="Inter" font-size="10" fill="#B45309" font-weight="bold">PLAY</text>
-                    <path d="M120 75 L160 75 M240 75 L280 75" stroke="#CBD5E1" stroke-width="1.5"/>
-                    <text x="70" y="80" font-family="Inter" font-size="8" fill="#94A3B8" font-weight="bold">KNOWN TUNE</text>
-                    <text x="290" y="80" font-family="Inter" font-size="8" fill="#94A3B8" font-weight="bold">NEW WORDS</text>
+                    <rect x="50" y="50" width="300" height="60" rx="10" stroke="#CBD5E1" stroke-width="1.5" fill="#F8FAFC"/>
+                    <text x="70" y="85" font-family="Inter" font-size="10" fill="#64748B" font-weight="bold">CLASSICAL // FOLK // SILLY // POPULAR // ROUNDS</text>
+                    <path d="M200 110 L200 130" stroke="#F59E0B" stroke-width="2"/>
+                    <circle cx="200" cy="135" r="4" fill="#F59E0B"/>
                 </svg>
-                <div class="text-[10px] uppercase font-bold text-slate-400 tracking-widest mt-2">The creative bridge from imitation to invention</div>
+                <div class="text-[10px] uppercase font-bold text-slate-400 tracking-widest mt-2">Diversity of genre creates a rich vocal landscape</div>
             </div>
 
             <div class="aside-box text-sm italic text-amber-900 leading-relaxed">
-                "The Teacher is the material here. Your spontaneity removes the barrier to entry. Don't let notation limit them—encourage lyrics to be written down even if they can't yet write music on a staff."
+                "Sing every day. Let it be a rhythm in your classroom life. Even imperfect voices build perfect moments of connection. As children reach 9-12, expand into more complex rhythms and broader vocal ranges."
             </div>
         </section>
 
