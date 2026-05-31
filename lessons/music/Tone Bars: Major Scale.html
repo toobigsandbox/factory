@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson: Tone Bars (2)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Crimson Pro', serif; background: #fdfbf7; line-height: 1.7; }
+        .page { background: white; max-width: 850px; margin: 40px auto; padding: 80px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 32px; border: 1px solid #f1f5f9; }
+        .action { font-family: 'Inter', sans-serif; font-weight: 700; margin-top: 24px; color: #1e293b; font-size: 0.95rem; }
+        .dialogue { margin-left: 40px; font-style: italic; color: #475569; position: relative; margin-bottom: 12px; }
+        .dialogue::before { content: "—"; position: absolute; left: -20px; color: #cbd5e1; font-style: normal; }
+        .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; }
+        .illustrate-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: #94a3b8; margin-top: 15px; }
+        .material-box { background: #f8fafc; border-radius: 20px; border: 1px solid #e2e8f0; padding: 30px; margin-bottom: 40px; }
+        .aside-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 25px; margin: 40px 0; border-radius: 0 15px 15px 0; position: relative; }
+        .aside-box::after { content: "Instructor's Aside"; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.1em; }
+        @media print { body { background: white; margin: 0; } .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; } .no-print { display: none !important; } }
+    </style>
+</head>
+<body>
+    <nav class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <div>
+            <a href="../../index.html" class="text-slate-400 hover:text-amber-600 transition-colors font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
+                <i data-lucide="arrow-left" size="14"></i> Back to Dashboard
+            </a>
+        </div>
+        <button onclick="window.print()" class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:bg-amber-700 transition-all flex items-center gap-2">
+            <i data-lucide="printer" size="16"></i> Print to PDF
+        </button>
+    </nav>
+    
+    <article class="page">
+        <header class="mb-12 border-b-2 border-amber-50 pb-8">
+            <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Music // The Tone Bars</p>
+            <h1 class="text-5xl font-bold text-slate-900 leading-tight">Tone Bars (2): The Major Scale</h1>
+            <p class="mt-4 text-slate-400 italic">Guide: Elim Lee // AMI Elementary Submission</p>
+        </header>
+
+        <section class="material-box">
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Purpose</h3>
+            <p class="text-sm font-medium italic text-slate-600">To introduce the organization of the Major Scale (specifically C Major) and the visual representation of the keyboard layout using the green and black mats.</p>
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mt-4 mb-2">Materials</h3>
+            <ul class="text-sm font-medium italic text-slate-600 list-disc ml-5">
+                <li><strong>Tone Bars:</strong> Arranged in keyboard fashion.</li>
+                <li><strong>Green and Black Mats:</strong> Representing the piano keyboard.</li>
+                <li><strong>Nomenclature Tickets:</strong> C, D, E, F, G, A, B, C (or Do, Re, Mi).</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+
+            <div class="action">Arrange the white bars in the keyboard pattern on the green mat.</div>
+            <div class="dialogue">"You know how to find the twin sounds. Today we are going to look at the special pattern these sounds make. This is the C Major scale."</div>
+
+            <div class="illustrate">
+                <svg width="500" height="150" viewBox="0 0 500 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- White keys -->
+                    <rect x="50" y="80" width="30" height="50" fill="#FFF" stroke="#94A3B8"/> <text x="60" y="110" font-size="8">C</text>
+                    <rect x="85" y="80" width="30" height="50" fill="#FFF" stroke="#94A3B8"/> <text x="95" y="110" font-size="8">D</text>
+                    <rect x="120" y="80" width="30" height="50" fill="#FFF" stroke="#94A3B8"/> <text x="130" y="110" font-size="8">E</text>
+                    <rect x="155" y="80" width="30" height="50" fill="#FFF" stroke="#94A3B8"/> <text x="165" y="110" font-size="8">F</text>
+                    <!-- Black keys -->
+                    <rect x="72" y="30" width="20" height="40" fill="#1E293B"/>
+                    <rect x="107" y="30" width="20" height="40" fill="#1E293B"/>
+                    <text x="250" y="90" font-family="Inter" font-size="10" fill="#64748B" font-weight="bold">KEYBOARD ORGANIZATION</text>
+                </svg>
+                <div class="illustrate-label">Fig 2.1: Relationship between Tone Bars and the Piano Keyboard</div>
+            </div>
+
+            <div class="action">Play the scale slowly, from C to C.</div>
+            <div class="dialogue">"Listen to how the sounds climb. It feels like we have come home when we reach the last C."</div>
+
+            <div class="action">Place the nomenclature tickets below the corresponding bars.</div>
+            <div class="dialogue">"Each of these sounds has a name. This is C, this is D... just like the alphabet, but they repeat in a loop."</div>
+
+            <div class="aside-box text-sm italic text-amber-900 leading-relaxed">
+                "Note to the Guide: Ensure the child understands the 'gap' in the black keys (between E/F and B/C). This visual cue is the primary way they will learn to navigate the keyboard by sight."
+            </div>
+        </section>
+
+        <footer class="mt-20 pt-8 border-t text-[10px] font-sans text-slate-300 uppercase tracking-widest text-center">
+            Elim Lee // Semester 4 Sprint // AMI Elementary
+        </footer>
+    </article>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
