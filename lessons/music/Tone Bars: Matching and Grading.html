@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson: Tone Bars (1)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Crimson Pro', serif; background: #fdfbf7; line-height: 1.7; }
+        .page { background: white; max-width: 850px; margin: 40px auto; padding: 80px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 32px; border: 1px solid #f1f5f9; }
+        .action { font-family: 'Inter', sans-serif; font-weight: 700; margin-top: 24px; color: #1e293b; font-size: 0.95rem; }
+        .dialogue { margin-left: 40px; font-style: italic; color: #475569; position: relative; margin-bottom: 12px; }
+        .dialogue::before { content: "—"; position: absolute; left: -20px; color: #cbd5e1; font-style: normal; }
+        .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; }
+        .illustrate-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: #94a3b8; margin-top: 15px; }
+        .material-box { background: #f8fafc; border-radius: 20px; border: 1px solid #e2e8f0; padding: 30px; margin-bottom: 40px; }
+        .aside-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 25px; margin: 40px 0; border-radius: 0 15px 15px 0; position: relative; }
+        .aside-box::after { content: "Instructor's Aside"; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.1em; }
+        @media print { body { background: white; margin: 0; } .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; } .no-print { display: none !important; } }
+    </style>
+</head>
+<body>
+    <nav class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <div>
+            <a href="../../index.html" class="text-slate-400 hover:text-amber-600 transition-colors font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
+                <i data-lucide="arrow-left" size="14"></i> Back to Dashboard
+            </a>
+        </div>
+        <button onclick="window.print()" class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:bg-amber-700 transition-all flex items-center gap-2">
+            <i data-lucide="printer" size="16"></i> Print to PDF
+        </button>
+    </nav>
+    
+    <article class="page">
+        <header class="mb-12 border-b-2 border-amber-50 pb-8">
+            <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Music // The Tone Bars</p>
+            <h1 class="text-5xl font-bold text-slate-900 leading-tight">Tone Bars (1): Matching and Grading</h1>
+            <p class="mt-4 text-slate-400 italic">Guide: Elim Lee // AMI Elementary Submission</p>
+        </header>
+
+        <section class="material-box">
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-2">Purpose</h3>
+            <p class="text-sm font-medium italic text-slate-600">To refine the child's auditory sense through the matching and grading of musical pitches, laying the sensorial foundation for melody and scales.</p>
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mt-4 mb-2">Materials</h3>
+            <ul class="text-sm font-medium italic text-slate-600 list-disc ml-5">
+                <li><strong>Set of Tone Bars:</strong> White, black, and grey blocks.</li>
+                <li><strong>Mallet and Damper:</strong> For striking and silencing the bars.</li>
+                <li><strong>Green Rug:</strong> To define the workspace.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+
+            <div class="action">Invite the children to the rug. Set out two sets of Tone Bars in random order.</div>
+            <div class="dialogue">"We have listened to the sounds in our room. Now we are going to find sounds that are twins."</div>
+
+            <div class="action">Strike one bar from the first set. Listen until the sound fades.</div>
+            <div class="dialogue">"That sound has a match somewhere in this other set. Let's find it."</div>
+
+            <div class="illustrate">
+                <svg width="400" height="150" viewBox="0 0 400 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Tone Bars Set 1 -->
+                    <rect x="50" y="50" width="20" height="60" fill="#F1F5F9" stroke="#94A3B8"/>
+                    <rect x="80" y="50" width="20" height="60" fill="#F1F5F9" stroke="#94A3B8"/>
+                    <rect x="110" y="50" width="20" height="60" fill="#F1F5F9" stroke="#94A3B8"/>
+                    <!-- Mallet Skeleton -->
+                    <circle cx="60" cy="30" r="8" stroke="#1E293B" stroke-width="2"/>
+                    <line x1="60" y1="38" x2="60" y2="10" stroke="#1E293B" stroke-width="1"/>
+                    <text x="55" y="130" font-family="Inter" font-size="8" fill="#64748B">SET A (Control)</text>
+                    <text x="250" y="130" font-family="Inter" font-size="8" fill="#64748B">SET B (Working Set)</text>
+                </svg>
+                <div class="illustrate-label">Fig 1.1: Striking the control bar to find a match</div>
+            </div>
+
+            <div class="action">Strike a bar from the second set. Compare. If they match, place them side-by-side.</div>
+            <div class="dialogue">"These two sounds are the same. They are twins."</div>
+
+            <div class="action">Once matched, shuffle one set and invite the child to arrange them from the lowest sound to the highest.</div>
+            <div class="dialogue">"Now we will make a staircase of sound, from the deepest low to the highest high."</div>
+
+            <div class="aside-box text-sm italic text-amber-900 leading-relaxed">
+                "Note to the Guide: Always handle the bars by the wooden blocks, never the metal. The oil from fingers can affect the pitch over time. Ensure the child uses the damper to stop the sound completely before striking the next bar."
+            </div>
+        </section>
+
+        <footer class="mt-20 pt-8 border-t text-[10px] font-sans text-slate-300 uppercase tracking-widest text-center">
+            Elim Lee // Semester 4 Sprint // AMI Elementary
+        </footer>
+    </article>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
