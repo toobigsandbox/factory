@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson: Degrees of the Scale</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Crimson Pro', serif; background: #fdfbf7; line-height: 1.7; }
+        .page { background: white; max-width: 850px; margin: 40px auto; padding: 60px 80px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 32px; border: 1px solid #f1f5f9; }
+        .action { font-family: 'Inter', sans-serif; font-weight: 700; margin-top: 24px; color: #1e293b; font-size: 0.95rem; }
+        .dialogue { margin-left: 40px; font-style: italic; color: #475569; position: relative; margin-bottom: 12px; }
+        .dialogue::before { content: "—"; position: absolute; left: -20px; color: #cbd5e1; font-style: normal; }
+        
+        /* Rubric Sacred Boxes */
+        .material-box { background: #f8fafc; border-radius: 20px; border: 1px solid #e2e8f0; padding: 30px; margin-bottom: 40px; font-family: 'Inter', sans-serif; }
+        .aside-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 25px; margin: 40px 0; border-radius: 0 15px 15px 0; position: relative; font-family: 'Inter', sans-serif; }
+        .aside-box::after { content: "Instructor's Aside"; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.1em; }
+        .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; }
+        
+        /* Montessori color matches for scale degree tickets */
+        .color-ticket-1 { background-color: #ef4444; color: white; border-color: #b91c1c; } /* Red - Tonic */
+        .color-ticket-2 { background-color: #f97316; color: white; border-color: #c2410c; } /* Orange - Supertonic */
+        .color-ticket-3 { background-color: #eab308; color: black; border-color: #a16207; } /* Yellow - Mediant */
+        .color-ticket-4 { background-color: #22c55e; color: white; border-color: #15803d; } /* Green - Subdominant */
+        .color-ticket-5 { background-color: #3b82f6; color: white; border-color: #1d4ed8; } /* Blue - Dominant */
+        .color-ticket-6 { background-color: #6366f1; color: white; border-color: #4338ca; } /* Indigo - Submediant */
+        .color-ticket-7 { background-color: #a855f7; color: white; border-color: #7e22ce; } /* Violet - Leading Tone */
+        .color-ticket-8 { background-color: #ef4444; color: white; border-color: #b91c1c; } /* Red - Octave Tonic */
+
+        /* Tone bar physical sliding state */
+        .tonebar-unit {
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .tonebar-unit.pulled-down {
+            transform: translateY(30px);
+        }
+
+        /* Standardized Yellow transposer strip slot styling */
+        .strip-cell {
+            border-right: 1px solid #fef08a;
+        }
+        .strip-cell:last-child {
+            border-right: none;
+        }
+
+        @media print { 
+            body { background: white; margin: 0; } 
+            .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; } 
+            .no-print { display: none !important; } 
+        }
+    </style>
+</head>
+<body>
+    <!-- Utility Bar: Back and Print (Vanishes on PDF) -->
+    <div class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <a href="../../index.html" class="text-slate-400 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2 hover:text-amber-600 transition-colors">
+            <i data-lucide="arrow-left" size="14"></i> Back to Dashboard
+        </a>
+        <button onclick="window.print()" class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:bg-amber-700 transition-all flex items-center gap-2">
+            <i data-lucide="printer" size="16"></i> Print PDF
+        </button>
+    </div>
+    
+    <article class="page">
+        <header class="mb-12 border-b-2 border-amber-50 pb-8">
+            <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Music // Tone Bars: Major Scales</p>
+            <h1 class="text-5xl font-bold text-slate-900 leading-tight">Degrees of the Scale</h1>
+            <p class="mt-4 text-slate-400 italic">Exploring Tonal Roles through the Royal Court of C // Guide: Elim Lee</p>
+        </header>
+
+        <!-- Sacred Purpose Section -->
+        <section class="mb-8">
+            <h3 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-slate-400 mb-2">Direct Aims & Purpose</h3>
+            <p class="text-slate-700 leading-relaxed">
+                To introduce the technical names of the degrees of the scale; to help children understand their functional, relational roles within music; to recognize them systematically in order and position; and to begin to internalize their musical relationships.
+            </p>
+        </section>
+
+        <!-- Material Analysis Box (Grey) -->
+        <section class="material-box text-sm">
+            <h3 class="font-sans font-bold text-xs uppercase text-slate-400 mb-4">Material Analysis</h3>
+            <p class="text-slate-700 italic mb-4">
+                Full tone bar set (25 bars, C4 to C6) mounted adjacent on wooden boards, a standardized yellow major scale transposer strip, a rubber-headed striker, two physical miniature decorative crowns, and dual-sided degree tickets (Word/Name on front, Number on reverse).
+            </p>
+            <div class="grid grid-cols-2 gap-4 text-xs font-mono bg-slate-50 p-4 rounded-xl">
+                <div>
+                    <span class="font-bold text-slate-600">DEGREE TICKETS:</span>
+                    <ul class="list-disc pl-4 mt-1 space-y-1">
+                        <li>Tonic (1st)</li>
+                        <li>Supertonic (2nd)</li>
+                        <li>Mediant (3rd)</li>
+                        <li>Subdominant (4th)</li>
+                    </ul>
+                </div>
+                <div>
+                    <span class="font-bold text-slate-600">&nbsp;</span>
+                    <ul class="list-disc pl-4 mt-1 space-y-1">
+                        <li>Dominant (5th)</li>
+                        <li>Submediant (6th)</li>
+                        <li>Leading Tone (7th)</li>
+                        <li>Tonic (8th)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Montessori Transposer Tool Section -->
+        <section class="no-print bg-slate-900 text-white rounded-3xl p-6 mb-12 shadow-2xl border border-slate-800">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                <div>
+                    <h3 class="font-sans font-bold text-lg text-amber-400">Interactive Tone Bar Transposer</h3>
+                    <p class="text-xs text-slate-400">Select a Root Key. The standardized yellow strip slides, and selected adjacent bars pull down!</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-4">
+                    <!-- Ticket Side Switcher -->
+                    <div class="flex items-center gap-2 bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700">
+                        <span class="text-[10px] font-mono text-slate-400">Ticket Side:</span>
+                        <button id="toggleTicketSide" class="bg-amber-600 text-white px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider hover:bg-amber-700 transition-all" onclick="toggleTicketDisplay()">
+                            Show Names
+                        </button>
+                    </div>
+
+                    <!-- Root Selector -->
+                    <div class="flex items-center gap-2">
+                        <label for="rootSelector" class="text-xs font-mono text-slate-400">Root:</label>
+                        <select id="rootSelector" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:ring-2 focus:ring-amber-500" onchange="updateTransposition()">
+                            <option value="0">C4</option>
+                            <option value="1">C#4</option>
+                            <option value="2">D4</option>
+                            <option value="3">D#4</option>
+                            <option value="4">E4</option>
+                            <option value="5">F4</option>
+                            <option value="6">F#4</option>
+                            <option value="7">G4</option>
+                            <option value="8">G#4</option>
+                            <option value="9">A4</option>
+                            <option value="10">A#4</option>
+                            <option value="11">B4</option>
+                            <option value="12">C5</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tone Bars Physical Board Display -->
+            <div class="relative overflow-x-auto pb-6 scrollbar-thin">
+                <div class="relative bg-amber-950 p-4 rounded-2xl shadow-inner border border-amber-900" style="width: 1040px; height: 320px;" id="tonebarContainer">
+                    <!-- Javascript will dynamically generate the Tone Bars & Wooden Blocks -->
+                </div>
+            </div>
+
+            <!-- Active Degree Information Card -->
+            <div id="degreeInfo" class="mt-4 p-5 bg-slate-800/80 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border border-slate-700 transition-all">
+                <div class="flex-1">
+                    <span class="text-[10px] uppercase font-mono tracking-wider text-amber-400 font-bold" id="degreeSub">Active Focus</span>
+                    <h4 class="text-xl font-bold text-white flex items-center gap-2 mt-1" id="degreeTitle">Select a pulled-down bar or strip number...</h4>
+                    <p class="text-sm text-slate-300 mt-2 leading-relaxed" id="degreeStory">Click any tone bar or a degree number directly on the standardized yellow transposer strip to meet its role in the Royal Court of C.</p>
+                </div>
+                <div class="px-5 py-3 rounded-xl font-mono text-sm font-bold shadow-lg hidden md:block" id="degreeLabelBadge" style="min-width: 150px; text-align: center;">
+                    Court Role
+                </div>
+            </div>
+        </section>
+
+        <!-- Presentation I -->
+        <section class="mb-12">
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+            
+            <div class="action">Invite a small group of children to the tone bar cabinet. Arrange the diatonic set of tone bars.</div>
+            <div class="dialogue">"We have spent time matching our notes, and we've learned their names. Today, we're going to see how each note has a special role—a job of its own in our musical home."</div>
+
+            <div class="action">Place a crown over the first C4 tone bar, and a second crown over the high C5 tone bar.</div>
+            <div class="dialogue">"I have a story to tell you today. This story is called the Royal Court of the Kingdom of C. Once upon a time, there was a kingdom that was exactly eight miles across. The boundaries of this kingdom were ruled by a King and a Queen. The King lived at the lower boundary, the first note of our scale. The Queen lived at the highest boundary, the eighth note of our scale."</div>
+
+            <div class="illustrate">
+                <svg width="450" height="200" viewBox="0 0 450 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Symmetrical Court Blueprint -->
+                    <rect x="10" y="80" width="430" height="90" rx="8" stroke="#94a3b8" stroke-width="2" fill="#fafaf9" />
+                    <!-- Tone Bar lines -->
+                    <line x1="60" y1="80" x2="60" y2="170" stroke="#cbd5e1" stroke-width="1" />
+                    <line x1="120" y1="80" x2="120" y2="170" stroke="#cbd5e1" stroke-width="1" />
+                    <line x1="180" y1="80" x2="180" y2="170" stroke="#cbd5e1" stroke-width="1" />
+                    <line x1="240" y1="80" x2="240" y2="170" stroke="#cbd5e1" stroke-width="1" />
+                    <line x1="300" y1="80" x2="300" y2="170" stroke="#cbd5e1" stroke-width="1" />
+                    <line x1="360" y1="80" x2="360" y2="170" stroke="#cbd5e1" stroke-width="1" />
+
+                    <!-- King Crown -->
+                    <g transform="translate(25, 45) scale(0.7)">
+                        <path d="M10 30 L20 10 L30 25 L40 10 L50 30 Z" fill="#ef4444" stroke="#ca8a04" stroke-width="2" />
+                        <circle cx="20" cy="10" r="2.5" fill="#ca8a04" />
+                        <circle cx="40" cy="10" r="2.5" fill="#ca8a04" />
+                    </g>
+                    <text x="25" y="115" font-family="Inter" font-size="11" font-weight="bold" fill="#ef4444">TONIC (1)</text>
+                    <text x="28" y="135" font-family="Crimson Pro" font-size="12" font-style="italic" fill="#64748b">King's Home</text>
+
+                    <!-- Queen Crown -->
+                    <g transform="translate(385, 45) scale(0.7)">
+                        <path d="M10 30 L20 10 L30 25 L40 10 L50 30 Z" fill="#ef4444" stroke="#ca8a04" stroke-width="2" />
+                        <circle cx="20" cy="10" r="2.5" fill="#ca8a04" />
+                        <circle cx="40" cy="10" r="2.5" fill="#ca8a04" />
+                    </g>
+                    <text x="385" y="115" font-family="Inter" font-size="11" font-weight="bold" fill="#ef4444">TONIC (8)</text>
+                    <text x="380" y="135" font-family="Crimson Pro" font-size="12" font-style="italic" fill="#64748b">Queen's Home</text>
+
+                    <!-- Chamberlain -->
+                    <rect x="235" y="100" width="10" height="10" rx="2" fill="#3b82f6" />
+                    <text x="210" y="125" font-family="Inter" font-size="10" font-weight="bold" fill="#3b82f6">DOMINANT (5)</text>
+                    <text x="200" y="145" font-family="Crimson Pro" font-size="11" font-style="italic" fill="#64748b">Chamberlain</text>
+                </svg>
+                <span class="text-xs text-slate-400 font-mono mt-2">FIG 1.2: FIXED CHROMATIC STRIP WITH INTEGRATED COURT CORRELATION</span>
+            </div>
+
+            <div class="action">Introduce the first council assistant, the Lord High Chamberlain at the 5th degree. Place the ticket.</div>
+            <div class="dialogue">"The King decided he needed some help, so he hired a Lord High Chamberlain. He placed him at the fifth degree—our Dominant note. He sits right in the middle of the kingdom, watching over both sides. But because he was a bit far for the King to hear clearly, the King hired a messenger to live at the third degree—the Mediant."</div>
+
+            <div class="action">Introduce the Queen's council assistants. Place the Subdominant (4th) and Submediant (6th) tickets.</div>
+            <div class="dialogue">"Seeing this, the Queen decided to form her own counsel! She hired her own Chamberlain at the fourth degree—the Subdominant. And she also hired her own messenger to live at the sixth degree—the Submediant."</div>
+
+            <div class="action">Introduce the final two court members. Place the Leading Tone (7th) and Supertonic (2nd) tickets.</div>
+            <div class="dialogue">"There are two other members of the court. The first is the Queen’s Lady-in-Waiting, who lives at the seventh degree. She is very shy and never goes anywhere without the Queen. Listen to how closely she leans toward the Queen's home... she is the Leading Tone. And finally, the King's Footman, who rides just above the King in his royal coach—living at the second degree, the Supertonic."</div>
+
+            <div class="action">Strike each tone bar in sequence as you point to the newly placed tickets. Let the story hang in the space.</div>
+            <div class="dialogue">"Now, whenever any musical traveler enters the Kingdom, they must bow to the King and Queen before they begin and before they leave. Would you like to play these notes and tell the story of the Kingdom of C yourself?"</div>
+        </section>
+
+        <!-- Instructor's Aside (Yellow) -->
+        <section class="aside-box text-sm text-amber-950 mb-12">
+            <h4 class="font-sans font-bold text-amber-900 mb-2">Interdisciplinary Connections & Color Wheels</h4>
+            <p class="leading-relaxed">
+                <strong>Language Connection:</strong> The prefixes <em>super-</em> (above) and <em>sub-</em> (below) are beautifully explored here. The <strong>Supertonic</strong> sits immediately above the Tonic, while the <strong>Subdominant</strong> is the identical interval (a fifth) below the upper Tonic.
+            </p>
+            <p class="leading-relaxed mt-2">
+                <strong>Art Connection (Montessori Degrees):</strong> The tonal degrees reflect the structural colors of the color wheel. The King’s foundational framework (1st, 3rd, 5th) represents the primary triad (red, yellow, blue), while the Queen's assistants (4th and 6th) reflect the secondary colors (green, indigo/purple).
+            </p>
+        </section>
+
+        <footer class="mt-20 pt-8 border-t text-[10px] font-sans text-slate-300 uppercase tracking-widest text-center">
+            Elim Lee // April 1st Sprint // AMI Elementary
+        </footer>
+    </article>
+
+    <script>
+        lucide.createIcons();
+
+        // 25 adjacent chromatic tone bars (C4 to C6)
+        const notes = [
+            { name: 'C4', pitch: 261.63, isBlack: false },
+            { name: 'C#4', pitch: 277.18, isBlack: true },
+            { name: 'D4', pitch: 293.66, isBlack: false },
+            { name: 'D#4', pitch: 311.13, isBlack: true },
+            { name: 'E4', pitch: 329.63, isBlack: false },
+            { name: 'F4', pitch: 349.23, isBlack: false },
+            { name: 'F#4', pitch: 369.99, isBlack: true },
+            { name: 'G4', pitch: 392.00, isBlack: false },
+            { name: 'G#4', pitch: 415.30, isBlack: true },
+            { name: 'A4', pitch: 440.00, isBlack: false },
+            { name: 'A#4', pitch: 466.16, isBlack: true },
+            { name: 'B4', pitch: 493.88, isBlack: false },
+            { name: 'C5', pitch: 523.25, isBlack: false },
+            { name: 'C#5', pitch: 554.37, isBlack: true },
+            { name: 'D5', pitch: 587.33, isBlack: false },
+            { name: 'D#5', pitch: 622.25, isBlack: true },
+            { name: 'E5', pitch: 659.25, isBlack: false },
+            { name: 'F5', pitch: 698.46, isBlack: false },
+            { name: 'F#5', pitch: 739.99, isBlack: true },
+            { name: 'G5', pitch: 783.99, isBlack: false },
+            { name: 'G#5', pitch: 830.61, isBlack: true },
+            { name: 'A5', pitch: 880.00, isBlack: false },
+            { name: 'A#5', pitch: 932.33, isBlack: true },
+            { name: 'B5', pitch: 987.77, isBlack: false },
+            { name: 'C6', pitch: 1046.50, isBlack: false }
+        ];
+
+        // Chromatic offsets of the Major Scale W-W-H-W-W-W-H
+        const majorScaleOffsets = [0, 2, 4, 5, 7, 9, 11, 12];
+
+        // Court roles mapping linked with Montessori color wheels
+        const degreeRoles = {
+            1: { title: "Tonic (1st)", class: "color-ticket-1", badge: "The King", story: "The King of the court. He lives at the first mile of the scale, ruling the home base with absolute authority (Red)." },
+            2: { title: "Supertonic (2nd)", class: "color-ticket-2", badge: "The Footman", story: "The King's loyal footman. He rides just above the King in his coach, always close at hand (Orange)." },
+            3: { title: "Mediant (3rd)", class: "color-ticket-3", badge: "The Messenger", story: "The King's messenger. He is positioned at the third mile to pass news easily between the King and the Chamberlain (Yellow)." },
+            4: { title: "Subdominant (4th)", class: "color-ticket-4", badge: "High Chamberlain", story: "The Queen's Chamberlain. He helps govern her half of the kingdom from the fourth degree (Green)." },
+            5: { title: "Dominant (5th)", class: "color-ticket-5", badge: "Lord High Chamberlain", story: "The Lord High Chamberlain. Standing in the middle, he watches over both halves of the empire (Blue)." },
+            6: { title: "Submediant (6th)", class: "color-ticket-6", badge: "The Messenger", story: "The Queen's personal messenger, ensuring fluid communication across her majestic boundary (Indigo)." },
+            7: { title: "Leading Tone (7th)", class: "color-ticket-7", badge: "Lady-in-Waiting", story: "The Queen's lady-in-waiting. Shy and delicate, she leans closely toward the Queen's home (Violet)." },
+            8: { title: "Tonic (8th / Octave)", class: "color-ticket-8", badge: "The Queen", story: "The Queen of the court. She rules from the eight-mile boundary, mirroring the King with high, radiant grace (Red)." }
+        };
+
+        // Current ticket display side: true = Name, false = Number
+        let showNames = true;
+
+        // Synthesizer setup
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playTone(freq) {
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            
+            osc.type = 'triangle'; // Mellow tone bar style timbre
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+            
+            const overtone = audioCtx.createOscillator();
+            const overtoneGain = audioCtx.createGain();
+            overtone.type = 'sine';
+            overtone.frequency.setValueAtTime(freq * 2, audioCtx.currentTime);
+            
+            gainNode.gain.setValueAtTime(0.4, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 1.2);
+            
+            overtoneGain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            overtoneGain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.8);
+
+            osc.connect(gainNode);
+            overtone.connect(overtoneGain);
+            
+            gainNode.connect(audioCtx.destination);
+            overtoneGain.connect(audioCtx.destination);
+            
+            osc.start();
+            overtone.start();
+            osc.stop(audioCtx.currentTime + 1.3);
+            overtone.stop(audioCtx.currentTime + 1.3);
+        }
+
+        function createToneBars() {
+            const container = document.getElementById('tonebarContainer');
+            container.innerHTML = '';
+
+            const keyWidth = 40; // equal width as requested
+
+            notes.forEach((note, index) => {
+                const barUnit = document.createElement('div');
+                barUnit.id = `bar-unit-${index}`;
+                barUnit.className = "tonebar-unit absolute flex flex-col items-center";
+                barUnit.style.width = `${keyWidth - 2}px`;
+                barUnit.style.left = `${index * keyWidth + 10}px`;
+                barUnit.style.top = "10px";
+
+                // Flat block shape corresponding to keys
+                const block = document.createElement('div');
+                block.className = `w-full h-[140px] rounded-lg shadow-md cursor-pointer flex flex-col justify-end items-center pb-2 relative border border-slate-700/30 ${note.isBlack ? 'bg-slate-800 text-slate-300' : 'bg-white text-slate-800'}`;
+                
+                // Centered silver metallic square centered on the y-axis
+                const silverSquare = document.createElement('div');
+                silverSquare.className = "w-4 h-4 bg-slate-300 border border-slate-400 rounded-sm shadow-inner absolute top-[60px] left-1/2 transform -translate-x-1/2 cursor-pointer hover:bg-slate-200 transition-colors z-30";
+                
+                silverSquare.onclick = (e) => {
+                    e.stopPropagation();
+                    playTone(note.pitch);
+                    
+                    // Activate info if pulled down
+                    if (barUnit.classList.contains('pulled-down')) {
+                        const activeDegrees = document.querySelectorAll('.degree-label');
+                        activeDegrees.forEach(label => {
+                            if (parseInt(label.dataset.keyIdx) === index) {
+                                showDegreeDetails(parseInt(label.dataset.degNum));
+                            }
+                        });
+                    }
+                };
+
+                const noteLabel = document.createElement('span');
+                noteLabel.className = "text-[9px] font-mono font-bold pointer-events-none select-none";
+                noteLabel.innerText = note.name;
+
+                block.appendChild(silverSquare);
+                block.appendChild(noteLabel);
+                barUnit.appendChild(block);
+                container.appendChild(barUnit);
+            });
+
+            // Create the standardized yellow transposer strip (representing 13 chromatic slots)
+            const strip = document.createElement('div');
+            strip.id = "transposerStrip";
+            strip.className = "absolute bg-yellow-300 rounded-xl border-2 border-yellow-400 shadow-xl flex items-center transition-all duration-300 z-30 overflow-hidden";
+            strip.style.height = "42px";
+            strip.style.width = `${13 * keyWidth}px`; // Rigid chromatic width representing 13 slots
+            strip.style.top = "240px";
+            
+            // Build the static grid slots directly into the physical strip (standardized to yellow)
+            for (let i = 0; i < 13; i++) {
+                const cell = document.createElement('div');
+                cell.className = "strip-cell flex-1 h-full flex items-center justify-center relative bg-yellow-200/40";
+                
+                const scaleIdx = majorScaleOffsets.indexOf(i);
+                if (scaleIdx !== -1) {
+                    const degreeNum = scaleIdx + 1;
+                    const degreeBadge = document.createElement('span');
+                    degreeBadge.className = "w-7 h-7 rounded-full flex items-center justify-center font-bold font-mono text-xs shadow-md bg-white text-slate-800 border border-yellow-400 cursor-pointer transition-transform hover:scale-110 active-degree-badge";
+                    degreeBadge.innerHTML = degreeNum;
+                    degreeBadge.dataset.offset = i;
+                    degreeBadge.onclick = (e) => {
+                        e.stopPropagation();
+                        const rootIndex = parseInt(document.getElementById('rootSelector').value);
+                        const noteIndex = rootIndex + i;
+                        if (notes[noteIndex]) {
+                            playTone(notes[noteIndex].pitch);
+                            showDegreeDetails(degreeNum);
+                        }
+                    };
+                    cell.appendChild(degreeBadge);
+                }
+                strip.appendChild(cell);
+            }
+            
+            container.appendChild(strip);
+        }
+
+        function updateTransposition() {
+            const rootIndex = parseInt(document.getElementById('rootSelector').value);
+            const strip = document.getElementById('transposerStrip');
+            const keyWidth = 40;
+
+            let rootKeyEl = document.getElementById(`bar-unit-${rootIndex}`);
+            let rootLeft = parseFloat(rootKeyEl.style.left);
+
+            // Move the standardized strip horizontally
+            strip.style.left = `${rootLeft}px`;
+
+            // Reset all tone bar blocks back to resting position & remove tickets
+            document.querySelectorAll('.tonebar-unit').forEach(el => {
+                el.classList.remove('pulled-down');
+                const existingTicket = el.querySelector('.degree-label');
+                if (existingTicket) existingTicket.remove();
+            });
+
+            // Pull down only the selected scale degree blocks
+            majorScaleOffsets.forEach((offset, idx) => {
+                const noteIndex = rootIndex + offset;
+                const targetUnit = document.getElementById(`bar-unit-${noteIndex}`);
+                if (targetUnit) {
+                    targetUnit.classList.add('pulled-down');
+
+                    // Generate the beautiful colored ticket/label sitting laterally at the foot of the bar
+                    const ticket = document.createElement('div');
+                    ticket.className = `degree-label absolute -bottom-16 w-[44px] text-center py-1 rounded border shadow-sm font-mono text-[9px] font-bold z-40 cursor-pointer select-none transition-all hover:scale-105 ${degreeRoles[idx + 1].class}`;
+                    ticket.dataset.degNum = idx + 1;
+                    ticket.dataset.keyIdx = noteIndex;
+                    
+                    ticket.onclick = (e) => {
+                        e.stopPropagation();
+                        playTone(notes[noteIndex].pitch);
+                        showDegreeDetails(idx + 1);
+                    };
+
+                    targetUnit.appendChild(ticket);
+                }
+            });
+
+            // Redraw current tickets to keep side state (Name vs Number)
+            drawTicketsText();
+
+            // Default focus on the Root (1st Degree)
+            showDegreeDetails(1);
+        }
+
+        function toggleTicketDisplay() {
+            showNames = !showNames;
+            const btn = document.getElementById('toggleTicketSide');
+            btn.innerText = showNames ? "Show Numbers" : "Show Names";
+            drawTicketsText();
+        }
+
+        function drawTicketsText() {
+            document.querySelectorAll('.degree-label').forEach(ticket => {
+                const degNum = parseInt(ticket.dataset.degNum);
+                const role = degreeRoles[degNum];
+                if (showNames) {
+                    // Extract just the first word of the title for layout spacing (Tonic, Supertonic, etc.)
+                    ticket.innerText = role.title.split(' ')[0];
+                } else {
+                    ticket.innerText = `${degNum}${degNum === 1 ? 'st' : degNum === 2 ? 'nd' : degNum === 3 ? 'rd' : 'th'}`;
+                }
+            });
+        }
+
+        function showDegreeDetails(degreeNum) {
+            const info = degreeRoles[degreeNum];
+            const titleEl = document.getElementById('degreeTitle');
+            const storyEl = document.getElementById('degreeStory');
+            const badgeEl = document.getElementById('degreeLabelBadge');
+
+            titleEl.innerText = info.title;
+            storyEl.innerText = info.story;
+            badgeEl.innerText = info.badge;
+            badgeEl.className = `px-5 py-3 rounded-xl font-mono text-sm font-bold text-center block ${info.class}`;
+        }
+
+        window.onload = function() {
+            createToneBars();
+            updateTransposition();
+        }
+    </script>
+</body>
+</html>
