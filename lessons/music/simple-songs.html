@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson: Formation of Mountains</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Crimson Pro', serif; background: #fdfbf7; line-height: 1.7; }
+        .page { background: white; max-width: 850px; margin: 40px auto; padding: 80px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 32px; border: 1px solid #f1f5f9; }
+        .action { font-family: 'Inter', sans-serif; font-weight: 700; margin-top: 24px; color: #1e293b; font-size: 0.95rem; }
+        .dialogue { margin-left: 40px; font-style: italic; color: #475569; position: relative; margin-bottom: 12px; }
+        .dialogue::before { content: "—"; position: absolute; left: -20px; color: #cbd5e1; font-style: normal; }
+        .illustrate { border: 2px dashed #e2e8f0; border-radius: 20px; margin: 35px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fcfcfc; padding: 30px; }
+        .illustrate-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: #94a3b8; margin-top: 15px; }
+        .material-box { background: #f8fafc; border-radius: 20px; border: 1px solid #e2e8f0; padding: 30px; margin-bottom: 40px; }
+        .aside-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 25px; margin: 40px 0; border-radius: 0 15px 15px 0; position: relative; }
+        .aside-box::after { content: "Instructor's Aside"; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.1em; }
+        @media print { body { background: white; margin: 0; } .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; } .no-print { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <a href="../../index.html" class="text-slate-400 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
+            <i data-lucide="arrow-left" size="14"></i> Back to Dashboard
+        </a>
+        <button onclick="window.print()" class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:bg-amber-700 transition-all flex items-center gap-2">
+            <i data-lucide="printer" size="16"></i> Print PDF
+        </button>
+    </div>
+  
+    <article class="page">
+        <header class="mb-12 border-b-2 border-amber-50 pb-8">
+            <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Geography // Geology</p>
+            <h1 class="text-5xl font-bold text-slate-900 leading-tight">Simple Songs</h1>
+            <p class="mt-4 text-slate-400 italic">Guide: Elim Lee // AMI Elementary Submission</p>
+        </header>
+<!-- Main Album Sheet -->
+<main class="max-w-4xl mx-auto bg-white shadow-sm border border-slate-100 rounded-2xl p-8 md:p-16 my-6 page">
+
+    <!-- Purpose Section -->
+    <section class="mb-8">
+        <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-4 border-b pb-2 italic">Purpose</h2>
+        <ul class="list-disc pl-5 space-y-2 text-slate-600 text-sm serif-text italic">
+            <li>To provide opportunities for exploration and practice using the major scale in playing simple, recognizable songs.</li>
+            <li>To strengthen the child’s ear–hand connection in music-making.</li>
+            <li>To foster joy, confidence, and independence through successful music experiences.</li>
+            <li>To connect sensorial exploration (tone bars, scale) with musical literacy (numbers, notation).</li>
+        </ul>
+    </section>
+
+    <!-- Material Analysis Box (Grey) -->
+    <section class="material-box">
+        <h3 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-slate-500 mb-4">Material Analysis</h3>
+        <ul class="list-disc pl-5 space-y-2 text-slate-600 text-sm">
+            <li><strong>Tone Bars:</strong> A full diatonic set of 8 tuned metal bars representing the $C$ Major scale (C, D, E, F, G, A, B, C), mounted on separate wooden blocks.</li>
+            <li><strong>Rubber Mallet:</strong> A specialized striker with a soft, circular rubber head to produce a warm, rich, and lingering resonance.</li>
+            <li><strong>Major Scale Pattern Strip:</strong> A white guide strip labeled with the scale degree numbers $1$ to $8$ aligned underneath the bars.</li>
+            <li><strong>Song Cards Envelope:</strong> A stored packet containing individual cards with familiar children's melodies represented solely by simple sequences of numbers (e.g., $3 - 2 - 1$).</li>
+        </ul>
+    </section>
+
+    <!-- Presentation Heading -->
+    <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+
+    <!-- Procedural Steps -->
+    <section class="space-y-6 text-sm mb-12">
+        <div class="space-y-4">
+            <p class="font-semibold text-slate-900">**The Guide invites the child to the Music shelves and introduces the Tone Bars and the Simple Songs Envelope.**</p>
+            <p class="pl-6 text-slate-600 italic">"Now that we know how to use this strip with our tone bars—and how to make our tone bar sound beautiful—we can learn how to play a few simple songs."</p>
+        </div>
+
+        <div class="space-y-4">
+            <p class="font-semibold text-slate-900">**The Guide removes the envelope labeled 'Simple Songs' from the shelf and holds it before the child.**</p>
+            <p class="pl-6 text-slate-600 italic">"On our shelf, we have this envelope, and it has simple songs in it. They’re written using numbers, so we’re going to choose one. I will choose this song."</p>
+        </div>
+
+        <div class="space-y-4">
+            <p class="font-semibold text-slate-900">**The Guide pulls out the selected song card, places it flat on the table where it is clearly visible, and pulls down the respective tone bars corresponding to the scale pattern.**</p>
+            <p class="pl-6 text-slate-600 italic">"What I’m going to do is place this where I can see it and read it. So, there it is, right there. I’ll just leave my strip right here and pull down my tone bars."</p>
+        </div>
+
+        <div class="space-y-4">
+            <p class="font-semibold text-slate-900">**The Guide strikes the starting tonic bar gently to test and ensure the setup is accurate and fully in tune.**</p>
+            <p class="pl-6 text-slate-600 italic">"Let me just make sure I’ve done it correctly... [Plays tone bar 1]... Sounds like it!"</p>
+        </div>
+
+        <div class="space-y-4">
+            <p class="font-semibold text-slate-900">**The Guide looks deliberately at the numbered song card, model reading, and strikes the sequence of tone bars beautifully using the mallet.**</p>
+            <p class="pl-6 text-slate-600 italic">"Shall I read and play? [Plays melody for 'Hot Cross Buns' sequentially]... That’s Hot Cross Buns, isn’t it?"</p>
+        </div>
+
+        <div class="space-y-4">
+            <p class="font-semibold text-slate-900">**The Guide slides the major scale pattern strip to start on a different bar, preparing the child for transposition without using confusing jargon.**</p>
+            <p class="pl-6 text-slate-600 italic">"Let’s move our strip. I’ll put the tone bars back. Now, move the strip anywhere you want to, and we’ll see if it still sounds like Hot Cross Buns."</p>
+        </div>
+
+        <div class="space-y-4">
+            <p class="font-semibold text-slate-900">**The Guide plays the exact same number sequence starting on the new base key, illustrating that the melody stays identical despite the pitch shift.**</p>
+            <p class="pl-6 text-slate-600 italic">"Does that sound like Hot Cross Buns? Yeah—it does! You can move the strip anywhere you want, and play a song. Then move the strip again. Does the song still sound the same? We have a whole envelope full of songs, and we have so many bars—any of them could be your starting or 'Do' bar. Have fun!"</p>
+        </div>
+    </section>
+
+    <!-- Visuals and Illustrations -->
+    <div class="illustrate">
+        <span class="text-xs uppercase tracking-wider text-slate-400 font-bold mb-4">Visual Reference: Tone Bars & Number Notation</span>
+        
+        <svg viewBox="0 0 500 250" class="w-full max-w-lg" xmlns="http://www.w3.org/2000/svg">
+            <!-- Squiggly Outer Frame -->
+            <rect x="10" y="10" width="480" height="230" rx="10" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 5" />
+            
+            <!-- Hand-sketched Tone Bars -->
+            <!-- C4 to C5 graduated rects -->
+            <g stroke="#475569" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Base rail -->
+                <path d="M 40,170 Q 250,175 460,170" stroke-dasharray="3 3"/>
+                
+                <!-- Bars -->
+                <rect x="50" y="50" width="30" height="110" rx="3" fill="#f8fafc" />
+                <rect x="100" y="55" width="30" height="100" rx="3" fill="#cbd5e1" />
+                <rect x="150" y="60" width="30" height="90" rx="3" fill="#f8fafc" />
+                <rect x="200" y="65" width="30" height="85" rx="3" fill="#cbd5e1" />
+                <rect x="250" y="70" width="30" height="80" rx="3" fill="#f8fafc" />
+                <rect x="300" y="75" width="30" height="75" rx="3" fill="#cbd5e1" />
+                <rect x="350" y="80" width="30" height="70" rx="3" fill="#f8fafc" />
+                <rect x="400" y="85" width="30" height="65" rx="3" fill="#f8fafc" />
+                
+                <!-- Gaps / Screws -->
+                <circle cx="65" cy="60" r="2" fill="#475569" />
+                <circle cx="65" cy="150" r="2" fill="#475569" />
+                <circle cx="115" cy="65" r="2" fill="#475569" />
+                <circle cx="115" cy="145" r="2" fill="#475569" />
+                <circle cx="165" cy="70" r="2" fill="#475569" />
+                <circle cx="165" cy="140" r="2" fill="#475569" />
+                
+                <!-- Paper Strip below -->
+                <rect x="45" y="180" width="390" height="25" rx="2" fill="#fff" stroke="#64748b" />
+                <!-- Numbers -->
+                <text x="65" y="197" font-family="serif" font-size="12" text-anchor="middle" fill="#1e293b" font-weight="bold">1</text>
+                <text x="115" y="197" font-family="serif" font-size="12" text-anchor="middle" fill="#1e293b" font-weight="bold">2</text>
+                <text x="165" y="197" font-family="serif" font-size="12" text-anchor="middle" fill="#1e293b" font-weight="bold">3</text>
+                <text x="215" y="197" font-family="serif" font-size="12" text-anchor="middle" fill="#1e293b" font-weight="bold">4</text>
+                <text x="265" y="197" font-family="serif" font-size="12" text-anchor="middle" fill="#1e293b" font-weight="bold">5</text>
+                <text x="315" y="197" font-family="serif" font-size="12" text-anchor="middle" fill="#1e293b" font-weight="bold">6</text>
+                <text x="365" y="197" font-family="serif" font-size="12" text-anchor="middle" fill="#1e293b" font-weight="bold">7</text>
+                <text x="415" y="197" font-family="serif" font-size="12" text-anchor="middle" fill="#1e293b" font-weight="bold">8</text>
+                
+                <!-- Mallet -->
+                <path d="M 130,220 L 160,110" stroke-width="3" />
+                <circle cx="160" cy="110" r="10" fill="#f59e0b" stroke="#d97706" stroke-width="2"/>
+                
+                <!-- Floating squiggly notes -->
+                <path d="M 280,30 C 290,20 300,40 310,30" stroke-width="2" />
+                <ellipse cx="280" cy="35" rx="5" ry="3" fill="#475569" transform="rotate(-15 280 35)" />
+                <line x1="285" y1="35" x2="285" y2="15" stroke-width="2" />
+                <path d="M 285,15 Q 295,15 300,20" stroke-width="2"/>
+            </g>
+        </svg>
+        <p class="text-xs text-slate-500 mt-2 italic text-center">Coloring Key: Tone bars can be shaded black/white in corresponding layout pattern; strip remains white.</p>
+    </div>
+
+    <!-- Interactive Virtual Tone Bar Player (Highly Engaging Section) -->
+    <section class="no-print my-12 bg-slate-50 rounded-2xl p-6 border border-slate-100">
+        <h3 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-slate-500 mb-2 text-center">Interactive Studio: Try Simple Songs</h3>
+        <p class="text-xs text-slate-500 text-center mb-6">Select a song card below and tap the matching numbers to play with real sound synthesis!</p>
+        
+        <!-- Song Selection -->
+        <div class="flex flex-wrap gap-2 justify-center mb-6">
+            <button onclick="selectSong('hotCrossBuns')" id="btn-hotCrossBuns" class="px-4 py-2 rounded-full text-xs font-bold border transition-all bg-amber-600 text-white border-amber-600">Hot Cross Buns</button>
+            <button onclick="selectSong('maryLamb')" id="btn-maryLamb" class="px-4 py-2 rounded-full text-xs font-bold border transition-all bg-white text-slate-600 border-slate-200 hover:border-amber-600">Mary Had a Little Lamb</button>
+            <button onclick="selectSong('twinkle')" id="btn-twinkle" class="px-4 py-2 rounded-full text-xs font-bold border transition-all bg-white text-slate-600 border-slate-200 hover:border-amber-600">Twinkle Twinkle</button>
+        </div>
+
+        <!-- Chosen Song Card Display -->
+        <div class="bg-amber-50 rounded-xl p-4 mb-6 border border-amber-100 max-w-md mx-auto">
+            <div class="text-[9px] uppercase tracking-wider text-amber-700 font-bold mb-1">Song Card Notation</div>
+            <div id="song-card-text" class="font-serif text-lg tracking-widest text-slate-800 font-bold text-center">3 &ndash; 2 &ndash; 1 &ndash; 3 &ndash; 2 &ndash; 1</div>
+        </div>
+
+        <!-- Virtual Instrument Keys -->
+        <div class="flex justify-center gap-1 md:gap-2 h-44 max-w-lg mx-auto items-stretch mb-4">
+            <button onclick="playNote(1, 261.63)" class="tone-bar-btn bg-white border-2 border-slate-200 hover:border-amber-500 rounded-b-lg w-12 flex flex-col justify-end pb-4 items-center shadow-sm">
+                <span class="text-xs font-bold text-slate-800">1</span>
+                <span class="text-[9px] text-slate-400 font-semibold">C</span>
+            </button>
+            <button onclick="playNote(2, 293.66)" class="tone-bar-btn bg-slate-100 border-2 border-slate-200 hover:border-amber-500 rounded-b-lg w-12 flex flex-col justify-end pb-4 items-center shadow-sm">
+                <span class="text-xs font-bold text-slate-800">2</span>
+                <span class="text-[9px] text-slate-400 font-semibold">D</span>
+            </button>
+            <button onclick="playNote(3, 329.63)" class="tone-bar-btn bg-white border-2 border-slate-200 hover:border-amber-500 rounded-b-lg w-12 flex flex-col justify-end pb-4 items-center shadow-sm">
+                <span class="text-xs font-bold text-slate-800">3</span>
+                <span class="text-[9px] text-slate-400 font-semibold">E</span>
+            </button>
+            <button onclick="playNote(4, 349.23)" class="tone-bar-btn bg-slate-100 border-2 border-slate-200 hover:border-amber-500 rounded-b-lg w-12 flex flex-col justify-end pb-4 items-center shadow-sm">
+                <span class="text-xs font-bold text-slate-800">4</span>
+                <span class="text-[9px] text-slate-400 font-semibold">F</span>
+            </button>
+            <button onclick="playNote(5, 392.00)" class="tone-bar-btn bg-white border-2 border-slate-200 hover:border-amber-500 rounded-b-lg w-12 flex flex-col justify-end pb-4 items-center shadow-sm">
+                <span class="text-xs font-bold text-slate-800">5</span>
+                <span class="text-[9px] text-slate-400 font-semibold">G</span>
+            </button>
+            <button onclick="playNote(6, 440.00)" class="tone-bar-btn bg-slate-100 border-2 border-slate-200 hover:border-amber-500 rounded-b-lg w-12 flex flex-col justify-end pb-4 items-center shadow-sm">
+                <span class="text-xs font-bold text-slate-800">6</span>
+                <span class="text-[9px] text-slate-400 font-semibold">A</span>
+            </button>
+            <button onclick="playNote(7, 493.88)" class="tone-bar-btn bg-white border-2 border-slate-200 hover:border-amber-500 rounded-b-lg w-12 flex flex-col justify-end pb-4 items-center shadow-sm">
+                <span class="text-xs font-bold text-slate-800">7</span>
+                <span class="text-[9px] text-slate-400 font-semibold">B</span>
+            </button>
+            <button onclick="playNote(8, 523.25)" class="tone-bar-btn bg-white border-2 border-slate-200 hover:border-amber-500 rounded-b-lg w-12 flex flex-col justify-end pb-4 items-center shadow-sm">
+                <span class="text-xs font-bold text-slate-800">8</span>
+                <span class="text-[9px] text-slate-400 font-semibold">C</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Instructor's Aside (Yellow) -->
+    <div class="aside-box">
+        <h4 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-700 mb-2">Instructor's Notes & Exploration</h4>
+        <ul class="list-disc pl-5 space-y-2 text-xs text-amber-900">
+            <li><strong>Modeling Reading Behavior:</strong> It is crucial that the Guide models reading the numbers card as they strike the corresponding tone bars. Do not perform the song merely from physical memory; turn your gaze directly onto the card.</li>
+            <li><strong>Creative Lyrical Freedom:</strong> At this stage, children are highly encouraged to compose their own simple melodies using numbers alone before receiving traditional musical notation.</li>
+            <li><strong>Story of BM & Phantom of the Opera:</strong> If the children demonstrate extreme curiosity about key signatures or changing from Major to Minor scales, recall the fascinating story of BM’s choice!</li>
+        </ul>
+    </div>
+
+</main>
+<!-- Web Audio & Navigation Script -->
+<script>
+    // Init Lucide icons
+    lucide.createIcons();
+
+    // Web Audio Synthesizer
+    let audioCtx = null;
+
+    function playNote(barNum, freq) {
+        if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        
+        // Create oscillator
+        const osc = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        
+        osc.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        
+        osc.type = 'triangle'; // Warm wood/rubber block sound
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        
+        // Envelope block
+        gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.2);
+        
+        osc.start();
+        osc.stop(audioCtx.currentTime + 1.2);
+    }
+
+    // Song selections
+    const songs = {
+        hotCrossBuns: "3 &ndash; 2 &ndash; 1 &ndash; 3 &ndash; 2 &ndash; 1 &ndash; 1-1-1-1 2-2-2-2 3 &ndash; 2 &ndash; 1",
+        maryLamb: "3 &ndash; 2 &ndash; 1 &ndash; 2 &ndash; 3 &ndash; 3 &ndash; 3 &ndash; 2 &ndash; 2 &ndash; 2 &ndash; 3 &ndash; 5 &ndash; 5",
+        twinkle: "1 &ndash; 1 &ndash; 5 &ndash; 5 &ndash; 6 &ndash; 6 &ndash; 5 &ndash; 4 &ndash; 4 &ndash; 3 &ndash; 3 &ndash; 2 &ndash; 2 &ndash; 1"
+    };
+
+    function selectSong(songId) {
+        // Update Text
+        document.getElementById('song-card-text').innerHTML = songs[songId];
+        
+        // Toggle active classes
+        ['hotCrossBuns', 'maryLamb', 'twinkle'].forEach(id => {
+            const btn = document.getElementById('btn-' + id);
+            if (id === songId) {
+                btn.className = "px-4 py-2 rounded-full text-xs font-bold border transition-all bg-amber-600 text-white border-amber-600";
+            } else {
+                btn.className = "px-4 py-2 rounded-full text-xs font-bold border transition-all bg-white text-slate-600 border-slate-200 hover:border-amber-600";
+            }
+        });
+    }
+</script>
