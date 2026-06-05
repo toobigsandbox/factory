@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson: Tone Bars — Naming & Notation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Crimson Pro', serif; 
+            background: #fdfbf7; 
+            line-height: 1.75; 
+        }
+        .page { 
+            background: white; 
+            max-width: 850px; 
+            margin: 40px auto; 
+            padding: 80px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03); 
+            border-radius: 32px; 
+            border: 1px solid #e2e8f0; 
+        }
+        .action { 
+            font-family: 'Inter', sans-serif; 
+            font-weight: 700; 
+            margin-top: 24px; 
+            color: #0f172a; 
+            font-size: 0.95rem; 
+        }
+        .dialogue { 
+            margin-left: 40px; 
+            font-style: italic; 
+            color: #475569; 
+            position: relative; 
+            margin-bottom: 12px; 
+        }
+        .dialogue::before { 
+            content: "—"; 
+            position: absolute; 
+            left: -20px; 
+            color: #cbd5e1; 
+            font-style: normal; 
+        }
+        .illustrate { 
+            border: 2px dashed #cbd5e1; 
+            border-radius: 20px; 
+            margin: 35px 0; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            background: #fafaf9; 
+            padding: 40px; 
+        }
+        .illustrate-label { 
+            font-family: 'Inter', sans-serif; 
+            font-size: 11px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 0.15em; 
+            color: #64748b; 
+            margin-top: 15px; 
+        }
+        .material-box { 
+            background: #f8fafc; 
+            border-radius: 20px; 
+            border: 1px solid #e2e8f0; 
+            padding: 30px; 
+            margin-bottom: 40px; 
+        }
+        .aside-box { 
+            background: #fffbeb; 
+            border-left: 4px solid #d97706; 
+            padding: 25px; 
+            margin: 40px 0; 
+            border-radius: 0 15px 15px 0; 
+            position: relative; 
+        }
+        .aside-box::after { 
+            content: "Instructor's Aside"; 
+            position: absolute; 
+            top: -10px; 
+            left: 20px; 
+            background: #d97706; 
+            color: white; 
+            font-family: 'Inter', sans-serif; 
+            font-size: 8px; 
+            font-weight: 900; 
+            padding: 2px 8px; 
+            border-radius: 4px; 
+            text-transform: uppercase; 
+            letter-spacing: 0.1em; 
+        }
+        .wood-board {
+            background: linear-gradient(180deg, #5c3a21 0%, #402817 100%);
+            box-shadow: inset 0 4px 10px rgba(0,0,0,0.4), 0 15px 25px -5px rgba(0,0,0,0.3);
+        }
+        .tone-bar-unit {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+        }
+        .tone-bar-pulled {
+            transform: translateY(22px) translateZ(10px);
+            box-shadow: 0 15px 20px rgba(0,0,0,0.4);
+        }
+        .wood-stand {
+            background: linear-gradient(90deg, #d27d2d 0%, #b86518 100%);
+            border-bottom: 3px solid #7c3f05;
+        }
+        .black-stand {
+            background: linear-gradient(90deg, #2d3748 0%, #1a202c 100%);
+            border-bottom: 3px solid #0f1219;
+        }
+        /* Style for exposed silver metal strike plate */
+        .strike-plate {
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 50%, #94a3b8 100%);
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 2px 4px rgba(0,0,0,0.2);
+            border: 1px solid #64748b;
+        }
+        /* Mellow wood texture for disks */
+        .wood-disk {
+            background: radial-gradient(circle, #eab308 0%, #ca8a04 100%);
+            box-shadow: inset 0 2px 2px rgba(255,255,255,0.4), 0 2px 5px rgba(0,0,0,0.3);
+            border: 2px solid #854d0e;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+        }
+        .strike-active {
+            filter: brightness(1.2) saturate(1.1);
+            animation: rebound 0.15s ease-out;
+        }
+        @keyframes rebound {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+        @media print { 
+            body { background: white; margin: 0; } 
+            .page { box-shadow: none; border: none; padding: 0; margin: 0; width: 100%; } 
+            .no-print { display: none !important; } 
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen">
+
+    <nav class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <a href="../../index.html" class="text-slate-400 hover:text-amber-600 transition-colors font-bold uppercase text-[10px] tracking-widest flex items-center gap-2 font-sans">
+            <i data-lucide="arrow-left" size="14"></i> Back to Dashboard
+        </a>
+        <button onclick="window.print()" class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:bg-amber-700 transition-all flex items-center gap-2 text-xs uppercase tracking-wider font-sans">
+            <i data-lucide="printer" size="14"></i> Print to PDF
+        </button>
+    </nav>
+
+    <!-- Main Album Sheet -->
+    <main class="page">
+        <!-- Header Section -->
+        <header class="mb-12 border-b-2 border-amber-50 pb-8">
+            <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Music // Tone Bars: Naming & Notation</p>
+            <h1 class="text-5xl font-bold text-slate-900 leading-tight">Naming & Notation</h1>
+            <p class="mt-3 text-slate-400 italic">Prepared by: Elim Lee // AMI Elementary Submission</p>
+        </header>
+
+        <section class="mb-8">
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-4 border-b pb-2 italic">Purpose</h2>
+            <ul class="list-disc pl-5 space-y-2 text-slate-600 font-serif italic text-base">
+                <li>To introduce the letter names of the tone bars ($C_4$ through $C_6$) and connect sound directly to symbol.</li>
+                <li>To illustrate major diatonic scales and their written properties.</li>
+                <li>To provide an elegant transition from the sensory Bells materials of the first plane to the abstract, mathematical music reading system of the second plane.</li>
+                <li>To build cognitive pattern-recognition pathways that align musical transposition with mathematical translation rules.</li>
+            </ul>
+        </section>
+
+        <section class="material-box">
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-3">Material Analysis</h3>
+            <ul class="list-disc pl-5 space-y-2 text-slate-600 text-sm font-sans">
+                <li><strong>Chromatic Tone Bars:</strong> A full set of $25$ chromatic bars spanning two complete octaves from middle $C_4$ to high $C_6$. Natural keys are encased in flat white surfaces; chromatic accidentals are encased in flat black surfaces. Centered on each bar is an exposed silver strike-plate.</li>
+                <li><strong>Tone Bar Resonator Boards:</strong> Two joined boards painted to resemble a piano keyboard, maintaining a fixed workspace.</li>
+                <li><strong>Moveable Disks:</strong> Flat, circular wooden tags featuring note letter names ($c, d, e, \dots$) and enharmonic sharp/flat names ($a^\sharp / b^\flat$).</li>
+                <li><strong>Major Scale Transposer Strip:</strong> A laminated strip displaying step-intervals numbered $1$ to $8$ matching the whole/half step progression.</li>
+            </ul>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation I: Transition from the Bells</h2>
+
+            <div class="action">The Guide assembles a small group of children near the music cabinet, presenting the bells and tone bars.</div>
+            <div class="dialogue">"You already know how the bells sing from the lowest step to the highest step. Today we are going to invite these new bells—our tone bars—to show us how we write those steps down on paper."</div>
+
+            <div class="action">The Guide plays up and down the diatonic bells octave, then places a wooden name disk on each corresponding bell.</div>
+            <div class="dialogue">"Let's sing the notes as I play: C, D, E, F, G, A, B, C."</div>
+
+            <div class="action">The Guide aligns the transposer strip underneath the C Major tone bars on the board, pulling down the keys matching steps 1 through 8.</div>
+            <div class="dialogue">"Look at these tone bars that are aligned with our numbers. Let's play the first bar. [Strikes $C_4$ bell, then $C_4$ tone bar]. They sound exactly the same!"</div>
+
+            <div class="action">The Guide moves the wooden disk from the $C$ bell to the $C$ tone bar, repeating the process for the entire octave.</div>
+            <div class="dialogue">"From here on out, we will work with these beautiful tone bars. We can return our bells to the primary classroom."</div>
+
+            <div class="illustrate">
+                <svg width="600" height="240" viewBox="0 0 600 240" fill="none" xmlns="http://www.w3.org/2000/svg" class="max-w-full">
+                    <!-- Outer Hand-Drawn Style Border -->
+                    <path d="M 15,15 C 150,5 450,22 585,15 C 595,90 592,160 585,225 C 430,232 150,220 15,225 C 5,160 8,90 15,15" stroke="#94a3b8" stroke-width="2.5" fill="none" stroke-dasharray="6 4" stroke-linecap="round"/>
+                    
+                    <!-- Tone Bars layout showing flat plastic encasings + silver strike plates -->
+                    <g stroke="#334155" stroke-width="2" stroke-linejoin="round">
+                        <!-- C -->
+                        <g transform="translate(40, 40)">
+                            <!-- Flat White Plastic Casing -->
+                            <rect x="0" y="30" width="30" height="100" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+                            <!-- Silver metal strike plate -->
+                            <rect x="6" y="65" width="18" height="30" rx="2" fill="url(#silverGradient)" stroke="#94a3b8"/>
+                            <circle cx="15" cy="36" r="3" fill="#64748b"/>
+                        </g>
+                        <!-- C# -->
+                        <g transform="translate(76, 35)">
+                            <!-- Flat Black Plastic Casing -->
+                            <rect x="0" y="0" width="22" height="80" rx="3" fill="#1e293b" stroke="#0f172a" stroke-width="1.5"/>
+                            <!-- Silver metal strike plate -->
+                            <rect x="4" y="25" width="14" height="25" rx="2" fill="url(#silverGradient)" stroke="#64748b"/>
+                        </g>
+
+                        <!-- D -->
+                        <g transform="translate(104, 40)">
+                            <rect x="0" y="30" width="30" height="100" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+                            <rect x="6" y="65" width="18" height="30" rx="2" fill="url(#silverGradient)" stroke="#94a3b8"/>
+                            <circle cx="15" cy="36" r="3" fill="#64748b"/>
+                        </g>
+                        <!-- D# -->
+                        <g transform="translate(140, 35)">
+                            <rect x="0" y="0" width="22" height="80" rx="3" fill="#1e293b" stroke="#0f172a" stroke-width="1.5"/>
+                            <rect x="4" y="25" width="14" height="25" rx="2" fill="url(#silverGradient)" stroke="#64748b"/>
+                        </g>
+                        
+                        <!-- E -->
+                        <g transform="translate(168, 40)">
+                            <rect x="0" y="30" width="30" height="100" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+                            <rect x="6" y="65" width="18" height="30" rx="2" fill="url(#silverGradient)" stroke="#94a3b8"/>
+                            <circle cx="15" cy="36" r="3" fill="#64748b"/>
+                        </g>
+
+                        <!-- F -->
+                        <g transform="translate(204, 40)">
+                            <rect x="0" y="30" width="30" height="100" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+                            <rect x="6" y="65" width="18" height="30" rx="2" fill="url(#silverGradient)" stroke="#94a3b8"/>
+                            <circle cx="15" cy="36" r="3" fill="#64748b"/>
+                        </g>
+                        <!-- F# -->
+                        <g transform="translate(240, 35)">
+                            <rect x="0" y="0" width="22" height="80" rx="3" fill="#1e293b" stroke="#0f172a" stroke-width="1.5"/>
+                            <rect x="4" y="25" width="14" height="25" rx="2" fill="url(#silverGradient)" stroke="#64748b"/>
+                        </g>
+
+                        <!-- G -->
+                        <g transform="translate(268, 40)">
+                            <rect x="0" y="30" width="30" height="100" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+                            <rect x="6" y="65" width="18" height="30" rx="2" fill="url(#silverGradient)" stroke="#94a3b8"/>
+                            <circle cx="15" cy="36" r="3" fill="#64748b"/>
+                        </g>
+                        <!-- G# -->
+                        <g transform="translate(304, 35)">
+                            <rect x="0" y="0" width="22" height="80" rx="3" fill="#1e293b" stroke="#0f172a" stroke-width="1.5"/>
+                            <rect x="4" y="25" width="14" height="25" rx="2" fill="url(#silverGradient)" stroke="#64748b"/>
+                        </g>
+
+                        <!-- A -->
+                        <g transform="translate(332, 40)">
+                            <rect x="0" y="30" width="30" height="100" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+                            <rect x="6" y="65" width="18" height="30" rx="2" fill="url(#silverGradient)" stroke="#94a3b8"/>
+                            <circle cx="15" cy="36" r="3" fill="#64748b"/>
+                        </g>
+                        <!-- A# -->
+                        <g transform="translate(368, 35)">
+                            <rect x="0" y="0" width="22" height="80" rx="3" fill="#1e293b" stroke="#0f172a" stroke-width="1.5"/>
+                            <rect x="4" y="25" width="14" height="25" rx="2" fill="url(#silverGradient)" stroke="#64748b"/>
+                        </g>
+
+                        <!-- B -->
+                        <g transform="translate(396, 40)">
+                            <rect x="0" y="30" width="30" height="100" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+                            <rect x="6" y="65" width="18" height="30" rx="2" fill="url(#silverGradient)" stroke="#94a3b8"/>
+                            <circle cx="15" cy="36" r="3" fill="#64748b"/>
+                        </g>
+
+                        <!-- C (Octave) -->
+                        <g transform="translate(432, 40)">
+                            <rect x="0" y="30" width="30" height="100" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+                            <rect x="6" y="65" width="18" height="30" rx="2" fill="url(#silverGradient)" stroke="#94a3b8"/>
+                            <circle cx="15" cy="36" r="3" fill="#64748b"/>
+                        </g>
+                    </g>
+                    
+                    <!-- Laminated numbered transposer strip aligned underneath the bases -->
+                    <rect x="40" y="180" width="422" height="28" rx="4" fill="#fef08a" stroke="#d97706" stroke-width="1.5"/>
+                    <g font-family="Inter" font-size="10" font-weight="900" fill="#78350f" text-anchor="middle">
+                        <text x="55" y="197">1</text>
+                        <text x="119" y="197">2</text>
+                        <text x="183" y="197">3</text>
+                        <text x="219" y="197">4</text>
+                        <text x="283" y="197">5</text>
+                        <text x="347" y="197">6</text>
+                        <text x="411" y="197">7</text>
+                        <text x="447" y="197">8</text>
+                    </g>
+
+                    <!-- Hand holding rubber mallet striking C4 on its silver plate -->
+                    <g transform="translate(90, -10)">
+                        <path d="M 120,40 Q 90,65 50,85" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M 60,78 L 30,120" stroke="#7c2d12" stroke-width="3.5" stroke-linecap="round"/>
+                        <circle cx="28" cy="122" r="9" fill="#1e293b"/>
+                        <path d="M 14,115 A 12,12 0 0,1 28,103" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round"/>
+                    </g>
+                    
+                    <!-- Color-Me Marker Indicator -->
+                    <g transform="translate(520, 160)">
+                        <circle cx="12" cy="12" r="8" stroke="#cbd5e1" stroke-width="1.5" fill="none"/>
+                        <path d="M12 20 L12 28 M12 22 L6 22 M12 22 L18 22 M12 28 L8 36 M12 28 L16 36" stroke="#cbd5e1" stroke-width="1.5"/>
+                        <text x="12" y="2" font-family="Inter" font-size="7" font-weight="800" fill="#cbd5e1" text-anchor="middle">COLOR ME</text>
+                    </g>
+
+                    <!-- Define Gradients -->
+                    <defs>
+                        <linearGradient id="silverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#f1f5f9"/>
+                            <stop offset="50%" stop-color="#cbd5e1"/>
+                            <stop offset="100%" stop-color="#64748b"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="illustrate-label">Fig 1.2: Casing & silver strike plate alignment on transposer strip</div>
+            </div>
+        </section>
+
+        <section class="mb-12 border-t pt-8 border-amber-50">
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation II: Sliding the Strip (Octaves)</h2>
+
+            <div class="action">The Guide points to the natural octave bars now clearly labeled with note names.</div>
+            <div class="dialogue">"But wait—there is more! We have many more tone bars on our board. Let me show you what we can do with this strip."</div>
+
+            <div class="action">The Guide places a finger on step 8 (high C) and slides the transposer strip to the right, so step 1 now aligns with that exact bar.</div>
+            <div class="dialogue">"Because this is a C, and this is also a C, I can place my number 1 right where my number 8 was. I'll slide my strip right here... [Slides the strip to C5]."</div>
+
+            <div class="action">The Guide pulls down the new octave tone bars matching steps 2 through 8 of the next register.</div>
+            <div class="dialogue">"Now we can continue notating our higher octave! C, D, E... let's find the rest of our white bars."</div>
+        </section>
+
+        <section class="mb-12 border-t pt-8 border-amber-50">
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-6 italic">Naming Accidentals & Staff Rules</h2>
+            <p class="mb-4">
+                When presenting accidentals (sharps and flats), the Guide introduces the relative terms: **"a half step higher"** (sharps) and **"a half step lower"** (flats). 
+            </p>
+            <p class="mb-4">
+                The Guide introduces the double names of black keys using moveable black disks (enharmonics):
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6 bg-slate-50 p-6 rounded-2xl border border-slate-200 text-sm font-sans">
+                <div>
+                    <h4 class="font-bold text-slate-800 mb-2">Rules for Written Note Names:</h4>
+                    <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                        <li>The accidental symbol is a superscript when written as a word: e.g., $F^\sharp$, $B^\flat$.</li>
+                        <li>The scale name letter is always **CAPITALIZED** (e.g., "G Major").</li>
+                        <li>Individual notes notated on paper are **lowercase** (e.g., "this is note g").</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-800 mb-2">Rules for Staff Placement:</h4>
+                    <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                        <li>On the staff, the accidental sign comes **FIRST** (to the left of the note head) so the musician reads it *before* playing.</li>
+                        <li><strong>Note Stem Rule:</strong> If the note head is above the middle staff line ($B_4$), the stem extends down and to the left. If below the middle line, the stem goes up and to the right. On the middle line, it can go either way with intention.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="no-print my-12 bg-stone-50 rounded-3xl p-8 border border-stone-200">
+            <header class="text-center mb-6">
+                <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider font-sans">Active Sandbox Studio</span>
+                <h3 class="text-2xl font-bold font-serif text-slate-800 mt-2">Tactile Naming & Staff Board</h3>
+                <p class="text-xs text-slate-500 font-sans mt-1">
+                    Drag the slider to transpose. Click a wooden tag below, then tap a key to place it. Hit the silver strike-plates to test staff rules!
+                </p>
+            </header>
+
+            <!-- Transposition Selector -->
+            <div class="max-w-md mx-auto mb-8 bg-white p-4 rounded-xl border border-stone-100 shadow-sm flex flex-col gap-3">
+                <div class="flex justify-between items-center">
+                    <div class="font-sans text-xs">
+                        <span class="text-slate-400 block font-bold uppercase tracking-wider text-[9px]">Transposer Base Key (Tonic / 1)</span>
+                        <span id="active-key-display" class="font-serif font-bold text-slate-800 text-lg">C Major Scale</span>
+                    </div>
+                    <button onclick="resetTransposer()" class="text-[10px] font-sans font-bold uppercase tracking-wider text-amber-600 px-3 py-2 hover:bg-amber-50 rounded-lg transition-all border border-amber-200">
+                        Reset to C4
+                    </button>
+                </div>
+                <input type="range" id="transposer-slider" min="0" max="12" value="0" class="w-full accent-amber-600 h-2 bg-stone-200 rounded-lg cursor-pointer" oninput="slideTransposer(this.value)">
+                <div class="flex justify-between text-[9px] text-stone-400 font-sans uppercase tracking-widest">
+                    <span>C4</span>
+                    <span>E4</span>
+                    <span>G4</span>
+                    <span>C5</span>
+                </div>
+            </div>
+
+            <!-- Tone Bar Keyboard Setup -->
+            <div class="wood-board p-8 rounded-3xl max-w-3xl mx-auto overflow-x-auto mb-6">
+                <div class="flex justify-between items-stretch gap-1 h-56 min-w-[700px]" id="tone-bars-keyboard">
+                    <!-- Javascript generates the white/black key resonators with silver strike plates -->
+                </div>
+                <!-- Numbered transposer strip matching resonators -->
+                <div class="mt-6 bg-white rounded-xl p-2 border border-amber-900/10 relative shadow-inner overflow-hidden">
+                    <div id="sandbox-transposer-strip" class="flex justify-between items-center min-w-[700px]">
+                        <!-- Dynamic numeric labels -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Moveable Wooden Disk Tag Palette -->
+            <div class="max-w-xl mx-auto mb-8 text-center bg-white p-4 rounded-2xl border border-stone-200">
+                <span class="text-[9px] uppercase tracking-widest text-slate-400 font-sans font-bold block mb-3">Wooden Naming Disks</span>
+                <div class="flex justify-center gap-2 flex-wrap" id="disk-palette">
+                    <!-- Moveable note name tags -->
+                </div>
+                <p class="text-[10px] text-stone-400 font-sans mt-3">Click a wooden disk, then tap a tone bar casing to assign it!</p>
+            </div>
+
+            <!-- G-Clef Staff Projection -->
+            <div class="max-w-xl mx-auto bg-white p-6 rounded-2xl border border-stone-200 shadow-inner flex flex-col items-center">
+                <span class="text-[9px] uppercase tracking-widest text-slate-400 font-sans font-bold block mb-3">Treble Staff Notation Visualizer</span>
+                <div class="w-full h-32 flex items-center justify-center relative bg-stone-50 border border-stone-100 rounded-xl" id="staff-viewport">
+                    <!-- Staff Lines -->
+                    <div class="absolute inset-0 flex flex-col justify-center gap-3 px-6">
+                        <div class="border-t border-slate-300 w-full h-0"></div>
+                        <div class="border-t border-slate-300 w-full h-0"></div>
+                        <div class="border-t border-slate-300 w-full h-0"></div>
+                        <div class="border-t border-slate-300 w-full h-0"></div>
+                        <div class="border-t border-slate-300 w-full h-0"></div>
+                    </div>
+                    <div class="absolute left-4 top-2 text-stone-300 font-serif text-5xl">🎼</div>
+                    <!-- Played Note Marker -->
+                    <div id="projection-note" class="absolute left-1/2 -translate-x-1/2 flex flex-col items-center transition-all duration-100" style="bottom: 40px; display: none;">
+                        <div class="w-5 h-4 rounded-full bg-slate-800 rotate-[-15deg] relative" id="projection-note-head">
+                            <!-- Note Stem -->
+                            <div class="absolute w-[2px] bg-slate-800 transition-all duration-100" id="projection-note-stem"></div>
+                        </div>
+                        <span id="projection-note-label" class="absolute -bottom-6 font-sans font-bold text-xs text-amber-700">C4</span>
+                    </div>
+                    <!-- Helper Text -->
+                    <div id="viewport-helper" class="text-stone-300 font-sans text-xs text-center z-10">
+                        Strike a silver plate to test staff placement & note stem rules!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instructor's Aside (Yellow) -->
+        <div class="aside-box text-sm italic text-amber-950 leading-relaxed mb-8">
+            <strong>Cognitive Link to State Math Standards:</strong> Pattern building and algebraic replacement are foundational components of elementary curricula. When children substitute letter names with abstract variables ($a$, $b$) or learn transposition ratios, they are actively participating in mathematical transformation work. Keep this connection at the forefront during parent-guide reviews.
+        </div>
+
+        <section class="mb-12">
+            <h3 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-4 italic">Sequential Scale Reference Chart</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left font-sans text-xs border border-stone-200 rounded-lg">
+                    <thead>
+                        <tr class="bg-stone-50 border-b border-stone-200">
+                            <th class="p-3 font-bold text-stone-700">Scale Category</th>
+                            <th class="p-3 font-bold text-stone-700">Scales Included</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-stone-200 text-stone-600">
+                        <tr>
+                            <td class="p-3 font-bold">Black Keys Only (Standard)</td>
+                            <td class="p-3">A, B, C, D, E, F, G, A-flat, B-flat, D-flat, E-flat Major</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold">Sharps/Flats on White Bars</td>
+                            <td class="p-3 text-amber-800 font-bold">C-sharp, F-sharp, C-flat, G-flat Major</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold">Double Sharps / Double Flats</td>
+                            <td class="p-3">A-sharp, B-sharp, D-sharp, F-sharp, A-flat, G-sharp Major</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- References -->
+        <section class="mb-12 border-t pt-8 border-amber-50">
+            <h3 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-4 italic">References</h3>
+            <ul class="space-y-2 text-xs text-slate-400 font-sans">
+                <li>Montessori, M. (1917). <em>The Advanced Montessori Method, Volume II</em>. Heinemann. <a href="https://archive.org/details/advancemontessor01mont" class="text-amber-600 underline hover:text-amber-700">AMI Archive Link</a></li>
+                <li>Campbell, P.S. (2010). <em>Songs in Their Heads: Music and Its Meaning in Children's Lives</em>. Oxford University Press. <a href="https://global.oup.com/academic/product/songs-in-their-heads-9780195382518" class="text-amber-600 underline hover:text-amber-700">OUP Link</a></li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-20 pt-8 border-t text-[10px] font-sans text-slate-300 uppercase tracking-widest text-center">
+            Elim Lee // Semester 4 Sprint // AMI Elementary
+        </footer>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        // Frequencies for full 25 chromatic keys C4 to C6
+        const chromaticCollection = [
+            { name: "C4", freq: 261.63, isBlack: false },
+            { name: "C#4", freq: 277.18, isBlack: true },
+            { name: "D4", freq: 293.66, isBlack: false },
+            { name: "D#4", freq: 311.13, isBlack: true },
+            { name: "E4", freq: 329.63, isBlack: false },
+            { name: "F4", freq: 349.23, isBlack: false },
+            { name: "F#4", freq: 369.99, isBlack: true },
+            { name: "G4", freq: 392.00, isBlack: false },
+            { name: "G#4", freq: 415.30, isBlack: true },
+            { name: "A4", freq: 440.00, isBlack: false },
+            { name: "A#4", freq: 466.16, isBlack: true },
+            { name: "B4", freq: 493.88, isBlack: false },
+            { name: "C5", freq: 523.25, isBlack: false },
+            { name: "C#5", freq: 554.37, isBlack: true },
+            { name: "D5", freq: 587.33, isBlack: false },
+            { name: "D#5", freq: 622.25, isBlack: true },
+            { name: "E5", freq: 659.25, isBlack: false },
+            { name: "F5", freq: 698.46, isBlack: false },
+            { name: "F#5", freq: 739.99, isBlack: true },
+            { name: "G5", freq: 783.99, isBlack: false },
+            { name: "G#5", freq: 830.61, isBlack: true },
+            { name: "A5", freq: 880.00, isBlack: false },
+            { name: "A#5", freq: 932.33, isBlack: true },
+            { name: "B5", freq: 987.77, isBlack: false },
+            { name: "C6", freq: 1046.50, isBlack: false }
+        ];
+
+        const majorOffsets = [0, 2, 4, 5, 7, 9, 11, 12];
+        const placedDisks = {}; // Maps barIndex -> diskLabel
+        let selectedDiskLabel = null;
+        let audioCtx = null;
+
+        function playSynth(freq) {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+
+            osc.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+
+            osc.type = "sine"; 
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+            gainNode.gain.setValueAtTime(0.4, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.2);
+
+            osc.start();
+            osc.stop(audioCtx.currentTime + 1.3);
+        }
+
+        let transposerOffset = 0; // Key index offset from C4
+
+        const paletteDisks = [
+            "c", "d", "e", "f", "g", "a", "b", 
+            "f#", "b-flat", "c#", "e-flat", "g#", "a-flat", "f##"
+        ];
+
+        function initDiskPalette() {
+            const container = document.getElementById("disk-palette");
+            container.innerHTML = "";
+            paletteDisks.forEach(lbl => {
+                const button = document.createElement("button");
+                button.className = "wood-disk w-12 h-12 rounded-full text-stone-900 flex items-center justify-center text-xs shadow-md border-stone-800 border-2 hover:brightness-110 active:scale-95 transition-all focus:outline-none";
+                button.innerText = lbl;
+                button.onclick = () => {
+                    document.querySelectorAll("#disk-palette button").forEach(b => b.classList.remove("border-rose-600", "scale-105"));
+                    selectedDiskLabel = lbl;
+                    button.classList.add("border-rose-600", "scale-105");
+                };
+                container.appendChild(button);
+            });
+        }
+
+        function buildKeyboard() {
+            const container = document.getElementById("tone-bars-keyboard");
+            container.innerHTML = "";
+
+            chromaticCollection.forEach((bar, index) => {
+                const keyContainer = document.createElement("div");
+                keyContainer.id = `keyboard-bar-${index}`;
+                
+                const standColorClass = bar.isBlack ? "black-stand" : "wood-stand";
+                const casingBg = bar.isBlack ? "bg-[#1e293b]" : "bg-[#f8fafc]";
+                const casingBorder = bar.isBlack ? "border-slate-900" : "border-slate-200";
+                
+                keyContainer.className = `tone-bar-unit flex flex-col items-center justify-between py-2 rounded-b-xl border-t border-stone-500 ${standColorClass} flex-1 h-full shadow-md relative`;
+                
+                keyContainer.innerHTML = `
+                    <!-- Casing structure with Silver strike plate in the middle of y-axis -->
+                    <div class="${casingBg} ${casingBorder} border-x-2 border-b-2 w-full h-[95%] rounded-md flex flex-col justify-between items-center relative py-2">
+                        <!-- Wooden Disk Slot Placeholder -->
+                        <div id="disk-slot-${index}" class="w-6 h-6 rounded-full border-2 border-dashed border-stone-400 flex items-center justify-center text-[9px] font-sans font-black bg-stone-100/50 cursor-pointer hover:bg-stone-200/50 transition-colors z-20"></div>
+                        
+                        <!-- Silver Strike Plate in the middle of the y-axis -->
+                        <button onclick="strikeKey(${index})" class="strike-plate w-[75%] h-12 rounded-sm cursor-pointer z-10 active:scale-95 transition-all focus:outline-none flex items-center justify-center">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-400 opacity-60"></span>
+                        </button>
+                        
+                        <span class="text-[7.5px] font-sans font-black tracking-wider ${bar.isBlack ? 'text-slate-400':'text-stone-500'} select-none z-10">${bar.name}</span>
+                    </div>
+                `;
+
+                // Attaching place tagging event directly onto the slot
+                const slot = keyContainer.querySelector(`#disk-slot-${index}`);
+                slot.onclick = (e) => {
+                    e.stopPropagation();
+                    if (selectedDiskLabel) {
+                        placeDisk(index, selectedDiskLabel);
+                        selectedDiskLabel = null;
+                        document.querySelectorAll("#disk-palette button").forEach(b => b.classList.remove("border-rose-600", "scale-105"));
+                    }
+                };
+
+                container.appendChild(keyContainer);
+            });
+
+            updateTransposerHeights();
+        }
+
+        function strikeKey(index) {
+            const bar = chromaticCollection[index];
+            playSynth(bar.freq);
+
+            const el = document.getElementById(`keyboard-bar-${index}`);
+            if (el) {
+                el.classList.add("strike-active");
+                setTimeout(() => el.classList.remove("strike-active"), 150);
+            }
+
+            drawStaffNote(bar);
+        }
+
+        function placeDisk(barIndex, label) {
+            placedDisks[barIndex] = label;
+            const slot = document.getElementById(`disk-slot-${barIndex}`);
+            if (slot) {
+                slot.className = "w-6 h-6 rounded-full text-stone-900 flex items-center justify-center text-[9px] font-sans font-bold bg-amber-200 border-2 border-stone-800 shadow-md transition-all z-20 cursor-pointer";
+                slot.innerText = label;
+            }
+        }
+
+        function slideTransposer(val) {
+            transposerOffset = parseInt(val);
+            updateTransposerHeights();
+        }
+
+        function resetTransposer() {
+            document.getElementById("transposer-slider").value = 0;
+            transposerOffset = 0;
+            updateTransposerHeights();
+        }
+
+        function updateTransposerHeights() {
+            const targetKey = chromaticCollection[transposerOffset];
+            document.getElementById("active-key-display").innerText = `${targetKey.name} Major Scale`;
+
+            const activeScales = majorOffsets.map(offset => transposerOffset + offset);
+
+            for (let i = 0; i < chromaticCollection.length; i++) {
+                const el = document.getElementById(`keyboard-bar-${i}`);
+                if (el) {
+                    if (activeScales.includes(i)) {
+                        el.classList.add("tone-bar-pulled");
+                    } else {
+                        el.classList.remove("tone-bar-pulled");
+                    }
+                }
+            }
+
+            const stripContainer = document.getElementById("sandbox-transposer-strip");
+            stripContainer.innerHTML = "";
+
+            for (let i = 0; i < chromaticCollection.length; i++) {
+                const activeIndex = i - transposerOffset;
+                const matchesStepIndex = majorOffsets.indexOf(activeIndex);
+                const cell = document.createElement("div");
+                cell.className = "flex-1 text-center font-sans font-black text-xs py-1.5 transition-all duration-300";
+
+                if (matchesStepIndex !== -1) {
+                    cell.innerText = matchesStepIndex + 1;
+                    cell.className += " text-amber-800 bg-amber-100 rounded-md border border-amber-300 scale-105 shadow-sm";
+                } else {
+                    cell.innerHTML = "&nbsp;";
+                }
+                stripContainer.appendChild(cell);
+            }
+        }
+
+        function drawStaffNote(note) {
+            document.getElementById("viewport-helper").style.display = "none";
+            const noteEl = document.getElementById("projection-note");
+            const noteLabel = document.getElementById("projection-note-label");
+            const noteStem = document.getElementById("projection-note-stem");
+
+            noteEl.style.display = "flex";
+            noteLabel.innerText = note.name;
+
+            const pitchOrder = [
+                "C4","C#4","D4","D#4","E4","F4","F#4","G4","G#4","A4","A#4","B4",
+                "C5","C#5","D5","D#5","E5","F5","F#5","G5","G#5","A5","A#5","B5","C6"
+            ];
+            const index = pitchOrder.indexOf(note.name);
+
+            const baselinePx = -24; 
+            const intervalStep = 6.2; 
+            const bottomPosition = baselinePx + (index * intervalStep);
+
+            noteEl.style.bottom = `${bottomPosition}px`;
+
+            if (index > 11) {
+                noteStem.className = "absolute w-[2px] bg-slate-800 transition-all";
+                noteStem.style.height = "35px";
+                noteStem.style.top = "12px";
+                noteStem.style.left = "0px";
+                noteStem.style.right = "auto";
+            } else {
+                noteStem.className = "absolute w-[2px] bg-slate-800 transition-all";
+                noteStem.style.height = "35px";
+                noteStem.style.top = "-35px";
+                noteStem.style.left = "auto";
+                noteStem.style.right = "0px";
+            }
+        }
+
+        window.onload = function() {
+            initDiskPalette();
+            buildKeyboard();
+        }
+    </script>
+</body>
+</html>
