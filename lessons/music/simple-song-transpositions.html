@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lesson: Simple Song Transpositions</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Lesson: Simple Songs & Transposition</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
@@ -96,17 +94,45 @@
             letter-spacing: 0.1em; 
         }
         
-        /* Interactive Keyboard Layout Styles */
         .wood-board {
-            background: linear-gradient(180deg, #854d0e 0%, #713f12 100%);
-            box-shadow: inset 0 2px 4px rgba(255,255,255,0.1), 0 10px 15px -3px rgba(0,0,0,0.3);
+            background: linear-gradient(180deg, #5c3a21 0%, #402817 100%);
+            box-shadow: inset 0 4px 10px rgba(0,0,0,0.4), 0 15px 25px -5px rgba(0,0,0,0.3);
         }
-        .tone-bar {
-            transition: transform 0.05s ease-out, filter 0.1s ease;
+        .tone-bar-container {
+            perspective: 600px;
         }
-        .tone-bar:active {
-            transform: scaleY(0.96) translateY(2px);
-            filter: brightness(0.95);
+        .tone-bar-unit {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+        }
+        /* When a tone bar matches the transposition strip, it is pulled forward */
+        .tone-bar-pulled {
+            transform: translateY(24px) translateZ(10px);
+            box-shadow: 0 15px 20px rgba(0,0,0,0.35);
+        }
+        .wood-stand {
+            background: linear-gradient(90deg, #d27d2d 0%, #b86518 100%);
+            border-bottom: 3px solid #7c3f05;
+        }
+        .black-stand {
+            background: linear-gradient(90deg, #2d3748 0%, #1a202c 100%);
+            border-bottom: 3px solid #0f1219;
+        }
+        .metal-bar-white {
+            background: linear-gradient(180deg, #f7fafc 0%, #edf2f7 50%, #cbd5e0 100%);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1), inset 0 1px 1px white;
+        }
+        .metal-bar-black {
+            background: linear-gradient(180deg, #4a5568 0%, #2d3748 50%, #1a202c 100%);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15), inset 0 1px 1px #718096;
+        }
+        .strike-active {
+            filter: brightness(1.15) saturate(1.2);
+            animation: rebound 0.15s ease-out;
+        }
+        @keyframes rebound {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.96); }
+            100% { transform: scale(1); }
         }
         @media print { 
             body { background: white; margin: 0; } 
@@ -117,7 +143,6 @@
 </head>
 <body class="text-slate-800 antialiased min-h-screen">
 
-    <!-- Utility Bar: Back and Print (Vanishes on PDF) -->
     <nav class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
         <a href="../../index.html" class="text-slate-400 hover:text-amber-600 transition-colors font-bold uppercase text-[10px] tracking-widest flex items-center gap-2 font-sans">
             <i data-lucide="arrow-left" size="14"></i> Back to Dashboard
@@ -136,7 +161,6 @@
             <p class="mt-3 text-slate-400 italic">Prepared by: Elim Lee // AMI Elementary Submission</p>
         </header>
 
-        <!-- Purpose Section -->
         <section class="mb-8">
             <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-4 border-b pb-2 italic">Purpose</h2>
             <ul class="list-disc pl-5 space-y-2 text-slate-600 font-serif italic text-base">
@@ -147,13 +171,13 @@
             </ul>
         </section>
 
-        <!-- Material Analysis Box -->
+        <!-- Material Analysis Box (Grey) -->
         <section class="material-box">
             <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-3">Material Analysis</h3>
             <ul class="list-disc pl-5 space-y-2 text-slate-600 text-sm font-sans">
-                <li><strong>Tone Bars:</strong> A full diatonic set of tuned metal bars representing the $C$ major scale ($C_4$ to $C_5$), mounted on separate wooden blocks.</li>
-                <li><strong>Rubber Mallet:</strong> A specialized striker with a soft, round rubber head to produce a warm, lingering resonance.</li>
-                <li><strong>Major Scale Pattern Strip:</strong> A movable white guide strip labeled with the scale degree numbers $1$ to $8$ aligned underneath the bars.</li>
+                <li><strong>Tone Bars:</strong> A full set of chromatic tuned metal bars ($C_4$ to $C_6$) mounted on separate wooden resonators. White natural keys sit on light wooden bases; black chromatic keys sit on dark bases.</li>
+                <li><strong>Rubber Mallet:</strong> A specialized striker with a soft, round rubber head to produce a warm, lingering resonance without wood distortion.</li>
+                <li><strong>Major Scale Pattern Strip:</strong> A movable white guide strip labeled with the scale degree numbers $1$ to $8$ aligned underneath the chosen bars.</li>
                 <li><strong>Simple Songs Envelope:</strong> A packet containing individual cards with familiar melodies represented as sequences of numbers (e.g., $3 - 2 - 1$).</li>
             </ul>
         </section>
@@ -168,102 +192,136 @@
             <div class="action">The Guide removes the envelope labeled 'Simple Songs' from the shelf and holds it before the child.</div>
             <div class="dialogue">"On our shelf, we have this envelope, and it has simple songs in it. They’re written using numbers, so we’re going to choose one. I will choose this song."</div>
 
-            <div class="action">The Guide pulls out a song card (e.g., 'Hot Cross Buns'), places it flat on the table, and pulls down the corresponding tone bars.</div>
+            <div class="action">The Guide pulls out a song card (e.g., 'Hot Cross Buns'), places it flat where it can be clearly read, and pulls down the corresponding tone bars.</div>
             <div class="dialogue">"What I’m going to do is place this where I can see it and read it. So, there it is, right there. I’ll just leave my strip right here and pull down my tone bars."</div>
 
-            <div class="action">The Guide strikes the starting tonic bar (1) gently with the mallet.</div>
-            <div class="dialogue">"Let me just make sure I’ve done it correctly... [Plays tone bar 1]... Sounds like it!"</div>
-
-            <!-- Hand-drawn Squiggly SVG Illustration -->
             <div class="illustrate">
-                <svg width="550" height="240" viewBox="0 0 550 240" fill="none" xmlns="http://www.w3.org/2000/svg" class="max-w-full">
+                <svg width="600" height="280" viewBox="0 0 600 280" fill="none" xmlns="http://www.w3.org/2000/svg" class="max-w-full">
                     <!-- Squiggly Outer Frame -->
-                    <path d="M 12,12 C 150,5 400,18 538,12 C 542,100 548,180 538,228 C 380,235 150,222 12,228 C 2,180 8,100 12,12" stroke="#94a3b8" stroke-width="2" fill="none" stroke-dasharray="6 4" stroke-linecap="round"/>
+                    <path d="M 12,12 C 150,5 450,18 588,12 C 592,110 598,200 588,268 C 420,275 150,262 12,268 C 2,200 8,110 12,12" stroke="#94a3b8" stroke-width="2.5" fill="none" stroke-dasharray="6 4" stroke-linecap="round"/>
                     
-                    <!-- Tone Bars Base Rails -->
-                    <path d="M 30,170 Q 275,174 520,170" stroke="#64748b" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 3"/>
+                    <!-- Tone Bars Resonator Rails -->
+                    <path d="M 30,165 Q 300,169 570,165" stroke="#475569" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 4"/>
                     
-                    <!-- Hand-Sketched Diatonic Bars -->
-                    <g stroke="#334155" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <!-- C (1) -->
-                        <rect x="45" y="45" width="28" height="110" rx="4" fill="#ffffff" />
-                        <circle cx="59" cy="55" r="3" fill="#64748b" />
-                        <circle cx="59" cy="145" r="3" fill="#64748b" />
-                        <!-- D (2) -->
-                        <rect x="95" y="50" width="28" height="102" rx="4" fill="#f1f5f9" />
-                        <circle cx="109" cy="60" r="3" fill="#64748b" />
-                        <circle cx="109" cy="138" r="3" fill="#64748b" />
-                        <!-- E (3) -->
-                        <rect x="145" y="55" width="28" height="94" rx="4" fill="#ffffff" />
-                        <circle cx="159" cy="65" r="3" fill="#64748b" />
-                        <circle cx="159" cy="132" r="3" fill="#64748b" />
-                        <!-- F (4) -->
-                        <rect x="195" y="60" width="28" height="88" rx="4" fill="#f1f5f9" />
-                        <circle cx="209" cy="70" r="3" fill="#64748b" />
-                        <circle cx="209" cy="126" r="3" fill="#64748b" />
-                        <!-- G (5) -->
-                        <rect x="245" y="65" width="28" height="82" rx="4" fill="#ffffff" />
-                        <circle cx="259" cy="75" r="3" fill="#64748b" />
-                        <circle cx="259" cy="120" r="3" fill="#64748b" />
-                        <!-- A (6) -->
-                        <rect x="295" y="70" width="28" height="76" rx="4" fill="#f1f5f9" />
-                        <circle cx="309" cy="80" r="3" fill="#64748b" />
-                        <circle cx="309" cy="114" r="3" fill="#64748b" />
-                        <!-- B (7) -->
-                        <rect x="345" y="75" width="28" height="70" rx="4" fill="#ffffff" />
-                        <circle cx="359" cy="85" r="3" fill="#64748b" />
-                        <circle cx="359" cy="108" r="3" fill="#64748b" />
-                        <!-- C (8) -->
-                        <rect x="395" y="80" width="28" height="64" rx="4" fill="#ffffff" />
-                        <circle cx="409" cy="90" r="3" fill="#64748b" />
-                        <circle cx="409" cy="102" r="3" fill="#64748b" />
+                    <!-- Replicating the image_7af783.png key configuration -->
+                    <!-- Active keys pulled forward, inactive pushed back -->
+                    <g stroke="#1e293b" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- C (Natural - Pulled Forward) -->
+                        <g transform="translate(0, 15)">
+                            <rect x="40" y="45" width="28" height="100" rx="3" fill="#ffffff" />
+                            <rect x="45" y="55" width="18" height="80" rx="1" fill="#e2e8f0" stroke="#94a3b8"/>
+                            <circle cx="54" cy="50" r="2.5" fill="#475569" />
+                        </g>
+                        <!-- C# (Black - Inactive/Pushed Back) -->
+                        <rect x="74" y="30" width="22" height="90" rx="3" fill="#1e293b" />
+                        <rect x="78" y="40" width="14" height="70" rx="1" fill="#475569" />
+
+                        <!-- D (Natural - Pulled Forward) -->
+                        <g transform="translate(0, 15)">
+                            <rect x="102" y="45" width="28" height="100" rx="3" fill="#ffffff" />
+                            <rect x="107" y="55" width="18" height="80" rx="1" fill="#e2e8f0" stroke="#94a3b8"/>
+                            <circle cx="116" cy="50" r="2.5" fill="#475569" />
+                        </g>
+                        <!-- D# (Black - Inactive) -->
+                        <rect x="136" y="30" width="22" height="90" rx="3" fill="#1e293b" />
+                        
+                        <!-- E (Natural - Pulled Forward) -->
+                        <g transform="translate(0, 15)">
+                            <rect x="164" y="45" width="28" height="100" rx="3" fill="#ffffff" />
+                            <rect x="169" y="55" width="18" height="80" rx="1" fill="#e2e8f0" stroke="#94a3b8"/>
+                            <circle cx="178" cy="50" r="2.5" fill="#475569" />
+                        </g>
+                        
+                        <!-- F (Natural - Pulled Forward) -->
+                        <g transform="translate(0, 15)">
+                            <rect x="198" y="45" width="28" height="100" rx="3" fill="#ffffff" />
+                            <rect x="203" y="55" width="18" height="80" rx="1" fill="#e2e8f0" stroke="#94a3b8"/>
+                            <circle cx="212" cy="50" r="2.5" fill="#475569" />
+                        </g>
+                        <!-- F# (Black - Inactive) -->
+                        <rect x="232" y="30" width="22" height="90" rx="3" fill="#1e293b" />
+
+                        <!-- G (Natural - Pulled Forward) -->
+                        <g transform="translate(0, 15)">
+                            <rect x="260" y="45" width="28" height="100" rx="3" fill="#ffffff" />
+                            <rect x="265" y="55" width="18" height="80" rx="1" fill="#e2e8f0" stroke="#94a3b8"/>
+                            <circle cx="274" cy="50" r="2.5" fill="#475569" />
+                        </g>
+                        <!-- G# (Black - Inactive) -->
+                        <rect x="294" y="30" width="22" height="90" rx="3" fill="#1e293b" />
+
+                        <!-- A (Natural - Pulled Forward) -->
+                        <g transform="translate(0, 15)">
+                            <rect x="322" y="45" width="28" height="100" rx="3" fill="#ffffff" />
+                            <rect x="327" y="55" width="18" height="80" rx="1" fill="#e2e8f0" stroke="#94a3b8"/>
+                            <circle cx="336" cy="50" r="2.5" fill="#475569" />
+                        </g>
+                        <!-- A# (Black - Inactive) -->
+                        <rect x="356" y="30" width="22" height="90" rx="3" fill="#1e293b" />
+
+                        <!-- B (Natural - Pulled Forward) -->
+                        <g transform="translate(0, 15)">
+                            <rect x="384" y="45" width="28" height="100" rx="3" fill="#ffffff" />
+                            <rect x="389" y="55" width="18" height="80" rx="1" fill="#e2e8f0" stroke="#94a3b8"/>
+                            <circle cx="398" cy="50" r="2.5" fill="#475569" />
+                        </g>
+                        
+                        <!-- C (Natural - Pulled Forward) -->
+                        <g transform="translate(0, 15)">
+                            <rect x="420" y="45" width="28" height="100" rx="3" fill="#ffffff" />
+                            <rect x="425" y="55" width="18" height="80" rx="1" fill="#e2e8f0" stroke="#94a3b8"/>
+                            <circle cx="434" cy="50" r="2.5" fill="#475569" />
+                        </g>
                     </g>
                     
-                    <!-- Number Strip underneath -->
-                    <rect x="40" y="180" width="390" height="24" rx="4" fill="#ffffff" stroke="#475569" stroke-width="2"/>
-                    <g font-family="Crimson Pro" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">
-                        <text x="59" y="197">1</text>
-                        <text x="109" y="197">2</text>
-                        <text x="159" y="197">3</text>
-                        <text x="209" y="197">4</text>
-                        <text x="259" y="197">5</text>
-                        <text x="309" y="197">6</text>
-                        <text x="359" y="197">7</text>
-                        <text x="409" y="197">8</text>
+                    <!-- Labeled 1-8 representing W-W-H-W-W-W-H spacing -->
+                    <rect x="35" y="195" width="418" height="32" rx="4" fill="#fef08a" stroke="#d97706" stroke-width="2"/>
+                    <g font-family="Inter" font-size="12" font-weight="900" fill="#78350f" text-anchor="middle">
+                        <text x="54" y="215">1</text>
+                        <text x="116" y="215">2</text>
+                        <text x="178" y="215">3</text>
+                        <text x="212" y="215">4</text>
+                        <text x="274" y="215">5</text>
+                        <text x="336" y="215">6</text>
+                        <text x="398" y="215">7</text>
+                        <text x="434" y="215">8</text>
                     </g>
 
-                    <!-- Whimsical Envelope and Song Card -->
-                    <g transform="translate(450, 40)">
-                        <path d="M 5,55 L 75,55 L 75,10 L 5,10 Z" fill="#fffbeb" stroke="#78350f" stroke-width="1.5" stroke-dasharray="3 1"/>
-                        <path d="M 5,25 L 40,40 L 75,25" stroke="#78350f" stroke-width="1.5"/>
+                    <!-- Spontaneous Song Envelope & Cards -->
+                    <g transform="translate(480, 50)">
+                        <path d="M 5,65 L 85,65 L 85,15 L 5,15 Z" fill="#fffbeb" stroke="#b45309" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M 5,30 L 45,50 L 85,30" stroke="#b45309" stroke-width="2"/>
                         <!-- Card sliding out -->
-                        <path d="M 12,-15 L 68,-15 L 68,30 L 12,30 Z" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
-                        <text x="40" y="5" font-family="Crimson Pro" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">3 - 2 - 1</text>
-                        <text x="40" y="20" font-family="Inter" font-size="6" fill="#64748b" text-anchor="middle">SIMPLE SONGS</text>
+                        <path d="M 12,-10 L 78,-10 L 78,35 L 12,35 Z" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+                        <text x="45" y="10" font-family="Crimson Pro" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">3 - 2 - 1</text>
+                        <text x="45" y="26" font-family="Inter" font-size="6" font-weight="bold" fill="#64748b" text-anchor="middle">SIMPLE SONGS</text>
                     </g>
 
                     <!-- Hand holding mallet striking Mi (3) -->
-                    <g transform="translate(130, 25)">
-                        <!-- Hand Line -->
-                        <path d="M 80,45 Q 60,65 40,85" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+                    <g transform="translate(145, 10)">
+                        <!-- Hand / Arm Line -->
+                        <path d="M 90,40 Q 70,70 50,90" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round"/>
                         <!-- Mallet Shaft -->
-                        <path d="M 55,70 L 30,100" stroke="#78350f" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M 60,80 L 32,120" stroke="#7c2d12" stroke-width="3" stroke-linecap="round"/>
                         <!-- Soft Rubber head -->
-                        <circle cx="28" cy="102" r="9" fill="#1e293b" stroke="#0f172a" stroke-width="1.5"/>
-                        <!-- Sound ripples -->
-                        <path d="M 15,102 A 15,15 0 0,1 28,87" stroke="#d97706" stroke-width="1.5" stroke-linecap="round"/>
-                        <path d="M 10,102 A 20,20 0 0,1 28,82" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="30" cy="122" r="10" fill="#1e293b" stroke="#0f172a" stroke-width="1.5"/>
+                        <!-- Timbre ripples -->
+                        <path d="M 15,122 A 15,15 0 0,1 30,107" stroke="#d97706" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M 10,122 A 22,22 0 0,1 30,100" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round"/>
                     </g>
                     
-                    <!-- Floating Coloring Indicator -->
-                    <g transform="translate(470, 160)">
+                    <!-- Coloring Stick Figure Indicator -->
+                    <g transform="translate(520, 195)">
                         <circle cx="10" cy="10" r="7" stroke="#cbd5e1" stroke-width="1.5" fill="none"/>
                         <path d="M10 17 L10 26 M10 20 L4 20 M10 20 L16 20 M10 26 L6 34 M10 26 L14 34" stroke="#cbd5e1" stroke-width="1.5"/>
                         <text x="10" y="-3" font-family="Inter" font-size="7" font-weight="900" fill="#cbd5e1" text-anchor="middle">COLOR ME</text>
                     </g>
                 </svg>
-                <div class="illustrate-label">Fig 4.1: Sensory connection of numbers to scale degrees</div>
+                <div class="illustrate-label">Fig 4.2: Sensory alignment & active transposition of the major scale</div>
             </div>
+
+            <div class="action">The Guide strikes the starting tonic bar (1) gently with the mallet to test the pitch.</div>
+            <div class="dialogue">"Let me just make sure I’ve done it correctly... [Plays tone bar 1]... Sounds like it!"</div>
 
             <div class="action">The Guide carefully reads the numbered song card, modeling absolute focal alignment, and plays the melody.</div>
             <div class="dialogue">"Shall I read and play? [Plays melody for 'Hot Cross Buns']... That’s Hot Cross Buns, isn’t it?"</div>
@@ -271,34 +329,54 @@
             <div class="action">The Guide shifts the scale pattern strip to begin on a different starting key, showing transposition sensory-style.</div>
             <div class="dialogue">"Let’s move our strip. I’ll put the tone bars back. Now, move the strip anywhere you want to, and we’ll see if it still sounds like Hot Cross Buns."</div>
 
-            <div class="action">The Guide plays the same numerical sequence starting on the new base key.</div>
+            <div class="action">The Guide plays the same numerical sequence starting on the new base key (G Major).</div>
             <div class="dialogue">"Does that sound like Hot Cross Buns? Yeah—it does! You can move the strip anywhere you want, and play a song. Then move the strip again. Have fun!"</div>
         </section>
 
-        <!-- Interactive Studio Player -->
+        <section class="mb-12 border-t pt-8 border-amber-50">
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-6 italic">Written Transposition & Note Stems</h2>
+            <p class="mb-4">
+                Transposition simply means playing or singing a song in a different key. Today, we tie together everything the children have learned—key signatures, rhythm notation, and transposition—onto paper.
+            </p>
+            <p class="mb-4">
+                When working with children on written notation, they may need some guidance on the placement of the stem of a note. Let us demonstrate using the middle line rule:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-6 bg-slate-50 p-6 rounded-2xl border border-slate-200 text-sm font-sans">
+                <div class="flex items-start gap-2">
+                    <div class="w-6 h-6 rounded-full bg-amber-100 flex items-center justify-center text-amber-800 font-bold shrink-0">1</div>
+                    <div><strong>Below the middle line:</strong> The stem goes up and to the right of the note head.</div>
+                </div>
+                <div class="flex items-start gap-2">
+                    <div class="w-6 h-6 rounded-full bg-amber-100 flex items-center justify-center text-amber-800 font-bold shrink-0">2</div>
+                    <div><strong>Above the middle line:</strong> The stem goes down and to the left of the note head.</div>
+                </div>
+                <div class="flex items-start gap-2">
+                    <div class="w-6 h-6 rounded-full bg-amber-100 flex items-center justify-center text-amber-800 font-bold shrink-0">3</div>
+                    <div><strong>On the middle line:</strong> The stem can go either way with intention.</div>
+                </div>
+            </div>
+            <p class="mb-4 italic text-slate-500">
+                This process represents later work. The children need to have all the pieces in place—concept of measures, time signatures, and key signatures—before writing transpositions on paper.
+            </p>
+        </section>
+
         <section class="no-print my-12 bg-stone-50 rounded-3xl p-8 border border-stone-200">
             <header class="text-center mb-6">
                 <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider font-sans">Active Sandbox Studio</span>
-                <h3 class="text-2xl font-bold font-serif text-slate-800 mt-2">Virtual Tone Bar Transposer</h3>
-                <p class="text-xs text-slate-500 font-sans mt-1">Simulate the actual Montessori transposition material. Shift the numbered strip underneath to experience playing in different keys!</p>
+                <h3 class="text-2xl font-bold font-serif text-slate-800 mt-2">Montessori Transposer Board</h3>
+                <p class="text-xs text-slate-500 font-sans mt-1">
+                    Drag the transposer slider or select a song card. Active scale bars physically <strong>tug forward</strong>, isolating themselves just like the real material!
+                </p>
             </header>
-
-            <!-- Keyboard & Mouse Instructions -->
-            <div class="flex justify-center gap-6 text-[11px] text-slate-400 font-sans mb-6">
-                <span class="flex items-center gap-1"><i data-lucide="mouse-pointer" size="12"></i> Click bars to play</span>
-                <span class="flex items-center gap-1"><i data-lucide="keyboard" size="12"></i> Use keys 1-8 on your keyboard</span>
-            </div>
 
             <!-- Song Picker -->
             <div class="mb-6">
                 <label class="block text-xs uppercase tracking-wider text-slate-400 font-sans font-bold text-center mb-3">Choose a Song Card</label>
-                <div class="flex flex-wrap justify-center gap-2" id="song-picker">
-                    <!-- Dynamic picker insertion -->
-                </div>
+                <div class="flex flex-wrap justify-center gap-2" id="song-picker"></div>
             </div>
 
             <!-- Visual Song Card -->
-            <div class="bg-amber-50 border border-amber-100 rounded-2xl p-6 text-center max-w-lg mx-auto mb-8 shadow-sm">
+            <div class="bg-amber-50 border border-amber-100 rounded-2xl p-6 text-center max-w-xl mx-auto mb-8 shadow-sm">
                 <span class="text-[9px] uppercase tracking-widest text-amber-700 font-sans font-bold block mb-1">Active Song Card Notation</span>
                 <h4 id="song-title" class="font-serif font-bold text-slate-800 text-lg mb-2">Select a Song</h4>
                 <div id="song-notation" class="font-sans font-medium text-slate-700 text-sm tracking-wider max-w-md mx-auto leading-relaxed">
@@ -306,93 +384,103 @@
                 </div>
             </div>
 
-            <!-- Active Key / Transposition Controller -->
-            <div class="max-w-md mx-auto mb-8 bg-white p-4 rounded-xl border border-stone-100 shadow-sm flex items-center justify-between gap-4">
-                <div class="font-sans text-xs">
-                    <span class="text-slate-400 block font-bold uppercase tracking-wider text-[9px]">Starting Tonic ("Do" / 1)</span>
-                    <span id="active-key-name" class="font-serif font-bold text-slate-800 text-lg">C Major</span>
+            <!-- Transposition & Key Selector Slider -->
+            <div class="max-w-md mx-auto mb-8 bg-white p-4 rounded-xl border border-stone-100 shadow-sm flex flex-col gap-3">
+                <div class="flex justify-between items-center">
+                    <div class="font-sans text-xs">
+                        <span class="text-slate-400 block font-bold uppercase tracking-wider text-[9px]">Starting Tonic ("Do" / 1)</span>
+                        <span id="active-key-name" class="font-serif font-bold text-slate-800 text-lg">C Major</span>
+                    </div>
+                    <button onclick="resetStrip()" class="text-[10px] font-sans font-bold uppercase tracking-wider text-amber-600 px-3 py-2 hover:bg-amber-50 rounded-lg transition-all border border-amber-200">
+                        Reset to C4
+                    </button>
                 </div>
-                <div class="flex items-center gap-1">
-                    <button onclick="shiftStrip(-1)" class="p-2 text-slate-500 hover:bg-slate-100 rounded-lg transition-all" title="Shift Left">
-                        <i data-lucide="chevron-left" size="18"></i>
-                    </button>
-                    <button onclick="resetStrip()" class="text-[10px] font-sans font-bold uppercase tracking-wider text-slate-400 px-3 py-2 hover:bg-slate-100 rounded-lg transition-all">
-                        Reset to C
-                    </button>
-                    <button onclick="shiftStrip(1)" class="p-2 text-slate-500 hover:bg-slate-100 rounded-lg transition-all" title="Shift Right">
-                        <i data-lucide="chevron-right" size="18"></i>
-                    </button>
+                <input type="range" id="key-slider" min="0" max="12" value="0" class="w-full accent-amber-600 h-2 bg-stone-200 rounded-lg cursor-pointer" oninput="handleSliderChange(this.value)">
+                <div class="flex justify-between text-[9px] text-stone-400 font-sans uppercase tracking-widest">
+                    <span>C4</span>
+                    <span>E4</span>
+                    <span>G4</span>
+                    <span>C5</span>
                 </div>
             </div>
 
-            <!-- The Virtual Instrument Board -->
-            <div class="wood-board p-6 rounded-3xl max-w-2xl mx-auto">
-                <!-- Metal bars frame -->
-                <div class="flex justify-between items-stretch gap-1 md:gap-2 h-44 relative">
-                    <!-- 15 total physical tone bars (full diatonic spanning major scale options) -->
-                    <!-- C4 -->
-                    <button onclick="playPhysicalBar(0)" class="tone-bar bg-white border-b-8 border-slate-300 rounded-b-xl flex-1 flex flex-col justify-end pb-4 items-center" id="bar-0">
-                        <span class="text-[9px] font-sans font-bold text-slate-400 uppercase">C4</span>
-                    </button>
-                    <!-- D4 -->
-                    <button onclick="playPhysicalBar(1)" class="tone-bar bg-slate-100 border-b-8 border-slate-300 rounded-b-xl flex-1 flex flex-col justify-end pb-4 items-center h-[96%]" id="bar-1">
-                        <span class="text-[9px] font-sans font-bold text-slate-400 uppercase">D4</span>
-                    </button>
-                    <!-- E4 -->
-                    <button onclick="playPhysicalBar(2)" class="tone-bar bg-white border-b-8 border-slate-300 rounded-b-xl flex-1 flex flex-col justify-end pb-4 items-center h-[92%]" id="bar-2">
-                        <span class="text-[9px] font-sans font-bold text-slate-400 uppercase">E4</span>
-                    </button>
-                    <!-- F4 -->
-                    <button onclick="playPhysicalBar(3)" class="tone-bar bg-slate-100 border-b-8 border-slate-300 rounded-b-xl flex-1 flex flex-col justify-end pb-4 items-center h-[88%]" id="bar-3">
-                        <span class="text-[9px] font-sans font-bold text-slate-400 uppercase">F4</span>
-                    </button>
-                    <!-- G4 -->
-                    <button onclick="playPhysicalBar(4)" class="tone-bar bg-white border-b-8 border-slate-300 rounded-b-xl flex-1 flex flex-col justify-end pb-4 items-center h-[84%]" id="bar-4">
-                        <span class="text-[9px] font-sans font-bold text-slate-400 uppercase">G4</span>
-                    </button>
-                    <!-- A4 -->
-                    <button onclick="playPhysicalBar(5)" class="tone-bar bg-slate-100 border-b-8 border-slate-300 rounded-b-xl flex-1 flex flex-col justify-end pb-4 items-center h-[80%]" id="bar-5">
-                        <span class="text-[9px] font-sans font-bold text-slate-400 uppercase">A4</span>
-                    </button>
-                    <!-- B4 -->
-                    <button onclick="playPhysicalBar(6)" class="tone-bar bg-white border-b-8 border-slate-300 rounded-b-xl flex-1 flex flex-col justify-end pb-4 items-center h-[76%]" id="bar-6">
-                        <span class="text-[9px] font-sans font-bold text-slate-400 uppercase">B4</span>
-                    </button>
-                    <!-- C5 -->
-                    <button onclick="playPhysicalBar(7)" class="tone-bar bg-white border-b-8 border-slate-300 rounded-b-xl flex-1 flex flex-col justify-end pb-4 items-center h-[72%]" id="bar-7">
-                        <span class="text-[9px] font-sans font-bold text-slate-400 uppercase">C5</span>
-                    </button>
-                    <!-- D5 -->
-                    <button onclick="playPhysicalBar(8)" class="tone-bar bg-slate-100 border-b-8 border-slate-300 rounded-b-xl flex-1 flex flex-col justify-end pb-4 items-center h-[68%]" id="bar-8">
-                        <span class="text-[9px] font-sans font-bold text-slate-400 uppercase">D5</span>
-                    </button>
-                    <!-- E5 -->
-                    <button onclick="playPhysicalBar(9)" class="tone-bar bg-white border-b-8 border-slate-300 rounded-b-xl flex-1 flex flex-col justify-end pb-4 items-center h-[64%]" id="bar-9">
-                        <span class="text-[9px] font-sans font-bold text-slate-400 uppercase">E5</span>
-                    </button>
-                    <!-- F5 -->
-                    <button onclick="playPhysicalBar(10)" class="tone-bar bg-slate-100 border-b-8 border-slate-300 rounded-b-xl flex-1 flex flex-col justify-end pb-4 items-center h-[60%]" id="bar-10">
-                        <span class="text-[9px] font-sans font-bold text-slate-400 uppercase">F5</span>
-                    </button>
-                    <!-- G5 -->
-                    <button onclick="playPhysicalBar(11)" class="tone-bar bg-white border-b-8 border-slate-300 rounded-b-xl flex-1 flex flex-col justify-end pb-4 items-center h-[56%]" id="bar-11">
-                        <span class="text-[9px] font-sans font-bold text-slate-400 uppercase">G5</span>
-                    </button>
+            <!-- Chromatic Tone Bars (25 total spanning C4 to C6) -->
+            <div class="wood-board p-8 rounded-3xl max-w-3xl mx-auto overflow-x-auto">
+                <div class="flex justify-between items-stretch gap-1 h-56 min-w-[650px]" id="tone-bars-deck">
+                    <!-- Dynamic generation in Javascript to ensure precise note dimensions and tug mechanism -->
                 </div>
 
-                <!-- Number strip (Absolute layout offset synchronized with offset variable) -->
-                <div class="mt-4 bg-white rounded-xl p-2 border border-amber-900/20 relative shadow-inner overflow-hidden">
-                    <div id="movable-strip-labels" class="flex justify-between items-center transition-all duration-300">
-                        <!-- Labels get offset inside JS to perfectly align below active 8-step keys -->
+                <!-- Laminated numbered transposer strip aligned under the active bases -->
+                <div class="mt-6 bg-white rounded-xl p-2 border border-amber-900/20 relative shadow-inner overflow-hidden">
+                    <div id="transposer-labels" class="flex justify-between items-center transition-all duration-300 min-w-[650px]">
+                        <!-- Dynamic transposition labels -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Staff Notation Visualizer -->
+            <div class="mt-8 max-w-xl mx-auto bg-white p-6 rounded-2xl border border-stone-200 shadow-inner flex flex-col items-center">
+                <span class="text-[9px] uppercase tracking-widest text-slate-400 font-sans font-bold block mb-3">Live Staff & Note Stem Visualizer</span>
+                <div class="w-full h-32 flex items-center justify-center relative bg-stone-50 border border-stone-100 rounded-xl" id="staff-canvas-container">
+                    <!-- Standard Music Staff Lines -->
+                    <div class="absolute inset-0 flex flex-col justify-center gap-3 px-6">
+                        <div class="border-t border-slate-300 w-full h-0"></div>
+                        <div class="border-t border-slate-300 w-full h-0"></div>
+                        <div class="border-t border-slate-300 w-full h-0" id="middle-staff-line"></div>
+                        <div class="border-t border-slate-300 w-full h-0"></div>
+                        <div class="border-t border-slate-300 w-full h-0"></div>
+                    </div>
+                    <!-- Clef Symbol -->
+                    <div class="absolute left-4 top-2 text-stone-300 font-serif text-5xl">🎼</div>
+                    <!-- Played Note Marker -->
+                    <div id="live-note" class="absolute left-1/2 -translate-x-1/2 flex flex-col items-center transition-all duration-100" style="bottom: 40px; display: none;">
+                        <div class="w-5 h-4 rounded-full bg-slate-800 rotate-[-15deg] relative" id="note-head">
+                            <!-- Note Stem -->
+                            <div class="absolute w-[2px] bg-slate-800 transition-all duration-100" id="note-stem" style="height: 35px; top: -35px; right: 0;"></div>
+                        </div>
+                        <span id="live-note-name" class="absolute -bottom-6 font-sans font-bold text-xs text-amber-700">C4</span>
+                    </div>
+                    <div id="staff-instructions" class="text-stone-300 font-sans text-xs text-center z-10">
+                        Play any tone bar to see G-Clef staff placement and note stem rules!
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Instructor's Aside Box -->
+        <!-- Dynamic Lesson Notes (Rubric Extensions) -->
+        <section class="mb-12">
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-6 border-b pb-2 italic">Notes & Extensions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-slate-600 font-sans leading-relaxed">
+                <div>
+                    <h4 class="font-bold text-slate-800 mb-2">Key Vocabulary</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li><strong>Melody:</strong> An ordered sequence of single notes that compose a recognizable, complete musical statement.</li>
+                        <li><strong>Tonic (1):</strong> The root pitch of a scale; the stable home base of a melodic journey.</li>
+                        <li><strong>Measures:</strong> Compartments of time bounded by vertical bar lines, holding the beat patterns.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-800 mb-2">Control of Error</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li><strong>Auditory:</strong> The child's internal ear immediately alerts them if a pitch deviates from the familiar melody.</li>
+                        <li><strong>Visual:</strong> The transposer strip provides absolute positional matching under the active keys.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12 border-t pt-8 border-amber-50">
+            <h3 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-4 italic">References</h3>
+            <ul class="space-y-2 text-xs text-slate-400 font-sans">
+                <li>Montessori, M. (1917). <em>The Advanced Montessori Method, Volume II</em>. Heinemann. <a href="https://archive.org/details/advancemontessor01mont" class="text-amber-600 underline hover:text-amber-700">AMI Archive Link</a></li>
+                <li>Campbell, P. S. (2010). <em>Songs in Their Heads: Music and Its Meaning in Children's Lives</em>. Oxford University Press. <a href="https://global.oup.com/academic/product/songs-in-their-heads-9780195382518" class="text-amber-600 underline hover:text-amber-700">OUP Link</a></li>
+                <li>Anvari, S. H., et al. (2002). "Relations among musical skills, phonological processing, and early reading ability." <em>Journal of Experimental Child Psychology</em>. <a href="https://doi.org/10.1016/S0022-0965(02)00124-8" class="text-amber-600 underline hover:text-amber-700">ScienceDirect Link</a></li>
+            </ul>
+        </section>
+
+        <!-- Instructor's Aside Box (Yellow) -->
         <div class="aside-box text-sm italic text-amber-950 leading-relaxed">
-            <strong>Modeling Focal Point Connection:</strong> It is crucial that the Guide models reading the numbers card as they strike the corresponding tone bars. Do not perform the song merely from physical memory; turn your gaze directly onto the card.<br><br>
-            <strong>Creative Lyrical Freedom:</strong> At this stage, children are highly encouraged to compose their own simple melodies using numbers alone before receiving traditional musical notation.
+            <strong>Modeling Reading and Notation:</strong> When presenting simple songs, look strictly at the notation card. Model reading the numbers clearly while your hand moves the rubber mallet to strike the tone bars. Do not rely on mere physical memory; sensory-motor integration occurs when the child witnesses the guide's visual attention locked onto the symbolic card.
         </div>
 
         <footer class="mt-20 pt-8 border-t text-[10px] font-sans text-slate-300 uppercase tracking-widest text-center">
@@ -404,29 +492,39 @@
     <script>
         lucide.createIcons();
 
-        // 12 Semitone notes starting at C4
-        const physicalBars = [
-            { name: "C4", freq: 261.63 },
-            { name: "D4", freq: 293.66 },
-            { name: "E4", freq: 329.63 },
-            { name: "F4", freq: 349.23 },
-            { name: "G4", freq: 392.00 },
-            { name: "A4", freq: 440.00 },
-            { name: "B4", freq: 493.88 },
-            { name: "C5", freq: 523.25 },
-            { name: "D5", freq: 587.33 },
-            { name: "E5", freq: 659.25 },
-            { name: "F5", freq: 698.46 },
-            { name: "G5", freq: 783.99 }
+        // Full 25 chromatic bars spanning C4 (Middle C) to C6 (two octaves)
+        const chromaticFrequencies = [
+            { name: "C4", freq: 261.63, isBlack: false },
+            { name: "C#4", freq: 277.18, isBlack: true },
+            { name: "D4", freq: 293.66, isBlack: false },
+            { name: "D#4", freq: 311.13, isBlack: true },
+            { name: "E4", freq: 329.63, isBlack: false },
+            { name: "F4", freq: 349.23, isBlack: false },
+            { name: "F#4", freq: 369.99, isBlack: true },
+            { name: "G4", freq: 392.00, isBlack: false },
+            { name: "G#4", freq: 415.30, isBlack: true },
+            { name: "A4", freq: 440.00, isBlack: false },
+            { name: "A#4", freq: 466.16, isBlack: true },
+            { name: "B4", freq: 493.88, isBlack: false },
+            { name: "C5", freq: 523.25, isBlack: false },
+            { name: "C#5", freq: 554.37, isBlack: true },
+            { name: "D5", freq: 587.33, isBlack: false },
+            { name: "D#5", freq: 622.25, isBlack: true },
+            { name: "E5", freq: 659.25, isBlack: false },
+            { name: "F5", freq: 698.46, isBlack: false },
+            { name: "F#5", freq: 739.99, isBlack: true },
+            { name: "G5", freq: 783.99, isBlack: false },
+            { name: "G#5", freq: 830.61, isBlack: true },
+            { name: "A5", freq: 880.00, isBlack: false },
+            { name: "A#5", freq: 932.33, isBlack: true },
+            { name: "B5", freq: 987.77, isBlack: false },
+            { name: "C6", freq: 1046.50, isBlack: false }
         ];
 
-        // Major scale step indices: Whole, Whole, Half, Whole, Whole, Whole, Half
-        const scaleStepIntervals = [0, 2, 4, 5, 7, 9, 11, 12];
+        // Spacing offset semitones of a standard Major Scale (W-W-H-W-W-W-H)
+        const majorScaleSteps = [0, 2, 4, 5, 7, 9, 11, 12];
 
-        let stripOffset = 0; // index of active tonic bar
-        let audioCtx = null;
-
-        const songsRepository = [
+        const songRepository = [
             {
                 id: "hot-cross-buns",
                 title: "Hot Cross Buns",
@@ -434,13 +532,13 @@
                 notation: "3 – 2 – 1 | 3 – 2 – 1 | 1-1-1-1 2-2-2-2 | 3 – 2 – 1"
             },
             {
-                id: "mary-lamb",
+                id: "mary-had-a-little-lamb",
                 title: "Mary Had a Little Lamb",
                 sequence: [3, 2, 1, 2, 3, 3, 3, 2, 2, 2, 3, 5, 5, 3, 2, 1, 2, 3, 3, 3, 3, 2, 2, 3, 2, 1],
                 notation: "3 – 2 – 1 – 2 – 3 – 3 – 3 – | 2 – 2 – 2 – | 3 – 5 – 5 – | 3 – 2 – 1 – 2 – 3 – 3 – 3 – | 3 – 2 – 2 – 3 – 2 – 1 –"
             },
             {
-                id: "twinkle",
+                id: "twinkle-twinkle-little-star",
                 title: "Twinkle, Twinkle Little Star",
                 sequence: [1, 1, 5, 5, 6, 6, 5, 4, 4, 3, 3, 2, 2, 1],
                 notation: "1 – 1 – 5 – 5 – 6 – 6 – 5 – | 4 – 4 – 3 – 3 – 2 – 2 – 1 –"
@@ -450,13 +548,26 @@
                 title: "Ode to Joy (Beethoven)",
                 sequence: [3, 3, 4, 5, 5, 4, 3, 2, 1, 1, 2, 3, 3, 2, 2],
                 notation: "3 – 3 – 4 – 5 – | 5 – 4 – 3 – 2 – | 1 – 1 – 2 – 3 – | 3 – 2 – 2 –"
+            },
+            {
+                id: "row-row-row-your-boat",
+                title: "Row, Row, Row Your Boat",
+                sequence: [1, 1, 1, 2, 3, 3, 2, 3, 4, 5, 5, 5, 5, 3, 3, 3, 1, 1, 1, 5, 4, 3, 2, 1],
+                notation: "1 – 1 – 1 – 2 – 3 | 3 – 2 – 3 – 4 – 5 | 5-5-5 3-3-3 1-1-1 | 5 – 4 – 3 – 2 – 1"
+            },
+            {
+                id: "happy-birthday",
+                title: "Happy Birthday",
+                sequence: [1, 1, 2, 1, 4, 3, 1, 1, 2, 1, 5, 4, 1, 1, 8, 6, 4, 3, 2],
+                notation: "1-1 2 1 4 | 3 – – | 1-1 2 1 5 | 4 – – | 1-1 8 6 4 3 2 | 7-7 6 4 5 4"
             }
         ];
 
-        let activeSong = songsRepository[0];
+        let activeSong = songRepository[0];
+        let stripOffset = 0; // Starts in C Major
+        let audioCtx = null;
 
-        // Audio synthesizer node generator
-        function playNote(freq) {
+        function playTone(freq) {
             if (!audioCtx) {
                 audioCtx = new (window.AudioContext || window.webkitAudioContext)();
             }
@@ -465,81 +576,163 @@
             }
 
             const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
+            const gainNode = audioCtx.createGain();
 
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
+            osc.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
 
-            // Triangle wave mimics warm rubber block strike
+            // Triangle wave mimics the mellow wood-box resonators of real Montessori tone bars
             osc.type = "triangle";
             osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
 
-            // Envelope decay setup
-            gain.gain.setValueAtTime(0.6, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.4);
+            // Resonant strike envelope
+            gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.2);
 
             osc.start();
-            osc.stop(audioCtx.currentTime + 1.5);
+            osc.stop(audioCtx.currentTime + 1.3);
         }
 
-        // Play physical index bar
-        function playPhysicalBar(index) {
-            if (index < 0 || index >= physicalBars.length) return;
-            const barData = physicalBars[index];
-            playNote(barData.freq);
+        // Play note by index on the transposer deck
+        function playBar(index) {
+            if (index < 0 || index >= chromaticFrequencies.length) return;
+            const barData = chromaticFrequencies[index];
+            playTone(barData.freq);
 
-            // Highlight element temporarily
             const el = document.getElementById(`bar-${index}`);
             if (el) {
-                el.classList.add("bg-amber-100", "scale-y-95");
-                setTimeout(() => {
-                    el.classList.remove("bg-amber-100", "scale-y-95");
-                }, 150);
+                el.classList.add("strike-active");
+                setTimeout(() => el.classList.remove("strike-active"), 150);
+            }
+
+            updateLiveStaff(barData);
+        }
+
+        function updateLiveStaff(note) {
+            const container = document.getElementById("staff-canvas-container");
+            const liveNote = document.getElementById("live-note");
+            const noteName = document.getElementById("live-note-name");
+            const staffInstructions = document.getElementById("staff-instructions");
+            const noteStem = document.getElementById("note-stem");
+
+            staffInstructions.style.display = "none";
+            liveNote.style.display = "flex";
+            noteName.innerText = note.name;
+
+            // Find absolute semitone distance from Middle C (C4) to determine height
+            const pitchOrder = ["C4","C#4","D4","D#4","E4","F4","F#4","G4","G#4","A4","A#4","B4","C5","C#5","D5","D#5","E5","F5","F#5","G5","G#5","A5","A#5","B5","C6"];
+            const noteIndex = pitchOrder.indexOf(note.name);
+
+            // Standard scale height offset in pixels on the staff
+            // Middle C4 is near the bottom
+            const baselinePx = -24; // starting baseline bottom margin
+            const stepPx = 6.2; // vertical increment per semitone step
+            const calculatedBottom = baselinePx + (noteIndex * stepPx);
+
+            liveNote.style.bottom = `${calculatedBottom}px`;
+
+            // Middle Line of Treble clef is B4 (Note index 11)
+            if (noteIndex > 11) {
+                // Stem goes down and to the left
+                noteStem.style.height = "35px";
+                noteStem.style.top = "12px";
+                noteStem.style.left = "0px";
+                noteStem.style.right = "auto";
+            } else if (noteIndex < 11) {
+                // Stem goes up and to the right
+                noteStem.style.height = "35px";
+                noteStem.style.top = "-35px";
+                noteStem.style.left = "auto";
+                noteStem.style.right = "0px";
+            } else {
+                // On the middle line, stem can go either way (let's do down for consistency)
+                noteStem.style.height = "35px";
+                noteStem.style.top = "12px";
+                noteStem.style.left = "0px";
+                noteStem.style.right = "auto";
             }
         }
 
-        // Transpose scale strip offsets
-        function shiftStrip(direction) {
-            const newOffset = stripOffset + direction;
-            // Limit offset so the active 8 scale notes remain within available 12 diatonic bars
-            if (newOffset >= 0 && newOffset <= 4) {
-                stripOffset = newOffset;
-                updateStripUI();
-            }
+        function renderToneBars() {
+            const deck = document.getElementById("tone-bars-deck");
+            deck.innerHTML = "";
+
+            chromaticFrequencies.forEach((bar, index) => {
+                const btn = document.createElement("button");
+                btn.id = `bar-${index}`;
+                
+                // Base & Key Styling
+                const standClass = bar.isBlack ? "black-stand" : "wood-stand";
+                const metalClass = bar.isBlack ? "metal-bar-black" : "metal-bar-white";
+                
+                btn.className = `tone-bar-unit flex flex-col items-center justify-between py-3 rounded-b-xl border-t border-slate-400 ${standClass} flex-1 h-full shadow-md relative focus:outline-none`;
+                
+                // Metal Key visual inside the resonator
+                const keyHeight = bar.isBlack ? "h-[75%]" : "h-[85%]";
+                const keyWidth = "w-[75%]";
+                
+                btn.innerHTML = `
+                    <div class="${metalClass} ${keyWidth} ${keyHeight} rounded-md flex flex-col justify-end pb-3 items-center relative">
+                        <span class="text-[8px] font-sans font-extrabold tracking-wider ${bar.isBlack ? 'text-slate-400':'text-slate-500'} select-none">${bar.name}</span>
+                    </div>
+                `;
+
+                btn.onclick = () => playBar(index);
+                deck.appendChild(btn);
+            });
+            updateTranspositionUI();
+        }
+
+        function handleSliderChange(val) {
+            stripOffset = parseInt(val);
+            updateTranspositionUI();
         }
 
         function resetStrip() {
+            document.getElementById("key-slider").value = 0;
             stripOffset = 0;
-            updateStripUI();
+            updateTranspositionUI();
         }
 
-        // Render step labels accurately matching offset
-        function updateStripUI() {
-            const container = document.getElementById("movable-strip-labels");
-            container.innerHTML = "";
-
-            const activeKeyData = physicalBars[stripOffset];
+        function updateTranspositionUI() {
+            const activeKeyData = chromaticFrequencies[stripOffset];
             document.getElementById("active-key-name").innerText = `${activeKeyData.name} Major Scale`;
 
-            // Draw visual spacing slots
-            for (let i = 0; i < physicalBars.length; i++) {
-                const stepIdx = scaleStepIntervals.indexOf(i - stripOffset);
+            // Highlight and physically pull active scale degrees forward
+            const activeIndices = majorScaleSteps.map(step => stripOffset + step);
+
+            for (let i = 0; i < chromaticFrequencies.length; i++) {
+                const el = document.getElementById(`bar-${i}`);
+                if (!el) continue;
+
+                if (activeIndices.includes(i)) {
+                    el.classList.add("tone-bar-pulled");
+                } else {
+                    el.classList.remove("tone-bar-pulled");
+                }
+            }
+
+            // Draw transposer label strip spacing matching the active tone bars
+            const labelContainer = document.getElementById("transposer-labels");
+            labelContainer.innerHTML = "";
+
+            for (let i = 0; i < chromaticFrequencies.length; i++) {
+                const stepIdx = majorScaleSteps.indexOf(i - stripOffset);
                 const cell = document.createElement("div");
-                cell.className = "flex-1 text-center font-sans font-bold text-xs py-1 transition-all";
+                cell.className = "flex-1 text-center font-sans font-extrabold text-xs py-1.5 transition-all duration-300";
 
                 if (stepIdx !== -1) {
                     cell.innerText = stepIdx + 1;
-                    cell.className += " text-amber-600 bg-amber-50 rounded-md border border-amber-200/50 scale-105 shadow-sm";
+                    cell.className += " text-amber-700 bg-amber-100 rounded-md border border-amber-300 scale-105 shadow-sm";
                 } else {
                     cell.innerHTML = "&nbsp;";
                 }
-                container.appendChild(cell);
+                labelContainer.appendChild(cell);
             }
         }
 
-        // Setup Pickers
         function selectSong(id) {
-            const song = songsRepository.find(s => s.id === id);
+            const song = songRepository.find(s => s.id === id);
             if (!song) return;
             activeSong = song;
             document.getElementById("song-title").innerText = song.title;
@@ -549,9 +742,9 @@
             const buttons = document.querySelectorAll("#song-picker button");
             buttons.forEach(btn => {
                 if (btn.id === `btn-${id}`) {
-                    btn.className = "bg-amber-600 text-white border-amber-600 px-4 py-2 rounded-full text-xs font-bold border transition-all";
+                    btn.className = "bg-amber-600 text-white px-4 py-2 rounded-full text-xs font-bold shadow-md transition-all";
                 } else {
-                    btn.className = "bg-white text-slate-600 border-slate-200 hover:border-amber-600 px-4 py-2 rounded-full text-xs font-bold border transition-all";
+                    btn.className = "bg-white text-slate-600 border border-slate-200 hover:border-amber-600 px-4 py-2 rounded-full text-xs font-bold transition-all";
                 }
             });
         }
@@ -560,17 +753,16 @@
         document.addEventListener("keydown", (e) => {
             const keyNum = parseInt(e.key);
             if (keyNum >= 1 && keyNum <= 8) {
-                // Find actual note offset step index
-                const relativeIndex = scaleStepIntervals[keyNum - 1];
+                const relativeIndex = majorScaleSteps[keyNum - 1];
                 const absoluteIndex = stripOffset + relativeIndex;
-                playPhysicalBar(absoluteIndex);
+                playBar(absoluteIndex);
             }
         });
 
         // Initialize UI
         window.onload = function() {
             const picker = document.getElementById("song-picker");
-            songsRepository.forEach(song => {
+            songRepository.forEach(song => {
                 const btn = document.createElement("button");
                 btn.id = `btn-${song.id}`;
                 btn.innerText = song.title;
@@ -579,14 +771,8 @@
             });
 
             selectSong("hot-cross-buns");
-            updateStripUI();
+            renderToneBars();
         };
     </script>
 </body>
 </html>
-```
-`eof`
-
-Let's now update the Dashboard repository (`index.html`) so that it includes the newly structured `simple-songs` path index inside the `REPO_DATA` configuration object.
-
-```html:Updated Dashboard File:index.html
