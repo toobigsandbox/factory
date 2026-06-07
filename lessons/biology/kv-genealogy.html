@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson: KV Genealogy</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Georgia', 'ui-serif', 'serif'],
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { 
+            font-family: 'Georgia', serif; 
+            background: #fdfbf7; 
+            line-height: 1.75; 
+        }
+        .page { 
+            background: white; 
+            max-width: 850px; 
+            margin: 40px auto; 
+            padding: 80px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03); 
+            border-radius: 32px; 
+            border: 1px solid #e2e8f0; 
+        }
+        .action { 
+            font-family: 'Inter', sans-serif; 
+            font-weight: 700; 
+            margin-top: 24px; 
+            color: #1e293b; 
+            font-size: 0.95rem; 
+        }
+        .dialogue { 
+            margin-left: 40px; 
+            font-style: italic; 
+            color: #475569; 
+            position: relative; 
+            margin-bottom: 12px; 
+        }
+        .dialogue::before { 
+            content: "“"; 
+            position: absolute; 
+            left: -20px; 
+            color: #cbd5e1; 
+            font-style: normal; 
+            font-size: 1.5rem;
+            line-height: 1;
+            top: -2px;
+        }
+        .dialogue::after {
+            content: "”";
+            color: #cbd5e1;
+            font-style: normal;
+            font-size: 1.5rem;
+            line-height: 1;
+            margin-left: 2px;
+        }
+        
+        /* Rubric Boxes */
+        .material-box { 
+            background: #f8fafc; 
+            border-radius: 20px; 
+            border: 1px solid #e2e8f0; 
+            padding: 30px; 
+            margin-bottom: 40px; 
+            font-family: 'Inter', sans-serif;
+        }
+        .aside-box { 
+            background: #fffbeb; 
+            border-left: 4px solid #f59e0b; 
+            padding: 25px; 
+            margin: 40px 0; 
+            border-radius: 0 15px 15px 0; 
+            position: relative; 
+            font-family: 'Inter', sans-serif;
+        }
+        .aside-box::after { 
+            content: "Instructor's Aside"; 
+            position: absolute; 
+            top: -10px; 
+            left: 20px; 
+            background: #f59e0b; 
+            color: white; 
+            font-size: 8px; 
+            font-weight: 900; 
+            padding: 2px 8px; 
+            border-radius: 4px; 
+            text-transform: uppercase; 
+            letter-spacing: 0.1em; 
+        }
+        .illustrate { 
+            border: 2px dashed #cbd5e1; 
+            border-radius: 20px; 
+            margin: 35px 0; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            background: #fafaf9; 
+            padding: 40px; 
+        }
+        .illustrate-label { 
+            font-family: 'Inter', sans-serif; 
+            font-size: 11px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 0.15em; 
+            color: #64748b; 
+            margin-top: 15px; 
+        }
+
+        /* PRINT SETTINGS */
+        @media print {
+            body { 
+                background: white !important; 
+                color: black !important;
+                margin: 0 !important; 
+            }
+            .page { 
+                box-shadow: none !important; 
+                border: none !important; 
+                padding: 0 !important; 
+                margin: 0 !important; 
+                width: 100% !important; 
+            }
+            .no-print { 
+                display: none !important; 
+            }
+            .aside-box {
+                background-color: #fffbeb !important;
+                border-left: 4px solid #f59e0b !important;
+                page-break-inside: avoid;
+            }
+            .material-box {
+                background-color: #f8fafc !important;
+                border: 1px solid #e2e8f0 !important;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen">
+
+    <!-- Utility Bar: Back and Print (Vanishes on PDF) -->
+    <nav class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <a href="../../index.html" class="text-slate-400 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2 hover:text-amber-600 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Back to Dashboard
+        </a>
+        <button onclick="window.print()" class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:bg-amber-700 transition-all flex items-center gap-2 text-xs uppercase tracking-wider font-sans">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9V2h12v7"></path>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <path d="M6 14h12v8H6z"></path>
+            </svg>
+            Print PDF
+        </button>
+    </nav>
+
+    <!-- Main Album Sheet -->
+    <main class="page">
+        <!-- Header Section -->
+        <header class="mb-12 border-b-2 border-amber-50 pb-8">
+            <p class="font-sans font-bold text-amber-600 uppercase text-[10px] tracking-widest mb-2 italic">Biology // Classification</p>
+            <h1 class="text-5xl font-bold text-slate-900 leading-tight">KV Genealogy of a Plant</h1>
+            <p class="mt-3 text-slate-400 italic">Prepared by: Elim Lee // AMI Elementary Submission</p>
+        </header>
+
+        <!-- Purpose Section -->
+        <section class="mb-8">
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-slate-400 mb-2">Purpose</h2>
+            <p class="text-slate-700 font-serif italic text-base leading-relaxed">
+                To discover the genealogy of a plant by tracing its classification from kingdom down to family. To foster critical observation skills by always identifying the reasoning (the "why") behind every classification decision using real plant specimens.
+            </p>
+        </section>
+
+        <!-- Material Analysis Box (Grey) -->
+        <section class="material-box">
+            <h3 class="font-sans font-bold text-[10px] uppercase tracking-widest text-slate-500 mb-3 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+                Materials List
+            </h3>
+            <ul class="list-disc pl-5 space-y-2 text-slate-600 text-sm font-sans">
+                <li><strong>Real plant specimen:</strong> A fresh, living rose flower cut from a bouquet or classroom garden, showing complete leaves, stipules, sepals, and reproductive structures.</li>
+                <li><strong>Kingdom Vegetalia Classification Circles:</strong> Six concentric paper discs with distinct green-shaded borders representing taxonomic hierarchy:
+                    <ul class="list-disc pl-5 mt-1 space-y-1 text-xs">
+                        <li>Kingdom (Forest Green)</li>
+                        <li>Division (Dark Sage)</li>
+                        <li>Branch (Medium Sage)</li>
+                        <li>Class (Light Sage)</li>
+                        <li>Subclass (Pale Green)</li>
+                        <li>Family (White Center with Quadrants)</li>
+                    </ul>
+                </li>
+                <li><strong>Blank extension circles:</strong> Writable paper discs matching the taxonomic tier colors.</li>
+                <li><strong>Calligraphy supplies:</strong> Matching colored pencils and fine pens for custom taxonomy labeling.</li>
+            </ul>
+        </section>
+
+        <!-- Hand-drawn Style Dissection SVG -->
+        <div class="illustrate">
+            <svg viewBox="0 0 650 340" class="w-full h-auto max-w-xl" xmlns="http://www.w3.org/2000/svg">
+                <!-- Squiggly Outer Mat Boundary -->
+                <path d="M 12,12 C 160,3 490,15 638,12 C 645,115 648,225 638,328 C 470,335 160,322 12,328 C 5,225 8,115 12,12" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 4" fill="#fafaf9" />
+
+                <!-- Left Side: Organic Rose Sprig Sketch -->
+                <g transform="translate(10, 0)">
+                    <!-- Leaf Stems -->
+                    <path d="M 50,280 Q 80,180 120,70" stroke="#15803d" stroke-width="2.5" fill="none" stroke-linecap="round" />
+                    
+                    <!-- Leaf 1 (Left Lower) with Reticulate Venation -->
+                    <path d="M 75,190 C 40,180 30,220 60,240 C 75,230 85,210 75,190" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5" />
+                    <path d="M 60,240 Q 68,215 75,190" stroke="#16a34a" stroke-width="1" fill="none" />
+                    <path d="M 64,225 Q 50,220 44,226" stroke="#86efac" stroke-width="0.8" fill="none" />
+                    <path d="M 68,210 Q 56,204 50,210" stroke="#86efac" stroke-width="0.8" fill="none" />
+
+                    <!-- Distinct Stipules at leaf attachment base -->
+                    <path d="M 64,236 Q 52,242 56,252 Q 70,248 68,236 Z" fill="#dcfce7" stroke="#15803d" stroke-width="1.2" />
+                    <path d="M 72,231 Q 84,238 80,248 Q 68,242 72,231 Z" fill="#dcfce7" stroke="#15803d" stroke-width="1.2" />
+
+                    <!-- Rose Bud Bloom -->
+                    <g transform="translate(120, 65)">
+                        <!-- Sepals (5 symmetrical star paths) -->
+                        <path d="M 0,0 L -25,-15 C -15,-5 -5,-5 0,0 Z" fill="#f0fdf4" stroke="#15803d" stroke-width="1.5" />
+                        <path d="M 0,0 L 25,-15 C 15,-5 5,-5 0,0 Z" fill="#f0fdf4" stroke="#15803d" stroke-width="1.5" />
+                        <path d="M 0,0 L -15,30 C -10,15 -5,5 0,0 Z" fill="#f0fdf4" stroke="#15803d" stroke-width="1.5" />
+                        <path d="M 0,0 L 15,30 C 10,15 5,5 0,0 Z" fill="#f0fdf4" stroke="#15803d" stroke-width="1.5" />
+                        <!-- Red Petals of the blooming Rose -->
+                        <path d="M -20,-10 C -25,-45 25,-45 20,-10 C 15,10 -15,10 -20,-10" fill="#ffe4e6" stroke="#be123c" stroke-width="2" />
+                        <path d="M -10,-15 C -12,-35 12,-35 10,-15 C 8,-2 -8,-2 -10,-15" fill="#fecdd3" stroke="#be123c" stroke-width="1.5" />
+                        <!-- Receptacle base -->
+                        <ellipse cx="0" cy="5" rx="14" ry="10" fill="#15803d" stroke="#14532d" stroke-width="1.5" />
+                    </g>
+
+                    <!-- Guidelines -->
+                    <path d="M 64,248 L 30,285" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2 2" />
+                    <path d="M 100,50 L 55,50" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2 2" />
+                    
+                    <text x="25" y="298" font-family="Inter, sans-serif" font-size="10" font-weight="bold" fill="#475569">STIPULES</text>
+                    <text x="50" y="44" font-family="Inter, sans-serif" font-size="10" font-weight="bold" fill="#475569">ROSE BLOSSOM</text>
+                </g>
+
+                <!-- Right Side: Nested Concentric Circular Plates (Genealogy Map) -->
+                <g transform="translate(420, 160)">
+                    <!-- Layer 1: Kingdom Vegetalia (Forest Green Outer) -->
+                    <circle cx="0" cy="0" r="130" fill="none" stroke="#14532d" stroke-width="6" />
+                    <path id="txtPath1" d="M -125,0 A 125,125 0 0,1 125,0" fill="none" />
+                    <text font-family="Inter" font-size="8.5" font-weight="900" fill="#14532d" letter-spacing="3">
+                        <textPath href="#txtPath1" startOffset="50%" text-anchor="middle">KINGDOM VEGETALIA</textPath>
+                    </text>
+
+                    <!-- Layer 2: Division Phanerogamae (Dark Sage) -->
+                    <circle cx="0" cy="0" r="108" fill="none" stroke="#166534" stroke-width="5" />
+                    <path id="txtPath2" d="M -103,0 A 103,103 0 0,1 103,0" fill="none" />
+                    <text font-family="Inter" font-size="8" font-weight="900" fill="#166534" letter-spacing="2.5">
+                        <textPath href="#txtPath2" startOffset="50%" text-anchor="middle">DIVISION PHANEROGAMAE</textPath>
+                    </text>
+
+                    <!-- Layer 3: Branch Angiospermae (Medium Sage) -->
+                    <circle cx="0" cy="0" r="88" fill="none" stroke="#15803d" stroke-width="5" />
+                    <path id="txtPath3" d="M -83,0 A 83,83 0 0,1 83,0" fill="none" />
+                    <text font-family="Inter" font-size="7.5" font-weight="900" fill="#15803d" letter-spacing="2">
+                        <textPath href="#txtPath3" startOffset="50%" text-anchor="middle">BRANCH ANGIOSPERMAE</textPath>
+                    </text>
+
+                    <!-- Layer 4: Class Dicotyledonae (Olive Green) -->
+                    <circle cx="0" cy="0" r="68" fill="none" stroke="#4d7c0f" stroke-width="5" />
+                    <path id="txtPath4" d="M -63,0 A 63,63 0 0,1 63,0" fill="none" />
+                    <text font-family="Inter" font-size="7" font-weight="900" fill="#4d7c0f" letter-spacing="1.5">
+                        <textPath href="#txtPath4" startOffset="50%" text-anchor="middle">CLASS DICOTYLEDONAE</textPath>
+                    </text>
+
+                    <!-- Layer 5: Subclass Archichlamydeae (Pale Lime Green) -->
+                    <circle cx="0" cy="0" r="48" fill="none" stroke="#84cc16" stroke-width="4.5" />
+                    <path id="txtPath5" d="M -44,0 A 44,44 0 0,1 44,0" fill="none" />
+                    <text font-family="Inter" font-size="6" font-weight="900" fill="#4d7c0f" letter-spacing="0.5">
+                        <textPath href="#txtPath5" startOffset="50%" text-anchor="middle">SUBCLASS ARCHICHLAMYDEAE</textPath>
+                    </text>
+
+                    <!-- Layer 6: White Center (Family Rosaceae Quadrant Disk) -->
+                    <circle cx="0" cy="0" r="28" fill="#ffffff" stroke="#a3e635" stroke-width="2.5" />
+                    <!-- Quadrant lines in the center -->
+                    <line x1="-20" y1="0" x2="20" y2="0" stroke="#84cc16" stroke-width="0.8" />
+                    <line x1="0" y1="-20" x2="0" y2="20" stroke="#84cc16" stroke-width="0.8" />
+                    
+                    <!-- Center drawings representation -->
+                    <circle cx="-10" cy="-10" r="2" fill="#be123c" />
+                    <circle cx="10" cy="-10" r="2.5" fill="none" stroke="#16a34a" />
+                    <path d="M -10,12 L -6,8" stroke="#ca8a04" stroke-width="1" />
+                    <path d="M 8,10 Q 12,6 14,12" stroke="#15803d" stroke-width="1" fill="none" />
+                    
+                    <text x="0" y="3" font-family="Georgia, serif" font-size="5" font-weight="bold" fill="#14532d" text-anchor="middle">ROSACEAE</text>
+                </g>
+            </svg>
+            <div class="illustrate-label">Fig 1.1: Tracing the Genealogy Circle discs sitting inside concentric arrangements (Rosaceae spec)</div>
+        </div>
+
+        <!-- Presentation Heading -->
+        <section class="mb-12">
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+            
+            <!-- Step 1 -->
+            <div class="step mb-8">
+                <p class="action">Show a real rose specimen, encouraging children to observe it closely. Mention having a real flower from either a bouquet or garden for hands-on exploration.</p>
+                <p class="dialogue">
+                    Today, we are going to explore the genealogy of a plant. I’m going to choose the rose because you’ve already seen this material through the rose, and it’s useful for your learning and understanding. Remember, we don’t have to restrict children; we want them to explore freely. If anyone wants to create another family card or folder, I’m happy to guide you through that as well. But for now, we’ll use the rose for your comfort and familiarity.
+                </p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step mb-8">
+                <p class="action">Place the rose specimen on the table, inviting children to look at it closely. Guide the child to pick up the Kingdom Vegetalia material and place the correct circle on the working area. Model the process patiently to reinforce understanding.</p>
+                <p class="dialogue">
+                    The most important thing when you do this is the ‘why.’ Always ask yourself, ‘Why are you saying that? What makes you think that?’ Let’s start together. Today, we are going to discover the genealogy of this plant. First question: Do we want the Kingdom Vegetalia material or the Kingdom Animalia material? Obviously, this is Kingdom Vegetalia. Why do you think that? Because it makes its own food and it can’t move. That’s right! So, go ahead and get the Kingdom Vegetalia material.
+                </p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step mb-8">
+                <p class="action">The child selects and places the Ferro circle next to the specimen, following your guidance. Continue to prompt questions to support their reasoning.</p>
+                <p class="dialogue">
+                    This belongs to Kingdom Vegetalia. Now, within this kingdom, there are two divisions: Ferro-game and Cryptog-game. Which one does this belong to? Ferro? Why? Because we can see how it reproduces. Exactly! So, bring out the Ferro circle.
+                </p>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step mb-8">
+                <p class="action">The child brings the Angiosperm circle and places it correctly. Encourage the child to recall prior hands-on activities, like floral dissection, to reinforce their learning.</p>
+                <p class="dialogue">
+                    Within Ferro gam, there are two branches: Gymnosperm and Angiosperm. Which does this belong to? Angiosperm? Why? Because the seeds are enclosed in a vessel, remember when we dissected that? Perfect! Place the Angiosperm circle here.
+                </p>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step mb-8">
+                <p class="action">The child selects the Dicotyledon circle and places it down. Highlight key observable features on the real specimen, like leaf veins and flower parts, to foster critical observation.</p>
+                <p class="dialogue">
+                    Next, within Angiosperm, there are two classes. Which class does this belong to? Dicotyledons? Why? Because you can see the reticulate veins in the leaves and the flower parts come in fours or fives. Exactly! Bring over the Dicotyledon circle.
+                </p>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step mb-8">
+                <p class="action">The child places the Archiclamer circle and then the Rose family card next to the specimen. Guide the child to count petals and flower parts (1, 2, 3, 4, 5) and observe leaf characteristics.</p>
+                <p class="dialogue">
+                    Within Dicotyledons, we have two subclasses: Metaclamer and Archiclamer. Which one does this rose belong to? Archiclamer? Why? Because it has poly petalis, many petals. That’s right. And within this subclass, there are several families. What family is this? The rose family! Yes! We can see radial symmetry, flower parts in fours or fives, and stipulate leaves—these are good indicators.
+                </p>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="step mb-8">
+                <p class="action">Point to the colored circles and pencils on the shelf, inviting children to create new material if needed. This encourages creativity and ownership of learning.</p>
+                <p class="dialogue">
+                    So for this specimen, we know it belongs to Kingdom Vegetalia, division Ferro, branch Angiosperm, class Dicotyledon, subclass Archiclamer, and family Rose. You can do this for any plant! If you reach a point where something isn’t in the material or is in Gymnosperm but not developed yet, don’t worry. We have circles and colored pencils on the shelf in these exact colors so you can make your own matching circles and trace the full genealogy of your specimen. Isn’t that exciting?
+                </p>
+            </div>
+        </section>
+
+        <!-- Interactive Concentric Genealogy Studio Sandbox -->
+        <section class="no-print bg-slate-900 text-white rounded-3xl p-6 mb-12 shadow-2xl border border-slate-800">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                <div>
+                    <h3 class="font-sans font-bold text-lg text-amber-400">Tactile Genealogy concentric card Studio</h3>
+                    <p class="text-xs text-slate-400">Sensory exercise matching scientific reasons to nested taxonomic tiers. Select a specimen to study!</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <label class="text-xs font-mono text-slate-400">Specimen:</label>
+                    <select id="specimenSelector" onchange="loadSpecimen()" class="bg-slate-800 border border-slate-700 text-amber-300 text-xs font-bold rounded p-1.5 focus:ring-1 focus:ring-amber-500 outline-none">
+                        <option value="rose">Wild Rose (Dicot - Rosaceae)</option>
+                        <option value="lily">Madonna Lily (Monocot - Liliaceae)</option>
+                        <option value="pine">Scots Pine (Gymnosperm - Pinaceae)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Interactive Board Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+                <!-- Left Column: Circular Concentric Canvas -->
+                <div class="md:col-span-6 bg-slate-950 p-6 rounded-2xl border border-slate-800 flex flex-col items-center justify-center relative min-h-[340px]">
+                    <span class="absolute top-3 left-4 text-[9px] font-mono text-slate-500 uppercase tracking-widest">Interactive Concentric Mat</span>
+                    
+                    <!-- Dynamic concentric layout inside SVG -->
+                    <svg id="matSVG" viewBox="0 0 300 300" class="w-full max-w-[280px]">
+                        <!-- Concentric circles representing current validation levels. Standard colors mirror shared materials -->
+                        <circle cx="150" cy="150" r="130" fill="none" stroke="#1e293b" stroke-width="4" stroke-dasharray="4 4" />
+                        <circle cx="150" cy="150" r="108" fill="none" stroke="#1e293b" stroke-width="4" stroke-dasharray="4 4" />
+                        <circle cx="150" cy="150" r="88" fill="none" stroke="#1e293b" stroke-width="4" stroke-dasharray="4 4" />
+                        <circle cx="150" cy="150" r="68" fill="none" stroke="#1e293b" stroke-width="4" stroke-dasharray="4 4" />
+                        <circle cx="150" cy="150" r="48" fill="none" stroke="#1e293b" stroke-width="4" stroke-dasharray="4 4" />
+                        <circle cx="150" cy="150" r="28" fill="none" stroke="#1e293b" stroke-width="3" stroke-dasharray="4 4" />
+                        
+                        <!-- Core White circle -->
+                        <circle cx="150" cy="150" r="20" fill="#1e293b" />
+                        <text x="150" y="153" font-family="Inter" font-size="8" font-weight="bold" fill="#64748b" text-anchor="middle">?</text>
+                    </svg>
+                </div>
+
+                <!-- Right Column: Sorting Tray Questions -->
+                <div class="md:col-span-6 flex flex-col justify-between p-5 rounded-2xl border border-slate-800 bg-slate-950/40">
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-[9px] font-mono font-bold px-2 py-1 rounded bg-amber-500/10 text-amber-400 uppercase tracking-wider" id="activeTierName">Kingdom Level</span>
+                            <span class="text-xs font-mono text-slate-500" id="progressIndicator">1 of 6</span>
+                        </div>
+                        <h4 class="text-lg font-bold font-sans text-white mb-2" id="questionTitle">Why is this specimen part of Kingdom Vegetalia?</h4>
+                        <p class="text-xs text-slate-300 italic mb-4 leading-relaxed" id="questionSpec">Review the plant parts carefully...</p>
+                        
+                        <!-- Selection Cards (The Binary "Why" choice) -->
+                        <div class="space-y-2" id="choiceContainer">
+                            <!-- Injected dynamically -->
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-800/80 flex justify-between items-center text-xs">
+                        <span class="text-slate-400 italic">Verify observable anatomical facts!</span>
+                        <div class="flex items-center gap-2">
+                            <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse hidden" id="traySuccessDot"></div>
+                            <span id="scoreCounter" class="font-mono text-amber-300 font-bold">Matched: 0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instructor's Aside (Yellow) -->
+        <section class="aside-box text-sm text-amber-950 mb-12 leading-relaxed">
+            <h4 class="font-sans font-bold text-amber-900 mb-3 uppercase tracking-wider text-[10px]">Pedagogical Insights & System Properties</h4>
+            <div class="space-y-3">
+                <p>
+                    <strong>The Power of "Why":</strong> The most crucial part of this lesson is having the child verbalize the reasoning behind each step. It is not just about sorting cards; it is about justifying the taxonomy based on observable traits.
+                </p>
+                <p>
+                    <strong>Real Specimens:</strong> Always use actual plant specimens (like a real rose) alongside the material to ground the abstract classification hierarchy in tangible reality.
+                </p>
+                <p>
+                    <strong>Empowering Extensions:</strong> Do not restrict children to just the pre-made materials. Ensure colored pencils and blank circles are available so children can research, create new family cards, and map out the genealogies of plants not currently in the materials.
+                </p>
+            </div>
+        </section>
+
+        <!-- References -->
+        <section class="mb-12 border-t pt-8 border-amber-50 text-xs text-slate-400 space-y-1 font-sans">
+            <p><strong>References:</strong></p>
+            <p>Learner, Carol. (1981). <em>Plant Families</em>. New York: Thomas Y. Crowell. <a href="https://archive.org/details/plantfamilies0000lear" class="underline hover:text-amber-600 transition-colors">Open Library Archive</a>.</p>
+        </section>
+
+        <!-- Footer section with print settings compatibility -->
+        <footer class="mt-20 pt-8 border-t text-[10px] font-sans text-slate-300 uppercase tracking-widest text-center">
+            Elim Lee // Semester 4 Sprint // AMI Elementary
+        </footer>
+    </main>
+
+    <!-- Custom Sandbox App Script -->
+    <script>
+        // Physical database mapping colors and contents of different botanical folders
+        const database = {
+            rose: {
+                specimen: "Wild Rose (Dicot - Rosaceae)",
+                tiers: [
+                    {
+                        title: "Kingdom Level",
+                        question: "Why is this rose part of Kingdom Vegetalia?",
+                        choices: [
+                            { text: "It is fixed in one spot, lacks feelings or will, and produces its own food through raw elements.", correct: true, feedback: "Correct! IMMOBILITY and PHOTOSYNTHESIS are the core markers of Vegetalia." },
+                            { text: "It possesses sensory cells, can move independently to get shelter, and cannot synthesize food.", correct: false, feedback: "Incorrect. Immobile plants make food." }
+                        ],
+                        circle: `<circle cx="150" cy="150" r="130" fill="none" stroke="#14532d" stroke-width="8"/><path id="pathR1" d="M 25,150 A 125,125 0 0,1 275,150" fill="none"/><text font-family="Inter" font-size="8" font-weight="bold" fill="#ffffff" letter-spacing="2.5"><textPath href="#pathR1" startOffset="50%" text-anchor="middle">KINGDOM VEGETALIA</textPath></text>`
+                    },
+                    {
+                        title: "Division Level",
+                        question: "Why does the rose belong to Division Phanerogamae?",
+                        choices: [
+                            { text: "It does not produce seeds; its reproduction is completely secret and hidden.", correct: false, feedback: "Incorrect. That belongs to Cryptogamae." },
+                            { text: "It is a seed-bearing plant where reproduction is clearly visible through flowers.", correct: true, feedback: "Correct! Phanerogams have 'visible marriage'." }
+                        ],
+                        circle: `<circle cx="150" cy="150" r="108" fill="none" stroke="#166534" stroke-width="7"/><path id="pathR2" d="M 45,150 A 105,105 0 0,1 255,150" fill="none"/><text font-family="Inter" font-size="7.5" font-weight="bold" fill="#ffffff" letter-spacing="2"><textPath href="#pathR2" startOffset="50%" text-anchor="middle">DIVISION PHANEROGAMAE</textPath></text>`
+                    },
+                    {
+                        title: "Branch Level",
+                        question: "Why is the rose an Angiospermae branch?",
+                        choices: [
+                            { text: "Its seeds develop naked on cones without vessel enclosure.", correct: false, feedback: "Incorrect. That is Gymnospermae." },
+                            { text: "Its seeds are protected, encased inside a closed vessel.", correct: true, feedback: "Correct! Angio = vessel, Sperma = seed." }
+                        ],
+                        circle: `<circle cx="150" cy="150" r="88" fill="none" stroke="#15803d" stroke-width="7"/><path id="pathR3" d="M 65,150 A 85,85 0 0,1 235,150" fill="none"/><text font-family="Inter" font-size="7" font-weight="bold" fill="#ffffff" letter-spacing="1.5"><textPath href="#pathR3" startOffset="50%" text-anchor="middle">BRANCH ANGIOSPERMAE</textPath></text>`
+                    },
+                    {
+                        title: "Class Level",
+                        question: "Why does the rose align with Class Dicotyledonae?",
+                        choices: [
+                            { text: "Sprouts showing one seed leaf, displays parallel veins, and flower parts are in multiples of three.", correct: false, feedback: "Incorrect. That describes Monocotyledons." },
+                            { text: "Sprouts showing two seed leaves, reticulate leaf venation, and flower parts in fours or fives.", correct: true, feedback: "Correct! Di-cotyledon features." }
+                        ],
+                        circle: `<circle cx="150" cy="150" r="68" fill="none" stroke="#4d7c0f" stroke-width="7"/><path id="pathR4" d="M 85,150 A 65,65 0 0,1 215,150" fill="none"/><text font-family="Inter" font-size="6.5" font-weight="bold" fill="#ffffff" letter-spacing="1"><textPath href="#pathR4" startOffset="50%" text-anchor="middle">CLASS DICOTYLEDONAE</textPath></text>`
+                    },
+                    {
+                        title: "Subclass Level",
+                        question: "Why does the rose belong to Subclass Archichlamydeae?",
+                        choices: [
+                            { text: "Its petals are free and separate (polypetalous).", correct: true, feedback: "Correct! Ancient dress/cloak." },
+                            { text: "Its petals are fused together into a tube structure.", correct: false, feedback: "Incorrect. Fused describes Metachlamydeae." }
+                        ],
+                        circle: `<circle cx="150" cy="150" r="48" fill="none" stroke="#84cc16" stroke-width="6"/><path id="pathR5" d="M 105,150 A 45,45 0 0,1 195,150" fill="none"/><text font-family="Inter" font-size="5" font-weight="bold" fill="#ffffff" letter-spacing="0.5"><textPath href="#pathR5" startOffset="50%" text-anchor="middle">SUBCLASS ARCHICHLAMYDEAE</textPath></text>`
+                    },
+                    {
+                        title: "Family Level",
+                        question: "What supports classifying the rose in Family Rosaceae?",
+                        choices: [
+                            { text: "Radial flower symmetry, parts in 5s, many stamens, and leaves with clear stipules.", correct: true, feedback: "Correct! These are the standard indicators of the Rose family." },
+                            { text: "Bilateral symmetry, standard butterfly shape, and pod seed fruits.", correct: false, feedback: "Incorrect. Those are Leguminosae properties." }
+                        ],
+                        circle: `<circle cx="150" cy="150" r="28" fill="#ffffff" stroke="#a3e635" stroke-width="2"/><text x="150" y="153" font-family="Georgia" font-size="6" font-weight="bold" fill="#14532d" text-anchor="middle">ROSACEAE</text>`
+                    }
+                ]
+            },
+            lily: {
+                specimen: "Madonna Lily (Monocot - Liliaceae)",
+                tiers: [
+                    {
+                        title: "Kingdom Level",
+                        question: "Why is this Lily part of Kingdom Vegetalia?",
+                        choices: [
+                            { text: "It produces its own food and is fixed to the soil.", correct: true, feedback: "Correct!" },
+                            { text: "It consumes organic material and moves freely.", correct: false, feedback: "Incorrect." }
+                        ],
+                        circle: `<circle cx="150" cy="150" r="130" fill="none" stroke="#14532d" stroke-width="8"/><path id="pathL1" d="M 25,150 A 125,125 0 0,1 275,150" fill="none"/><text font-family="Inter" font-size="8" font-weight="bold" fill="#ffffff" letter-spacing="2.5"><textPath href="#pathL1" startOffset="50%" text-anchor="middle">KINGDOM VEGETALIA</textPath></text>`
+                    },
+                    {
+                        title: "Division Level",
+                        question: "Why does the Lily belong to Division Phanerogamae?",
+                        choices: [
+                            { text: "It reproduces via spores under leaves.", correct: false, feedback: "Incorrect. That is Cryptogamae." },
+                            { text: "It reproduces via visible flowers and seeds.", correct: true, feedback: "Correct!" }
+                        ],
+                        circle: `<circle cx="150" cy="150" r="108" fill="none" stroke="#166534" stroke-width="7"/><path id="pathL2" d="M 45,150 A 105,105 0 0,1 255,150" fill="none"/><text font-family="Inter" font-size="7.5" font-weight="bold" fill="#ffffff" letter-spacing="2"><textPath href="#pathL2" startOffset="50%" text-anchor="middle">DIVISION PHANEROGAMAE</textPath></text>`
+                    },
+                    {
+                        title: "Branch Level",
+                        question: "Why is the Lily an Angiospermae branch?",
+                        choices: [
+                            { text: "Seeds develop in a protective vessel.", correct: true, feedback: "Correct!" },
+                            { text: "Seeds are naked on cone scales.", correct: false, feedback: "Incorrect." }
+                        ],
+                        circle: `<circle cx="150" cy="150" r="88" fill="none" stroke="#15803d" stroke-width="7"/><path id="pathL3" d="M 65,150 A 85,85 0 0,1 235,150" fill="none"/><text font-family="Inter" font-size="7" font-weight="bold" fill="#ffffff" letter-spacing="1.5"><textPath href="#pathL3" startOffset="50%" text-anchor="middle">BRANCH ANGIOSPERMAE</textPath></text>`
+                    },
+                    {
+                        title: "Class Level",
+                        question: "Why does the Lily align with Class Monocotyledonae?",
+                        choices: [
+                            { text: "It has two seed leaves and netted leaf veins.", correct: false, feedback: "Incorrect." },
+                            { text: "Sprouts with one cotyledon, parallel veins, and flower parts in 3s.", correct: true, feedback: "Correct!" }
+                        ],
+                        circle: `<circle cx="150" cy="150" r="68" fill="none" stroke="#1d4ed8" stroke-width="7"/><path id="pathL4" d="M 85,150 A 65,65 0 0,1 215,150" fill="none"/><text font-family="Inter" font-size="6.5" font-weight="bold" fill="#ffffff" letter-spacing="1"><textPath href="#pathL4" startOffset="50%" text-anchor="middle">CLASS MONOCOTYLEDONAE</textPath></text>`
+                    },
+                    {
+                        title: "Subclass Level",
+                        question: "Why is the Lily Monocot Group II?",
+                        choices: [
+                            { text: "Its sepals are showy and colored like the petals (petaloid sepals).", correct: true, feedback: "Correct! Group II has showy dresses." },
+                            { text: "Its flowers lack floral envelopes, and are covered by scaly chaffy bracts.", correct: false, feedback: "Incorrect. That describes Group I." }
+                        ],
+                        circle: `<circle cx="150" cy="150" r="48" fill="none" stroke="#3b82f6" stroke-width="6"/><path id="pathL5" d="M 105,150 A 45,45 0 0,1 195,150" fill="none"/><text font-family="Inter" font-size="5" font-weight="bold" fill="#ffffff" letter-spacing="0.5"><textPath href="#pathL5" startOffset="50%" text-anchor="middle">MONOCOT GROUP II</textPath></text>`
+                    },
+                    {
+                        title: "Family Level",
+                        question: "What supports classifying the Lily in Family Liliaceae?",
+                        choices: [
+                            { text: "6 colorful perianth parts, 6 stamens, and a superior 3-celled ovary.", correct: true, feedback: "Correct!" },
+                            { text: "Inward turning stamens, square stem structure, and stipules.", correct: false, feedback: "Incorrect." }
+                        ],
+                        circle: `<circle cx="150" cy="150" r="28" fill="#ffffff" stroke="#2563eb" stroke-width="2"/><text x="150" y="153" font-family="Georgia" font-size="6" font-weight="bold" fill="#1d4ed8" text-anchor="middle">LILIACEAE</text>`
+                    }
+                ]
+            },
+            pine: {
+                specimen: "Scots Pine (Gymnosperm - Pinaceae)",
+                tiers: [
+                    {
+                        title: "Kingdom Level",
+                        question: "Why is this Pine part of Kingdom Vegetalia?",
+                        choices: [
+                            { text: "It makes food via photosynthesis and remains immobile.", correct: true, feedback: "Correct!" },
+                            { text: "It consumes organic material and moves around.", correct: false, feedback: "Incorrect." }
+                        ],
+                        circle: `<circle cx="150" cy="150" r="130" fill="none" stroke="#14532d" stroke-width="8"/><path id="pathP1" d="M 25,150 A 125,125 0 0,1 275,150" fill="none"/><text font-family="Inter" font-size="8" font-weight="bold" fill="#ffffff" letter-spacing="2.5"><textPath href="#pathP1" startOffset="50%" text-anchor="middle">KINGDOM VEGETALIA</textPath></text>`
+                    },
+                    {
+                        title: "Division Level",
+                        question: "Why does the Pine belong to Division Phanerogamae?",
+                        choices: [
+                            { text: "It keeps reproduction secret via spores.", correct: false, feedback: "Incorrect." },
+                            { text: "It produces visible cones and seeds.", correct: true, feedback: "Correct!" }
+                        ],
+                        circle: `<circle cx="150" cy="150" r="108" fill="none" stroke="#166534" stroke-width="7"/><path id="pathP2" d="M 45,150 A 105,105 0 0,1 255,150" fill="none"/><text font-family="Inter" font-size="7.5" font-weight="bold" fill="#ffffff" letter-spacing="2"><textPath href="#pathP2" startOffset="50%" text-anchor="middle">DIVISION PHANEROGAMAE</textPath></text>`
+                    },
+                    {
+                        title: "Branch Level",
+                        question: "Why is the Pine a Gymnospermae branch?",
+                        choices: [
+                            { text: "Its seeds are encased inside a vessel.", correct: false, feedback: "Incorrect. That is Angiospermae." },
+                            { text: "Its seeds are completely naked, born exposed on cone scales.", correct: true, feedback: "Correct! Gymno = naked, sperma = seed." }
+                        ],
+                        circle: `<circle cx="150" cy="150" r="88" fill="none" stroke="#ea580c" stroke-width="7"/><path id="pathP3" d="M 65,150 A 85,85 0 0,1 235,150" fill="none"/><text font-family="Inter" font-size="7" font-weight="bold" fill="#ffffff" letter-spacing="1.5"><textPath href="#pathP3" startOffset="50%" text-anchor="middle">BRANCH GYMNOSPERMAE</textPath></text>`
+                    },
+                    {
+                        title: "Class Level",
+                        question: "Why does the Pine align with Coniferophyta class?",
+                        choices: [
+                            { text: "It is woody and bears typical pollen and seed cones.", correct: true, feedback: "Correct!" },
+                            { text: "It splits open wide with two seed leaves.", correct: false, feedback: "Incorrect." }
+                        ],
+                        circle: `<circle cx="150" cy="150" r="68" fill="none" stroke="#ea580c" stroke-width="7"/><path id="pathP4" d="M 85,150 A 65,65 0 0,1 215,150" fill="none"/><text font-family="Inter" font-size="6.5" font-weight="bold" fill="#ffffff" letter-spacing="1"><textPath href="#pathP4" startOffset="50%" text-anchor="middle">CLASS CONIFEROPHYTA</textPath></text>`
+                    },
+                    {
+                        title: "Subclass/Order Level",
+                        question: "Why is the Pine ordered Coniferales?",
+                        choices: [
+                            { text: "Spirally arranged scale leaves, often evergreen needles.", correct: true, feedback: "Correct!" },
+                            { text: "Broad, fan-shaped deciduous leaves.", correct: false, feedback: "Incorrect." }
+                        ],
+                        circle: `<circle cx="150" cy="150" r="48" fill="none" stroke="#ea580c" stroke-width="6"/><path id="pathP5" d="M 105,150 A 45,45 0 0,1 195,150" fill="none"/><text font-family="Inter" font-size="5" font-weight="bold" fill="#ffffff" letter-spacing="0.5"><textPath href="#pathP5" startOffset="50%" text-anchor="middle">ORDER CONIFERALES</textPath></text>`
+                    },
+                    {
+                        title: "Family Level",
+                        question: "What supports classifying the Pine in Family Pinaceae?",
+                        choices: [
+                            { text: "Winged seeds, woody cone scales, and needle leaves in bundles.", correct: true, feedback: "Correct! Standard Pinaceae characteristics." },
+                            { text: "Showy flowers with 6 stamens.", correct: false, feedback: "Incorrect." }
+                        ],
+                        circle: `<circle cx="150" cy="150" r="28" fill="#ffffff" stroke="#ea580c" stroke-width="2"/><text x="150" y="153" font-family="Georgia" font-size="6" font-weight="bold" fill="#ea580c" text-anchor="middle">PINACEAE</text>`
+                    }
+                ]
+            }
+        };
+
+        let currentSpecimenKey = "rose";
+        let currentTierIndex = 0;
+        let activeMatLayers = [];
+
+        // Web Audio Synthesizer setup for sensory-correct classroom auditory feedback
+        let audioCtx = null;
+        function playChime(type) {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            
+            osc.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            
+            if (type === 'correct') {
+                osc.type = "triangle";
+                osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+                osc.frequency.exponentialRampToValueAtTime(783.99, audioCtx.currentTime + 0.15); // G5
+                gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.6);
+            } else {
+                osc.type = "sine";
+                osc.frequency.setValueAtTime(220.00, audioCtx.currentTime); // A3
+                gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.45);
+            }
+        }
+
+        function loadSpecimen() {
+            currentSpecimenKey = document.getElementById("specimenSelector").value;
+            currentTierIndex = 0;
+            activeMatLayers = [];
+            renderMatSVG();
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const specData = database[currentSpecimenKey];
+            const activeTier = specData.tiers[currentTierIndex];
+            
+            document.getElementById("activeTierName").innerText = activeTier.title;
+            document.getElementById("progressIndicator").innerText = `${currentTierIndex + 1} of 6`;
+            document.getElementById("questionTitle").innerText = activeTier.question;
+            document.getElementById("questionSpec").innerText = `Tracing genealogy for: ${specData.specimen}`;
+            document.getElementById("scoreCounter").innerText = `Matched: ${currentTierIndex}`;
+
+            const choiceContainer = document.getElementById("choiceContainer");
+            choiceContainer.innerHTML = "";
+
+            activeTier.choices.forEach((choice, index) => {
+                const btn = document.createElement("button");
+                btn.className = "w-full text-left p-3.5 rounded-xl border border-slate-800 bg-slate-900/40 hover:border-amber-500 hover:bg-slate-800/40 transition-all font-sans text-xs flex justify-between items-center text-slate-200";
+                btn.innerHTML = `
+                    <span>${choice.text}</span>
+                    <svg class="w-4 h-4 text-slate-600 flex-shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <polyline points="9 18 15 12 9 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                `;
+                btn.onclick = () => handleChoiceSelection(choice);
+                choiceContainer.appendChild(btn);
+            });
+        }
+
+        function handleChoiceSelection(choice) {
+            if (choice.correct) {
+                playChime('correct');
+                const activeTier = database[currentSpecimenKey].tiers[currentTierIndex];
+                activeMatLayers.push(activeTier.circle);
+                
+                // Show brief success feedback
+                const successDot = document.getElementById("traySuccessDot");
+                successDot.classList.remove("hidden");
+                setTimeout(() => successDot.classList.add("hidden"), 1000);
+
+                currentTierIndex++;
+                if (currentTierIndex >= 6) {
+                    renderMatSVG();
+                    document.getElementById("choiceContainer").innerHTML = `
+                        <div class="p-4 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 font-sans text-xs text-center font-bold">
+                            Success! concentric mat is fully complete. Genealogy is traced.
+                        </div>
+                    `;
+                    document.getElementById("questionTitle").innerText = "Full Taxonomy Traced!";
+                    document.getElementById("scoreCounter").innerText = `Matched: 6 (Complete)`;
+                } else {
+                    renderMatSVG();
+                    renderQuestion();
+                }
+            } else {
+                playChime('error');
+                // Pulse choice container in red
+                const container = document.getElementById("choiceContainer");
+                container.classList.add("animate-pulse");
+                setTimeout(() => container.classList.remove("animate-pulse"), 500);
+            }
+        }
+
+        function renderMatSVG() {
+            const svg = document.getElementById("matSVG");
+            let svgContent = "";
+
+            // Base grey skeleton circles
+            svgContent += `
+                <circle cx="150" cy="150" r="130" fill="none" stroke="#1e293b" stroke-width="2" stroke-dasharray="4 4" />
+                <circle cx="150" cy="150" r="108" fill="none" stroke="#1e293b" stroke-width="2" stroke-dasharray="4 4" />
+                <circle cx="150" cy="150" r="88" fill="none" stroke="#1e293b" stroke-width="2" stroke-dasharray="4 4" />
+                <circle cx="150" cy="150" r="68" fill="none" stroke="#1e293b" stroke-width="2" stroke-dasharray="4 4" />
+                <circle cx="150" cy="150" r="48" fill="none" stroke="#1e293b" stroke-width="2" stroke-dasharray="4 4" />
+                <circle cx="150" cy="150" r="28" fill="none" stroke="#1e293b" stroke-width="2" stroke-dasharray="4 4" />
+            `;
+
+            // Active circles drawn sequentially
+            activeMatLayers.forEach(layer => {
+                svgContent += layer;
+            });
+
+            // Fallback placeholder center text if not finished
+            if (currentTierIndex < 6) {
+                svgContent += `
+                    <circle cx="150" cy="150" r="20" fill="#111827" />
+                    <text x="150" y="153" font-family="Inter" font-size="8" font-weight="bold" fill="#64748b" text-anchor="middle">?</text>
+                `;
+            }
+
+            svg.innerHTML = svgContent;
+        }
+
+        // Trigger first loading sequence on window initialization
+        window.onload = function() {
+            loadSpecimen();
+        };
+    </script>
+</body>
+</html>
