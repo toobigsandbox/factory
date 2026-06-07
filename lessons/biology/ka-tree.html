@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kingdom Animalia Tree of Classification</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Georgia', 'ui-serif', 'serif'],
+                        sans: ['Noto Sans', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* PRINT SETTINGS */
+        @media print {
+            /* Remove background + margins for clean PDF */
+            body {
+                background: white !important;
+                color: black !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            /* Make the page full width in print */
+            .page {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            /* Hide anything marked no-print */
+            .no-print {
+                display: none !important;
+            }
+
+            /* Prevent orphans inside presentation steps */
+            .step-block {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Standard custom styles for album-level typography */
+        .page {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #ffffff;
+        }
+        
+        .album-header {
+            font-family: 'Georgia', serif;
+        }
+
+        /* Material Box custom class */
+        .material-box {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Yellow Aside Box custom class */
+        .aside-box {
+            background-color: #fefce8;
+            border-left: 4px solid #eab308;
+            border-radius: 0.375rem;
+            padding: 1.25rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- NAVIGATION HEADER (NO-PRINT) -->
+    <nav class="no-print w-full p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <a href="../../index.html"
+           class="text-slate-400 hover:text-slate-600 transition-colors font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
+            <!-- INLINE ARROW ICON -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Back to Dashboard
+        </a>
+
+        <button onclick="window.print()"
+                class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-md hover:bg-amber-700 hover:shadow-lg transition-all flex items-center gap-2">
+            <!-- INLINE PRINTER ICON -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9V2h12v7"></path>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <path d="M6 14h12v8H6z"></path>
+            </svg>
+            Print PDF
+        </button>
+    </nav>
+
+    <!-- MAIN ALBUM PAGE CONTAINER -->
+    <main class="page max-w-4xl w-full mx-auto my-4 p-8 md:p-12 bg-white md:shadow-xl md:rounded-xl md:border md:border-slate-100 flex-grow">
+        
+        <!-- HEADER BLOCK -->
+        <header class="border-b border-slate-100 pb-6 mb-8">
+            <div class="flex justify-between items-start">
+                <div>
+                    <p class="text-xs font-semibold text-amber-600 uppercase tracking-widest mb-1">Biology — Zoology &amp; Classification</p>
+                    <h1 class="album-header text-3xl font-bold text-slate-900 leading-tight">Kingdom Animalia: Tree of Classification</h1>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs text-slate-400 font-mono uppercase tracking-wider">Guide Name</p>
+                    <p class="text-sm font-semibold text-slate-700">Elim Lee</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- AIM / PURPOSE SECTION -->
+        <section class="mb-8">
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-3 italic">Direct Aim &amp; Purpose</h2>
+            <p class="text-slate-700 leading-relaxed font-serif text-base italic pl-4 border-l-2 border-amber-300">
+                To crystallize and summarize all the classification work of the Kingdom Animalia. To build a classification tree of Kingdom Animalia from kingdom down to the family level using hands-on materials, understanding the hierarchy of phyla, subphyla, classes, orders, and families.
+            </p>
+        </section>
+
+        <!-- MATERIALS SECTION BOX (GREY) -->
+        <section class="material-box">
+            <div class="flex items-center gap-2 mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-slate-500" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+                <h3 class="font-sans font-bold text-xs uppercase tracking-[0.15em] text-slate-700">Apparatus &amp; Material Design</h3>
+            </div>
+            <ul class="space-y-2 text-slate-600 text-sm pl-1">
+                <li class="flex items-start gap-2">
+                    <span class="text-amber-500 mt-1">•</span>
+                    <span>A large designated floor space or wall display area.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-amber-500 mt-1">•</span>
+                    <span><strong>Kingdom Animalia Classification Folders:</strong> Red folders varying in size that fit successively inside one another, progressing from dark red (Kingdom level) to lighter shades of red (Family level). Each folder displays its taxonomic name and hand-drawn characteristics.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-amber-500 mt-1">•</span>
+                    <span><strong>Classification Circles:</strong> Red circular cardboard cards containing hand-drawn pictures of identifying characteristics. The circles diminish by ½" in size at each progressive taxonomic step (Kingdom &rarr; Phylum &rarr; Subphylum &rarr; Class &rarr; Order &rarr; Family).</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-amber-500 mt-1">•</span>
+                    <span><strong>Paper Branches:</strong> Sturdy brown paper branches that visually structure the tree layout, reducing by ½" in width from the central trunks down to the fine family branches.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-amber-500 mt-1">•</span>
+                    <span><strong>Creative Materials:</strong> Package of blank paper circles (with and without matching red borders) and high-quality colored pencils for child-led exploration.</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- VISUALS AND ILLUSTRATIONS -->
+        <div class="illustrate my-10 p-6 bg-slate-50 rounded-xl border border-slate-100 flex flex-col items-center">
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Diagram I: Kingdom Animalia Tree Branching Layout</span>
+            
+            <!-- SVG SKETCH OF CLASSIFICATION TREE -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 380" class="w-full max-w-2xl filter drop-shadow-sm">
+                <!-- Felt Board Background Grid -->
+                <rect width="650" height="380" rx="8" fill="#faf9f6" stroke="#f1efe9" stroke-width="2"/>
+                
+                <!-- Floor Setup Indicator -->
+                <text x="25" y="30" font-family="monospace" font-size="9" fill="#9ca3af" letter-spacing="1">FLOOR MAP SETUP</text>
+
+                <!-- Branches System (Organic/Squiggly Style) -->
+                <!-- Main trunk -->
+                <path d="M 325,340 Q 325,300 325,270" stroke="#854d0e" stroke-width="12" stroke-linecap="round" fill="none" stroke-dasharray="1 1"/>
+                
+                <!-- Main forks -->
+                <!-- Left fork (Invertebrates -> Arthropoda) -->
+                <path d="M 325,270 Q 240,240 180,200 T 100,140" stroke="#854d0e" stroke-width="8" stroke-linecap="round" fill="none"/>
+                <!-- Right fork (Vertebrates -> Chordata) -->
+                <path d="M 325,270 Q 410,240 470,200 T 550,140" stroke="#854d0e" stroke-width="8" stroke-linecap="round" fill="none"/>
+                
+                <!-- Minor Phyla branches -->
+                <path d="M 280,250 Q 210,230 170,240" stroke="#a16207" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <path d="M 290,260 Q 250,280 200,290" stroke="#a16207" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <path d="M 360,255 Q 400,270 450,280" stroke="#a16207" stroke-width="4" stroke-linecap="round" fill="none"/>
+                
+                <!-- Subphylum / Class splits from Chordata (Right) -->
+                <path d="M 550,140 Q 510,100 480,75" stroke="#b45309" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <path d="M 550,140 Q 570,105 590,80" stroke="#b45309" stroke-width="4" stroke-linecap="round" fill="none"/>
+                
+                <!-- Order & Family splits from Amphibia (Center Right) -->
+                <path d="M 480,75 Q 440,60 410,50" stroke="#ca8a04" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 1" fill="none"/>
+                <path d="M 480,75 Q 465,45 460,25" stroke="#ca8a04" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 1" fill="none"/>
+
+                <!-- Hierarchical Red Circles (Diminishing in size and color intensity) -->
+                
+                <!-- KINGDOM LEVEL (Largest - Darkest Red) -->
+                <circle cx="325" cy="335" r="28" fill="#7f1d1d" stroke="#fca5a5" stroke-width="1.5"/>
+                <text x="325" y="338" font-family="Georgia, serif" font-weight="bold" font-size="9" fill="#ffffff" text-anchor="middle">KINGDOM</text>
+                <text x="325" y="372" font-family="sans-serif" font-weight="bold" font-size="10" fill="#7f1d1d" text-anchor="middle">Animalia</text>
+                
+                <!-- PHYLA LEVEL (Medium - Red) -->
+                <!-- Annelida -->
+                <circle cx="170" cy="240" r="22" fill="#991b1b" stroke="#fca5a5" stroke-width="1.5"/>
+                <text x="170" y="243" font-family="sans-serif" font-size="8" fill="#ffffff" text-anchor="middle">Annelida</text>
+                
+                <!-- Mollusca -->
+                <circle cx="200" cy="290" r="22" fill="#991b1b" stroke="#fca5a5" stroke-width="1.5"/>
+                <text x="200" y="293" font-family="sans-serif" font-size="8" fill="#ffffff" text-anchor="middle">Mollusca</text>
+                
+                <!-- Arthropoda -->
+                <circle cx="100" cy="140" r="22" fill="#991b1b" stroke="#fca5a5" stroke-width="1.5"/>
+                <text x="100" y="143" font-family="sans-serif" font-size="8" fill="#ffffff" text-anchor="middle">Arthropoda</text>
+                <text x="100" y="112" font-family="sans-serif" font-size="9" fill="#991b1b" font-weight="bold" text-anchor="middle">Phylum</text>
+
+                <!-- Echinodermata -->
+                <circle cx="450" cy="280" r="22" fill="#991b1b" stroke="#fca5a5" stroke-width="1.5"/>
+                <text x="450" y="283" font-family="sans-serif" font-size="7" fill="#ffffff" text-anchor="middle">Echinoderm.</text>
+                
+                <!-- Chordata -->
+                <circle cx="550" cy="140" r="22" fill="#991b1b" stroke="#fca5a5" stroke-width="1.5"/>
+                <text x="550" y="143" font-family="sans-serif" font-size="8" fill="#ffffff" text-anchor="middle">Chordata</text>
+                <text x="550" y="172" font-family="sans-serif" font-size="9" fill="#991b1b" font-weight="bold" text-anchor="middle">Phylum</text>
+
+                <!-- SUBPHYLUM / CLASS LEVEL (Smaller - Medium Red) -->
+                <!-- Vertebrata -->
+                <circle cx="480" cy="75" r="18" fill="#dc2626" stroke="#fca5a5" stroke-width="1"/>
+                <text x="480" y="78" font-family="sans-serif" font-size="7" fill="#ffffff" text-anchor="middle">Vertebrata</text>
+                <text x="480" y="48" font-family="sans-serif" font-size="8" fill="#dc2626" font-weight="bold" text-anchor="middle">Class/Subph.</text>
+
+                <!-- Other Class Placeholder -->
+                <circle cx="590" cy="80" r="18" fill="#dc2626" stroke="#fca5a5" stroke-width="1"/>
+                <text x="590" y="83" font-family="sans-serif" font-size="8" fill="#ffffff" text-anchor="middle">Aves</text>
+
+                <!-- ORDER & FAMILY LEVEL (Smallest - Lighter Red / Pinkish Red) -->
+                <!-- Orders under Vertebrata (Amphibia) -->
+                <circle cx="410" cy="50" r="14" fill="#f87171" stroke="#fca5a5" stroke-width="1"/>
+                <text x="410" y="53" font-family="sans-serif" font-size="6" fill="#7f1d1d" font-weight="bold" text-anchor="middle">Anura</text>
+                <text x="410" y="30" font-family="sans-serif" font-size="8" fill="#ca8a04" font-style="italic" text-anchor="middle">Order</text>
+
+                <!-- Blank Invitation Circle (Creative Expansion) -->
+                <circle cx="460" cy="25" r="14" fill="#ffffff" stroke="#f87171" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 2"/>
+                <text x="460" y="28" font-family="sans-serif" font-size="12" fill="#f87171" font-weight="bold" text-anchor="middle">+</text>
+                <text x="515" y="24" font-family="sans-serif" font-size="8" fill="#b45309" font-style="italic">Blank Circle (Invitation)</text>
+            </svg>
+            <p class="text-xs text-slate-500 mt-4 text-center max-w-md italic">
+                *Branches reduce in width by ½" at each division. Red circles diminish in diameter by ½" progressively, while colors transition from deep burgundy (Kingdom) to soft coral rose (Family).
+            </p>
+        </div>
+
+        <!-- PRESENTATION HEADING -->
+        <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+
+        <!-- PROCEDURAL STEPS -->
+        <div class="space-y-6">
+            
+            <!-- Step 1 -->
+            <div class="step-block border-l-2 border-slate-100 pl-4">
+                <div class="flex items-start gap-3">
+                    <span class="flex items-center justify-center bg-amber-100 text-amber-800 rounded-full text-xs font-bold w-6 h-6 shrink-0 mt-0.5">1</span>
+                    <div class="space-y-2">
+                        <p class="text-slate-900 leading-relaxed">
+                            <strong>Set up a large workspace or wall area to create the classification tree. Prepare the folder with circles representing various phyla of Kingdom Animalia, placing it visibly on the shelf for easy access.</strong>
+                        </p>
+                        <p class="pl-6 italic text-slate-600 border-l border-slate-100 leading-relaxed">
+                            "Alright, today we’re going to explore Kingdom Animalia and build its classification tree. Just like we did with Kingdom Vegetalia, we’ll need a big space to lay everything out. Remember, you are already familiar with Kingdom Vegetalia, so you have some background before we start this."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-block border-l-2 border-slate-100 pl-4">
+                <div class="flex items-start gap-3">
+                    <span class="flex items-center justify-center bg-amber-100 text-amber-800 rounded-full text-xs font-bold w-6 h-6 shrink-0 mt-0.5">2</span>
+                    <div class="space-y-2">
+                        <p class="text-slate-900 leading-relaxed">
+                            <strong>Place the dark red Kingdom Animalia circle at the start of the tree on the workspace. Take out circles representing different phyla from the folder and prepare to arrange them.</strong>
+                        </p>
+                        <p class="pl-6 italic text-slate-600 border-l border-slate-100 leading-relaxed">
+                            "Let’s start just like with Kingdom Vegetalia. Here I have the circle for Kingdom Animalia. I’ll place it right at the beginning of our tree. Now, in Kingdom Animalia, there are many different phyla, and we have some of these in our classroom for you to study."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-block border-l-2 border-slate-100 pl-4">
+                <div class="flex items-start gap-3">
+                    <span class="flex items-center justify-center bg-amber-100 text-amber-800 rounded-full text-xs font-bold w-6 h-6 shrink-0 mt-0.5">3</span>
+                    <div class="space-y-2">
+                        <p class="text-slate-900 leading-relaxed">
+                            <strong>Physically place circles for worms (Annelida), Chordata, echinoderms, sponges (Porifera), protozoa, and mollusks on the tree. As each circle is placed, engage children by describing key features of each group.</strong>
+                        </p>
+                        <p class="pl-6 italic text-slate-600 border-l border-slate-100 leading-relaxed">
+                            "Here’s our branch—let’s put some of the phyla we know. Look, we have worms! And here’s Chordata—not ‘cord’—remember? We can talk about their characteristics as we place them: spiky skin and radial symmetry for echinoderms, porous bodies for sponges, and don’t forget the protozoa and mollusks we have in our classroom too. Let’s discuss each group as we put them on the tree."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-block border-l-2 border-slate-100 pl-4">
+                <div class="flex items-start gap-3">
+                    <span class="flex items-center justify-center bg-amber-100 text-amber-800 rounded-full text-xs font-bold w-6 h-6 shrink-0 mt-0.5">4</span>
+                    <div class="space-y-2">
+                        <p class="text-slate-900 leading-relaxed">
+                            <strong>Invite children to choose either Arthropoda or Chordata to explore in detail. Begin laying out the chosen branch with corresponding materials and circles.</strong>
+                        </p>
+                        <p class="pl-6 italic text-slate-600 border-l border-slate-100 leading-relaxed">
+                            "Some of these phyla are divided further. In our classroom, we might focus on Arthropoda or Chordata. Would you like to build out one branch fully? We’ll take one branch first, then come back to the other."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step-block border-l-2 border-slate-100 pl-4">
+                <div class="flex items-start gap-3">
+                    <span class="flex items-center justify-center bg-amber-100 text-amber-800 rounded-full text-xs font-bold w-6 h-6 shrink-0 mt-0.5">5</span>
+                    <div class="space-y-2">
+                        <p class="text-slate-900 leading-relaxed">
+                            <strong>Encourage children to place circles representing the classes of Arthropoda they made themselves. Move attention to Chordata materials and prompt them to identify subphyla present.</strong>
+                        </p>
+                        <p class="pl-6 italic text-slate-600 border-l border-slate-100 leading-relaxed">
+                            "Within Arthropoda, there are many classes. Remember our research? We found five classes, but two are extinct. Scientists still count them, probably because they’re important for understanding the timeline of life. You can use your circles to fill out this part of the tree. Now, what about Chordata? What subphyla do we have here?"
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step-block border-l-2 border-slate-100 pl-4">
+                <div class="flex items-start gap-3">
+                    <span class="flex items-center justify-center bg-amber-100 text-amber-800 rounded-full text-xs font-bold w-6 h-6 shrink-0 mt-0.5">6</span>
+                    <div class="space-y-2">
+                        <p class="text-slate-900 leading-relaxed">
+                            <strong>Show the existing Amphibia circle and place it on the tree. Provide extra materials for children to create circles for other vertebrate classes like birds. Continue extending the tree from Amphibia.</strong>
+                        </p>
+                        <p class="pl-6 italic text-slate-600 border-l border-slate-100 leading-relaxed">
+                            "That’s right, we have vertebrates in Chordata. How many classes of vertebrates do you remember? Five! Great job! Look, there’s a little knot on the floor here — we already have Amphibia built in our materials and I have an extra circle for Birds. Would you like to make circles for the other vertebrate classes? Let’s keep building out from Amphibia."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="step-block border-l-2 border-slate-100 pl-4">
+                <div class="flex items-start gap-3">
+                    <span class="flex items-center justify-center bg-amber-100 text-amber-800 rounded-full text-xs font-bold w-6 h-6 shrink-0 mt-0.5">7</span>
+                    <div class="space-y-2">
+                        <p class="text-slate-900 leading-relaxed">
+                            <strong>Rearrange the workspace to allow room for expansion. Use brown paper to create more branches and circles. Reference previous animal studies (like the tree frog) to connect the concept of families.</strong>
+                        </p>
+                        <p class="pl-6 italic text-slate-600 border-l border-slate-100 leading-relaxed">
+                            "How many orders do we have in Amphibia? Three, exactly! And within those orders, we have families. Remember when we studied the tree frog? That helped us understand how scientists decide what family an animal belongs to. We have plenty of space and brown paper here, so we can keep making more branches and expand our tree bigger and bigger as we classify animals just like real scientists do."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- COPYRIGHT CHART PLACEHOLDER BOX (AMI COMPLIANCE) -->
+        <div class="mt-8 p-4 border border-dashed border-red-200 rounded-lg bg-red-50/50 flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+            <div class="p-2 bg-red-100 rounded-full text-red-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+            </div>
+            <div class="text-xs text-slate-600 leading-relaxed">
+                <span class="font-bold text-red-800 uppercase block mb-1">AMI COPYRIGHT NOTICE</span>
+                The systematic graphic charts representing Animal Classifications are AMI Copyright protected. Do not print direct scans. Use this space as a functional placeholder for students to paste down self-drafted classification schemas, or reference Classroom Folder Set <em>"Kingdom Animalia Tree Guide Sheet"</em>.
+            </div>
+        </div>
+
+        <!-- INSTRUCTOR'S ASIDE BOX (YELLOW) -->
+        <div class="aside-box">
+            <div class="flex items-center gap-2 mb-2">
+                <!-- INLINE NOTE ICON -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-amber-700" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                <h4 class="font-sans font-bold text-xs uppercase tracking-wider text-amber-800">Pedagogical Insights &amp; Guide Notes</h4>
+            </div>
+            <div class="space-y-3 text-slate-700 text-sm leading-relaxed">
+                <p>
+                    <strong>Material Design &amp; Diminishing Senses:</strong> Kingdom Animalia materials intentionally progress from dark red (Kingdom) to lighter shades of red (Families). The visual and physical diminution of circles (diminishing in size by ½" at each progressive level) allows the child to subconsciously abstract and sensory-classify the hierarchical scope.
+                </p>
+                <p>
+                    <strong>Historical Context &amp; Scientific Integrity:</strong> Include extinct classes (specifically those within Phylum Arthropoda) directly on the tree. This bridges perfectly with their work on the <em>Timeline of Life</em>, validating that science is an evolving, historical record.
+                </p>
+                <p>
+                    <strong>Limitation as an Invitation:</strong> The prepared materials explicitly limit structured classifications down to the <em>Family</em> level. This strategic limitation, paired with providing empty writing circles on the shelf, acts as a cosmic "call to action" inviting children to continue independent research to append their own Genus and Species cards to the display.
+                </p>
+                <p>
+                    <strong>Prerequisites:</strong> Children must have vast experience observing classroom animals (snails, arachnids, worms, fish), working with the <em>Body Function Material</em> (understanding backbone structures), and completing the <em>Kingdom Vegetalia Tree of Classification</em> prior to this presentation.
+                </p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="no-print max-w-4xl w-full mx-auto p-6 text-center text-xs text-slate-400">
+        <p>Association Montessori Internationale (AMI) Elementary 6-12 Curriculum Album Appendix</p>
+        <p class="mt-1">Designed by Elim Lee. Generated as a printable, responsive HTML single-page module.</p>
+    </footer>
+
+</body>
+</html>
