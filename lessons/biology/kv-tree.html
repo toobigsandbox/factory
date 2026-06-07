@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KV Tree Classification | Album Module</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Elegant Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper-bg: #faf9f6;
+            --ink-color: #1e293b;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9;
+            color: var(--ink-color);
+        }
+        .serif {
+            font-family: 'Crimson Pro', serif;
+        }
+        /* PAGE & SHEET AESTHETICS */
+        .page {
+            background: #ffffff;
+            max-width: 8.5in;
+            min-height: 11in;
+            margin: 2rem auto;
+            padding: 3.5rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            position: relative;
+        }
+        /* AMI BOX DESIGNS */
+        .material-box {
+            background-color: #f8fafc;
+            border-left: 4px solid #64748b;
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+        }
+        .aside-box {
+            background-color: #fefce8;
+            border-left: 4px solid #eab308;
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-top: 2.5rem;
+        }
+        /* ILLUSTRATION STYLE */
+        .illustrate {
+            border: 1px dashed #cbd5e1;
+            background-color: #fafaf9;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        /* PRINT SETTINGS OVERRIDE */
+        @media print {
+            body {
+                background: white;
+                margin: 0;
+                color: #000000;
+            }
+            .page {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                max-width: 100%;
+                min-height: auto;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- NAVIGATION HEADER (NO-PRINT) -->
+    <nav class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <a href="../../index.html"
+           class="text-slate-400 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2 hover:text-slate-600 transition-all">
+            <!-- INLINE ARROW ICON -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Back to Dashboard
+        </a>
+        <button onclick="window.print()"
+                class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:bg-amber-700 transition-all flex items-center gap-2 text-xs uppercase tracking-wider">
+            <!-- INLINE PRINTER ICON -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9V2h12v7"></path>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <path d="M6 14h12v8H6z"></path>
+            </svg>
+            Print PDF
+        </button>
+    </nav>
+
+    <!-- ALBUM SHEET PAGE CONTAINER -->
+    <main class="page">
+        
+        <!-- HEADER SECTION -->
+        <header class="border-b pb-6 mb-8 flex justify-between items-start">
+            <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-slate-400 block mb-1">Biology - Classification</span>
+                <h1 class="serif text-4xl font-bold text-slate-800 leading-tight">KV Tree Classification</h1>
+            </div>
+            <div class="text-right">
+                <span class="text-[10px] uppercase tracking-wider text-slate-400 block">Guide</span>
+                <span class="text-xs font-semibold text-slate-700">Elim Lee</span>
+            </div>
+        </header>
+
+        <!-- PURPOSE SECTION -->
+        <section class="mb-8">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-amber-600 mb-2">Purpose</h3>
+            <p class="text-slate-600 leading-relaxed text-sm">
+                To collaboratively build a tree of classification for Kingdom Vegetalia, engage in physical movement with the materials, and connect classification levels from kingdom down to family.
+            </p>
+        </section>
+
+        <!-- MATERIALS BOX -->
+        <section class="material-box">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+                Materials List
+            </h3>
+            <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-slate-600 font-medium">
+                <li class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                    A large floor or table space.
+                </li>
+                <li class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                    Kingdom Vegetalia classification circles.
+                </li>
+                <li class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                    Kingdom branches (from chart box/large folder).
+                </li>
+                <li class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                    Blank classification circles (white or pre-printed).
+                </li>
+                <li class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                    Colored pencils matching paper border colors.
+                </li>
+                <li class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                    Calligraphy pens or high-quality writing tools.
+                </li>
+            </ul>
+        </section>
+
+        <!-- PRESENTATION HEADING -->
+        <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+
+        <!-- PROCEDURAL STEPS -->
+        <article class="space-y-6 text-sm leading-relaxed text-slate-700">
+            
+            <!-- Step 1 -->
+            <div>
+                <p>
+                    <strong class="font-bold text-slate-900 block mb-1">Step 1: Prepare the collaborative workspace.</strong>
+                    Prepare a large space for the activity. Gather all classification circles and branches from folders, placing them ready for group work. Organize branches in a chart box or designated folder labeled “Kingdom branches.” Encourage multiple children to work together to manage the materials and sorting.
+                </p>
+                <div class="pl-6 border-l-2 border-amber-300 mt-2 mb-4 text-slate-600 italic">
+                    "Okay, so we're going to do one more thing with Kingdom Vegetalia, and this is the tree of classification. Now, we need a big space for this. I’ve pulled all the circles from all of the folders, and we also have some branches... You won’t be doing this with just two hands; you’ll have many hands working alongside you because children will be working in groups according to their characteristics and experience."
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div>
+                <p>
+                    <strong class="font-bold text-slate-900 block mb-1">Step 2: Place the primary Kingdom and division indicators.</strong>
+                    Place the largest Kingdom Vegetalia circle on the floor or table. Add the branch representing the division (Pteridophyte or Cryptogam) next to it. Encourage students to recall and name the two divisions.
+                </p>
+                <div class="pl-6 border-l-2 border-amber-300 mt-2 mb-4 text-slate-600 italic">
+                    "I’m going to take this circle and place this branch here. We know that in our material, Kingdom Vegetalia is divided into two different divisions. What are they? Yes, it’s division Pteridophyte, where we can see how the plant reproduces, and Cryptogam, the division where it keeps it secret."
+                </div>
+            </div>
+
+            <!-- VISUAL ILLUSTRATION: HAND-DRAWN KV TREE DESIGN -->
+            <div class="illustrate">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-2 text-center">Illustration: Classification Tree Setup</span>
+                
+                <!-- SVG TREE SCHEME -->
+                <svg viewBox="0 0 700 480" class="w-full h-auto drop-shadow-sm" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Definitions for Filter/Drop Shadows and Hand-drawn Look -->
+                    <defs>
+                        <!-- Organic Hand Drawn Style Filter (Squiggly effect) -->
+                        <filter id="hand-drawn" x="-10%" y="-10%" width="120%" height="120%">
+                            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+                            <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
+                        </filter>
+                    </defs>
+
+                    <!-- Background Soft Grid -->
+                    <rect width="700" height="480" fill="#fdfbf7" rx="6" />
+                    
+                    <!-- THE BRANCHES (Drawn Organic brown branches using curves) -->
+                    <g filter="url(#hand-drawn)" stroke="#78350f" stroke-linecap="round" fill="none">
+                        <!-- Main Trunk -->
+                        <path d="M 350 440 Q 350 360 350 320" stroke-width="8" stroke="#451a03" />
+                        <!-- Primary Split (Cryptogam vs Pteridophyte) -->
+                        <path d="M 350 320 Q 220 300 180 250" stroke-width="5" />
+                        <path d="M 350 320 Q 480 300 520 250" stroke-width="5" />
+                        
+                        <!-- Seed Plants Branch (Split Angiosperm & Gymnosperm) -->
+                        <path d="M 520 250 Q 450 200 420 140" stroke-width="4" />
+                        <path d="M 520 250 Q 590 200 600 140" stroke-width="4" />
+                        
+                        <!-- Angiosperm (420,140) Branch Split into Dicot & Monocot -->
+                        <path d="M 420 140 Q 330 110 310 70" stroke-width="3" />
+                        <path d="M 420 140 Q 470 100 490 70" stroke-width="3" />
+                        
+                        <!-- Dicot (310,70) Subclasses (Metachider & Archo) -->
+                        <path d="M 310 70 Q 260 50 240 25" stroke-width="2" />
+                        <path d="M 310 70 Q 330 50 340 25" stroke-width="2" />
+                    </g>
+
+                    <!-- CLASSIFICATION CIRCLES (Representing paper card rings placed on floor) -->
+                    <!-- Root: Kingdom Vegetalia (Green) -->
+                    <g filter="url(#hand-drawn)">
+                        <circle cx="350" cy="420" r="32" fill="#15803d" stroke="#166534" stroke-width="3" />
+                        <text x="350" y="424" fill="#ffffff" font-family="Inter" font-size="9" font-weight="bold" text-anchor="middle">KINGDOM VEGETALIA</text>
+                        
+                        <!-- Division: Cryptogams (Teal Ring) -->
+                        <circle cx="180" cy="250" r="26" fill="#f0fdfa" stroke="#0d9488" stroke-width="2" />
+                        <text x="180" y="253" fill="#0f766e" font-family="Inter" font-size="8" font-weight="bold" text-anchor="middle">CRYPTOGAM</text>
+                        
+                        <!-- Division: Pteridophyte / Seed Plants (Teal Ring) -->
+                        <circle cx="520" cy="250" r="26" fill="#f0fdfa" stroke="#0d9488" stroke-width="2" />
+                        <text x="520" y="253" fill="#0f766e" font-family="Inter" font-size="8" font-weight="bold" text-anchor="middle">PTERIDOPHYTE</text>
+
+                        <!-- Class: Gymnosperm (Blue Ring) -->
+                        <circle cx="600" cy="140" r="24" fill="#eff6ff" stroke="#2563eb" stroke-width="2" />
+                        <text x="600" y="143" fill="#1d4ed8" font-family="Inter" font-size="7" font-weight="bold" text-anchor="middle">GYMNOSPERM</text>
+
+                        <!-- Class: Angiosperm (Blue Ring) -->
+                        <circle cx="420" cy="140" r="24" fill="#eff6ff" stroke="#2563eb" stroke-width="2" stroke-width="2.5" />
+                        <text x="420" y="143" fill="#1d4ed8" font-family="Inter" font-size="7" font-weight="bold" text-anchor="middle">ANGIOSPERM</text>
+
+                        <!-- Class: Dicot (Magenta/Red Edge) -->
+                        <circle cx="310" cy="70" r="20" fill="#fff1f2" stroke="#e11d48" stroke-width="2" />
+                        <text x="310" y="73" fill="#be123c" font-family="Inter" font-size="8" font-weight="bold" text-anchor="middle">DICOT</text>
+
+                        <!-- Class: Monocot (Purple Edge) -->
+                        <circle cx="490" cy="70" r="20" fill="#faf5ff" stroke="#9333ea" stroke-width="2" />
+                        <text x="490" y="73" fill="#701a75" font-family="Inter" font-size="8" font-weight="bold" text-anchor="middle">MONOCOT</text>
+
+                        <!-- Subclass Dicot: Metachider (Faded Red Ring) -->
+                        <circle cx="240" cy="25" r="15" fill="#ffffff" stroke="#f43f5e" stroke-dasharray="3,3" stroke-width="1.5" />
+                        <text x="240" y="28" fill="#e11d48" font-family="Inter" font-size="6" font-weight="bold" text-anchor="middle">METACHIDER</text>
+
+                        <!-- Subclass Dicot: Archo (Faded Red Ring) -->
+                        <circle cx="340" cy="25" r="15" fill="#ffffff" stroke="#f43f5e" stroke-dasharray="3,3" stroke-width="1.5" />
+                        <text x="340" y="28" fill="#e11d48" font-family="Inter" font-size="6" font-weight="bold" text-anchor="middle">ARCHO</text>
+                    </g>
+
+                    <!-- Decorative elements: Squiggly Leaf Details on Twigs -->
+                    <path d="M 235 20 Q 230 10 238 8 Q 242 12 240 20 Z" fill="#22c55e" opacity="0.6" filter="url(#hand-drawn)" />
+                    <path d="M 345 20 Q 350 10 342 8 Q 338 12 340 20 Z" fill="#22c55e" opacity="0.6" filter="url(#hand-drawn)" />
+                    
+                    <!-- Title/Key inside Illustration -->
+                    <rect x="15" y="15" width="180" height="75" rx="4" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" />
+                    <text x="25" y="32" font-family="Inter" font-size="9" font-weight="bold" fill="#64748b">COLOR HIERARCHY KEY</text>
+                    <circle cx="32" cy="48" r="4" fill="#15803d" />
+                    <text x="42" y="51" font-family="Inter" font-size="8" fill="#475569">Kingdom (Solid Green)</text>
+                    <circle cx="32" cy="62" r="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1" />
+                    <text x="42" y="65" font-family="Inter" font-size="8" fill="#475569">Divisions/Classes (Bordered Rings)</text>
+                    <circle cx="32" cy="76" r="4" fill="#ffffff" stroke="#f43f5e" stroke-dasharray="2,2" stroke-width="1" />
+                    <text x="42" y="79" font-family="Inter" font-size="8" fill="#475569">Subclasses / Groups (Dashed Rim)</text>
+                </svg>
+            </div>
+
+            <!-- Page Break for Clean Printing (AMI standard) -->
+            <div class="page-break"></div>
+
+            <!-- Step 3 -->
+            <div>
+                <p>
+                    <strong class="font-bold text-slate-900 block mb-1">Step 3: Connect Angiosperms, Gymnosperms, and subclasses.</strong>
+                    Add the branches for Angiosperm and Gymnosperm to the tree. Place circles representing these two groups under their respective branches. Then, add the branch labeled Dicot and show its two subclasses: Metachider and Archo. Lay out family circles under each subclass.
+                </p>
+                <div class="pl-6 border-l-2 border-amber-300 mt-2 mb-4 text-slate-600 italic">
+                    "If we think about these plants and how they reproduce, scientists have divided them into two groups... What are those two groups? Exactly right! We have the branch Angiosperm—the plants that have their seeds inside a vessel—and Gymnosperm, those plants with naked seeds... Let’s think now about Angiosperm. We know Angiosperm is further divided into two different classes... Yes, you are absolutely right. We have the Dicot class and the Monocot class. Let’s think about Dicot right now. We know there are two subclasses for Dicot. What are those two subclasses? Yes, we have Metachider (recent) and Archo (ancient)."
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div>
+                <p>
+                    <strong class="font-bold text-slate-900 block mb-1">Step 4: Distribute family circles and split the Monocot division.</strong>
+                    Assist children in placing family-level circles under the appropriate subclasses. Encourage discussion of family features like flower types, stem shapes, or other distinctive traits. Add the monocot branch and divide it into its two groups, placing corresponding circles beneath. Walk around to assist and keep the material organized.
+                </p>
+                <div class="pl-6 border-l-2 border-amber-300 mt-2 mb-4 text-slate-600 italic">
+                    "Now, for the family level, you’ll continue organizing each branch and lay them out. For example, what do you remember about the families for Metachider? Oh yes, the sunflowers—those composite flowers we really like. Right, and the mints with the square stem... But it’s not just Dicot that has subclasses. Monocot does too. What are the further divisions here? We have monocot group one and group two."
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div>
+                <p>
+                    <strong class="font-bold text-slate-900 block mb-1">Step 5: Synthesize and reflect on future tree growth.</strong>
+                    Present the completed classification tree for Kingdom Vegetalia with all branches and circles laid out. Encourage children to visualize expanding the tree further as they learn more.
+                </p>
+                <div class="pl-6 border-l-2 border-amber-300 mt-2 mb-4 text-slate-600 italic">
+                    "And here we are with our tree—a tree of classification. Look how many more places there are where our tree can grow. You have so much information, knowledge, and experience that I know you can tend to the growing of our beautiful tree."
+                </div>
+            </div>
+        </article>
+
+        <!-- COPYRIGHT SECURITY / AMI CHART PLACEHOLDER -->
+        <div class="my-6 p-4 border border-slate-300 rounded-md bg-slate-50 text-center text-slate-500 font-medium text-xs no-print">
+            <span class="block font-bold text-slate-700 uppercase mb-1">🔍 [AMI COPYRIGHT CHART PLACEHOLDER]</span>
+            For final albums, reference the official AMI "Kingdom Vegetalia Tree of Classification" chart here. 
+            Do not copy copyrighted templates directly into index files.
+        </div>
+
+        <!-- INSTRUCTOR'S ASIDE BOX -->
+        <section class="aside-box">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-amber-700 mb-3 flex items-center gap-2">
+                <!-- INLINE LIGHTBULB ICON -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+                Instructor's Pedagogical Aside
+            </h3>
+            <ul class="space-y-3 text-xs text-amber-900 leading-relaxed font-medium">
+                <li>
+                    <strong class="font-bold">Pedagogical Approach:</strong> This work should be presented as a gentle invitation rather than a demanding assignment, empowering children to feel free to explore rather than obligated.
+                </li>
+                <li>
+                    <strong class="font-bold">Preparation Warning:</strong> Do not laminate the blank circles or materials meant for the children; they need to be able to write and draw directly on them.
+                </li>
+                <li>
+                    <strong class="font-bold">Cross-Curricular Skills:</strong> This activity is a perfect invitation for children to practice their very best handwriting or try using calligraphy pens, contributing beautifully to the classroom community.
+                </li>
+                <li>
+                    <strong class="font-bold">Extensions and Research:</strong> The classification tree is a dynamic tool meant to grow. Empower children to bring in new information and discoveries to expand the tree, which builds ownership and pride. Familiar examples like sunflowers and mints help link abstract classification with observable traits.
+                </li>
+                <li>
+                    <strong class="font-bold">For the Guide:</strong> This lesson can feel daunting at first, but once you get your hands on it, it makes a lot of sense. Practice this setup beforehand.
+                </li>
+            </ul>
+        </section>
+
+    </main>
+
+</body>
+</html>
