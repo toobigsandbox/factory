@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kingdom Animalia: Presentation of the Phyla</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Georgia', 'ui-serif', 'serif'],
+                        sans: ['Noto Sans', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* PRINT SETTINGS */
+        @media print {
+            /* Remove background + margins for clean PDF */
+            body {
+                background: white !important;
+                color: black !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            /* Make the page full width in print */
+            .page {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            /* Hide anything marked no-print */
+            .no-print {
+                display: none !important;
+            }
+
+            /* Prevent orphans inside presentation steps */
+            .step-block {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Standard custom styles for album-level typography */
+        .page {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #ffffff;
+        }
+        
+        .album-header {
+            font-family: 'Georgia', serif;
+        }
+
+        /* Material Box custom class */
+        .material-box {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Yellow Aside Box custom class */
+        .aside-box {
+            background-color: #fefce8;
+            border-left: 4px solid #eab308;
+            border-radius: 0.375rem;
+            padding: 1.25rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- NAVIGATION HEADER (NO-PRINT) -->
+    <nav class="no-print w-full p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <a href="../../index.html"
+           class="text-slate-400 hover:text-slate-600 transition-colors font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">
+            <!-- INLINE ARROW ICON -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Back to Dashboard
+        </a>
+
+        <button onclick="window.print()"
+                class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-md hover:bg-amber-700 hover:shadow-lg transition-all flex items-center gap-2">
+            <!-- INLINE PRINTER ICON -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9V2h12v7"></path>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <path d="M6 14h12v8H6z"></path>
+            </svg>
+            Print PDF
+        </button>
+    </nav>
+
+    <!-- MAIN ALBUM PAGE CONTAINER -->
+    <main class="page max-w-4xl w-full mx-auto my-4 p-8 md:p-12 bg-white md:shadow-xl md:rounded-xl md:border md:border-slate-100 flex-grow">
+        
+        <!-- HEADER BLOCK -->
+        <header class="border-b border-slate-100 pb-6 mb-8">
+            <div class="flex justify-between items-start">
+                <div>
+                    <p class="text-xs font-semibold text-amber-600 uppercase tracking-widest mb-1">Biology — Zoology &amp; Classification</p>
+                    <h1 class="album-header text-3xl font-bold text-slate-900 leading-tight">Kingdom Animalia: Presentation of the Phyla</h1>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs text-slate-400 font-mono uppercase tracking-wider">Guide Name</p>
+                    <p class="text-sm font-semibold text-slate-700">Elim Lee</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- AIM / PURPOSE SECTION -->
+        <section class="mb-8">
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-3 italic">Direct Aim &amp; Purpose</h2>
+            <p class="text-slate-700 leading-relaxed font-serif text-base italic pl-4 border-l-2 border-amber-300">
+                To introduce the various phyla of Kingdom Animalia (such as Porifera, Cnidaria, Annelida, Mollusca, Echinodermata, Arthropoda, and Chordata) using engaging storytelling, hands-on specimens, and creative handwork, connecting children's prior experiences to scientific classification.
+            </p>
+        </section>
+
+        <!-- MATERIALS SECTION BOX (GREY) -->
+        <section class="material-box">
+            <div class="flex items-center gap-2 mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-slate-500" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+                <h3 class="font-sans font-bold text-xs uppercase tracking-[0.15em] text-slate-700">Apparatus &amp; Material Design</h3>
+            </div>
+            <ul class="space-y-2 text-slate-600 text-sm pl-1">
+                <li class="flex items-start gap-2">
+                    <span class="text-amber-500 mt-1">•</span>
+                    <span><strong>Classification Folders:</strong> Red folders containing curated, hand-painted pictures or diagrams representing key animal phyla.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-amber-500 mt-1">•</span>
+                    <span><strong>Isolated Invertebrate Cards:</strong> Selected animal cards extracted from the previously worked <em>Body Function Material</em> (specifically focusing on invertebrates).</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-amber-500 mt-1">•</span>
+                    <span><strong>Hands-On Specimens:</strong> Real specimens where available—either live or preserved. Recommended: natural bath sponges, real seashells, corals, local insects, garden arachnids, or a small earthworm tray.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-amber-500 mt-1">•</span>
+                    <span><strong>Creative Materials:</strong> Quality multi-media handwork supplies, including drawing paper, colored pencils, fine embroidery thread with needles, clay or modeling dough, and wheat paste or paper mâché supplies.</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- VISUALS AND ILLUSTRATIONS -->
+        <div class="illustrate my-10 p-6 bg-slate-50 rounded-xl border border-slate-100 flex flex-col items-center">
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">Diagram I: Specimen Sketch — Representative Invertebrates</span>
+            
+            <!-- SVG SKETCH OF REPRESENTATIVE INVERTEBRATES -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 250" class="w-full max-w-2xl filter drop-shadow-sm">
+                <!-- Background Plate -->
+                <rect width="650" height="250" rx="8" fill="#faf9f6" stroke="#f1efe9" stroke-width="2"/>
+                
+                <!-- Divider lines for three specimen panels -->
+                <line x1="216" y1="20" x2="216" y2="230" stroke="#e2e8f0" stroke-width="1.5" stroke-dasharray="4 4"/>
+                <line x1="432" y1="20" x2="432" y2="230" stroke="#e2e8f0" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+                <!-- SPECIMEN A: PORIFERA (Natural Sponge) -->
+                <g id="sponge" transform="translate(15, 0)">
+                    <!-- Organic Vase/Sponge Contour with squiggly lines -->
+                    <path d="M 75,190 Q 55,140 65,90 Q 75,60 90,60 Q 105,60 115,90 Q 125,140 105,190 Z" 
+                          fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <!-- Cavity opening inside the top (Osculum) -->
+                    <ellipse cx="90" cy="62" rx="14" ry="6" fill="#a16207" stroke="#ca8a04" stroke-width="2"/>
+                    
+                    <!-- Pores (Pore-bearing) -->
+                    <circle cx="75" cy="100" r="3" fill="#ca8a04"/>
+                    <circle cx="95" cy="115" r="2.5" fill="#ca8a04"/>
+                    <circle cx="85" cy="140" r="3.5" fill="#ca8a04"/>
+                    <circle cx="105" cy="130" r="2" fill="#ca8a04"/>
+                    <circle cx="95" cy="165" r="3" fill="#ca8a04"/>
+                    <circle cx="80" cy="160" r="2.5" fill="#ca8a04"/>
+                    <circle cx="100" cy="95" r="2" fill="#ca8a04"/>
+                    
+                    <!-- Hand-drawn Shading Lines -->
+                    <path d="M 68,125 Q 73,130 75,120" stroke="#eab308" stroke-width="1.5" fill="none"/>
+                    <path d="M 108,110 Q 112,120 105,115" stroke="#eab308" stroke-width="1.5" fill="none"/>
+                    <path d="M 73,165 Q 80,170 82,160" stroke="#eab308" stroke-width="1.5" fill="none"/>
+                    
+                    <!-- Label -->
+                    <text x="90" y="215" font-family="sans-serif" font-weight="bold" font-size="11" fill="#71717a" text-anchor="middle">Phylum Porifera</text>
+                    <text x="90" y="230" font-family="sans-serif" font-style="italic" font-size="10" fill="#a1a1aa" text-anchor="middle">Ex: Bath Sponge</text>
+                </g>
+
+                <!-- SPECIMEN B: ECHINODERMATA (Starfish) -->
+                <g id="starfish" transform="translate(10, 0)">
+                    <!-- Organic 5-arm Sea Star -->
+                    <path d="M 315,45 
+                             Q 322,75 345,90 
+                             Q 375,90 405,100 
+                             Q 375,115 360,135 
+                             Q 375,165 380,195 
+                             Q 350,180 325,165 
+                             Q 300,180 270,195 
+                             Q 275,165 290,135 
+                             Q 275,115 245,100 
+                             Q 275,90 305,90 Z" 
+                          fill="#fecaca" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                          
+                    <!-- Central ring canal / vascular sketch details -->
+                    <circle cx="325" cy="120" r="10" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="2 2"/>
+                    
+                    <!-- Spiny bumps on arms (hedgehog skin) -->
+                    <circle cx="325" cy="65" r="1.5" fill="#991b1b"/>
+                    <circle cx="325" cy="80" r="1.5" fill="#991b1b"/>
+                    <circle cx="340" cy="100" r="1.5" fill="#991b1b"/>
+                    <circle cx="365" cy="105" r="1.5" fill="#991b1b"/>
+                    <circle cx="350" cy="125" r="1.5" fill="#991b1b"/>
+                    <circle cx="365" cy="145" r="1.5" fill="#991b1b"/>
+                    <circle cx="335" cy="150" r="1.5" fill="#991b1b"/>
+                    <circle cx="315" cy="150" r="1.5" fill="#991b1b"/>
+                    <circle cx="285" cy="145" r="1.5" fill="#991b1b"/>
+                    <circle cx="300" cy="125" r="1.5" fill="#991b1b"/>
+                    <circle cx="285" cy="105" r="1.5" fill="#991b1b"/>
+                    <circle cx="310" cy="100" r="1.5" fill="#991b1b"/>
+                    
+                    <!-- Label -->
+                    <text x="325" y="215" font-family="sans-serif" font-weight="bold" font-size="11" fill="#71717a" text-anchor="middle">Phylum Echinodermata</text>
+                    <text x="325" y="230" font-family="sans-serif" font-style="italic" font-size="10" fill="#a1a1aa" text-anchor="middle">Ex: Sea Star</text>
+                </g>
+
+                <!-- SPECIMEN C: ANNELIDA (Segmented Worm) -->
+                <g id="worm" transform="translate(10, 0)">
+                    <!-- Organic squiggly path representing earthworm -->
+                    <path d="M 470,165 
+                             Q 485,150 495,155 
+                             Q 505,160 520,140 
+                             Q 530,120 545,125 
+                             Q 560,130 570,105 
+                             Q 580,80 595,85" 
+                          fill="none" stroke="#f472b6" stroke-width="12" stroke-linecap="round"/>
+                          
+                    <!-- Clitellum (the collar/swollen band) -->
+                    <path d="M 545,125 Q 550,126 553,121" fill="none" stroke="#db2777" stroke-width="14" stroke-linecap="round"/>
+
+                    <!-- Segment lines / ring textures -->
+                    <path d="M 475,162 L 476,166" stroke="#db2777" stroke-width="1.5"/>
+                    <path d="M 483,156 L 484,161" stroke="#db2777" stroke-width="1.5"/>
+                    <path d="M 490,153 L 492,158" stroke="#db2777" stroke-width="1.5"/>
+                    <path d="M 498,154 L 499,159" stroke="#db2777" stroke-width="1.5"/>
+                    <path d="M 505,151 L 507,156" stroke="#db2777" stroke-width="1.5"/>
+                    <path d="M 511,145 L 514,149" stroke="#db2777" stroke-width="1.5"/>
+                    <path d="M 518,139 L 521,143" stroke="#db2777" stroke-width="1.5"/>
+                    <path d="M 526,131 L 528,136" stroke="#db2777" stroke-width="1.5"/>
+                    <path d="M 533,124 L 536,128" stroke="#db2777" stroke-width="1.5"/>
+                    <!-- Skipping Clitellum for anatomical realism -->
+                    <path d="M 563,116 L 565,121" stroke="#db2777" stroke-width="1.5"/>
+                    <path d="M 569,108 L 571,113" stroke="#db2777" stroke-width="1.5"/>
+                    <path d="M 576,96 L 579,100" stroke="#db2777" stroke-width="1.5"/>
+                    <path d="M 583,87 L 585,92" stroke="#db2777" stroke-width="1.5"/>
+
+                    <!-- Label -->
+                    <text x="540" y="215" font-family="sans-serif" font-weight="bold" font-size="11" fill="#71717a" text-anchor="middle">Phylum Annelida</text>
+                    <text x="540" y="230" font-family="sans-serif" font-style="italic" font-size="10" fill="#a1a1aa" text-anchor="middle">Ex: Segmented Earthworm</text>
+                </g>
+            </svg>
+            <p class="text-xs text-slate-500 mt-4 text-center max-w-md italic">
+                *Three classic invertebrate phyla represented with basic anatomical structures: the porous walls of Porifera, the radial water vascular center of Echinodermata, and the distinct segments (rings) and clitellum of Annelida.
+            </p>
+        </div>
+
+        <!-- PRESENTATION HEADING -->
+        <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+
+        <!-- PROCEDURAL STEPS -->
+        <div class="space-y-6">
+            
+            <!-- Step 1 -->
+            <div class="step-block border-l-2 border-slate-100 pl-4">
+                <div class="flex items-start gap-3">
+                    <span class="flex items-center justify-center bg-amber-100 text-amber-800 rounded-full text-xs font-bold w-6 h-6 shrink-0 mt-0.5">1</span>
+                    <div class="space-y-2">
+                        <p class="text-slate-900 leading-relaxed">
+                            <strong>Introduce the phyla with visual materials prepared. Explain the scope of the classroom materials.</strong>
+                        </p>
+                        <p class="pl-6 italic text-slate-600 border-l border-slate-100 leading-relaxed">
+                            "Alright, let's talk about the phyla of Kingdom Animalia. In our material, we only have two phyla that are pre-developed all the way through: Chordata, because that's where humans belong, and Arthropoda, because most of the animals in the world are arthropods. When we present an invertebrate and bring your attention to its phylum, we’re going to do that by telling a story. The story will include what the animal needs for survival, how it lives its life, where it lives, who its enemies are, and what its defenses are."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-block border-l-2 border-slate-100 pl-4">
+                <div class="flex items-start gap-3">
+                    <span class="flex items-center justify-center bg-amber-100 text-amber-800 rounded-full text-xs font-bold w-6 h-6 shrink-0 mt-0.5">2</span>
+                    <div class="space-y-2">
+                        <p class="text-slate-900 leading-relaxed">
+                            <strong>Pull out relevant animal cards focusing on invertebrates from the body function material. Show live or preserved specimens to the children for hands-on observation.</strong>
+                        </p>
+                        <p class="pl-6 italic text-slate-600 border-l border-slate-100 leading-relaxed">
+                            "Do you remember how we removed some cards from the animal shelf when we did the body function material because we only needed the vertebrates? Now, we get to pull out the invertebrates and share little stories about them. Look at this live specimen we have today. Let's observe it and notice things together. Maybe you have already had an experience with these animals outside, so we can build on that."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-block border-l-2 border-slate-100 pl-4">
+                <div class="flex items-start gap-3">
+                    <span class="flex items-center justify-center bg-amber-100 text-amber-800 rounded-full text-xs font-bold w-6 h-6 shrink-0 mt-0.5">3</span>
+                    <div class="space-y-2">
+                        <p class="text-slate-900 leading-relaxed">
+                            <strong>Show timeline visuals and examples of Protozoa. Demonstrate their different movements. Then move on to Porifera using sponge specimens or images.</strong>
+                        </p>
+                        <p class="pl-6 italic text-slate-600 border-l border-slate-100 leading-relaxed">
+                            "Let's explore some phyla! Protozoa means 'first animals.' They have classes like amoebas, ciliates, and flagellates. We can actually find them on our Timeline of Life. Then we have Porifera, which means 'pore bearing'—these are our sponges. We have the bath sponge, and even the elegant glass sponge. In Japanese culture, the glass sponge symbolizes a wedding vow because small shrimp grow inside the cavity and stay together forever."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-block border-l-2 border-slate-100 pl-4">
+                <div class="flex items-start gap-3">
+                    <span class="flex items-center justify-center bg-amber-100 text-amber-800 rounded-full text-xs font-bold w-6 h-6 shrink-0 mt-0.5">4</span>
+                    <div class="space-y-2">
+                        <p class="text-slate-900 leading-relaxed">
+                            <strong>Show pictures, videos, or specimens of Cnidaria and Annelida. Discuss worm anatomy, highlighting the bristles and clitellum. Bring out real earthworms if possible.</strong>
+                        </p>
+                        <p class="pl-6 italic text-slate-600 border-l border-slate-100 leading-relaxed">
+                            "Cnidaria are animals with stinging cells, like sea anemones, corals, and jellyfish. Then we have Annelida, meaning 'little ring'—these are segmented worms like earthworms. Earthworms have rings with bristles for traction, and a swollen part near the head where eggs are stored. Worms eat soil and are great for compost! Charles Darwin even studied them for 20 years."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step-block border-l-2 border-slate-100 pl-4">
+                <div class="flex items-start gap-3">
+                    <span class="flex items-center justify-center bg-amber-100 text-amber-800 rounded-full text-xs font-bold w-6 h-6 shrink-0 mt-0.5">5</span>
+                    <div class="space-y-2">
+                        <p class="text-slate-900 leading-relaxed">
+                            <strong>Show specimens or images of Echinodermata and Mollusca. Explain their regeneration and defense mechanisms. Display images of octopuses and squids, pointing out their unique anatomy.</strong>
+                        </p>
+                        <p class="pl-6 italic text-slate-600 border-l border-slate-100 leading-relaxed">
+                            "Echinodermata means 'spiny skin'—like sea urchins, sea stars, and sea cucumbers. They can even regenerate their arms! Mollusca means 'soft body,' including snails, clams, squid, and the octopus. The octopus belongs to Cephalopoda, meaning 'head foot.' They are highly intelligent and have incredibly well-developed eyeballs."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step-block border-l-2 border-slate-100 pl-4">
+                <div class="flex items-start gap-3">
+                    <span class="flex items-center justify-center bg-amber-100 text-amber-800 rounded-full text-xs font-bold w-6 h-6 shrink-0 mt-0.5">6</span>
+                    <div class="space-y-2">
+                        <p class="text-slate-900 leading-relaxed">
+                            <strong>Use insect and arthropod models or specimens to highlight jointed appendages. Show diagrams of vertebrate anatomy focusing on the notochord. Guide children toward follow-up projects.</strong>
+                        </p>
+                        <p class="pl-6 italic text-slate-600 border-l border-slate-100 leading-relaxed">
+                            "Arthropoda means 'jointed foot'—this includes insects, crustaceans, spiders, and mites. This is a massive group! Finally, Chordata means 'string,' referring to the notochord that develops into the spinal cord for vertebrates. Now that we've heard these stories, how do you want to express what you learned? You can draw, embroider, paint, build models, or even make life-size paper mâché creatures!"
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- COPYRIGHT CHART PLACEHOLDER BOX (AMI COMPLIANCE) -->
+        <div class="mt-8 p-4 border border-dashed border-red-200 rounded-lg bg-red-50/50 flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+            <div class="p-2 bg-red-100 rounded-full text-red-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+            </div>
+            <div class="text-xs text-slate-600 leading-relaxed">
+                <span class="font-bold text-red-800 uppercase block mb-1">AMI COPYRIGHT NOTICE</span>
+                The systematic phyla classification key cards and folders represent proprietary Montessori album graphics. Do not copy direct templates. This page serves as a pedagogical outline to accompany real taxonomic cabinet materials.
+            </div>
+        </div>
+
+        <!-- INSTRUCTOR'S ASIDE BOX (YELLOW) -->
+        <div class="aside-box">
+            <div class="flex items-center gap-2 mb-2">
+                <!-- INLINE NOTE ICON -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-amber-700" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                <h4 class="font-sans font-bold text-xs uppercase tracking-wider text-amber-800">Pedagogical Insights &amp; Guide Notes</h4>
+            </div>
+            <div class="space-y-3 text-slate-700 text-sm leading-relaxed">
+                <p>
+                    <strong>Storytelling Approach:</strong> When introducing invertebrates, it is paramount to avoid simple lists of dry definitions. Always capture the imagination through a narrative focusing on the ecological habitat, bodily survival adaptations, defensive methods, and specific enemies of the creature. 
+                </p>
+                <p>
+                    <strong>Live vs. Preserved Specimens:</strong> Real touchable assets like an authentic natural bath sponge, live garden earthworms, and detailed seashells bridge taxonomic names to physical realities, solidifying early sensory classifications.
+                </p>
+                <p>
+                    <strong>Follow-up Handwork:</strong> Do not overlook creative expressions. Allowing children to draft scientific drawings, paint detailed biological profiles, embroider invertebrate contours, or model anatomies out of paper mâché enhances fine motor coordination and critical observation skills.
+                </p>
+                <p>
+                    <strong>Pre-Developed Folders:</strong> Remind children that only <em>Arthropoda</em> and <em>Chordata</em> are fully pre-developed in standard shelf folders. The remaining phyla are introduced directly via these storytelling presentations specifically to ignite their own independent research, encouraging them to construct folders themselves.
+                </p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="no-print max-w-4xl w-full mx-auto p-6 text-center text-xs text-slate-400">
+        <p>Association Montessori Internationale (AMI) Elementary 6-12 Curriculum Album Appendix</p>
+        <p class="mt-1">Designed by Elim Lee. Generated as a printable, responsive HTML single-page module.</p>
+    </footer>
+
+</body>
+</html>
