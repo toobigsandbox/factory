@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telling a Story — Montessori Language Album</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* PRINT SETTINGS */
+        @media print {
+            /* Remove background + margins for clean PDF */
+            body {
+                background: white;
+                margin: 0;
+                font-size: 12pt;
+                color: #000;
+            }
+
+            /* Make the page full width in print */
+            .page {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            /* Hide anything marked no-print */
+            .no-print {
+                display: none !important;
+            }
+
+            /* Ensure background colors of boxes show on paper */
+            .material-box {
+                background-color: #f1f5f9 !important;
+                border-left: 4px solid #64748b !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .aside-box {
+                background-color: #fef9c3 !important;
+                border-left: 4px solid #eab308 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            /* Prevent page breaks inside key sections */
+            .material-box, .aside-box, .illustrate {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* custom typography classes to mimic premium Montessori album look */
+        .montessori-title {
+            font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+        }
+        
+        .material-box {
+            background-color: #f1f5f9; /* slate-100 */
+            border-left: 4px solid #64748b; /* slate-500 */
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 0.375rem;
+        }
+
+        .aside-box {
+            background-color: #fef9c3; /* yellow-100 */
+            border-left: 4px solid #eab308; /* yellow-500 */
+            padding: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 0.375rem;
+        }
+
+        .illustrate {
+            background-color: #fafaf9; /* stone-50 */
+            border: 1px dashed #d6d3d1; /* stone-300 */
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col font-serif">
+
+    <!-- NAVIGATION HEADER -->
+    <nav class="no-print w-full p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <a href="../../index.html"
+           class="text-slate-400 hover:text-slate-600 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2 transition-colors">
+            <!-- INLINE ARROW ICON -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Back to Dashboard
+        </a>
+
+        <button onclick="window.print()"
+                class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:bg-amber-700 hover:shadow-xl transition-all flex items-center gap-2">
+            <!-- INLINE PRINTER ICON -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9V2h12v7"></path>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <path d="M6 14h12v8H6z"></path>
+            </svg>
+            Print PDF
+        </button>
+    </nav>
+
+    <!-- MAIN PAGE CONTAINER -->
+    <main class="page max-w-4xl mx-auto my-4 md:my-8 bg-white p-8 md:p-16 shadow-lg border border-slate-100 rounded-xl flex-grow">
+        
+        <!-- SUBJECT BADGE & HEADER -->
+        <header class="mb-12 border-b border-slate-200 pb-8">
+            <div class="text-xs uppercase tracking-[0.25em] text-slate-400 font-sans font-bold mb-2">
+                Language // Chapter III: Written Expression // Storytelling
+            </div>
+            <h1 class="montessori-title text-4xl font-bold text-slate-900 leading-tight mb-4">
+                Telling a Story: The History of Measurement
+            </h1>
+            <div class="flex items-center gap-2 text-xs font-sans text-slate-500">
+                <span>Guide Name:</span>
+                <span class="font-semibold text-slate-700">Elim Lee</span>
+                <span class="text-slate-300">|</span>
+                <span>AMI Elementary Curriculum</span>
+            </div>
+        </header>
+
+        <!-- PURPOSE SECTION -->
+        <section class="mb-8">
+            <h3 class="font-sans font-bold text-xs uppercase tracking-[0.15em] text-slate-500 mb-3">Direct Aim / Purpose</h3>
+            <p class="text-lg text-slate-700 leading-relaxed italic">
+                The direct aim of this lesson is to model how to effectively tell a story by using "The History of Measurement" as an example, illustrating how to prepare for, deliver, and engage an audience with a narrative about the transition from inconsistent body-based measurements to standardized units.
+            </p>
+        </section>
+
+        <!-- MATERIALS BOX -->
+        <section class="material-box">
+            <div class="flex items-center gap-2 mb-3 text-slate-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+                <span class="font-sans font-bold text-xs uppercase tracking-wider">Materials</span>
+            </div>
+            <ul class="list-disc list-inside space-y-1.5 text-slate-700 text-sm font-sans pl-1">
+                <li>Notes or cue cards (e.g., sticky notes or a whiteboard)</li>
+                <li>Water for the storyteller</li>
+                <li>Ruler or measuring tape</li>
+                <li>Picture or silhouette of King Henry I's foot (optional)</li>
+            </ul>
+        </section>
+
+        <!-- PRESENTATION SECTION -->
+        <section class="mb-12">
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+
+            <div class="space-y-8 text-[15px] leading-relaxed text-slate-800">
+                
+                <!-- STEP 1 -->
+                <div class="step-card">
+                    <div class="flex gap-4">
+                        <span class="font-sans font-bold text-amber-600 text-sm">01.</span>
+                        <div>
+                            <p class="font-bold mb-3 text-slate-900">Prepare your storytelling space by having notes out of sight (or behind the camera) and keeping water nearby, showing the importance of being ready and comfortable before storytelling.</p>
+                            <p class="font-bold mb-3 text-slate-900">In a classroom setting, place small cue notes on sticky pads or a whiteboard positioned just above children’s heads to provide discreet reminders during storytelling without breaking engagement.</p>
+                            <div class="pl-6 border-l-2 border-slate-200 text-slate-600 italic space-y-2">
+                                <p>“Okay, so we're ready to actually tell a story. Before I do that, I want to share what I did to prepare. I picked my story, I read it, reviewed my notes, and I have my water ready just in case I need it. I’m nice and comfortable. I chose this story for you, my audience watching this video, even though you’re not here with me physically. I picked a story that I felt could be nicely conveyed to you.”</p>
+                                <p>“You don't have to be physically present to get the full experience of the story. I prepared some notes, which I keep just out of sight but accessible. If I were in a classroom, I'd write key points on little sticky notes or a whiteboard right above the audience's heads—not too far up—so if I need a quick cue, I can glance at it without distracting the children.”</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 2 -->
+                <div class="step-card">
+                    <div class="flex gap-4">
+                        <span class="font-sans font-bold text-amber-600 text-sm">02.</span>
+                        <div>
+                            <p class="font-bold mb-3 text-slate-900">Introduce the historical setting of the story. Establish the economic context of villages, craft specialization, and early barter trades.</p>
+                            <div class="pl-6 border-l-2 border-slate-200 text-slate-600 italic space-y-2">
+                                <p>“This story is called 'The History of Measurement.' It happened a long, long time ago when people lived in villages. They had specialized jobs like blacksmiths, farmers, bakers, candlestick makers, shoemakers, fabric makers—lots of different trades. Because of this, they traded goods with each other. But back then, they didn’t have standardized measurements like inches or yards or metric units. Instead, they used parts of their own bodies to measure things. For example, someone might say, 'I want a candle this long,' using their hand or arm length. If we all knew each other, that might work. But what if you met someone from another village with a different system? Maybe their finger or arm was longer or shorter than yours, so trading became confusing and unfair.”</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 3 -->
+                <div class="step-card">
+                    <div class="flex gap-4">
+                        <span class="font-sans font-bold text-amber-600 text-sm">03.</span>
+                        <div>
+                            <p class="font-bold mb-3 text-slate-900">Encourage children to physically use their own body parts (finger, arm, hand) to measure imaginary objects, helping them experience how measurement could vary person to person. This engages them kinesthetically and introduces the concept of non-standardized measurement.</p>
+                            <div class="pl-6 border-l-2 border-slate-200 text-slate-600 italic space-y-2">
+                                <p>“For example, an inch might have been defined as three grains of barley or the width of one man's thumb. But whose thumb? Are all thumbs the same width? Or a fathom, which is the length of an outstretched arm. But arms vary in length from person to person. This caused many disagreements, so people had to take the problem to the authorities.”</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 4 -->
+                <div class="step-card">
+                    <div class="flex gap-4">
+                        <span class="font-sans font-bold text-amber-600 text-sm">04.</span>
+                        <div>
+                            <p class="font-bold mb-3 text-slate-900">Invite children to compare their thumb widths or arm lengths with one another to visually and physically understand the inconsistencies in body-based measurement systems.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CUSTOM ILLUSTRATION -->
+                <div class="illustrate">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 260" class="w-full max-w-2xl h-auto">
+                        <!-- Background -->
+                        <rect width="100%" height="100%" fill="#fafaf9" rx="8" />
+                        
+
+
+                        <!-- Panel 3: Eye Contact Gaze Technique -->
+                        <g transform="translate(500, 10)">
+                            <rect width="240" height="240" fill="none" stroke="#e2e8f0" stroke-width="1" rx="6" />
+                            <text x="120" y="30" font-family="sans-serif" font-weight="bold" font-size="11" fill="#475569" text-anchor="middle">DISCREET NARRATIVE CUES</text>
+                            
+                            <!-- Teacher figure left -->
+                            <circle cx="50" cy="110" r="10" fill="none" stroke="#1e293b" stroke-width="2" />
+                            <path d="M 35,150 L 50,120 L 65,150" fill="none" stroke="#1e293b" stroke-width="2"/>
+                            
+                            <!-- Children on right -->
+                            <g transform="translate(170, 30)">
+                                <circle cx="10" cy="110" r="8" fill="none" stroke="#64748b" stroke-width="1.5" />
+                                <path d="M 0,140 L 10,118 L 20,140" fill="none" stroke="#64748b" stroke-width="1.5"/>
+                                
+                                <circle cx="35" cy="120" r="8" fill="none" stroke="#64748b" stroke-width="1.5" />
+                                <path d="M 25,150 L 35,128 L 45,150" fill="none" stroke="#64748b" stroke-width="1.5"/>
+                            </g>
+
+                            <!-- Cue Notes above heads -->
+                            <rect x="165" y="70" width="35" height="25" fill="#fef08a" stroke="#ca8a04" stroke-width="1" rx="2" />
+                            <line x1="170" y1="78" x2="195" y2="78" stroke="#ca8a04" stroke-width="1"/>
+                            <line x1="170" y1="84" x2="190" y2="84" stroke="#ca8a04" stroke-width="1"/>
+                            <text x="182" y="62" font-family="sans-serif" font-size="8" fill="#a16207" text-anchor="middle">Discreet Sticky Notes</text>
+
+                            <!-- Line of sight pointing to notes (above children's heads) to manage stage fright -->
+                            <path d="M 60,110 L 165,82" fill="none" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,4" stroke-linecap="round"/>
+                            <text x="110" y="125" font-family="sans-serif" font-size="8" fill="#2563eb" text-anchor="middle" transform="rotate(-15 110 125)">Gaze Line (Over Heads)</text>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- STEP 5 -->
+                <div class="step-card">
+                    <div class="flex gap-4">
+                        <span class="font-sans font-bold text-amber-600 text-sm">05.</span>
+                        <div>
+                            <p class="font-bold mb-3 text-slate-900">Introduce standard solutions of early legal authorities and King Henry's legendary decree.</p>
+                            <div class="pl-6 border-l-2 border-slate-200 text-slate-600 italic space-y-2">
+                                <p>“The authorities decided they needed a consistent standard that no one would argue about. They chose to base it on the king’s foot—King Henry I’s foot was 12 inches long. So one foot became 12 inches, and that was the beginning of standardized measurement. Imagine how much easier trading became when everyone agreed on the same unit of measure!”</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 6 -->
+                <div class="step-card">
+                    <div class="flex gap-4">
+                        <span class="font-sans font-bold text-amber-600 text-sm">06.</span>
+                        <div>
+                            <p class="font-bold mb-3 text-slate-900">Use a ruler or measuring tape to show 12 inches and explain that it represents the king’s foot. Possibly show a picture or silhouette of King Henry I’s foot to make the story vivid.</p>
+                            <div class="pl-6 border-l-2 border-slate-200 text-slate-600 italic space-y-2">
+                                <p>“And from there, measurement systems continued to develop and improve. That’s my story about the history of measurement. You can explore measuring with your own body or with standardized tools you have around you—have fun with it!”</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 7 -->
+                <div class="step-card">
+                    <div class="flex gap-4">
+                        <span class="font-sans font-bold text-amber-600 text-sm">07.</span>
+                        <div>
+                            <p class="font-bold mb-3 text-slate-900">Encourage children to experiment with measuring objects around them using their hands, fingers, arms, or rulers to connect the story to their everyday environment.</p>
+                            <div class="pl-6 border-l-2 border-slate-200 text-slate-600 italic space-y-2">
+                                <p>“Here are some tips for you as a teacher: Choose a time to tell your story when you won’t be interrupted. Time your story at a pace that suits you and your audience. You don’t need to act out the story, but do use natural gestures and hand movements if that feels comfortable. Use your voice and facial expressions to bring the story alive. If you feel stage fright, focus on a point just above the children’s heads and breathe deeply and slowly to calm down. Review and revise your story before retelling it. Get comfortable with it. Remember, the story doesn’t have to be perfect—just have fun, and the kids will too. Thanks!”</p>
+                            </div>
+                            <p class="font-bold mt-4 mb-3 text-slate-900">Before telling the story, practice it several times, aiming for a natural and relaxed delivery. Use gentle eye contact and natural gestures. Manage any nervousness by breathing exercises and focusing your gaze slightly above the audience’s heads rather than directly into their eyes.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- INSTRUCTOR'S ASIDE (YELLOW BOX) -->
+        <section class="aside-box">
+            <div class="flex items-center gap-2 mb-3 text-yellow-800">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+                <span class="font-sans font-bold text-xs uppercase tracking-wider">Instructor's Notes // Pedagogical Aside</span>
+            </div>
+            <div class="text-sm text-yellow-900 space-y-3 font-sans leading-relaxed">
+                <p>
+                    <strong class="text-yellow-950">Inconsistent Roots:</strong> Historically, early measurements were inconsistent. An "inch" was defined as the width of a man's thumb or three barley grains, while a "fathom" was the length of an outstretched arm. These inconsistencies caused trade disputes, leading to the necessity of standardized units.
+                </p>
+                <p>
+                    <strong>The Royal Foot Standard:</strong> The first universally standardized measurement was based on King Henry I's foot, establishing the standard 12-inch "foot" to create fairness and clarity. Use this transition to capture the interest of the Elementary child, who is highly sensitive to rules, social cohesion, and history.
+                </p>
+                <p>
+                    <strong>Storyteller Preparation:</strong> When telling a story, prepare ahead of time but avoid over-relying on your notes so you can maintain natural gestures and voice modulation.
+                </p>
+                <p>
+                    <strong>Stage Fright Strategy:</strong> If you experience stage fright, focus your gaze just above the audience's heads rather than directly into their eyes, and use deep, slow breaths.
+                </p>
+                <p>
+                    <strong>No Need for Perfection:</strong> Your delivery does not need to be perfect. Prioritize having fun and maintaining a relaxed presentation; this is the most effective way to engage children.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER WITH INSCRIPTION -->
+    <footer class="no-print max-w-4xl mx-auto w-full text-center pb-12 text-xs font-sans text-slate-400">
+        <p class="mb-1">"The child’s progress does not depend only on his age, but also on being free to look about him."</p>
+        <p class="font-semibold text-slate-500">— Maria Montessori</p>
+    </footer>
+
+</body>
+</html>
