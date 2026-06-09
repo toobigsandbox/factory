@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preparing to Tell a Story — Montessori Language Album</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* PRINT SETTINGS */
+        @media print {
+            /* Remove background + margins for clean PDF */
+            body {
+                background: white;
+                margin: 0;
+                font-size: 12pt;
+                color: #000;
+            }
+
+            /* Make the page full width in print */
+            .page {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            /* Hide anything marked no-print */
+            .no-print {
+                display: none !important;
+            }
+
+            /* Ensure background colors of boxes show on paper */
+            .material-box {
+                background-color: #f1f5f9 !important;
+                border-left: 4px solid #64748b !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .aside-box {
+                background-color: #fef9c3 !important;
+                border-left: 4px solid #eab308 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            /* Prevent page breaks inside key sections */
+            .material-box, .aside-box, .illustrate {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* custom typography classes to mimic premium Montessori album look */
+        .montessori-title {
+            font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+        }
+        
+        .material-box {
+            background-color: #f1f5f9; /* slate-100 */
+            border-left: 4px solid #64748b; /* slate-500 */
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 0.375rem;
+        }
+
+        .aside-box {
+            background-color: #fef9c3; /* yellow-100 */
+            border-left: 4px solid #eab308; /* yellow-500 */
+            padding: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 0.375rem;
+        }
+
+        .illustrate {
+            background-color: #fafaf9; /* stone-50 */
+            border: 1px dashed #d6d3d1; /* stone-300 */
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col font-serif">
+
+    <!-- NAVIGATION HEADER -->
+    <nav class="no-print w-full p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <a href="../../index.html"
+           class="text-slate-400 hover:text-slate-600 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2 transition-colors">
+            <!-- INLINE ARROW ICON -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Back to Dashboard
+        </a>
+
+        <button onclick="window.print()"
+                class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:bg-amber-700 hover:shadow-xl transition-all flex items-center gap-2">
+            <!-- INLINE PRINTER ICON -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9V2h12v7"></path>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <path d="M6 14h12v8H6z"></path>
+            </svg>
+            Print PDF
+        </button>
+    </nav>
+
+    <!-- MAIN PAGE CONTAINER -->
+    <main class="page max-w-4xl mx-auto my-4 md:my-8 bg-white p-8 md:p-16 shadow-lg border border-slate-100 rounded-xl flex-grow">
+        
+        <!-- SUBJECT BADGE & HEADER -->
+        <header class="mb-12 border-b border-slate-200 pb-8">
+            <div class="text-xs uppercase tracking-[0.25em] text-slate-400 font-sans font-bold mb-2">
+                Language // Chapter III: Written Expression // Storytelling
+            </div>
+            <h1 class="montessori-title text-4xl font-bold text-slate-900 leading-tight mb-4">
+                Preparing to Tell a Story
+            </h1>
+            <div class="flex items-center gap-2 text-xs font-sans text-slate-500">
+                <span>Guide Name:</span>
+                <span class="font-semibold text-slate-700">Elim Lee</span>
+                <span class="text-slate-300">|</span>
+                <span>AMI Elementary Curriculum</span>
+            </div>
+        </header>
+
+        <!-- PURPOSE SECTION -->
+        <section class="mb-8">
+            <h3 class="font-sans font-bold text-xs uppercase tracking-[0.15em] text-slate-500 mb-3">Direct Aim / Purpose</h3>
+            <p class="text-lg text-slate-700 leading-relaxed italic">
+                The direct aim of this lesson is to provide a comprehensive guide for adults on how to effectively prepare and tell a story to children or groups, emphasizing storytelling as a foundational part of the elementary experience.
+            </p>
+        </section>
+
+        <!-- MATERIALS BOX -->
+        <section class="material-box">
+            <div class="flex items-center gap-2 mb-3 text-slate-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+                <span class="font-sans font-bold text-xs uppercase tracking-wider">Materials</span>
+            </div>
+            <ul class="list-disc list-inside space-y-1.5 text-slate-700 text-sm font-sans pl-1">
+                <li>The selected story</li>
+                <li>Necessary props, pictures, or items</li>
+                <li>Water (to prevent coughing or thirst during delivery)</li>
+                <li>Cue cards (optional, for staying on track)</li>
+                <li>A storytelling log (optional, for post-story reflection)</li>
+            </ul>
+        </section>
+
+        <!-- PRESENTATION SECTION -->
+        <section class="mb-12">
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+
+            <div class="space-y-8 text-[15px] leading-relaxed text-slate-800">
+                
+                <!-- STEP 1 -->
+                <div class="step-card">
+                    <div class="flex gap-4">
+                        <span class="font-sans font-bold text-amber-600 text-sm">01.</span>
+                        <div>
+                            <p class="font-bold mb-3 text-slate-900">Invite the adult student or gather storytelling materials. Introduce the core value of narrative in the Elementary Montessori classroom.</p>
+                            <div class="pl-6 border-l-2 border-slate-200 text-slate-600 italic space-y-2">
+                                <p>“Storytelling is a major part of the elementary experience. Here’s some information to help you, the adult, prepare yourself to give the story to a child or group. This presentation is for you, not directly for the children. However, if a child shows interest or asks, you can help them become a better storyteller by sharing this presentation with them. We will go through five steps to prepare your story.”</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 2 -->
+                <div class="step-card">
+                    <div class="flex gap-4">
+                        <span class="font-sans font-bold text-amber-600 text-sm">02.</span>
+                        <div>
+                            <p class="font-bold mb-3 text-slate-900">Detail the five critical phases of narrative preparation, highlighting how variation theory adapts the process to individual sensory learning styles.</p>
+                            <div class="pl-6 border-l-2 border-slate-200 text-slate-600 italic space-y-3">
+                                <p>“Step one: Identify the story you’re going to tell.”</p>
+                                <p>“Step two: Read that story several times. The first time, read it for pleasure—find joy or a personal connection with the story; that’s very important.”</p>
+                                <p>“Step two B: Read from the perspective of the author, the characters involved, the time, culture, and daily life.”</p>
+                                <p>“Step three: Practice the practicalities—read the story aloud, time yourself, and adjust to the needs of your audience. Include any actions, props, pictures, or items you may need to share.”</p>
+                                <p>“Step four: Outline the story according to your personal learning style. At minimum, have a beginning, middle, and end.”</p>
+                                <p>“Step five: Make the story your own. This is very important. You can do this in three ways:”</p>
+                                <p class="pl-4">“A) Make the story come alive to you by telling it as if you know it personally; this creates a deeper connection with your students.”</p>
+                                <p class="pl-4">“B) Use your senses to internalize the story. If you’re an auditory learner, tape record yourself. If you’re kinesthetic, write out your outline or key parts. If you’re visual, use pictures or images to help recall the story.”</p>
+                                <p class="pl-4">“C) Use incidents in the story as landmarks to help you progress through the narrative.”</p>
+                                <p>“After preparing in these ways, practice telling the story. These five steps will help you prepare to give your story effectively. Next, we’ll talk about actually telling the story with your audience.”</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ILLUSTRATION -->
+                <div class="illustrate">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 260" class="w-full max-w-2xl h-auto">
+                        <!-- Background -->
+                        <rect width="100%" height="100%" fill="#fafaf9" rx="8" />
+                        
+                        <!-- Panel 1: Prepare (Book & Brain/Senses) -->
+                        <g transform="translate(10, 10)">
+                            <!-- Soft border -->
+                            <rect width="220" height="240" fill="none" stroke="#e2e8f0" stroke-width="1" rx="6" />
+                            <text x="110" y="30" font-family="sans-serif" font-weight="bold" font-size="11" fill="#475569" text-anchor="middle">1. PREPARING THE STORY</text>
+                            
+                            <!-- Book outline -->
+                            <path d="M 50,120 C 50,90 90,90 110,100 C 130,90 170,90 170,120 L 170,170 C 170,140 130,140 110,150 C 90,140 50,140 50,170 Z" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <line x1="110" y1="100" x2="110" y2="150" stroke="#64748b" stroke-width="2" />
+                            
+                            <!-- 5 Steps list handdrawn feel -->
+                            <circle cx="50" cy="65" r="10" fill="#22c55e" fill-opacity="0.2" stroke="#22c55e" stroke-width="1" />
+                            <text x="50" y="69" font-family="sans-serif" font-size="10" font-weight="bold" fill="#15803d" text-anchor="middle">1</text>
+                            <circle cx="80" cy="65" r="10" fill="#22c55e" fill-opacity="0.2" stroke="#22c55e" stroke-width="1" />
+                            <text x="80" y="69" font-family="sans-serif" font-size="10" font-weight="bold" fill="#15803d" text-anchor="middle">2</text>
+                            <circle cx="110" cy="65" r="10" fill="#22c55e" fill-opacity="0.2" stroke="#22c55e" stroke-width="1" />
+                            <text x="110" y="69" font-family="sans-serif" font-size="10" font-weight="bold" fill="#15803d" text-anchor="middle">3</text>
+                            <circle cx="140" cy="65" r="10" fill="#22c55e" fill-opacity="0.2" stroke="#22c55e" stroke-width="1" />
+                            <text x="140" y="69" font-family="sans-serif" font-size="10" font-weight="bold" fill="#15803d" text-anchor="middle">4</text>
+                            <circle cx="170" cy="65" r="10" fill="#22c55e" fill-opacity="0.2" stroke="#22c55e" stroke-width="1" />
+                            <text x="170" y="69" font-family="sans-serif" font-size="10" font-weight="bold" fill="#15803d" text-anchor="middle">5</text>
+                            
+                            <!-- Sensory Icons simple shapes -->
+                            <!-- Eye -->
+                            <path d="M 75,200 Q 90,190 105,200 Q 90,210 75,200 Z" fill="none" stroke="#3b82f6" stroke-width="1.5" />
+                            <circle cx="90" cy="200" r="3" fill="#3b82f6" />
+                            <!-- Ear -->
+                            <path d="M 130,192 C 120,192 120,208 130,208 C 140,208 135,198 140,195" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round" />
+                        </g>
+
+                        <!-- Panel 2: Path Landmarks -->
+                        <g transform="translate(245, 10)">
+                            <rect width="240" height="240" fill="none" stroke="#e2e8f0" stroke-width="1" rx="6" />
+                            <text x="120" y="30" font-family="sans-serif" font-weight="bold" font-size="11" fill="#475569" text-anchor="middle">2. THE PREPARED ENVIRONMENT</text>
+                            
+                            <!-- Table setup -->
+                            <rect x="40" y="160" width="160" height="15" fill="none" stroke="#64748b" stroke-width="2" rx="2" />
+                            <line x1="60" y1="175" x2="60" y2="210" stroke="#64748b" stroke-width="2" />
+                            <line x1="180" y1="175" x2="180" y2="210" stroke="#64748b" stroke-width="2" />
+                            
+                            <!-- Water Cup -->
+                            <rect x="70" y="135" width="14" height="25" fill="none" stroke="#3b82f6" stroke-width="1.5" rx="1" />
+                            <line x1="70" y1="145" x2="84" y2="145" stroke="#3b82f6" stroke-dasharray="2,1" />
+                            <text x="90" y="152" font-family="sans-serif" font-size="9" fill="#2563eb">Water</text>
+
+                            <!-- Q-cards -->
+                            <rect x="140" y="140" width="22" height="16" fill="none" stroke="#84cc16" stroke-width="1.5" rx="1" />
+                            <line x1="144" y1="145" x2="158" y2="145" stroke="#84cc16" />
+                            <line x1="144" y1="150" x2="154" y2="150" stroke="#84cc16" />
+                            <text x="135" y="130" font-family="sans-serif" font-size="9" fill="#65a30d" text-anchor="middle">Cue Cards</text>
+
+                            <!-- Flow / Path representing Landmarks -->
+                            <path d="M 40,75 Q 80,105 120,75 T 200,75" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="4,3" stroke-linecap="round" />
+                            <circle cx="40" cy="75" r="4" fill="#d97706" />
+                            <circle cx="120" cy="75" r="4" fill="#d97706" />
+                            <circle cx="200" cy="75" r="4" fill="#d97706" />
+                            <text x="120" y="60" font-family="sans-serif" font-size="10" font-style="italic" fill="#b45309" text-anchor="middle">Narrative Landmarks</text>
+                        </g>
+
+                        <!-- Panel 3: Delivery / Presentation Circle -->
+                        <g transform="translate(500, 10)">
+                            <rect width="240" height="240" fill="none" stroke="#e2e8f0" stroke-width="1" rx="6" />
+                            <text x="120" y="30" font-family="sans-serif" font-weight="bold" font-size="11" fill="#475569" text-anchor="middle">3. TELLING THE STORY</text>
+                            
+                            <!-- Storyteller (stick figure) -->
+                            <circle cx="120" cy="85" r="12" fill="none" stroke="#1e293b" stroke-width="2" />
+                            <line x1="120" y1="97" x2="120" y2="145" stroke="#1e293b" stroke-width="2" />
+                            <!-- arms welcoming -->
+                            <path d="M 100,115 Q 120,100 140,115" fill="none" stroke="#1e293b" stroke-width="2" stroke-linecap="round" />
+                            <!-- legs -->
+                            <line x1="120" y1="145" x2="110" y2="185" stroke="#1e293b" stroke-width="2" />
+                            <line x1="120" y1="145" x2="130" y2="185" stroke="#1e293b" stroke-width="2" />
+                            
+                            <!-- Magic connection arcs (The Keeper of the Story) -->
+                            <path d="M 95,95 A 35,35 0 0,1 145,95" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="2,2" />
+                            <text x="120" y="65" font-family="sans-serif" font-size="9" font-weight="bold" fill="#d97706" text-anchor="middle">KEEPER OF THE STORY</text>
+
+                            <!-- Listening children (circles in semicircle) -->
+                            <g transform="translate(0, 40)">
+                                <!-- Child 1 -->
+                                <circle cx="50" cy="160" r="7" fill="none" stroke="#475569" stroke-width="1.5" />
+                                <path d="M 42,185 Q 50,175 58,185" fill="none" stroke="#475569" stroke-width="1.5" />
+                                <!-- Child 2 -->
+                                <circle cx="85" cy="180" r="7" fill="none" stroke="#475569" stroke-width="1.5" />
+                                <path d="M 77,205 Q 85,195 93,205" fill="none" stroke="#475569" stroke-width="1.5" />
+                                <!-- Child 3 -->
+                                <circle cx="155" cy="180" r="7" fill="none" stroke="#475569" stroke-width="1.5" />
+                                <path d="M 147,205 Q 155,195 163,205" fill="none" stroke="#475569" stroke-width="1.5" />
+                                <!-- Child 4 -->
+                                <circle cx="190" cy="160" r="7" fill="none" stroke="#475569" stroke-width="1.5" />
+                                <path d="M 182,185 Q 190,175 198,185" fill="none" stroke="#475569" stroke-width="1.5" />
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- STEP 3 -->
+                <div class="step-card">
+                    <div class="flex gap-4">
+                        <span class="font-sans font-bold text-amber-600 text-sm">03.</span>
+                        <div>
+                            <p class="font-bold mb-3 text-slate-900">Prepare your storytelling space ahead of time by ensuring comfort for yourself and visibility for your audience. Arrange any props or materials you will use.</p>
+                            <div class="pl-6 border-l-2 border-slate-200 text-slate-600 italic space-y-2">
+                                <p>“Step three in telling the story is preparing your environment. You are part of that environment, so prepare yourself physically. Use the bathroom beforehand, have water available in case you cough or get thirsty, and wear comfortable clothing and shoes. Know where you will stand or sit. Make sure there’s space for your audience and that they can see you clearly. If needed, prepare a few Q cards to help you stay on track.”</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 4 -->
+                <div class="step-card">
+                    <div class="flex gap-4">
+                        <span class="font-sans font-bold text-amber-600 text-sm">04.</span>
+                        <div>
+                            <p class="font-bold mb-3 text-slate-900">Smile warmly and make eye contact to invite children into the story.</p>
+                            <div class="pl-6 border-l-2 border-slate-200 text-slate-600 italic space-y-2">
+                                <p>“When you begin telling the story, smile and make everyone feel welcome. Invite them into the experience with you. Introduce the story by name and tell them you will take questions and comments at the end. You can start with something like, 'A long, long time ago...'—this is a great way to begin stories, especially historical ones.”</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 5 -->
+                <div class="step-card">
+                    <div class="flex gap-4">
+                        <span class="font-sans font-bold text-amber-600 text-sm">05.</span>
+                        <div>
+                            <p class="font-bold mb-3 text-slate-900">Use landmarks or notes discreetly to help your delivery. Adjust your tone, volume, and pace to keep children engaged.</p>
+                            <div class="pl-6 border-l-2 border-slate-200 text-slate-600 italic space-y-2">
+                                <p>“As the story unfolds, engage your audience with your eyes and voice. Use your prepared landmarks to move the story along. Remember, you are the keeper of the story. If you get lost, you can use your landmarks to reconnect and adjust the story as needed to keep it engaging and on track. Your audience won’t know if you make slight changes, even if they’ve heard the story before. Remind your audience to hold their comments until the end.”</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 6 -->
+                <div class="step-card">
+                    <div class="flex gap-4">
+                        <span class="font-sans font-bold text-amber-600 text-sm">06.</span>
+                        <div>
+                            <p class="font-bold mb-3 text-slate-900">Deliver the story resolution clearly and adapt dynamic timing based on sensory feedback from the circle.</p>
+                            <div class="pl-6 border-l-2 border-slate-200 text-slate-600 italic space-y-2">
+                                <p>“As you come to the end of your story, if you sense your audience losing interest, adjust and wrap up quickly but be sure to give the resolution or key information. Bring the story to a clear ending. Do not ask questions at the end, though the audience may ask you questions.”</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 7 -->
+                <div class="step-card">
+                    <div class="flex gap-4">
+                        <span class="font-sans font-bold text-amber-600 text-sm">07.</span>
+                        <div>
+                            <p class="font-bold mb-3 text-slate-900">After finishing, pause and allow for audience questions and comments.</p>
+                            <div class="pl-6 border-l-2 border-slate-200 text-slate-600 italic space-y-2">
+                                <p>“After the storytelling session, take time to reflect on how it went. Think about what you liked and what you would change for next time. If you keep a storytelling log, write down your reflections and observations to help you improve.”</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- INSTRUCTOR'S ASIDE (YELLOW BOX) -->
+        <section class="aside-box">
+            <div class="flex items-center gap-2 mb-3 text-yellow-800">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+                <span class="font-sans font-bold text-xs uppercase tracking-wider">Instructor's Notes // Pedagogical Aside</span>
+            </div>
+            <div class="text-sm text-yellow-900 space-y-3 font-sans leading-relaxed">
+                <p>
+                    <strong class="text-yellow-950">"The Keeper of the Story":</strong> If you lose your place or the audience's attention wanes, adjust the content fluidly to maintain engagement and flow; the audience will not notice the shifts.
+                </p>
+                <p>
+                    <strong>Extending to the Child:</strong> While this presentation is primarily prepared for the adult guide, if a child shows a deep interest, passion, or innate talent in storytelling, support them! Share these exact five preparation steps to scaffold and develop their expressive storytelling skills.
+                </p>
+                <p>
+                    <strong>Post-Story Boundaries:</strong> Never ask the audience questions at the end of the storytelling. Allow children to sit in reflection and initiate their own questions, comments, or independent work when they are ready.
+                </p>
+                <p>
+                    <strong>Storytelling Log:</strong> It is highly recommended to maintain a personal story-giving log. Track what stories were told, which landmarks succeeded, environmental adjustments, and general observations to ensure continuous improvement as a keeper of history, science, and literature.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER WITH INSCRIPTION -->
+    <footer class="no-print max-w-4xl mx-auto w-full text-center pb-12 text-xs font-sans text-slate-400">
+        <p class="mb-1">"The child’s progress does not depend only on his age, but also on being free to look about him."</p>
+        <p class="font-semibold text-slate-500">— Maria Montessori</p>
+    </footer>
+
+</body>
+</html>
