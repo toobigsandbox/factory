@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratio Lessons Module - Montessori Album</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- MathJax for rendering LaTeX expressions beautifully -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* CUSTOM STYLES FOR SCREEN AND PRINT BEAUTIFICATION */
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        /* Material Box (Grey) */
+        .material-box {
+            background-color: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #64748b;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Aside Box (Yellow) */
+        .aside-box {
+            background-color: #fef9c3;
+            border: 1px solid #fef08a;
+            border-left: 4px solid #eab308;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #451a03;
+        }
+
+        /* Hand-sketched illustration container */
+        .illustrate {
+            border: 1px dashed #cbd5e1;
+            background-color: #fafaf9;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Keep page sizes regular on screen */
+        .page {
+            background: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            border-radius: 0.75rem;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 3rem;
+            padding: 3rem;
+        }
+
+        /* Screen spacing sidebar layout */
+        @media (min-width: 1024px) {
+            .lessons-container {
+                display: grid;
+                grid-template-columns: 240px 1fr;
+                gap: 2rem;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            .sidebar {
+                position: sticky;
+                top: 2rem;
+                height: fit-content;
+            }
+        }
+
+        /* PRINT SETTINGS */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            .page {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                margin: 0 0 3cm 0 !important;
+                width: 100% !important;
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+
+            /* Enable exact background colors when printing */
+            .material-box {
+                background-color: #f1f5f9 !important;
+                border-left: 4px solid #64748b !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .aside-box {
+                background-color: #fef9c3 !important;
+                border-left: 4px solid #eab308 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .illustrate {
+                border: 1px dashed #cbd5e1 !important;
+                background-color: #fafaf9 !important;
+                page-break-inside: avoid;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <!-- HEADER / NAVIGATION (Hidden when printing) -->
+    <nav class="no-print p-6 flex justify-between items-center max-w-5xl mx-auto border-b border-slate-200 mb-8">
+        <a href="../../index.html" class="text-slate-500 hover:text-slate-800 font-bold uppercase text-[11px] tracking-widest flex items-center gap-2 transition-all">
+            <!-- INLINE ARROW ICON -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Back to Dashboard
+        </a>
+        <div class="flex items-center gap-4">
+            <span class="text-xs text-slate-400 font-mono">Module: Ratio & Proportion</span>
+            <button onclick="window.print()" class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-2 rounded-full font-bold shadow-md hover:shadow-lg transition-all flex items-center gap-2">
+                <!-- INLINE PRINTER ICON -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 9V2h12v7"></path>
+                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                    <path d="M6 14h12v8H6z"></path>
+                </svg>
+                Print PDF / Album Sheets
+            </button>
+        </div>
+    </nav>
+
+    <!-- WRAPPER -->
+    <div class="lessons-container px-4 pb-16">
+        
+        <!-- SIDEBAR INDEX (Hidden when printing) -->
+        <aside class="sidebar no-print bg-white p-4 rounded-xl border border-slate-200 shadow-sm mb-6 lg:mb-0">
+            <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4 px-2">Ratio Series</h3>
+            <ul class="space-y-1 text-sm font-medium">
+                <li><a href="#lesson-1" class="block px-3 py-2 text-amber-700 hover:bg-amber-50 rounded-lg transition-colors">1. Concept & Notation</a></li>
+                <li><a href="#lesson-2" class="block px-3 py-2 text-slate-600 hover:bg-amber-50 rounded-lg transition-colors">2. Equivalent Ratios</a></li>
+                <li><a href="#lesson-3" class="block px-3 py-2 text-slate-600 hover:bg-amber-50 rounded-lg transition-colors">3. Word Problems</a></li>
+                <li><a href="#lesson-4" class="block px-3 py-2 text-slate-600 hover:bg-amber-50 rounded-lg transition-colors">4. Common Fractions</a></li>
+                <li><a href="#lesson-5" class="block px-3 py-2 text-slate-600 hover:bg-amber-50 rounded-lg transition-colors">5. More Word Problems</a></li>
+            </ul>
+            <div class="mt-6 pt-4 border-t border-slate-100 text-[11px] text-slate-400 px-2 leading-relaxed">
+                <p>Designed strictly for standard <strong>A4 Portrait layout</strong> printing.</p>
+            </div>
+        </aside>
+
+        <!-- MAIN PAGES AREA -->
+        <main class="w-full max-w-4xl mx-auto">
+
+            <!-- PAGE 1: LESSON 1 -->
+            <article id="lesson-1" class="page">
+                <!-- Header block -->
+                <div class="border-b-2 border-amber-600 pb-4 mb-6 flex justify-between items-end">
+                    <div>
+                        <span class="text-amber-600 font-bold tracking-widest text-[10px] uppercase font-mono">Mathematics &mdash; Ratio and Proportion</span>
+                        <h1 class="font-serif font-bold text-3xl text-slate-800 mt-1">1. Introduction to Ratio</h1>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs text-slate-400 block">Guide: <strong>Elim Lee</strong></span>
+                        <span class="text-xs text-slate-400 font-mono">Lesson 1 of 5</span>
+                    </div>
+                </div>
+
+                <!-- Aim / Purpose -->
+                <div class="mb-6">
+                    <p class="text-sm text-slate-500 font-semibold italic"><strong>Direct Aim / Purpose:</strong> To introduce the concept and notation of ratio.</p>
+                </div>
+
+                <!-- Materials Box -->
+                <section class="material-box">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Materials List</h3>
+                    <ul class="list-disc pl-5 text-sm text-slate-600 space-y-1">
+                        <li>Work mat</li>
+                        <li>Objects from the environment: some beads from racks & tubes, some sticks from the geometry box of sticks, pencils & colored pencils, or small items from around the classroom</li>
+                        <li>Felt square from the <em>Introduction to Decimal Checkerboard</em> (optional, to serve as a high-contrast layout space)</li>
+                        <li>Blank paper tickets and pencils for labeling</li>
+                    </ul>
+                </section>
+
+                <!-- Presentation -->
+                <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+                
+                <div class="space-y-4 text-sm leading-relaxed text-slate-700">
+                    <p><strong>Invite a group of children to a work mat, stating that today we will examine relationships between groups of objects in our environment.</strong></p>
+                    
+                    <p><strong>Gather two distinct sets of items. For this demonstration, we will use three standard pencils and two red colored pencils. Place them on the felt mat.</strong></p>
+                    
+                    <p><strong>Arrange the objects clearly: place the three standard pencils in a horizontal line, and directly opposite or below them, place the two red colored pencils.</strong></p>
+                    
+                    <p class="pl-6 italic text-slate-600">"Let's look closely at these groups of pencils. We have three standard pencils here, and we have two colored pencils here. For every three standard pencils we have, there are always two colored pencils."</p>
+
+                    <p class="pl-6 italic text-slate-600">"This shows a unique relationship between our standard pencils and colored pencils. We say that the relationship between them is three to two."</p>
+
+                    <p><strong>Write the number "3" on a small ticket and place it next to the standard pencils. Write the number "2" on a second ticket and place it next to the colored pencils.</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"We call this mathematical relationship a 'ratio.' A ratio is a direct way of comparing two numbers, quantities, or objects."</p>
+
+                    <p><strong>Now write the ratio notation onto a single ticket. Write "3 : 2" with the colon centered between them. Place it underneath both groups.</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"To write this relationship down mathematically, we use two stacked dots between our numbers. We read this written sign, $3 : 2$, as 'three to two.' The first number represents our three standard pencils, and the second number represents our two colored pencils."</p>
+
+                    <!-- SVG SKETCH 1 -->
+                    <div class="illustrate">
+                        <svg viewBox="0 0 500 200" class="w-full max-w-md h-auto" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background Mat -->
+                            <rect x="10" y="10" width="480" height="180" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="2" stroke-dasharray="4 4" />
+                            <text x="30" y="35" class="text-[10px] font-mono fill-green-600 uppercase tracking-widest">Felt Mat Layout</text>
+                            
+                            <!-- Standard Pencils (Black/Slate) -->
+                            <g transform="translate(60, 50)">
+                                <!-- Pencil 1 -->
+                                <rect x="0" y="0" width="8" height="60" rx="2" fill="#94a3b8" stroke="#475569" stroke-width="1.5" />
+                                <polygon points="4,-10 -1,0 9,0" fill="#fbcfe8" stroke="#475569" stroke-width="1" />
+                                <!-- Pencil 2 -->
+                                <rect x="25" y="0" width="8" height="60" rx="2" fill="#94a3b8" stroke="#475569" stroke-width="1.5" />
+                                <polygon points="29,-10 24,0 34,0" fill="#fbcfe8" stroke="#475569" stroke-width="1" />
+                                <!-- Pencil 3 -->
+                                <rect x="50" y="0" width="8" height="60" rx="2" fill="#94a3b8" stroke="#475569" stroke-width="1.5" />
+                                <polygon points="54,-10 49,0 59,0" fill="#fbcfe8" stroke="#475569" stroke-width="1" />
+                                <text x="-5" y="80" class="text-xs font-bold font-serif fill-slate-700">3 Pencils</text>
+                            </g>
+
+                            <!-- Colon Divider -->
+                            <circle cx="250" cy="80" r="4" fill="#d97706" />
+                            <circle cx="250" cy="100" r="4" fill="#d97706" />
+
+                            <!-- Colored Pencils (Amber/Orange-Red) -->
+                            <g transform="translate(340, 50)">
+                                <!-- Pencil 1 -->
+                                <rect x="0" y="0" width="8" height="60" rx="2" fill="#f87171" stroke="#dc2626" stroke-width="1.5" />
+                                <polygon points="4,-10 -1,0 9,0" fill="#fbcfe8" stroke="#dc2626" stroke-width="1" />
+                                <!-- Pencil 2 -->
+                                <rect x="30" y="0" width="8" height="60" rx="2" fill="#f87171" stroke="#dc2626" stroke-width="1.5" />
+                                <polygon points="34,-10 29,0 39,0" fill="#fbcfe8" stroke="#dc2626" stroke-width="1" />
+                                <text x="-2" y="80" class="text-xs font-bold font-serif fill-slate-700">2 Colored Pencils</text>
+                            </g>
+
+                            <!-- Paper Ticket Notation -->
+                            <g transform="translate(180, 145)">
+                                <rect x="0" y="0" width="140" height="30" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+                                <text x="70" y="20" text-anchor="middle" class="text-sm font-mono font-bold fill-amber-700">Ratio = 3 : 2</text>
+                            </g>
+                        </svg>
+                        <span class="text-xs text-slate-400 mt-2 block italic">Figure 1.1: Environment layout comparing 3 standard pencils to 2 colored pencils.</span>
+                    </div>
+
+                    <p><strong>Emphasize the extreme importance of order when writing ratios.</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"What would happen if we wrote this ratio as $2 : 3$? That would imply we have two standard pencils for every three colored pencils. But that is not what we have on our mat. So, order is extremely important when we write and discuss ratios. We must always match the numbers to the order of the objects we are comparing."</p>
+
+                    <p><strong>Demonstrate another example using different colored beads or blocks (e.g., 5 blue beads and 4 red beads). Have the children determine the ratio, write out the numbers on tickets, place the dots, and read the ratio aloud.</strong></p>
+
+                    <p><strong>Invite the children to search around the environment to find and document their own ratios (e.g., chairs to tables, books to boxes).</strong></p>
+                </div>
+
+                <!-- Aside -->
+                <div class="aside-box">
+                    <h4 class="text-xs font-bold uppercase tracking-wider mb-2">Teacher's Aside & Practical Notes</h4>
+                    <p class="text-xs leading-relaxed">
+                        This is the child's very first contact with ratio. It must remain highly sensory and integrated into their immediate surroundings. Emphasize that a ratio is fundamentally a <strong>multiplicative comparison</strong> of two groups rather than a simple difference. Allow the child to discover ratios across the classroom to internalize that the concept can be applied to any quantifiable elements.
+                    </p>
+                </div>
+            </article>
+
+
+            <!-- PAGE 2: LESSON 2 -->
+            <article id="lesson-2" class="page">
+                <!-- Header block -->
+                <div class="border-b-2 border-amber-600 pb-4 mb-6 flex justify-between items-end">
+                    <div>
+                        <span class="text-amber-600 font-bold tracking-widest text-[10px] uppercase font-mono">Mathematics &mdash; Ratio and Proportion</span>
+                        <h1 class="font-serif font-bold text-3xl text-slate-800 mt-1">2. Equivalent Ratios</h1>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs text-slate-400 block">Guide: <strong>Elim Lee</strong></span>
+                        <span class="text-xs text-slate-400 font-mono">Lesson 2 of 5</span>
+                    </div>
+                </div>
+
+                <!-- Aim / Purpose -->
+                <div class="mb-6">
+                    <p class="text-sm text-slate-500 font-semibold italic"><strong>Direct Aim / Purpose:</strong> To show the relationship of equivalent ratios and introduce technical vocabulary (antecedent & consequent).</p>
+                </div>
+
+                <!-- Materials Box -->
+                <section class="material-box">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Materials List</h3>
+                    <ul class="list-disc pl-5 text-sm text-slate-600 space-y-1">
+                        <li>Standard Montessori Pegboard</li>
+                        <li>Small colored pegs (red, blue, green, etc.)</li>
+                        <li>Number cards or blank tickets</li>
+                        <li>Paper and pencils</li>
+                    </ul>
+                </section>
+
+                <!-- Presentation -->
+                <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+                
+                <div class="space-y-4 text-sm leading-relaxed text-slate-700">
+                    <p><strong>Set up the pegboard between the guide and the children. Place a collection of red and blue pegs in nearby bowls.</strong></p>
+                    
+                    <p><strong>Place two red pegs vertically in the first column, and three blue pegs vertically in the adjacent column.</strong></p>
+                    
+                    <p class="pl-6 italic text-slate-600">"Let us say we have a ratio of two red pencils to three blue pencils. Can you picture that in your head? If we imagine that these pegs represent our pencils, we can lay out two red pegs and three blue pegs. Here is our ratio of two to three."</p>
+
+                    <p class="pl-6 italic text-slate-600">"What this ratio tells us is that for every two red pegs we have, we must have exactly three blue pegs to keep our relationship. This is our pattern rule."</p>
+
+                    <p><strong>Now place another set of two red pegs and three blue pegs directly alongside the first set on the pegboard.</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"Let us look at what we have now. How many red pegs do we have in total? We have four. And how many blue pegs do we have? We have six."</p>
+
+                    <p><strong>Place a third group of two red pegs and three blue pegs on the board.</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"And now? How many red pegs total do I have? I have six. And how many blue pegs do we have? We have nine. Are they still in a two to three ratio? How do you know?"</p>
+
+                    <p class="pl-6 italic text-slate-600">"Yes, because for every two red ones, there are exactly three blue ones. Could we keep going? What would we do next? We would simply place three more blue pegs for every two red pegs."</p>
+
+                    <!-- SVG SKETCH 2 -->
+                    <div class="illustrate">
+                        <svg viewBox="0 0 500 240" class="w-full max-w-md h-auto" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Pegboard Boundary -->
+                            <rect x="10" y="10" width="480" height="220" rx="8" fill="#fdf6e2" stroke="#d97706" stroke-width="2" />
+                            <text x="30" y="35" class="text-[10px] font-mono fill-amber-700 uppercase tracking-widest">Montessori Pegboard Representation</text>
+
+                            <!-- Peg Grid Dots (Light Background) -->
+                            <g fill="#fef08a" opacity="0.6">
+                                <circle cx="100" cy="80" r="3" /><circle cx="100" cy="110" r="3" /><circle cx="100" cy="140" r="3" />
+                                <circle cx="150" cy="80" r="3" /><circle cx="150" cy="110" r="3" /><circle cx="150" cy="140" r="3" />
+                                <circle cx="200" cy="80" r="3" /><circle cx="200" cy="110" r="3" /><circle cx="200" cy="140" r="3" />
+                                <circle cx="250" cy="80" r="3" /><circle cx="250" cy="110" r="3" /><circle cx="250" cy="140" r="3" />
+                                <circle cx="300" cy="80" r="3" /><circle cx="300" cy="110" r="3" /><circle cx="300" cy="140" r="3" />
+                                <circle cx="350" cy="80" r="3" /><circle cx="350" cy="110" r="3" /><circle cx="350" cy="140" r="3" />
+                                <circle cx="400" cy="80" r="3" /><circle cx="400" cy="110" r="3" /><circle cx="400" cy="140" r="3" />
+                            </g>
+
+                            <!-- Placed Pegs Column Group 1 (2 Red, 3 Blue) -->
+                            <g transform="translate(20, 0)">
+                                <!-- Red pegs (antecedent) -->
+                                <circle cx="100" cy="80" r="9" fill="#ef4444" stroke="#b91c1c" stroke-width="2" />
+                                <circle cx="100" cy="115" r="9" fill="#ef4444" stroke="#b91c1c" stroke-width="2" />
+                                <!-- Blue pegs (consequent) -->
+                                <circle cx="160" cy="80" r="9" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2" />
+                                <circle cx="160" cy="115" r="9" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2" />
+                                <circle cx="160" cy="150" r="9" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2" />
+                                <text x="130" y="200" text-anchor="middle" class="text-[11px] font-mono fill-slate-500">Group 1 (2:3)</text>
+                            </g>
+
+                            <!-- Placed Pegs Column Group 2 (Accumulated to 4 Red, 6 Blue) -->
+                            <g transform="translate(180, 0)">
+                                <!-- Red pegs -->
+                                <circle cx="100" cy="80" r="9" fill="#ef4444" stroke="#b91c1c" stroke-width="2" />
+                                <circle cx="100" cy="115" r="9" fill="#ef4444" stroke="#b91c1c" stroke-width="2" />
+                                <circle cx="100" cy="150" r="9" fill="#ef4444" stroke="#b91c1c" stroke-width="2" />
+                                <circle cx="100" cy="185" r="9" fill="#ef4444" stroke="#b91c1c" stroke-width="2" />
+                                <!-- Blue pegs -->
+                                <circle cx="160" cy="80" r="9" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2" />
+                                <circle cx="160" cy="105" r="9" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2" />
+                                <circle cx="160" cy="130" r="9" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2" />
+                                <circle cx="160" cy="155" r="9" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2" />
+                                <circle cx="160" cy="180" r="9" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2" />
+                                <circle cx="160" cy="205" r="9" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2" />
+                                <text x="130" y="225" text-anchor="middle" class="text-[11px] font-mono fill-slate-500">Group 2 (4:6)</text>
+                            </g>
+
+                            <!-- Bracket / Notation on Side -->
+                            <path d="M 390,70 L 410,70 L 410,145 L 390,145" fill="none" stroke="#64748b" stroke-width="1.5" />
+                            <text x="420" y="112" class="text-xs font-mono font-bold fill-slate-700">Scaling Up</text>
+                        </svg>
+                        <span class="text-xs text-slate-400 mt-2 block italic">Figure 2.1: Pegboard layout showcasing sequential scaling of $2:3$ to $4:6$.</span>
+                    </div>
+
+                    <p><strong>Clear the board and introduce a new pattern with a different ratio.</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"Let us try another ratio. What if instead we had a ratio of four to six?"</p>
+
+                    <p><strong>Assign color responsibilities to the children. For instance, ask one child to be in charge of the "fours" using green pegs, and another child to be in charge of the "sixes" using yellow pegs.</strong></p>
+
+                    <p><strong>Have the children place four green pegs in one column and six yellow pegs in the second column.</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"If you want to place another group of four green pegs, what must happen in the adjacent column? How many green pegs and yellow pegs do we have in total now?"</p>
+
+                    <p><strong>Let the children build out the $4:6$ ratio progressively on the board, counting up their totals as they go ($8:12$, $12:18$, etc.).</strong></p>
+
+                    <p><strong>Repeat this with a few other ratios (e.g., $7$ to $2$) to build operational fluency. Once the children are comfortable, introduce the technical terminology.</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"When we express a ratio mathematically, both numbers have specific names. The very first number that is stated in our ratio is called the antecedent. In our ratio of four to six, four is our antecedent."</p>
+
+                    <p class="pl-6 italic text-slate-600">"The second number in our ratio is called the consequent. In our ratio of four to six, six is our consequent."</p>
+
+                    <p class="pl-6 italic text-slate-600">"As you work with your peer partners on ratios today, check in with each other by asking: 'What is the consequent in your ratio?' or 'What is the antecedent in your ratio?' Let us practice using these words together!"</p>
+                </div>
+
+                <!-- Aside -->
+                <div class="aside-box">
+                    <h4 class="text-xs font-bold uppercase tracking-wider mb-2">Teacher's Aside & Practical Notes</h4>
+                    <p class="text-xs leading-relaxed">
+                        The principal direct aim here is to show that a ratio can be scaled up or down (by multiplying or dividing both terms by the same factor) while maintaining an equivalent relationship.
+                        <br><br>
+                        <strong>Pedagogical tip:</strong> Do not always position the smaller number on the left (antecedent). Move it from side to side during exercises to encourage flexible mathematical thinking. Ensure children use the terms <strong>antecedent</strong> and <strong>consequent</strong> explicitly during their work!
+                    </p>
+                </div>
+            </article>
+
+
+            <!-- PAGE 3: LESSON 3 -->
+            <article id="lesson-3" class="page">
+                <!-- Header block -->
+                <div class="border-b-2 border-amber-600 pb-4 mb-6 flex justify-between items-end">
+                    <div>
+                        <span class="text-amber-600 font-bold tracking-widest text-[10px] uppercase font-mono">Mathematics &mdash; Ratio and Proportion</span>
+                        <h1 class="font-serif font-bold text-3xl text-slate-800 mt-1">3. Word Problems with Ratio</h1>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs text-slate-400 block">Guide: <strong>Elim Lee</strong></span>
+                        <span class="text-xs text-slate-400 font-mono">Lesson 3 of 5</span>
+                    </div>
+                </div>
+
+                <!-- Aim / Purpose -->
+                <div class="mb-6">
+                    <p class="text-sm text-slate-500 font-semibold italic"><strong>Direct Aim / Purpose:</strong> To practice the application of ratios through hands-on word problems, demonstrating how to solve for unknown quantities visually and algebraically.</p>
+                </div>
+
+                <!-- Materials Box -->
+                <section class="material-box">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Materials List</h3>
+                    <ul class="list-disc pl-5 text-sm text-slate-600 space-y-1">
+                        <li>Pegboard & pegs (at least two colors)</li>
+                        <li>Number cards and blank tickets</li>
+                        <li>Notebook paper, grid paper, and pencils</li>
+                    </ul>
+                </section>
+
+                <!-- Presentation -->
+                <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+                
+                <div class="space-y-4 text-sm leading-relaxed text-slate-700">
+                    <p><strong>Introduce a written word problem to the children:</strong></p>
+                    <div class="p-4 bg-slate-50 border-l-4 border-amber-500 rounded-r-lg font-serif italic text-slate-800 my-4">
+                        "The ratio of two numbers is $2$ to $4$. The smaller of the two numbers is $8$. What is the larger number?"
+                    </div>
+
+                    <p class="pl-6 italic text-slate-600">"What do we already know from this problem? Yes, we know the initial ratio is two to four."</p>
+
+                    <p><strong>Place two green pegs in one column (antecedent) and four orange pegs in the next column (consequent).</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"What is the smaller of our two numbers right now? It is two. But our problem tells us that the smaller number needs to be eight. So, for every group of two pegs we place in our antecedent column, we must place a group of four pegs in our consequent column. Do we have eight pegs in our antecedent column yet? No, we only have two. Let's keep building."</p>
+
+                    <p><strong>Place another group of two green pegs and four orange pegs. Repeat this step until the green column contains exactly eight pegs.</strong></p>
+
+                    <!-- SVG SKETCH 3 -->
+                    <div class="illustrate">
+                        <svg viewBox="0 0 500 240" class="w-full max-w-md h-auto" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Pegboard Boundary -->
+                            <rect x="10" y="10" width="480" height="220" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="2" />
+                            
+                            <!-- Antecedent Label -->
+                            <text x="120" y="40" text-anchor="middle" class="text-xs font-bold fill-emerald-700">Antecedent (Smaller: Target 8)</text>
+                            <!-- Consequent Label -->
+                            <text x="320" y="40" text-anchor="middle" class="text-xs font-bold fill-orange-700">Consequent (Larger: Find ?)</text>
+
+                            <!-- Peg columns -->
+                            <!-- Green column (8 pegs) -->
+                            <g fill="#10b981" stroke="#047857" stroke-width="1.5">
+                                <circle cx="120" cy="70" r="8" /><circle cx="120" cy="90" r="8" />
+                                <circle cx="120" cy="110" r="8" /><circle cx="120" cy="130" r="8" />
+                                <circle cx="120" cy="150" r="8" /><circle cx="120" cy="170" r="8" />
+                                <circle cx="120" cy="190" r="8" /><circle cx="120" cy="210" r="8" />
+                            </g>
+                            <!-- Orange column (16 pegs in two adjacent columns for visibility if needed, or structured column) -->
+                            <g fill="#f97316" stroke="#c2410c" stroke-width="1.5">
+                                <circle cx="300" cy="70" r="8" /><circle cx="340" cy="70" r="8" />
+                                <circle cx="300" cy="90" r="8" /><circle cx="340" cy="90" r="8" />
+                                <circle cx="300" cy="110" r="8" /><circle cx="340" cy="110" r="8" />
+                                <circle cx="300" cy="130" r="8" /><circle cx="340" cy="130" r="8" />
+                                <circle cx="300" cy="150" r="8" /><circle cx="340" cy="150" r="8" />
+                                <circle cx="300" cy="170" r="8" /><circle cx="340" cy="170" r="8" />
+                                <circle cx="300" cy="190" r="8" /><circle cx="340" cy="190" r="8" />
+                                <circle cx="300" cy="210" r="8" /><circle cx="340" cy="210" r="8" />
+                            </g>
+
+                            <!-- Connector lines highlighting 2:4 pairings -->
+                            <path d="M 140,80 L 280,80" stroke="#cbd5e1" stroke-dasharray="3 3" />
+                            <path d="M 140,120 L 280,120" stroke="#cbd5e1" stroke-dasharray="3 3" />
+                            <path d="M 140,160 L 280,160" stroke="#cbd5e1" stroke-dasharray="3 3" />
+                            <path d="M 140,200 L 280,200" stroke="#cbd5e1" stroke-dasharray="3 3" />
+                        </svg>
+                        <span class="text-xs text-slate-400 mt-2 block italic">Figure 3.1: Visual representation of a scaled ratio column, pairing groups of 2 to groups of 4.</span>
+                    </div>
+
+                    <p class="pl-6 italic text-slate-600">"Look at our antecedent column. How many green pegs do we have now? We have exactly eight. Our problem stated that the smaller of our two numbers is eight. Have we carefully followed our ratio of two to four while building this board? Yes, we have."</p>
+
+                    <p class="pl-6 italic text-slate-600">"Now, all we have to do to find our answer is count how many orange pegs we have in our consequent column. Let us count them together."</p>
+
+                    <p><strong>Count the orange pegs aloud with the children: "1, 2, 3... 16."</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"Sixteen! That is absolutely correct. The larger number in our ratio is 16."</p>
+
+                    <p><strong>Transition to a second problem, reversing the known term:</strong></p>
+                    <div class="p-4 bg-slate-50 border-l-4 border-amber-500 rounded-r-lg font-serif italic text-slate-800 my-4">
+                        "A ratio is given as $2$ to $3$. This time you know the larger number is $9$. What is the smaller number?"
+                    </div>
+
+                    <p class="pl-6 italic text-slate-600">"What is our ratio? Two to three. And which is the larger number in our written ratio? Three. But we know our actual larger number needs to be nine. Let us construct this with our pegs."</p>
+
+                    <p><strong>Have the children build out the columns of 2 and 3 sequentially until the consequent column reaches exactly 9 pegs. Ask them to count the resulting antecedent pegs.</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"We reached nine pegs in our consequent. How many pegs do we have on the other side? Six! Absolutely correct. Let us write this problem down on our paper to analyze the math we just did."</p>
+
+                    <p><strong>Write the calculations clearly on paper as shown below:</strong></p>
+                    <div class="my-4 bg-slate-100 p-4 rounded-lg font-mono text-xs">
+                        Ratio: 2 : 4  ==>  Smaller number is 8.<br>
+                        2 x 4 = 8  (We multiplied our antecedent by 4)<br>
+                        4 x 4 = 16 (So we must multiply our consequent by 4)<br>
+                        Resulting Ratio: 8 : 16
+                    </div>
+
+                    <p class="pl-6 italic text-slate-600">"We had a ratio of $2 : 4$. To turn our antecedent of $2$ into our target number of $8$, what did we multiply by? We multiplied by $4$. What happens if we multiply our consequent of $4$ by that same number, $4$? We get $16$. This means we can find equivalent ratios simply by multiplying both our antecedent and consequent by the same number!"</p>
+
+                    <p><strong>Provide an abstract word problem to reinforce this scaling principle without relying entirely on the pegboard:</strong></p>
+                    <div class="p-4 bg-slate-50 border-l-4 border-amber-500 rounded-r-lg font-serif italic text-slate-800 my-4">
+                        "Suppose we had numbers in the ratio of $3$ to $7$, and the larger number is $21$. What is the smaller number?"
+                    </div>
+
+                    <p><strong>Write down "$3 : 7$" on paper.</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"Which number in our ratio is the smaller one? Three is. The larger number in our ratio is seven, but our actual larger number is $21$. Is there a number we can multiply seven by to equal $21$?"</p>
+
+                    <p class="pl-6 italic text-slate-600">"Yes, we can multiply seven by three. If we multiply our consequent by three, we must also multiply our antecedent by three to preserve our ratio relationship. What is three times three? It is nine. Nine is our answer!"</p>
+                </div>
+
+                <!-- Aside -->
+                <div class="aside-box">
+                    <h4 class="text-xs font-bold uppercase tracking-wider mb-2">Teacher's Aside & Practical Notes</h4>
+                    <p class="text-xs leading-relaxed">
+                        It is completely fine if children prefer to lay out all 8 or 9 pegs for the known number tightly on the board first, and then build the opposite side group-by-group afterward. As long as they can clearly verbalize and explain their logical process, allow them to approach the physical material in a way that works for them. 
+                        <br><br>
+                        Offering multiple paths to solve a problem accommodates diverse learners and respects their unique cognitive styles.
+                    </p>
+                </div>
+            </article>
+
+
+            <!-- PAGE 4: LESSON 4 -->
+            <article id="lesson-4" class="page">
+                <!-- Header block -->
+                <div class="border-b-2 border-amber-600 pb-4 mb-6 flex justify-between items-end">
+                    <div>
+                        <span class="text-amber-600 font-bold tracking-widest text-[10px] uppercase font-mono">Mathematics &mdash; Ratio and Proportion</span>
+                        <h1 class="font-serif font-bold text-3xl text-slate-800 mt-1">4. Applying Knowledge of Common Fractions</h1>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs text-slate-400 block">Guide: <strong>Elim Lee</strong></span>
+                        <span class="text-xs text-slate-400 font-mono">Lesson 4 of 5</span>
+                    </div>
+                </div>
+
+                <!-- Aim / Purpose -->
+                <div class="mb-6">
+                    <p class="text-sm text-slate-500 font-semibold italic"><strong>Direct Aim / Purpose:</strong> To bridge the concept of ratios with common fractions, showing that ratios can be expressed and manipulated as fractional values.</p>
+                </div>
+
+                <!-- Materials Box -->
+                <section class="material-box">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Materials List</h3>
+                    <ul class="list-disc pl-5 text-sm text-slate-600 space-y-1">
+                        <li>Pegboard and colored pegs</li>
+                        <li>Number cards or tickets</li>
+                        <li>Blank paper and writing instruments</li>
+                    </ul>
+                </section>
+
+                <!-- Presentation -->
+                <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+                
+                <div class="space-y-4 text-sm leading-relaxed text-slate-700">
+                    <p><strong>Place two green pegs and three blue pegs on the pegboard.</strong></p>
+                    
+                    <p class="pl-6 italic text-slate-600">"Let us say we have a ratio of two green pegs to three blue pegs. Do you agree with this arrangement? What if I take these same pegs and move them into this clustered shape, do we still have a ratio of two to three? Yes, we do. The physical arrangement does not alter the relationship."</p>
+
+                    <p><strong>Arrange the pegs back in a row. Point to the green pegs and then the blue pegs.</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"Let us look closely at our first row. Two is exactly two-thirds of three. If we imagine that each of these blue pegs represents one-third, we have one-third, two-thirds, three-thirds. This means our two green pegs represent two-thirds of our blue peg group."</p>
+
+                    <p><strong>Write down the ratio as a fraction: $\frac{2}{3}$.</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"We write our ratio as 2 to 3. Think about our standard division sign. The division sign is actually written with a line and two dots: a dot on top and a dot on the bottom. Those dots represent our numbers! Ratio fundamentally means division. That is why the order of numbers is so important. $\frac{2}{3}$ is completely different from $\frac{3}{2}$."</p>
+
+                    <!-- SVG SKETCH 4 -->
+                    <div class="illustrate">
+                        <svg viewBox="0 0 500 200" class="w-full max-w-md h-auto" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="10" width="480" height="180" rx="8" fill="#faf5ff" stroke="#c084fc" stroke-width="1.5" />
+                            <text x="30" y="35" class="text-[10px] font-mono fill-purple-600 uppercase tracking-widest">Ratio as Fraction Concept</text>
+
+                            <!-- 2 Green Pegs -->
+                            <g transform="translate(100, 70)">
+                                <circle cx="0" cy="0" r="14" fill="#10b981" stroke="#047857" stroke-width="2" />
+                                <circle cx="40" cy="0" r="14" fill="#10b981" stroke="#047857" stroke-width="2" />
+                                <path d="M -15,25 L 55,25" stroke="#10b981" stroke-width="1.5" />
+                                <text x="20" y="45" text-anchor="middle" class="text-xs font-bold fill-emerald-800">2 Parts (Antecedent)</text>
+                            </g>
+
+                            <!-- Fraction Line -->
+                            <line x1="240" y1="50" x2="260" y2="120" stroke="#a855f7" stroke-width="3" />
+
+                            <!-- 3 Blue Pegs -->
+                            <g transform="translate(300, 70)">
+                                <circle cx="0" cy="0" r="14" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2" />
+                                <circle cx="40" cy="0" r="14" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2" />
+                                <circle cx="80" cy="0" r="14" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2" />
+                                <path d="M -15,25 L 95,25" stroke="#3b82f6" stroke-width="1.5" />
+                                <text x="40" y="45" text-anchor="middle" class="text-xs font-bold fill-blue-800">3 Parts (Consequent)</text>
+                            </g>
+
+                            <!-- Division Sign Analogy -->
+                            <g transform="translate(210, 130)">
+                                <rect x="0" y="0" width="80" height="40" rx="4" fill="#ffffff" stroke="#e9d5ff" stroke-width="1.5" />
+                                <text x="40" y="25" text-anchor="middle" class="text-xs font-mono font-bold fill-purple-700">Ratio symbol ÷ is a fraction!</text>
+                            </g>
+                        </svg>
+                        <span class="text-xs text-slate-400 mt-2 block italic">Figure 4.1: Visualization of 2 green pegs representing $\frac{2}{3}$ of the 3 blue pegs.</span>
+                    </div>
+
+                    <p class="pl-6 italic text-slate-600">"Now that we know we can write our ratios as common fractions, we can apply everything we already know about equivalent fractions to solve ratio problems!"</p>
+
+                    <p><strong>Write down the equation: $\frac{2}{3} = \frac{?}{9}$.</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"Let us say we have a ratio of two to three, and we know our actual larger number is nine. Let us write that as a fraction. What must we do to this denominator of three to scale it up to nine? We multiply it by three."</p>
+
+                    <p class="pl-6 italic text-slate-600">"If we multiply our denominator by three, we must also multiply our numerator by three so that we do not change the core value of the fraction. What is two times three? It is six. Our new fraction is six-ninths, which we can write as the ratio $6 : 9$."</p>
+
+                    <p><strong>Verify this with the pegs on the pegboard, showing that scaling $2 : 3$ up by a factor of 3 results in 6 green pegs and 9 blue pegs.</strong></p>
+
+                    <p><strong>Present another problem to practice:</strong></p>
+                    <div class="p-4 bg-slate-50 border-l-4 border-amber-500 rounded-r-lg font-serif italic text-slate-800 my-4">
+                        "We have a ratio of $3$ to $2$, and our antecedent is $27$. What is our consequent?"
+                    </div>
+
+                    <p><strong>Write the fraction $\frac{3}{2}$ on paper.</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"Let us write our ratio as a fraction: $\frac{3}{2}$. We know our antecedent (numerator) is $27$. Let's write $\frac{3}{2} = \frac{27}{?}$. What do we multiply three by to get $27$? We multiply by nine."</p>
+
+                    <p class="pl-6 italic text-slate-600">"Since we multiplied our numerator by nine, we must multiply our denominator by nine as well. What is two times nine? It is $18$. Our answer is $\frac{27}{18}$, or a ratio of $27$ to $18$."</p>
+                </div>
+
+                <!-- Aside -->
+                <div class="aside-box">
+                    <h4 class="text-xs font-bold uppercase tracking-wider mb-2">Teacher's Aside & Practical Notes</h4>
+                    <p class="text-xs leading-relaxed">
+                        Connecting ratios to common fractions is a major milestone of mathematical abstraction. After this lesson, children will often choose to perform ratio calculations abstractly using fractions first, and then use the physical pegboard solely to self-correct and verify their work. Encourage this step toward abstraction!
+                    </p>
+                </div>
+            </article>
+
+
+            <!-- PAGE 5: LESSON 5 -->
+            <article id="lesson-5" class="page">
+                <!-- Header block -->
+                <div class="border-b-2 border-amber-600 pb-4 mb-6 flex justify-between items-end">
+                    <div>
+                        <span class="text-amber-600 font-bold tracking-widest text-[10px] uppercase font-mono">Mathematics &mdash; Ratio and Proportion</span>
+                        <h1 class="font-serif font-bold text-3xl text-slate-800 mt-1">5. More Word Problems with Ratio</h1>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs text-slate-400 block">Guide: <strong>Elim Lee</strong></span>
+                        <span class="text-xs text-slate-400 font-mono">Lesson 5 of 5</span>
+                    </div>
+                </div>
+
+                <!-- Aim / Purpose -->
+                <div class="mb-6">
+                    <p class="text-sm text-slate-500 font-semibold italic"><strong>Direct Aim / Purpose:</strong> To solve complex, multi-step ratio word problems (including sums and differences) using both visual materials and fractional equations.</p>
+                </div>
+
+                <!-- Materials Box -->
+                <section class="material-box">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Materials List</h3>
+                    <ul class="list-disc pl-5 text-sm text-slate-600 space-y-1">
+                        <li>Pegboard and colored pegs</li>
+                        <li>Number cards or tickets</li>
+                        <li>Blank paper and pencils</li>
+                    </ul>
+                </section>
+
+                <!-- Presentation -->
+                <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-8 border-b pb-2 italic">Presentation</h2>
+                
+                <div class="space-y-4 text-sm leading-relaxed text-slate-700">
+                    <p><strong>Introduce the first complex problem:</strong></p>
+                    <div class="p-4 bg-slate-50 border-l-4 border-amber-500 rounded-r-lg font-serif italic text-slate-800 my-4">
+                        "A man left some money when he died to be distributed to his only child and his wife in a ratio of $2$ to $3$. The child received $\$2,400$. How much did the wife receive?"
+                    </div>
+
+                    <p class="pl-6 italic text-slate-600">"What is our ratio? Two to three. Let us write that down. We also know the child receives $\$2,400$. To represent this on our pegboard, let's agree that each peg represents $\$100$."</p>
+
+                    <p><strong>Place two pegs in the antecedent column to represent the child's initial $\$200$.</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"Here, the child has received two hundred dollars. To reach twenty-four hundred dollars, we need $24$ pegs in this column. Let us lay those out."</p>
+
+                    <p><strong>Place $24$ pegs in the antecedent column, placing $3$ corresponding pegs in the consequent column for every $2$ antecedent pegs placed.</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"We know that for every $\$200$ the child gets, the wife gets $\$300$. Now that we have placed all of our pegs, let us count the wife's total pegs."</p>
+
+                    <p><strong>Count the wife's pegs. There are $36$ pegs in total.</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"Thirty-six pegs! Since each peg represents $\$100$, the wife received $\$3,600$. Let us write this on our paper to verify."</p>
+                    
+                    <div class="my-4 bg-slate-100 p-4 rounded-lg font-mono text-xs">
+                        Ratio = 2 : 3  ==> Child gets 2,400.<br>
+                        2 x 1200 = 2,400 (Child)<br>
+                        3 x 1200 = 3,600 (Wife)
+                    </div>
+
+                    <p><strong>Introduce the second problem involving a sum:</strong></p>
+                    <div class="p-4 bg-slate-50 border-l-4 border-amber-500 rounded-r-lg font-serif italic text-slate-800 my-4">
+                        "Two numbers are in a ratio of $4$ to $7$. The sum of the two numbers is $55$. What are the two numbers?"
+                    </div>
+
+                    <p class="pl-6 italic text-slate-600">"Let us lay out our initial ratio of four to seven using pegs."</p>
+
+                    <p><strong>Place 4 green pegs in the first column and 7 yellow pegs in the second column.</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"What is the sum of our two ratio numbers right now? Sum means we add them together. Four plus seven is $11$."</p>
+
+                    <p><strong>Write "11" on a small paper ticket and place it below the pegboard.</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"But our problem says our total sum must be $55$. Let us add more groups of four and seven pegs until our total sum reaches $55$."</p>
+
+                    <p><strong>Have the children continue adding pegs (4 green, 7 yellow) and calculating the cumulative sum ($11 \rightarrow 22 \rightarrow 33 \rightarrow 44 \rightarrow 55$) until exactly 55 total pegs are on the board.</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"Now we have reached $55$ pegs in total. Let us count the pegs in our columns. How many green pegs do we have? We have $20$. And how many yellow pegs do we have? We have $35$. Let us check our work on paper."</p>
+                    
+                    <div class="my-4 bg-slate-100 p-4 rounded-lg font-mono text-xs">
+                        Ratio = 4 : 7  ==> Target Sum = 55.<br>
+                        Sum of ratio terms: 4 + 7 = 11.<br>
+                        How many groups of 11 are in 55? 55 / 11 = 5 groups.<br>
+                        Multiply both terms by 5:<br>
+                        4 x 5 = 20<br>
+                        7 x 5 = 35<br>
+                        Check sum: 20 + 35 = 55. Correct!
+                    </div>
+
+                    <!-- SVG SKETCH 5 -->
+                    <div class="illustrate">
+                        <svg viewBox="0 0 500 240" class="w-full max-w-md h-auto" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="10" width="480" height="220" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="2" />
+                            <text x="30" y="35" class="text-[10px] font-mono fill-amber-600 uppercase tracking-widest">Sum & Difference Visual Model</text>
+
+                            <!-- 4 Green Column representing 20 pegs (scaled down diagrammatically) -->
+                            <g transform="translate(100, 60)">
+                                <rect x="0" y="0" width="40" height="120" rx="4" fill="#10b981" opacity="0.8" stroke="#047857" stroke-width="2" />
+                                <text x="20" y="65" text-anchor="middle" class="text-sm font-bold fill-white">20</text>
+                                <text x="20" y="-10" text-anchor="middle" class="text-xs font-mono fill-slate-500">4 x 5</text>
+                            </g>
+
+                            <text x="210" y="125" class="text-2xl font-bold fill-slate-500">+</text>
+
+                            <!-- 7 Yellow Column representing 35 pegs -->
+                            <g transform="translate(280, 60)">
+                                <rect x="0" y="0" width="40" height="120" rx="4" fill="#fbbf24" opacity="0.8" stroke="#d97706" stroke-width="2" />
+                                <text x="20" y="65" text-anchor="middle" class="text-sm font-bold fill-amber-950">35</text>
+                                <text x="20" y="-10" text-anchor="middle" class="text-xs font-mono fill-slate-500">7 x 5</text>
+                            </g>
+
+                            <!-- Equals Bracket -->
+                            <path d="M 350,70 L 370,70 L 370,170 L 350,170" fill="none" stroke="#64748b" stroke-width="2" />
+                            <text x="390" y="125" class="text-sm font-bold fill-slate-700">Sum = 55</text>
+                        </svg>
+                        <span class="text-xs text-slate-400 mt-2 block italic">Figure 5.1: Proportional block representation showing how scaling by a factor of 5 achieves the target sum.</span>
+                    </div>
+
+                    <p><strong>Introduce the third problem involving a difference:</strong></p>
+                    <div class="p-4 bg-slate-50 border-l-4 border-amber-500 rounded-r-lg font-serif italic text-slate-800 my-4">
+                        "Two numbers are in a ratio of $3$ to $5$. The difference between the two numbers is $10$. What are the two numbers?"
+                    </div>
+
+                    <p class="pl-6 italic text-slate-600">"Let us lay out our initial ratio of three to five on the board."</p>
+
+                    <p><strong>Place 3 blue pegs and 5 red pegs.</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"What is the difference between these two columns right now? Difference means subtraction. Five minus three is two. But our problem states that the difference must be $10$. Let us keep building our ratio and calculating the difference at each step."</p>
+
+                    <p><strong>Place a second group of pegs (making 6 and 10). Calculate the difference: $10 - 6 = 4$. Place a third group (making 9 and 15). Calculate: $15 - 9 = 6$. Place a fourth group (making 12 and 20). Calculate: $20 - 12 = 8$. Place a fifth group (making 15 and 25). Calculate: $25 - 15 = 10$.</strong></p>
+
+                    <p class="pl-6 italic text-slate-600">"We reached our target difference of $10$! What are our two numbers? We have $15$ blue pegs and $25$ red pegs. Let us write this out on paper to see if our math aligns."</p>
+
+                    <div class="my-4 bg-slate-100 p-4 rounded-lg font-mono text-xs">
+                        Ratio = 3 : 5  ==> Target Difference = 10.<br>
+                        Difference of ratio terms: 5 - 3 = 2.<br>
+                        How many groups of 2 are in our target difference of 10? 10 / 2 = 5 groups.<br>
+                        Multiply both terms by 5:<br>
+                        3 x 5 = 15<br>
+                        5 x 5 = 25<br>
+                        Check difference: 25 - 15 = 10. Correct!
+                    </div>
+                </div>
+
+                <!-- Aside -->
+                <div class="aside-box">
+                    <h4 class="text-xs font-bold uppercase tracking-wider mb-2">Teacher's Aside & Practical Notes</h4>
+                    <p class="text-xs leading-relaxed">
+                        If a child immediately calculates the correct multiplier abstractly (e.g., realizing they need 5 groups), invite them to explain their reasoning to their peers. 
+                        <br><br>
+                        <strong>Pedagogical tip:</strong> Educated guesses and mental math engage the child's reasoning mind beautifully and are completely valid problem-solving strategies. Even if the child figures out the multiplier quickly, guiding them through the concrete step-by-step subtraction visually helps anchor the concept and reinforces their fundamental skills.
+                    </p>
+                </div>
+            </article>
+
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="no-print border-t border-slate-200 mt-12 py-8 text-center text-xs text-slate-400">
+        <p>&copy; Association Montessori Internationale (AMI) Elementary Curriculum. Album Materials Compiled by <strong>Elim Lee</strong>.</p>
+        <p class="mt-2 text-[10px]">All ratio layouts are designed to align with standard Montessori pegboard and environment materials.</p>
+    </footer>
+
+</body>
+</html>
