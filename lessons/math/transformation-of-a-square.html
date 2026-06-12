@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformation of a Square — AMI Mathematics Album</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- MathJax for high-precision LaTeX typesetting -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- Premium Google Fonts pairing -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Lora', Georgia, serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        
+        h1, h2, h3, .brand {
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+        }
+        
+        .album-header {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* PRINT SETTINGS */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .page {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 2cm !important;
+                margin: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                min-height: 0 !important;
+                page-break-after: auto;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+        }
+
+        /* Custom Album Styling Blocks */
+        .material-box {
+            background-color: #f1f5f9; /* Slate 100 */
+            border-left: 4px solid #64748b; /* Slate 500 */
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 0.375rem;
+        }
+        
+        .aside-box {
+            background-color: #fffbeb; /* Amber 50 */
+            border-left: 4px solid #d97706; /* Amber 600 */
+            padding: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 0.375rem;
+        }
+
+        .illustrate {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: #fafafa;
+            border: 1px dashed #cbd5e1;
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Print and Back Navigation Header -->
+    <nav class="no-print p-6 flex justify-between items-center max-w-4xl mx-auto">
+        <a href="../../index.html"
+           class="text-slate-500 hover:text-slate-800 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2 transition-colors">
+            <!-- INLINE ARROW ICON -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Back to Dashboard
+        </a>
+        <button onclick="window.print()"
+                class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:bg-amber-700 transition-all flex items-center gap-2">
+            <!-- INLINE PRINTER ICON -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9V2h12v7"></path>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <path d="M6 14h12v8H6z"></path>
+            </svg>
+            Print PDF
+        </button>
+    </nav>
+
+    <!-- Main Album Page Container -->
+    <main class="page max-w-4xl mx-auto my-8 bg-white p-12 shadow-md border border-slate-100 rounded-lg min-h-screen">
+        
+        <!-- Header Section -->
+        <header class="border-b border-slate-200 pb-6 mb-8 text-center sm:text-left">
+            <div class="flex justify-between items-center mb-2 flex-col sm:flex-row">
+                <span class="text-xs font-bold uppercase tracking-[0.25em] text-slate-400">Subject Area: Mathematics</span>
+                <span class="text-xs font-semibold text-slate-500 mt-1 sm:mt-0">Guide Name: Elim Lee</span>
+            </div>
+            <h1 class="album-header text-3xl font-bold tracking-tight text-slate-900 mt-2 mb-1">Transformation of a Square</h1>
+            <p class="text-xs italic text-slate-500 uppercase tracking-widest">Chapter III: Squares and Cubes of Numbers</p>
+        </header>
+
+        <!-- Purpose Section -->
+        <section class="mb-8">
+            <h3 class="font-sans font-bold text-xs uppercase tracking-wider text-slate-500 mb-2">Direct Aim</h3>
+            <p class="text-slate-700 leading-relaxed mb-4">
+                For the children to recognize that the geometric pattern of a square transformed into a binomial (sum of 2 terms) is 2 squares along the diagonal and 2 rectangles filling out the rest of the square. <em>[Trinomial is the sum of 3 terms with 3 squares along the diagonal and 6 rectangles.]</em>
+            </p>
+            <h3 class="font-sans font-bold text-xs uppercase tracking-wider text-slate-500 mb-2">Indirect Aim</h3>
+            <p class="text-slate-700 leading-relaxed">
+                To introduce the language: <strong>binomial, trinomial, quadrinomial, polynomial</strong>.
+                To prepare for understanding square roots and squaring numbers of larger sizes.
+            </p>
+        </section>
+
+        <!-- Materials Section Box (Grey) -->
+        <section class="material-box">
+            <h3 class="font-sans font-bold text-xs uppercase tracking-wider text-slate-600 mb-3 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+                Materials
+            </h3>
+            <ul class="list-disc pl-5 text-slate-700 text-sm space-y-1.5">
+                <li>Felt mat (neutral background)</li>
+                <li>Colored rubber bands / small hair ties</li>
+                <li><strong>Bead Squares and Bead Bars of the Cabinet (1–10 Scale)</strong></li>
+                <li><strong>Binomial Plate & Trinomial Plate</strong> (Wooden geometric representations)</li>
+                <li>Paper, pencil, & colored pencils matching the Montessori Bead colors (1: Red, 2: Green, 3: Pink, 4: Yellow, 5: Light Blue, 6: Purple, 7: White, 8: Brown, 9: Dark Blue, 10: Gold)</li>
+                <li>1 in. square paper</li>
+                <li>Printed square of beads (100 circles)</li>
+                <li>Graph paper & straight edge</li>
+                <li>Tickets (blank and prepared with terms), scissors, operation signs (\(+\)), and prepared parentheses slips</li>
+            </ul>
+        </section>
+
+        <!-- PRESENTATION A -->
+        <section class="mb-12 page-break">
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-6 border-b pb-2 italic">PRESENTATION A: Transformation of a Square Into a Binomial</h2>
+            
+            <!-- Exercise 1 -->
+            <div class="mb-8">
+                <h3 class="font-sans font-bold text-sm text-slate-800 mb-4 tracking-tight">Exercise 1 — Square of Ten Transformed into a Binomial</h3>
+                
+                <ol class="space-y-4 text-slate-700 pl-4 list-decimal">
+                    <li>
+                        <span class="action">Show all the materials clearly to the children before beginning. Lay them out on the felt mat so each child can see and access them. Prepare the paper tickets and scissors.</span>
+                        <span class="dialogue">"Today, we are starting a new chapter on the squaring of numbers and the transformation of squares. This work builds directly on what we learned previously about squares and cubes and is a preparation for understanding square roots. We will begin by revisiting what makes a square."</span>
+                    </li>
+                    <li>
+                        <span class="action">First, assemble a small group of children and present the materials. Hold up the golden 10-bead square.</span>
+                        <span class="dialogue">"I wonder how many smaller squares are inside this 10 square?"</span>
+                    </li>
+                    <li>
+                        <span class="action">Take the 10-bead square and place it on the felt mat. Use a rubber band to mark off a \(4 \times 4\) section (forming the four-square). Explain that 4 is represented by yellow beads in our cabinet. Slowly count aloud as you stretch the rubber band:</span>
+                        <span class="dialogue">"One, two, three, four. See how this yellow four-square fits inside the larger square?"</span>
+                    </li>
+                    <li>
+                        <span class="action">Now, let's look at the remaining space along the diagonal. Take another rubber band and stretch it across to mark off the rest. From the opposite corner of the diagonal, count off a \(6 \times 6\) square (which is represented by the purple beads).</span>
+                        <span class="dialogue">"One, two, three, four, five, six. This is our purple six-square. So, inside my 10-square, I have a yellow four-square and a purple six-square. Let's see what is filling the rest of the space."</span>
+                    </li>
+                    <li>
+                        <span class="action">Point out the two remaining rectangular spaces. Count their dimensions to show they are composed of matching colored bars.</span>
+                        <span class="dialogue">"We have two rectangles here. Let's see what they are: this one is six by four, and this one is four by six. Notice how they are composed of our yellow four-bars and purple six-bars laid together. These rectangles are identical, just flipped. From this 10-square, we've made a yellow four-square, a purple six-square, and two identical rectangles."</span>
+                    </li>
+                    <li>
+                        <span class="action">Use the rubber bands to clearly highlight the boundaries on the bead square. Invite the children to observe the layout closely.</span>
+                    </li>
+                </ol>
+
+                <!-- SVG Illustration 1 -->
+                <div class="illustrate">
+                    <span class="text-xs font-semibold text-slate-400 mb-3 uppercase tracking-wider">Fig. 1: Sensorial Binomial Bead Square Transformation \((4 + 6)^2\)</span>
+                    <svg width="280" height="280" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" class="bg-neutral-800 rounded shadow-md p-4">
+                        <!-- Felt Mat background color internally represented by dark container -->
+                        <g transform="translate(10, 10)">
+                            <!-- Bead Grid System with wire details -->
+                            <!-- Row 0-3 (Yellow Fours), Row 4-9 (Purple Sixes) -->
+                            <!-- Col 0-3 (Yellow), Col 4-9 (Purple) -->
+                            
+                            <!-- 4x4 Yellow Square of Beads -->
+                            <rect x="0" y="0" width="112" height="112" fill="none" stroke="#facc15" stroke-width="1.5" stroke-dasharray="3"/>
+                            <!-- Draw 16 Yellow Beads -->
+                            <g fill="#facc15" stroke="#ca8a04" stroke-width="1">
+                                <circle cx="14" cy="14" r="8"/><circle cx="42" cy="14" r="8"/><circle cx="70" cy="14" r="8"/><circle cx="98" cy="14" r="8"/>
+                                <circle cx="14" cy="42" r="8"/><circle cx="42" cy="42" r="8"/><circle cx="70" cy="42" r="8"/><circle cx="98" cy="42" r="8"/>
+                                <circle cx="14" cy="70" r="8"/><circle cx="42" cy="70" r="8"/><circle cx="70" cy="70" r="8"/><circle cx="98" cy="70" r="8"/>
+                                <circle cx="14" cy="98" r="8"/><circle cx="42" cy="98" r="8"/><circle cx="70" cy="98" r="8"/><circle cx="98" cy="98" r="8"/>
+                            </g>
+                            <text x="56" y="62" fill="#713f12" font-family="sans-serif" font-weight="bold" font-size="14" text-anchor="middle">4² (Yellow)</text>
+
+                            <!-- 6x6 Purple Square of Beads -->
+                            <rect x="116" y="116" width="168" height="168" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="3"/>
+                            <g fill="#a855f7" stroke="#7e22ce" stroke-width="1">
+                                <!-- Row 4-9 (Offset Y: 116 + 14, 42, 70, 98, 126, 154) -->
+                                <!-- Col 4-9 (Offset X: 116 + 14, 42, 70, 98, 126, 154) -->
+                                <circle cx="130" cy="130" r="8"/><circle cx="158" cy="130" r="8"/><circle cx="186" cy="130" r="8"/><circle cx="214" cy="130" r="8"/><circle cx="242" cy="130" r="8"/><circle cx="270" cy="130" r="8"/>
+                                <circle cx="130" cy="158" r="8"/><circle cx="158" cy="158" r="8"/><circle cx="186" cy="158" r="8"/><circle cx="214" cy="158" r="8"/><circle cx="242" cy="158" r="8"/><circle cx="270" cy="158" r="8"/>
+                                <circle cx="130" cy="186" r="8"/><circle cx="158" cy="186" r="8"/><circle cx="186" cy="186" r="8"/><circle cx="214" cy="186" r="8"/><circle cx="242" cy="186" r="8"/><circle cx="270" cy="186" r="8"/>
+                                <circle cx="130" cy="214" r="8"/><circle cx="158" cy="214" r="8"/><circle cx="186" cy="214" r="8"/><circle cx="214" cy="214" r="8"/><circle cx="242" cy="214" r="8"/><circle cx="270" cy="214" r="8"/>
+                                <circle cx="130" cy="242" r="8"/><circle cx="158" cy="242" r="8"/><circle cx="186" cy="242" r="8"/><circle cx="214" cy="242" r="8"/><circle cx="242" cy="242" r="8"/><circle cx="270" cy="242" r="8"/>
+                                <circle cx="130" cy="270" r="8"/><circle cx="158" cy="270" r="8"/><circle cx="186" cy="270" r="8"/><circle cx="214" cy="270" r="8"/><circle cx="242" cy="270" r="8"/><circle cx="270" cy="270" r="8"/>
+                            </g>
+                            <text x="200" y="206" fill="#3b0764" font-family="sans-serif" font-weight="bold" font-size="14" text-anchor="middle">6² (Purple)</text>
+
+                            <!-- Rectangles (Golden fill representing multi-bar assembly) -->
+                            <!-- Upper Right Rectangle 4x6 (Yellow rows, Purple cols) -->
+                            <rect x="116" y="0" width="168" height="112" fill="none" stroke="#eab308" stroke-width="1.5"/>
+                            <g fill="#eab308" fill-opacity="0.8" stroke="#ca8a04" stroke-width="1">
+                                <circle cx="130" cy="14" r="7"/><circle cx="158" cy="14" r="7"/><circle cx="186" cy="14" r="7"/><circle cx="214" cy="14" r="7"/><circle cx="242" cy="14" r="7"/><circle cx="270" cy="14" r="7"/>
+                                <circle cx="130" cy="42" r="7"/><circle cx="158" cy="42" r="7"/><circle cx="186" cy="42" r="7"/><circle cx="214" cy="42" r="7"/><circle cx="242" cy="42" r="7"/><circle cx="270" cy="42" r="7"/>
+                                <circle cx="130" cy="70" r="7"/><circle cx="158" cy="70" r="7"/><circle cx="186" cy="70" r="7"/><circle cx="214" cy="70" r="7"/><circle cx="242" cy="70" r="7"/><circle cx="270" cy="70" r="7"/>
+                                <circle cx="130" cy="98" r="7"/><circle cx="158" cy="98" r="7"/><circle cx="186" cy="98" r="7"/><circle cx="214" cy="98" r="7"/><circle cx="242" cy="98" r="7"/><circle cx="270" cy="98" r="7"/>
+                            </g>
+                            <text x="200" y="62" fill="#fef08a" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">4 × 6</text>
+
+                            <!-- Lower Left Rectangle 6x4 -->
+                            <rect x="0" y="116" width="112" height="168" fill="none" stroke="#eab308" stroke-width="1.5"/>
+                            <g fill="#eab308" fill-opacity="0.8" stroke="#ca8a04" stroke-width="1">
+                                <circle cx="14" cy="130" r="7"/><circle cx="42" cy="130" r="7"/><circle cx="70" cy="130" r="7"/><circle cx="98" cy="130" r="7"/>
+                                <circle cx="14" cy="158" r="7"/><circle cx="42" cy="158" r="7"/><circle cx="70" cy="158" r="7"/><circle cx="98" cy="158" r="7"/>
+                                <circle cx="14" cy="186" r="7"/><circle cx="42" cy="186" r="7"/><circle cx="70" cy="186" r="7"/><circle cx="98" cy="186" r="7"/>
+                                <circle cx="14" cy="214" r="7"/><circle cx="42" cy="214" r="7"/><circle cx="70" cy="214" r="7"/><circle cx="98" cy="214" r="7"/>
+                                <circle cx="14" cy="242" r="7"/><circle cx="42" cy="242" r="7"/><circle cx="70" cy="242" r="7"/><circle cx="98" cy="242" r="7"/>
+                                <circle cx="14" cy="270" r="7"/><circle cx="42" cy="270" r="7"/><circle cx="70" cy="270" r="7"/><circle cx="98" cy="270" r="7"/>
+                            </g>
+                            <text x="56" y="206" fill="#fef08a" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">6 × 4</text>
+
+                            <!-- Rubber band outline paths in active orange -->
+                            <line x1="114" y1="0" x2="114" y2="284" stroke="#f97316" stroke-width="3"/>
+                            <line x1="0" y1="114" x2="284" y2="114" stroke="#f97316" stroke-width="3"/>
+                        </g>
+                    </svg>
+                    <span class="text-[11px] text-slate-500 mt-2 text-center">Visual representation of the \(10\)-bead square divided sensorially using Yellow (4) and Purple (6) cabinet bead bars.</span>
+                </div>
+
+                <ol class="space-y-4 text-slate-700 pl-4 list-decimal" start="7">
+                    <li>
+                        <span class="action">Invite children to discover other squares inside the 10-square.</span>
+                        <span class="dialogue">"Now, I wonder what other squares we can find inside this 10-square? I invite you to explore this on your own. You don't always have to start with the smallest squares. You can start with a larger square like seven (white) or eight (brown)."</span>
+                    </li>
+                    <li>
+                        <span class="action">Encourage free exploration. Support them by asking open-ended questions like "What shapes do you see?" and "Can you find another perfect square inside this one?"</span>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Exercise 2 -->
+            <div class="mb-8">
+                <h3 class="font-sans font-bold text-sm text-slate-800 mb-4 tracking-tight">Exercise 2 — Verbalizing and Writing the Binomial</h3>
+                
+                <ol class="space-y-4 text-slate-700 pl-4 list-decimal">
+                    <li>
+                        <span class="action">Show materials on screen or workspace: paper, pencil, blank tickets, scissors, and slips of paper. Explain that we will now write down what we have done.</span>
+                        <span class="dialogue">"What is the value of this whole 10-square? Yes, it is 100 because each side is length 10. I am going to write on my paper: \(10^2 = \)"</span>
+                    </li>
+                    <li>
+                        <span class="action">Model writing the formula step-by-step. Turn the paper landscape to allow a long layout.</span>
+                        <span class="dialogue">"We made smaller squares: \(4^2\) and \(6^2\), and rectangles: \(4 \times 6\) and \(6 \times 4\). So we write: \(10^2 = (4 + 6)^2\). What does that equal? The first square is \(4^2\), then \(6^2\), plus the rectangles \(4 \times 6\) and \(6 \times 4\) which are identical."</span>
+                    </li>
+                    <li>
+                        <span class="action">Write out the full expanded mathematical expression:</span>
+                        <div class="my-4 text-center">
+                            $$10^2 = (4+6)^2 = 4^2 + (4 \times 6) + (6 \times 4) + 6^2$$
+                        </div>
+                    </li>
+                    <li>
+                        <span class="action">Bring the blank tickets. Write the terms on separate tickets and place them on top of the corresponding sections on the bead square.</span>
+                        <span class="dialogue">"Let's write a ticket for each part: we have a ticket for '4²', a ticket for '6²', and tickets for '4 × 6' and '6 × 4'."</span>
+                    </li>
+                    <li>
+                        <span class="action">Explain that because \(4 \times 6\) and \(6 \times 4\) are equal, we can simplify this expression. Put a ticket showing "2(4 × 6)" over them.</span>
+                        <span class="dialogue">"Since they are the same, we have two of them! We write: \(4^2 + 2(4 \times 6) + 6^2\)."</span>
+                    </li>
+                    <li>
+                        <span class="action">Work out the calculations with the children:</span>
+                        <div class="my-4 text-center bg-slate-50 p-4 rounded border">
+                            $$4^2 = 16$$
+                            $$2 \times (4 \times 6) = 2 \times 24 = 48$$
+                            $$6^2 = 36$$
+                            $$16 + 48 + 36 = 100$$
+                        </div>
+                        <span class="dialogue">"Adding these values together: 16 plus 48 plus 36. This equals exactly 100!"</span>
+                    </li>
+                    <li>
+                        <span class="action">Model writing these addition processes vertically for clarity and comfort. Step back and encourage children to write other binomial combinations they discover.</span>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- PRESENTATION B -->
+        <section class="mb-12 page-break">
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-6 border-b pb-2 italic">PRESENTATION B: Transformation of a Square Into a Trinomial</h2>
+            
+            <ol class="space-y-4 text-slate-700 pl-4 list-decimal">
+                <li>
+                    <span class="action">Prepare a 10 by 10 square of beads. Introduce the concept of turning this square into three smaller diagonal squares—a trinomial (sum of 3 terms) using the 2, 3, and 5 bead bars.</span>
+                    <span class="dialogue">"Today, we are going to try turning our 10 by 10 square into three squares. Remember, our 2-bead bar is green, our 3-bead bar is pink, and our 5-bead bar is light blue. These three diagonal squares must lie along the diagonal."</span>
+                </li>
+                <li>
+                    <span class="action">Count out the first square of 2 from the top-left: one, two. Mark the \(2 \times 2\) green square with a rubber band. Place a ticket '2²' on it.</span>
+                    <span class="dialogue">"Here is our first square: two squared, which is green."</span>
+                </li>
+                <li>
+                    <span class="action">Count out the next square along the diagonal, which will be of size 3: one, two, three. Mark this \(3 \times 3\) pink square. Place a ticket '3²' on it.</span>
+                    <span class="dialogue">"The second square is three squared, colored pink."</span>
+                </li>
+                <li>
+                    <span class="action">The final square in the bottom-right corner is of size 5: one, two, three, four, five. Mark this \(5 \times 5\) light blue square and label it '5²'.</span>
+                    <span class="dialogue">"We have three squares along the diagonal: 2² (green), 3² (pink), and 5² (light blue)."</span>
+                </li>
+                <li>
+                    <span class="action">Invite the children to observe the rectangles filling in the spaces between these diagonal squares. Place labels on each rectangle.</span>
+                    <span class="dialogue">"Let's see the rectangles that are generated: we have a 2 by 3 rectangle and a 3 by 2 rectangle. We also have a 2 by 5 rectangle and a 5 by 2. Finally, we have a 3 by 5 and a 5 by 3 rectangle."</span>
+                </li>
+            </ol>
+
+            <!-- SVG Illustration 2 -->
+            <div class="illustrate">
+                <span class="text-xs font-semibold text-slate-400 mb-3 uppercase tracking-wider">Fig. 2: Sensorial Trinomial Bead Square Transformation \((2 + 3 + 5)^2\)</span>
+                <svg width="280" height="280" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" class="bg-neutral-800 rounded shadow-md p-4">
+                    <g transform="translate(10, 10)">
+                        <!-- Diagonal Squares representing glass beads -->
+                        
+                        <!-- 2x2 Square (Green) -->
+                        <rect x="0" y="0" width="56" height="56" fill="none" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="2"/>
+                        <g fill="#22c55e" stroke="#15803d" stroke-width="1">
+                            <circle cx="14" cy="14" r="8"/><circle cx="42" cy="14" r="8"/>
+                            <circle cx="14" cy="42" r="8"/><circle cx="42" cy="42" r="8"/>
+                        </g>
+                        <text x="28" y="32" fill="#14532d" font-family="sans-serif" font-weight="bold" font-size="11" text-anchor="middle">2²</text>
+
+                        <!-- 3x3 Square (Pink) -->
+                        <rect x="60" y="60" width="84" height="84" fill="none" stroke="#ec4899" stroke-width="1.5" stroke-dasharray="2"/>
+                        <g fill="#ec4899" stroke="#be185d" stroke-width="1">
+                            <circle cx="74" cy="74" r="8"/><circle cx="102" cy="74" r="8"/><circle cx="130" cy="74" r="8"/>
+                            <circle cx="74" cy="102" r="8"/><circle cx="102" cy="102" r="8"/><circle cx="130" cy="102" r="8"/>
+                            <circle cx="74" cy="130" r="8"/><circle cx="102" cy="130" r="8"/><circle cx="130" cy="130" r="8"/>
+                        </g>
+                        <text x="102" y="106" fill="#500724" font-family="sans-serif" font-weight="bold" font-size="11" text-anchor="middle">3²</text>
+
+                        <!-- 5x5 Square (Light Blue) -->
+                        <rect x="148" y="148" width="140" height="140" fill="none" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="2"/>
+                        <g fill="#06b6d4" stroke="#0e7490" stroke-width="1">
+                            <circle cx="162" cy="162" r="8"/><circle cx="190" cy="162" r="8"/><circle cx="218" cy="162" r="8"/><circle cx="246" cy="162" r="8"/><circle cx="274" cy="162" r="8"/>
+                            <circle cx="162" cy="190" r="8"/><circle cx="190" cy="190" r="8"/><circle cx="218" cy="190" r="8"/><circle cx="246" cy="190" r="8"/><circle cx="274" cy="190" r="8"/>
+                            <circle cx="162" cy="218" r="8"/><circle cx="190" cy="218" r="8"/><circle cx="218" cy="218" r="8"/><circle cx="246" cy="218" r="8"/><circle cx="274" cy="218" r="8"/>
+                            <circle cx="162" cy="246" r="8"/><circle cx="190" cy="246" r="8"/><circle cx="218" cy="246" r="8"/><circle cx="246" cy="246" r="8"/><circle cx="274" cy="246" r="8"/>
+                            <circle cx="162" cy="274" r="8"/><circle cx="190" cy="274" r="8"/><circle cx="218" cy="274" r="8"/><circle cx="246" cy="274" r="8"/><circle cx="274" cy="274" r="8"/>
+                        </g>
+                        <text x="218" y="222" fill="#083344" font-family="sans-serif" font-weight="bold" font-size="14" text-anchor="middle">5²</text>
+
+                        <!-- Rectangles (Drawn with neutral golden beads to contrast) -->
+                        <!-- 2x3 and 3x2 -->
+                        <rect x="60" y="0" width="84" height="56" fill="none" stroke="#eab308" stroke-width="1.2"/>
+                        <rect x="0" y="60" width="56" height="84" fill="none" stroke="#eab308" stroke-width="1.2"/>
+
+                        <!-- 2x5 and 5x2 -->
+                        <rect x="148" y="0" width="140" height="56" fill="none" stroke="#d97706" stroke-width="1.2"/>
+                        <rect x="0" y="148" width="56" height="140" fill="none" stroke="#d97706" stroke-width="1.2"/>
+
+                        <!-- 3x5 and 5x3 -->
+                        <rect x="148" y="60" width="140" height="84" fill="none" stroke="#ea580c" stroke-width="1.2"/>
+                        <rect x="60" y="148" width="84" height="140" fill="none" stroke="#ea580c" stroke-width="1.2"/>
+
+                        <!-- Intersecting dividing bands -->
+                        <line x1="58" y1="0" x2="58" y2="288" stroke="#ca8a04" stroke-width="2"/>
+                        <line x1="146" y1="0" x2="146" y2="288" stroke="#ca8a04" stroke-width="2"/>
+                        <line x1="0" y1="58" x2="288" y2="58" stroke="#ca8a04" stroke-width="2"/>
+                        <line x1="0" y1="146" x2="288" y2="146" stroke="#ca8a04" stroke-width="2"/>
+                    </g>
+                </svg>
+                <span class="text-[11px] text-slate-500 mt-2 text-center">Visual layout of the trinomial bead square \((2 + 3 + 5)^2\) incorporating Green (2), Pink (3), and Light Blue (5) categories.</span>
+            </div>
+
+            <ol class="space-y-4 text-slate-700 pl-4 list-decimal" start="6">
+                <li>
+                    <span class="action">Write out the full expanded expression for the trinomial together on paper:</span>
+                    <div class="my-4 text-center">
+                        $$10^2 = (2 + 3 + 5)^2 = 2^2 + 2(2 \times 3) + 2(2 \times 5) + 3^2 + 2(3 \times 5) + 5^2$$
+                    </div>
+                </li>
+                <li>
+                    <span class="action">Combine like terms to simplify and find the value of each term:</span>
+                    <div class="my-4 text-center bg-slate-50 p-4 rounded border text-sm">
+                        $$2^2 = 4$$
+                        $$2 \times (2 \times 3) = 12$$
+                        $$2 \times (2 \times 5) = 20$$
+                        $$3^2 = 9$$
+                        $$2 \times (3 \times 5) = 30$$
+                        $$5^2 = 25$$
+                        $$\text{Sum} = 4 + 12 + 20 + 9 + 30 + 25 = 100$$
+                    </div>
+                </li>
+                <li>
+                    <span class="action">Encourage children to explore with different trinomial values on their own, finding identical pairs of rectangles to combine.</span>
+                </li>
+            </ol>
+        </section>
+
+        <!-- PRESENTATION C -->
+        <section class="mb-12 page-break">
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-6 border-b pb-2 italic">PRESENTATION C: Printed Squares for the Binomial and Trinomial</h2>
+            
+            <ol class="space-y-4 text-slate-700 pl-4 list-decimal">
+                <li>
+                    <span class="action">Show the printed squares containing 100 circles each (representing the bead grid) and three colored pencils in contrasting colors.</span>
+                    <span class="dialogue">"Today we will explore the squaring transformation using printed squares. This serves as a wonderful way to record our findings. Remember, all squares must sit along the diagonal."</span>
+                </li>
+                <li>
+                    <span class="action">Count out a binomial size (e.g., 4 and 6). Choose the first color matching the Bead Cabinet (Yellow for 4) and color the circles one by one to form the \(4 \times 4\) square.</span>
+                    <span class="dialogue">"We color them circle by circle instead of crossing out areas, to build accuracy. Let's make a beautiful yellow 4 by 4 square here in the corner."</span>
+                </li>
+                <li>
+                    <span class="action">Identify the starting circle for the next square along the diagonal. Choose the second color matching the Cabinet (Purple for 6) and color the \(6 \times 6\) square.</span>
+                </li>
+                <li>
+                    <span class="action">Use the third color (e.g., Gold/Amber) to color the remaining rectangles. Emphasize that because the rectangles are matching pairs, they are colored identical.</span>
+                    <span class="dialogue">"Our remaining shapes are two rectangles: a 4 by 6 and a 6 by 4. They are equivalent in size, so we color them with the same third color."</span>
+                </li>
+                <li>
+                    <span class="action">For the trinomial, introduce a second printed sheet. Encourage the children to select three contrasting colors for the squares along the diagonal, and coordinate colors for matching rectangle pairs.</span>
+                </li>
+                <li>
+                    <span class="action">Encourage children to outline each shape first before coloring inside to ensure counting accuracy and prevent smudging.</span>
+                </li>
+            </ol>
+        </section>
+
+        <!-- PRESENTATION D -->
+        <section class="mb-12 page-break">
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-6 border-b pb-2 italic">PRESENTATION D: Transformation of Squares Done on Squared Paper</h2>
+            
+            <ol class="space-y-4 text-slate-700 pl-4 list-decimal">
+                <li>
+                    <span class="action">Display full sheets of graph paper, a straight edge (ruler), a pencil, and colored pencils.</span>
+                    <span class="dialogue">"We can also construct our squaring transformations on squared paper. This frees us from the limits of our physical material—we can make squares of any size, even with four or more terms!"</span>
+                </li>
+                <li>
+                    <span class="action">Propose building a binomial square representing \((4 + 8)^2\). Point out that this total size (12 units) would not fit on the 10-bead square material.</span>
+                </li>
+                <li>
+                    <span class="action">Start near the top-left of the graph paper. Make a small dot. Count 4 units (Yellow scale) to the right and place a dot, then count 8 more units (Brown scale) to the right and place a dot.</span>
+                </li>
+                <li>
+                    <span class="action">Do the same vertically: count 4 units down, place a dot; then count 8 units down and place a dot. Use the ruler to draw straight lines connecting these coordinates to complete the grid.</span>
+                </li>
+            </ol>
+
+            <!-- SVG Illustration 3 -->
+            <div class="illustrate">
+                <span class="text-xs font-semibold text-slate-400 mb-3 uppercase tracking-wider">Fig. 3: Graph Paper Construction of Binomial \((4 + 8)^2\)</span>
+                <svg width="280" height="280" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" class="bg-white rounded shadow-inner p-2 border border-slate-200">
+                    <!-- Graph paper grid lines -->
+                    <g stroke="#e2e8f0" stroke-width="1">
+                        <line x1="25" y1="0" x2="25" y2="300"/>
+                        <line x1="50" y1="0" x2="50" y2="300"/>
+                        <line x1="75" y1="0" x2="75" y2="300"/>
+                        <line x1="100" y1="0" x2="100" y2="300"/>
+                        <line x1="125" y1="0" x2="125" y2="300"/>
+                        <line x1="150" y1="0" x2="150" y2="300"/>
+                        <line x1="175" y1="0" x2="175" y2="300"/>
+                        <line x1="200" y1="0" x2="200" y2="300"/>
+                        <line x1="225" y1="0" x2="225" y2="300"/>
+                        <line x1="250" y1="0" x2="250" y2="300"/>
+                        <line x1="275" y1="0" x2="275" y2="300"/>
+                        
+                        <line x1="0" y1="25" x2="300" y2="25"/>
+                        <line x1="0" y1="50" x2="300" y2="50"/>
+                        <line x1="0" y1="75" x2="300" y2="75"/>
+                        <line x1="0" y1="100" x2="300" y2="100"/>
+                        <line x1="0" y1="125" x2="300" y2="125"/>
+                        <line x1="0" y1="150" x2="300" y2="150"/>
+                        <line x1="0" y1="175" x2="300" y2="175"/>
+                        <line x1="0" y1="200" x2="300" y2="200"/>
+                        <line x1="0" y1="225" x2="300" y2="225"/>
+                        <line x1="0" y1="250" x2="300" y2="250"/>
+                        <line x1="0" y1="275" x2="300" y2="275"/>
+                    </g>
+
+                    <!-- Outer Border of 12x12 Units (each unit = 25px) -->
+                    <rect x="25" y="25" width="250" height="250" fill="none" stroke="#475569" stroke-width="3"/>
+
+                    <!-- Internal divisions at 4 units (100px from starting coordinate) -->
+                    <!-- Div Line Vert -->
+                    <line x1="125" y1="25" x2="125" y2="275" stroke="#ef4444" stroke-width="2" stroke-dasharray="4"/>
+                    <!-- Div Line Horiz -->
+                    <line x1="25" y1="125" x2="275" y2="125" stroke="#ef4444" stroke-width="2" stroke-dasharray="4"/>
+
+                    <!-- Shading Zones matching Cabinet Colors -->
+                    <rect x="25" y="25" width="100" height="100" fill="#fef08a" fill-opacity="0.5"/> <!-- 4x4 Yellow -->
+                    <text x="75" y="80" fill="#ca8a04" font-weight="bold" font-size="14" text-anchor="middle">4² (Yellow)</text>
+                    
+                    <rect x="125" y="125" width="150" height="150" fill="#fed7aa" fill-opacity="0.5"/> <!-- 8x8 Brown/Orange scale -->
+                    <text x="200" y="205" fill="#c2410c" font-weight="bold" font-size="14" text-anchor="middle">8² (Brown)</text>
+
+                    <rect x="125" y="25" width="150" height="100" fill="#f1f5f9" fill-opacity="0.5"/> <!-- 4x8 Rectangle -->
+                    <text x="200" y="80" fill="#475569" font-weight="bold" font-size="12" text-anchor="middle">4 × 8</text>
+
+                    <rect x="25" y="125" width="100" height="150" fill="#f1f5f9" fill-opacity="0.5"/> <!-- 8x4 Rectangle -->
+                    <text x="75" y="205" fill="#475569" font-weight="bold" font-size="12" text-anchor="middle">8 × 4</text>
+                </svg>
+                <span class="text-[11px] text-slate-500 mt-2 text-center">Graph paper layout showing binomial partitioning of \((4+8)^2\). Blue lines depict grid divisions.</span>
+            </div>
+
+            <ol class="space-y-4 text-slate-700 pl-4 list-decimal" start="5">
+                <li>
+                    <span class="action">Color each smaller square and rectangle lightly using contrasting colored pencils. Write the values within each part.</span>
+                    <span class="dialogue">"Here we have a four-square, an eight-square, and two rectangles of size four by eight. Let's write down the value of each: \(4^2 = 16\), \(8^2 = 64\), and each rectangle has an area of \(32\)."</span>
+                </li>
+                <li>
+                    <span class="action">Explain that this hands-on paper construction helps solidify the structural pattern of squared numbers:</span>
+                    <div class="my-4 text-center">
+                        $$(4 + 8)^2 = 4^2 + 2(4 \times 8) + 8^2$$
+                        $$12^2 = 16 + 64 + 64 = 144$$
+                    </div>
+                </li>
+                <li>
+                    <span class="action">Encourage children to cut out these shapes, glue them onto cardboard or paper, label the mathematical names, and explore larger sizes.</span>
+                </li>
+            </ol>
+        </section>
+
+        <!-- PRESENTATION E -->
+        <section class="mb-12 page-break">
+            <h2 class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-amber-600 mb-6 border-b pb-2 italic">PRESENTATION E: Algebraic Notation</h2>
+            
+            <!-- Exercise 1 -->
+            <div class="mb-8">
+                <h3 class="font-sans font-bold text-sm text-slate-800 mb-4 tracking-tight">Exercise 1 — Binomial Algebraic Notation</h3>
+                
+                <ol class="space-y-4 text-slate-700 pl-4 list-decimal">
+                    <li>
+                        <span class="action">Clear the felt mat. Place the 10-bead square in the center. Gather the children around, and place blank paper tickets and operation signs.</span>
+                        <span class="dialogue">"Today, we are going to connect our numbers to letters. This is the beginning of algebra! Algebra is simply about using a letter to represent any number."</span>
+                    </li>
+                    <li>
+                        <span class="action">Form a binomial square division (e.g., 7 and 3) using a rubber band.</span>
+                        <span class="dialogue">"Instead of calling this first dimension seven, we are going to call it 'a'. So this square of seven is now 'a squared'. Let's write 'a²' on our ticket and place it right here."</span>
+                    </li>
+                    <li>
+                        <span class="action">Write 'a²' on a blank ticket and place it on the \(7 \times 7\) square.</span>
+                    </li>
+                    <li>
+                        <span class="action">Indicate the smaller diagonal square (size 3).</span>
+                        <span class="dialogue">"Instead of calling this length three, we will call it 'b'. So this square is 'b squared'. Let's write 'b²' on this ticket and place it on the square."</span>
+                    </li>
+                    <li>
+                        <span class="action">Now point to the two rectangles. Explain how their dimensions are determined by the side lengths of the squares.</span>
+                        <span class="dialogue">"This rectangle is 'a' by 'b'. In algebra, when we write letters multiplied together, we omit the multiplication sign. So we just write 'ab'. The other rectangle is also 'ab'."</span>
+                    </li>
+                    <li>
+                        <span class="action">Write 'ab' on two separate tickets and place them on the rectangles.</span>
+                    </li>
+                </ol>
+
+                <!-- SVG Illustration 4 -->
+                <div class="illustrate">
+                    <span class="text-xs font-semibold text-slate-400 mb-3 uppercase tracking-wider">Fig. 4: Algebraic Wooden Binomial Plate Colors</span>
+                    <svg width="280" height="200" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" class="bg-neutral-900 rounded shadow-md p-4">
+                        <!-- Wooden Binomial Plate layout as found in classroom sensory materials -->
+                        <g transform="translate(10, 10)">
+                            <!-- a² is solid Red -->
+                            <rect x="20" y="20" width="120" height="120" rx="4" fill="#ef4444" stroke="#b91c1c" stroke-width="3"/>
+                            <text x="80" y="85" fill="#ffffff" font-family="sans-serif" font-weight="bold" font-size="24" text-anchor="middle">a²</text>
+                            
+                            <!-- b² is solid Blue -->
+                            <rect x="150" y="150" width="80" height="80" rx="4" fill="#3b82f6" stroke="#1d4ed8" stroke-width="3"/>
+                            <text x="190" y="195" fill="#ffffff" font-family="sans-serif" font-weight="bold" font-size="20" text-anchor="middle">b²</text>
+
+                            <!-- ab is Black with Red and Blue edges -->
+                            <rect x="150" y="20" width="80" height="120" rx="4" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+                            <!-- Red indicator edge -->
+                            <line x1="150" y1="20" x2="150" y2="140" stroke="#ef4444" stroke-width="4"/>
+                            <text x="190" y="85" fill="#94a3b8" font-family="sans-serif" font-weight="bold" font-size="18" text-anchor="middle">ab</text>
+
+                            <!-- ba is Black with Blue and Red edges -->
+                            <rect x="20" y="150" width="120" height="80" rx="4" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
+                            <!-- Blue indicator edge -->
+                            <line x1="20" y1="150" x2="140" y2="150" stroke="#3b82f6" stroke-width="4"/>
+                            <text x="80" y="195" fill="#94a3b8" font-family="sans-serif" font-weight="bold" font-size="18" text-anchor="middle">ab</text>
+                        </g>
+                    </svg>
+                    <span class="text-[11px] text-slate-400 mt-2 text-center">Color-coded Binomial Plate layout: \(a^2\) (Red), \(b^2\) (Blue), and product rectangles (Black with coded boundaries).</span>
+                </div>
+
+                <ol class="space-y-4 text-slate-700 pl-4 list-decimal" start="7">
+                    <li>
+                        <span class="action">Gather the tickets and organize them in a line on the felt mat to build a formal algebraic expression.</span>
+                        <span class="dialogue">"Let's line our tickets up: first 'a²', then add 'ab', then add another 'ab', and finally 'b²'."</span>
+                    </li>
+                    <li>
+                        <span class="action">Group the two matching 'ab' tickets. Write the simplified formula on paper.</span>
+                        <div class="my-4 text-center">
+                            $$(a + b)^2 = a^2 + 2ab + b^2$$
+                        </div>
+                        <span class="dialogue">"This is our universal algebraic formula for the square of a binomial! It doesn't matter what numbers we substitute for 'a' and 'b'—this formula will always tell us the correct area."</span>
+                    </li>
+                    <li>
+                        <span class="action">Guide the children to check the formula by substituting real values (such as \(a = 7\) and \(b = 3\)). Point out how the numbers fit and calculate exactly to 100.</span>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Exercise 2 -->
+            <div class="mb-8">
+                <h3 class="font-sans font-bold text-sm text-slate-800 mb-4 tracking-tight">Exercise 2 — Trinomial Algebraic Notation</h3>
+                
+                <ol class="space-y-4 text-slate-700 pl-4 list-decimal">
+                    <li>
+                        <span class="action">Assemble the group. Set up the 10-bead square partitioned into three sections (2, 3, and 5) with rubber bands.</span>
+                        <span class="dialogue">"Now we are ready for the trinomial! Let's rename our three diagonal dimensions as 'A', 'B', and 'C'."</span>
+                    </li>
+                    <li>
+                        <span class="action">Invite a student to write out the tickets for the diagonal squares using algebraic letters:</span>
+                        <span class="dialogue">"Instead of 2, 3, and 5, our diagonal squares are 'A²', 'B²', and 'C²'."</span>
+                    </li>
+                    <li>
+                        <span class="action">Place these tickets on the corresponding squares. Then ask the children to label the rectangular regions by looking at their sides:</span>
+                        <span class="dialogue">"This rectangle matches A and B, so it is 'AB'. We have another matching 'AB' here. This one is 'AC' and its pair is also 'AC'. Finally, we have two 'BC' rectangles. Place the tickets down on them."</span>
+                    </li>
+                    <li>
+                        <span class="action">Remove the tickets from the board and lay them out on the mat, grouping matching terms side-by-side.</span>
+                    </li>
+                    <li>
+                        <span class="action">Write out the full algebraic equation for a trinomial on the board or paper:</span>
+                        <div class="my-4 text-center">
+                            $$(A + B + C)^2 = A^2 + 2AB + 2AC + B^2 + 2BC + C^2$$
+                        </div>
+                    </li>
+                    <li>
+                        <span class="action">Point out that the squares run precisely along the diagonal. Invite children to substitute their own numbers to prove that the formula is truly universal.</span>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Instructor's Aside (Yellow) -->
+        <section class="aside-box">
+            <h3 class="font-sans font-bold text-xs uppercase tracking-wider text-amber-800 mb-3 flex items-center gap-2">
+                <!-- INLINE LIGHTBULB ICON -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+                Instructor's Aside & Album Notes — Color Systems in Squaring
+            </h3>
+            <div class="text-xs text-slate-700 space-y-3 leading-relaxed">
+                <p>
+                    Within AMI elementary math development, squaring is explored across three consecutive physical material progressions, each utilizing a specific color scheme:
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
+                    <div class="bg-white p-3 rounded shadow-sm border border-amber-200">
+                        <span class="font-semibold text-slate-800 block mb-1">1. Bead Cabinet (Sensorial)</span>
+                        <p class="text-[11px] text-slate-600">
+                            Uses bead bars colored by unit length to represent concrete dimensions:
+                            <span class="block mt-1">1: Red, 2: Green, 3: Pink, 4: Yellow, 5: Light Blue, 6: Purple, 7: White, 8: Brown, 9: Dark Blue, 10: Gold.</span>
+                        </p>
+                    </div>
+                    <div class="bg-white p-3 rounded shadow-sm border border-amber-200">
+                        <span class="font-semibold text-slate-800 block mb-1">2. Wood Plates (Algebraic)</span>
+                        <p class="text-[11px] text-slate-600">
+                            Wooden pieces for the Binomial & Trinomial layout representing algebraic indices:
+                            <span class="block mt-1">\(a^2\) is solid Red, \(b^2\) is Blue, and \(c^2\) is Yellow. Non-squared rectangles are black with matching dimensional border colors.</span>
+                        </p>
+                    </div>
+                    <div class="bg-white p-3 rounded shadow-sm border border-amber-200">
+                        <span class="font-semibold text-slate-800 block mb-1">3. Peg Board (Hierarchical)</span>
+                        <p class="text-[11px] text-slate-600">
+                            For squaring multi-digit integers with place value categories:
+                            <span class="block mt-1">Units (and millions) = Green, Tens (and ten-thousands) = Blue, Hundreds (and hundred-thousands) = Red.</span>
+                        </p>
+                    </div>
+                </div>
+                <ul class="list-disc pl-5 space-y-2 mt-4">
+                    <li>
+                        <strong>Pedagogical Context:</strong> This is a key introductory chapter in the elementary mathematics curriculum. It comes prior to powers of two, signed/negative numbers, decimal fractions, and non-decimal number bases. It runs parallel to the work with multiples and factors.
+                    </li>
+                    <li>
+                        <strong>The Role of Handwork:</strong> Handwork is crucial to the internalization of these concepts. Cutting, gluing, coloring, and labeling help build deep mental models that translate concrete visual geometry into abstract algebraic expressions.
+                    </li>
+                    <li>
+                        <strong>Generalizations on Squaring:</strong>
+                        <ul class="list-circle pl-5 mt-1 space-y-1 text-[11px]">
+                            <li>All square categories lie exclusively along the grid's diagonal.</li>
+                            <li>Other areas are filled in by matching pairs of rectangles generated by the diagonal squares.</li>
+                            <li>A binomial square consists of \(2^2 = 4\) geometric pieces (2 squares, 2 rectangles).</li>
+                            <li>A trinomial square consists of \(3^2 = 9\) geometric pieces (3 squares, 6 rectangles).</li>
+                            <li>A quadrinomial square consists of \(4^2 = 16\) geometric pieces. The total number of pieces is always the square of the number of terms: \(n^2\).</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
