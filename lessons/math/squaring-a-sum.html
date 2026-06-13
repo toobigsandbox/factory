@@ -281,7 +281,12 @@ document.write(
     "url(#bead-pink)"     // colorB
   )
 );
+                          
                         </script>
+                          
+                        <!-- Orange Rubber Band boundary separation lines -->
+                        <line x1="97" y1="5" x2="97" y2="170" stroke="#f97316" stroke-width="2" stroke-dasharray="4 2"/>
+                        <line x1="5" y1="97" x2="170" y2="97" stroke="#f97316" stroke-width="2" stroke-dasharray="4 2"/>
                 </svg>
                 <span class="text-[11px] text-slate-500 mt-2 text-center">Visual representation of \((4+3)^2\) showing \(4^2\), two groups of \(4 \times 3\), and \(3^2\) built of yellow and pink glass beads.</span>
                     
@@ -407,7 +412,72 @@ document.write(
     <stop offset="100%" stop-color="#92400E"/>
   </radialGradient>
 </defs>
+                    <g transform="translate(10, 10)">
+                        <!-- Diagonal Squares -->
+                        <!-- 2x2 Square (Green) -->
+                        <g fill="url(#bead-green)">
+                            <circle cx="10" cy="10" r="7"/><circle cx="26" cy="10" r="7"/>
+                            <circle cx="10" cy="26" r="7"/><circle cx="26" cy="26" r="7"/>
+                        </g>
 
+                        <!-- 3x3 Square (Pink) -->
+                        <g fill="url(#bead-pink)">
+                            <circle cx="42" cy="42" r="7"/><circle cx="58" cy="42" r="7"/><circle cx="74" cy="42" r="7"/>
+                            <circle cx="42" cy="58" r="7"/><circle cx="58" cy="58" r="7"/><circle cx="74" cy="58" r="7"/>
+                            <circle cx="42" cy="74" r="7"/><circle cx="58" cy="74" r="7"/><circle cx="74" cy="74" r="7"/>
+                        </g>
+
+                        <!-- 5x5 Square (Light Blue) -->
+                        <g fill="url(#bead-lightblue)">
+                            <circle cx="90" cy="90" r="7"/><circle cx="106" cy="90" r="7"/><circle cx="122" cy="90" r="7"/><circle cx="138" cy="90" r="7"/><circle cx="154" cy="90" r="7"/>
+                            <circle cx="90" cy="106" r="7"/><circle cx="106" cy="106" r="7"/><circle cx="122" cy="106" r="7"/><circle cx="138" cy="106" r="7"/><circle cx="154" cy="106" r="7"/>
+                            <circle cx="90" cy="122" r="7"/><circle cx="106" cy="122" r="7"/><circle cx="122" cy="122" r="7"/><circle cx="138" cy="122" r="7"/><circle cx="154" cy="122" r="7"/>
+                            <circle cx="90" cy="138" r="7"/><circle cx="106" cy="138" r="7"/><circle cx="122" cy="138" r="7"/><circle cx="138" cy="138" r="7"/><circle cx="154" cy="138" r="7"/>
+                            <circle cx="90" cy="154" r="7"/><circle cx="106" cy="154" r="7"/><circle cx="122" cy="154" r="7"/><circle cx="138" cy="154" r="7"/><circle cx="154" cy="154" r="7"/>
+                        </g>
+
+                        <!-- Equivalent Rectangles (Exchanged for minimum bar segments) -->
+                        <!-- 2x3 and 3x2 (Pink bars) -->
+                        <g fill="url(#bead-pink)">
+                            <circle cx="42" cy="10" r="7"/><circle cx="58" cy="10" r="7"/><circle cx="74" cy="10" r="7"/>
+                            <circle cx="42" cy="26" r="7"/><circle cx="58" cy="26" r="7"/><circle cx="74" cy="26" r="7"/>
+                            
+                            <circle cx="10" cy="42" r="7"/><circle cx="26" cy="42" r="7"/>
+                            <circle cx="10" cy="58" r="7"/><circle cx="26" cy="58" r="7"/>
+                            <circle cx="10" cy="74" r="7"/><circle cx="26" cy="74" r="7"/>
+                        </g>
+
+                        <!-- 2x5 and 5x2 (Light Blue bars) -->
+                        <g fill="url(#bead-lightblue)">
+                            <circle cx="90" cy="10" r="7"/><circle cx="106" cy="10" r="7"/><circle cx="122" cy="10" r="7"/><circle cx="138" cy="10" r="7"/><circle cx="154" cy="10" r="7"/>
+                            <circle cx="90" cy="26" r="7"/><circle cx="106" cy="26" r="7"/><circle cx="122" cy="26" r="7"/><circle cx="138" cy="26" r="7"/><circle cx="154" cy="26" r="7"/>
+
+                            <circle cx="10" cy="90" r="7"/><circle cx="26" cy="90" r="7"/>
+                            <circle cx="10" cy="106" r="7"/><circle cx="26" cy="106" r="7"/>
+                            <circle cx="10" cy="122" r="7"/><circle cx="26" cy="122" r="7"/>
+                            <circle cx="10" cy="138" r="7"/><circle cx="26" cy="138" r="7"/>
+                            <circle cx="10" cy="154" r="7"/><circle cx="26" cy="154" r="7"/>
+                        </g>
+
+                        <!-- 3x5 and 5x3 (Light Blue bars) -->
+                        <g fill="url(#bead-lightblue)">
+                            <circle cx="90" cy="42" r="7"/><circle cx="106" cy="42" r="7"/><circle cx="122" cy="42" r="7"/><circle cx="138" cy="42" r="7"/><circle cx="154" cy="42" r="7"/>
+                            <circle cx="90" cy="58" r="7"/><circle cx="106" cy="58" r="7"/><circle cx="122" cy="58" r="7"/><circle cx="138" cy="58" r="7"/><circle cx="154" cy="58" r="7"/>
+                            <circle cx="90" cy="74" r="7"/><circle cx="106" cy="74" r="7"/><circle cx="122" cy="74" r="7"/><circle cx="138" cy="74" r="7"/><circle cx="154" cy="74" r="7"/>
+
+                            <circle cx="42" cy="90" r="7"/><circle cx="58" cy="90" r="7"/><circle cx="74" cy="90" r="7"/>
+                            <circle cx="42" cy="106" r="7"/><circle cx="58" cy="106" r="7"/><circle cx="74" cy="106" r="7"/>
+                            <circle cx="42" cy="122" r="7"/><circle cx="58" cy="122" r="7"/><circle cx="74" cy="122" r="7"/>
+                            <circle cx="42" cy="138" r="7"/><circle cx="58" cy="138" r="7"/><circle cx="74" cy="138" r="7"/>
+                            <circle cx="42" cy="154" r="7"/><circle cx="58" cy="154" r="7"/><circle cx="74" cy="154" r="7"/>
+                        </g>
+
+                        <!-- Rubber Band Separator Lines -->
+                        <line x1="34" y1="2" x2="34" y2="162" stroke="#f97316" stroke-width="2" stroke-dasharray="3 2"/>
+                        <line x1="82" y1="2" x2="82" y2="162" stroke="#f97316" stroke-width="2" stroke-dasharray="3 2"/>
+                        <line x1="2" y1="34" x2="162" y2="34" stroke="#f97316" stroke-width="2" stroke-dasharray="3 2"/>
+                        <line x1="2" y1="82" x2="162" y2="82" stroke="#f97316" stroke-width="2" stroke-dasharray="3 2"/>
+                    </g>
                     <g transform="translate(10, 10)">
                         <!-- Diagonal Squares -->
                         <!-- 2x2 Square (Green) -->
