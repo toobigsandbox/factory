@@ -1,5 +1,7 @@
 🏛️ The Montessori Album Factory
 
+Tools for usage are in .md format.
+
 A high-precision technical framework for transmuting AMI Elementary training into beautiful, static HTML lesson modules.
 
 This repository serves as a "Digital Album" factory, designed to bypass the friction of formatting and allow for rapid-fire deployment of Montessori lesson plans. It was built with a 2e (Twice-Exceptional) friendly workflow to hit aggressive academic deadlines through "Batch Processing" and "Assembly Line" coding.
