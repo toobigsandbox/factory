@@ -2,9 +2,9 @@
 
 Tools for usage are in .md format.
 
-A high-precision technical framework for transmuting AMI Elementary training into beautiful, static HTML lesson modules.
+Hosted hub for transmuting AMI Elementary training into HTML lesson modules.
 
-This repository serves as a "Digital Album" factory, designed to bypass the friction of formatting and allow for rapid-fire deployment of Montessori lesson plans. It was built with a 2e (Twice-Exceptional) friendly workflow to hit aggressive academic deadlines through "Batch Processing" and "Assembly Line" coding.
+Designed to bypass formatting friction for 2E brains and allow for rapid-fire deployment around rubric requirements. It was built with a gifted friendly workflow to hit aggressive deadlines through "Batch Processing" and "Assembly Line" coding.
 
 🎯 Project Mission
 
@@ -44,7 +44,7 @@ Header Section: Subject, Title, and Guide attribution.
 
 Purpose Section: Clear, concise pedagogical aims.
 
-Material Analysis (Grey Box): Technical list of prerequisites and apparatus.
+Materials Needed (Grey Box)
 
 Presentation Procedural: - Bold Actions: What the guide does.
 
@@ -78,5 +78,3 @@ Guide Name: Elim Lee
 Affiliation: AMI Elementary Submission
 
 Framework: Open-source for Montessori trainees.
-
-"The child’s progress does not depend only on his age, but also on being free to look about him." — Maria Montessori
